@@ -70,16 +70,33 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
 @media(max-width:390px){body{font-size:16.5px}.mobile-nav a{font-size:13.5px}}
 @media print{.evidence-actions{display:none!important}}
 
+
+/* GitHub Pages navigation: root-level index.html is supplied by the course owner. */
+.home-sidebar-link{color:#fff;text-decoration:none;cursor:pointer;transition:transform .2s ease,filter .2s ease;}
+.home-sidebar-link:hover{transform:translateY(-2px);filter:brightness(1.09)}
+.home-sidebar-link:focus-visible,.home-top-link:focus-visible{outline:3px solid var(--accent, #1b8b9b);outline-offset:3px;}
+.home-top-link{display:none;color:var(--ink);text-decoration:none;font-weight:800;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--surface);border-radius:12px;min-width:43px;width:43px;height:41px;flex:none;}
+.home-top-link:hover{background:var(--soft,#eaf7f6)}
+@media(max-width:850px){.home-top-link{display:inline-flex;}}
+@media(max-width:520px){
+ .topbar{gap:6px;padding-left:10px;padding-right:10px;}
+ .home-top-link{min-width:39px;width:39px;height:39px;}
+ .topbar-title{flex:0 1 81px;min-width:0;max-width:81px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+ .topbar-progress{min-width:52px;margin-left:auto;flex:1;}
+ .topbar-progress .progress-labels span:first-child{display:none;}
+ .topbar .top-btn{padding:6px 7px;white-space:nowrap;font-size:12px;}
+}
+@media print{.home-sidebar-link,.home-top-link{display:none!important;}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">ข้ามไปยังเนื้อหาหลัก</a>
 <div class="app">
 <aside class="sidebar" aria-label="สารบัญบทเรียน">
-  <div class="brand"><span class="brand-symbol" aria-hidden="true">▦</span><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
+  <div class="brand"><a class="brand-symbol home-sidebar-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
   <div class="side-divider"></div><div class="side-label">WEEK 01 · CONTENT</div>
   <nav class="side-nav" id="sideNav">
-    <a href="#start"><span class="navnum">⌂</span> เริ่มต้นบทเรียน</a>
+    <a href="#start"><span class="navnum">↑</span> เริ่มต้นบทเรียน</a>
     <a href="#week-overview"><span class="navnum">☷</span> หัวข้อสัปดาห์ที่ 1</a>
     <a href="#components"><span class="navnum">01</span> โรงงานคือระบบ</a>
     <a href="#terms"><span class="navnum">02</span> คำศัพท์สำคัญ</a>
@@ -95,7 +112,7 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
   <div class="side-bottom"><div class="side-divider"></div><div class="side-info">รายวิชา 03-407-051-307<br>อาจารย์ชัยวัฒน์ วัฒนะกุล<br>คณะ/สาขา: วิศวกรรมการผลิต<br>บทเรียนฉบับ HTML ทำงานได้แม้ไม่มีอินเทอร์เน็ต</div></div>
 </aside>
 <div class="main">
-<header class="topbar"><div class="topbar-title">W01 <span style="color:var(--muted)">/ 17</span> • รู้จักโรงงาน</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div class="track" role="progressbar" id="progressbar" aria-label="ความก้าวหน้า" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="progressFill"></div></div></div><button class="top-btn" id="themeBtn" type="button" aria-label="สลับโหมดสี">☾ สี</button><button class="top-btn" onclick="window.print()" type="button" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
+<header class="topbar"><a class="home-top-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div class="topbar-title">W01 <span style="color:var(--muted)">/ 17</span> • รู้จักโรงงาน</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div class="track" role="progressbar" id="progressbar" aria-label="ความก้าวหน้า" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="progressFill"></div></div></div><button class="top-btn" id="themeBtn" type="button" aria-label="สลับโหมดสี">☾ สี</button><button class="top-btn" onclick="window.print()" type="button" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
 <nav class="mobile-nav" aria-label="สารบัญมือถือ" id="mobileNav"><a href="#start">เริ่มต้น</a><a href="#week-overview">หัวข้อสัปดาห์</a><a href="#components">01 ระบบโรงงาน</a><a href="#terms">02 นิยาม</a><a href="#principles">03 หลักการ</a><a href="#systems">04 ระบบผลิต</a><a href="#workflow">05 ขั้นตอน</a><a href="#smart">06 Smart</a><a href="#calculator">คำนวณ</a><a href="#activity">กิจกรรม</a><a href="#quiz">ทดสอบ</a><a href="#references">อ้างอิง</a></nav>
 <main id="main" class="content">
 <section id="start" class="hero" aria-labelledby="heroTitle">
@@ -236,8 +253,8 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
 <div class="sources"><div class="source"><strong>[1] Garcia-Diaz, A., & Smith, J. M. (2024). Facilities Planning and Design (2nd ed.). Springer.</strong><p>ตำราวิชาการ: ภาพรวม Facilities Planning, Plant/Facility Design, Location, Layout, Material Handling; หน้าข้อมูลหนังสือออนไลน์ (การเข้าถึงเต็มเล่มอาจต้องผ่านสถาบัน)</p><a href="https://link.springer.com/book/10.1007/978-3-031-54259-6" target="_blank" rel="noopener noreferrer">ดูข้อมูลหนังสือที่ Springer ↗</a></div><div class="source"><strong>[2] Tompkins, J. A., et al. Facilities Planning (4th ed.). Wiley.</strong><p>ตำรามาตรฐานสำหรับกระบวนการวางแผนสิ่งอำนวยความสะดวก วัตถุประสงค์และการออกแบบผัง (หน้ารายละเอียดออนไลน์; เนื้อหาบางส่วนอาจมีลิขสิทธิ์/ต้องซื้อ)</p><a href="https://www.wiley.com/en-us/facilities-planning-4th-edition-p-9781119016076" target="_blank" rel="noopener noreferrer">ดูข้อมูลหนังสือที่ Wiley ↗</a></div><div class="source"><strong>[3] OpenStax / Nicolet College. Operations Management V2 — “Location, Location, Location: Where Do We Make It?”</strong><p>ตำราออนไลน์อ่านฟรี: วัตถุประสงค์และประเภทของ Facility Layout (Process, Product, Fixed-position และ Cellular)</p><a href="https://nicoletcollege.pressbooks.pub/operationsmanagementv2/chapter/location-location-location-where-do-we-make-it/" target="_blank" rel="noopener noreferrer">อ่านบทออนไลน์ ↗</a></div><div class="source"><strong>[4] Pérez-Gosende, P., Mula, J., & Díaz-Madroñero, M. (2021). Facility layout planning: An extended literature review. International Journal of Production Research.</strong><p>บทความทบทวนวิชาการแบบ peer-reviewed: ผลของการจัดผังต่อประสิทธิภาพ ต้นทุน พื้นที่ ความยืดหยุ่นและความปลอดภัย</p><a href="https://doi.org/10.1080/00207543.2021.1897176" target="_blank" rel="noopener noreferrer">อ่านบทความ/บทคัดย่อ ↗</a></div><div class="source"><strong>[5] eCampusOntario. Business Fundamentals (1st ed.) — Chapter 9: Operations Management.</strong><p>ตำราออนไลน์อ่านฟรี: ระบบผลิต การจัดผังโรงงาน ประเภทผัง และความสัมพันธ์กับกำลังการผลิต</p><a href="https://ecampusontario.pressbooks.pub/businessfundamentals/chapter/chapter-9/" target="_blank" rel="noopener noreferrer">อ่านบทออนไลน์ ↗</a></div><div class="source"><strong>[6] NIST (2016). An analysis of technologies and standards for designing smart manufacturing systems.</strong><p>เอกสารวิชาการจาก National Institute of Standards and Technology: การเชื่อมต่อข้อมูล เทคโนโลยี และมาตรฐานของระบบผลิตอัจฉริยะ</p><a href="https://www.nist.gov/publications/analysis-technologies-and-standards-designing-smart-manufacturing-systems" target="_blank" rel="noopener noreferrer">อ่านข้อมูลที่ NIST ↗</a></div><div class="source"><strong>[7] NIST (2018). An Analytical Framework for Smart Manufacturing.</strong><p>งานวิชาการว่าด้วยการใช้ข้อมูลการผลิตเพื่อวิเคราะห์และสนับสนุนการตัดสินใจ</p><a href="https://www.nist.gov/publications/analytical-framework-smart-manufacturing" target="_blank" rel="noopener noreferrer">อ่านข้อมูลที่ NIST ↗</a></div><div class="source"><strong>[8] แผนการจัดการเรียนรู้รายวิชา Industrial Plant Design (17 สัปดาห์), อาจารย์ชัยวัฒน์ วัฒนะกุล, มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน.</strong><p>เอกสารต้นทางที่ผู้สอนให้มา: หัวข้อสัปดาห์ที่ 1 หน้า 4; เวลาเรียน กรณีศึกษาจำลอง และแนวทางจัดกิจกรรม หน้า 13. ใช้เป็นโครงสร้างหลัก; เนื้อหาอธิบาย ตัวอย่างตัวเลข และแบบทดสอบเป็นสื่อประกอบที่จัดทำเพิ่ม</p><p class="footnote">แฟ้ม PDF แผนการสอนที่แนบมาในบทสนทนานี้ (ไฟล์ HTML ทำงานแยกจาก PDF ได้)</p></div></div>
 <div class="note">🛡 <strong>ขอบเขต:</strong> แผนภาพเป็นแผนภาพการเรียนรู้ ไม่ใช่แบบก่อสร้างหรือแบบวิศวกรรมที่ผ่านการรับรอง ระยะทางและข้อมูลกรณีศึกษาเป็นตัวอย่างสมมติ การใช้งานจริงต้องสำรวจหน้างาน ตรวจมาตรฐานความปลอดภัยและข้อกำหนดที่เกี่ยวข้อง</div>
 <div class="toggle-row"><button type="button" class="btn secondary" id="resetProgress">ล้างความก้าวหน้าและคะแนนบนเครื่องนี้</button><a href="#start" class="btn outline">↑ กลับไปด้านบน</a></div></div></section>
-<div style="border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:17px;margin:20px 0"><strong>▶ เรียนบทถัดไป — สัปดาห์ที่ 2</strong><br><a href="Industrial_Plant_Design_Week_02_Interactive.html">เปิดบทเรียนผลิตภัณฑ์และลำดับกระบวนการผลิต (Routing / OPC) ↗</a></div>
-<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 01</strong><br>สื่อประกอบการเรียนรู้สำหรับนักศึกษาวิศวกรรมการผลิต • อาจารย์ชัยวัฒน์ วัฒนะกุล<br>บันทึกกิจกรรม/คะแนนใน <strong>localStorage ของเบราว์เซอร์นี้</strong> เท่านั้น ไม่มีการส่งข้อมูลไปเซิร์ฟเวอร์<br>สัปดาห์ที่ 2: ผลิตภัณฑ์และลำดับกระบวนการผลิต (Routing & OPC)</footer>
+
+<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 01</strong><br>สำหรับนักศึกษาวิศวกรรมการผลิต · อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</footer>
 </main></div></div><div class="announce" role="status" id="toast"></div>
 <dialog id="layoutZoomDialog" class="layout-zoom-dialog" aria-labelledby="layoutZoomTitle">
   <div class="zoom-heading"><div><span class="section-kicker">WORKSHEET / IMAGE VIEWER</span><h2 id="layoutZoomTitle">ขยายภาพผังโรงงาน</h2><p class="tiny">ภาพแนวคิดเพื่อเปรียบเทียบการไหล — ไม่ได้แสดงสัดส่วนพื้นที่จริง</p></div><button id="closeLayoutZoom" class="btn secondary" type="button" aria-label="ปิดภาพขยาย">✕ ปิด</button></div>

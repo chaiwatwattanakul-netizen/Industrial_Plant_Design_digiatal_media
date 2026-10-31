@@ -109,13 +109,30 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
 @media(max-width:520px){.evidence-fields{grid-template-columns:1fr}}
 @media(max-width:390px){body{font-size:16.5px}.mobile-nav a{font-size:13.5px}}
 @media print{.evidence-actions{display:none!important}}
+
+/* GitHub Pages navigation: root-level index.html is supplied by the course owner. */
+.home-sidebar-link{color:#fff;text-decoration:none;cursor:pointer;transition:transform .2s ease,filter .2s ease;}
+.home-sidebar-link:hover{transform:translateY(-2px);filter:brightness(1.09)}
+.home-sidebar-link:focus-visible,.home-top-link:focus-visible{outline:3px solid var(--accent, #1b8b9b);outline-offset:3px;}
+.home-top-link{display:none;color:var(--ink);text-decoration:none;font-weight:800;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--surface);border-radius:12px;min-width:43px;width:43px;height:41px;flex:none;}
+.home-top-link:hover{background:var(--soft,#eaf7f6)}
+@media(max-width:850px){.home-top-link{display:inline-flex;}}
+@media(max-width:520px){
+ .topbar{gap:6px;padding-left:10px;padding-right:10px;}
+ .home-top-link{min-width:39px;width:39px;height:39px;}
+ .topbar-title{flex:0 1 81px;min-width:0;max-width:81px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+ .topbar-progress{min-width:52px;margin-left:auto;flex:1;}
+ .topbar-progress .progress-labels span:first-child{display:none;}
+ .topbar .top-btn{padding:6px 7px;white-space:nowrap;font-size:12px;}
+}
+@media print{.home-sidebar-link,.home-top-link{display:none!important;}}
 </style></head><body><a class="skip" href="#start">ข้ามไปเนื้อหาหลัก</a>
 <div class="app">
 <aside class="sidebar" aria-label="สารบัญบทเรียน">
-  <div class="brand"><span class="brand-symbol" aria-hidden="true">▦</span><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
+  <div class="brand"><a class="brand-symbol home-sidebar-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
   <div class="side-divider"></div><div class="side-label">WEEK 02 · CONTENT</div>
   <nav class="side-nav" id="sideNav">
-    <a href="#start"><span class="navnum">⌂</span> เริ่มต้นบทเรียน</a>
+    <a href="#start"><span class="navnum">↑</span> เริ่มต้นบทเรียน</a>
     <a href="#week-overview"><span class="navnum">☷</span> หัวข้อสัปดาห์ที่ 2</a>
     <a href="#relation"><span class="navnum">01</span> ผลิตภัณฑ์–เครื่องจักร</a>
     <a href="#routing"><span class="navnum">02</span> เส้นทางชิ้นงาน Routing</a>
@@ -131,7 +148,7 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
   <div class="side-bottom"><div class="side-divider"></div><div class="side-info">รหัสวิชา 03-407-051-307<br>อาจารย์ชัยวัฒน์ วัฒนะกุล<br>นักศึกษาวิศวกรรมการผลิต<br>บทเรียน HTML ใช้งานออฟไลน์ได้ (ยกเว้นการเปิดเว็บไซต์อ้างอิง)</div></div>
 </aside>
 <div class="main">
-<header class="topbar"><div class="topbar-title">W02 <span style="color:var(--muted)">/ 17</span> • Routing &amp; OPC</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div id="progressbar" class="track" role="progressbar" aria-label="ความก้าวหน้าการเรียนรู้" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="progressFill"></div></div></div><button type="button" class="top-btn" id="themeBtn" aria-label="สลับโหมดสี">☾ สี</button><button type="button" class="top-btn" onclick="window.print()" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
+<header class="topbar"><a class="home-top-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div class="topbar-title">W02 <span style="color:var(--muted)">/ 17</span> • Routing &amp; OPC</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div id="progressbar" class="track" role="progressbar" aria-label="ความก้าวหน้าการเรียนรู้" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="progressFill"></div></div></div><button type="button" class="top-btn" id="themeBtn" aria-label="สลับโหมดสี">☾ สี</button><button type="button" class="top-btn" onclick="window.print()" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
 <nav class="mobile-nav" id="mobileNav" aria-label="สารบัญมือถือ"><a href="#start">เริ่มต้น</a><a href="#week-overview">หัวข้อ</a><a href="#relation">01 สินค้า</a><a href="#routing">02 Routing</a><a href="#events">03 สัญลักษณ์</a><a href="#opc">04 OPC</a><a href="#variety">05 ปริมาณ</a><a href="#data">06 ข้อมูล</a><a href="#calculator">คำนวณ</a><a href="#activity">กิจกรรม</a><a href="#quiz">ทดสอบ</a><a href="#references">อ้างอิง</a></nav>
 <main class="content">
 <section id="start" class="hero" aria-labelledby="heroTitle">
@@ -150,7 +167,7 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
 </svg><div class="art-tag">ภาพประกอบต้นฉบับ · กรณีศึกษาจำลอง</div></div>
 </section>
 <div class="callout-strip"><div class="small-stat"><span class="icon">🔍</span><div><strong>6 หัวข้อ</strong><span>จากแผนการสอนจริง</span></div></div><div class="small-stat"><span class="icon">🗺️</span><div><strong>ภาพโต้ตอบ</strong><span>Routing / OPC / สัญลักษณ์</span></div></div><div class="small-stat"><span class="icon">✎</span><div><strong>ลงมือทำ</strong><span>เรียงขั้นตอน + ใบงาน + Quiz</span></div></div></div>
-<div class="bridge"><div class="bridge-icon">↩</div><div><strong>ทบทวนจากสัปดาห์ที่ 1 → ต่อยอดสัปดาห์ที่ 2</strong><p>สัปดาห์ก่อนเราดูว่า “ผังโรงงานดีหรือไม่” · วันนี้เราจะตามชิ้นงานจริง ๆ ว่า <strong>ทำอะไรก่อน–หลัง</strong> แล้วใช้ข้อมูลนี้เป็นเหตุผลในการจัดผัง</p></div><a href="Industrial_Plant_Design_Week_01_Interactive.html" class="btn secondary pill-link" title="เปิดไฟล์สัปดาห์ที่ 1 ที่อยู่ในโฟลเดอร์เดียวกัน">↗ ย้อนดู W01</a></div>
+<div class="bridge"><div class="bridge-icon">↩</div><div><strong>ทบทวนจากสัปดาห์ที่ 1 → ต่อยอดสัปดาห์ที่ 2</strong><p>สัปดาห์ก่อนเราดูว่า “ผังโรงงานดีหรือไม่” · วันนี้เราจะตามชิ้นงานจริง ๆ ว่า <strong>ทำอะไรก่อน–หลัง</strong> แล้วใช้ข้อมูลนี้เป็นเหตุผลในการจัดผัง</p></div></div>
 <section id="week-overview" class="week-overview section" aria-labelledby="overviewTitle"><div class="overview-head"><div><span class="section-kicker">WEEK 02 · LEARNING ROADMAP</span><h2 id="overviewTitle">หัวข้อการเรียนรู้ประจำสัปดาห์ที่ 2</h2><p><strong>หัวข้อหลัก: ผลิตภัณฑ์และลำดับกระบวนการผลิต (Product &amp; Process Analysis)</strong> · ค่อย ๆ เรียนจากภาพสินค้าสู่แผนภูมิ</p></div><span class="overview-count">6<br><small>หัวข้อ</small></span></div>
 <div class="overview-topics"><a href="#relation" class="overview-topic"><span class="overview-no">01</span><span><strong>ชิ้นงาน ขั้นตอนผลิต และเครื่องจักร</strong><small>ความสัมพันธ์ของ Product · Process · Machine</small></span><span class="overview-arrow">↗</span></a><a href="#routing" class="overview-topic"><span class="overview-no">02</span><span><strong>Routing จากวัตถุดิบถึงสำเร็จรูป</strong><small>เส้นทางผ่านแผนกแบบมองเห็นได้</small></span><span class="overview-arrow">↗</span></a><a href="#events" class="overview-topic"><span class="overview-no">03</span><span><strong>งานแปรรูป ตรวจสอบ และขนย้าย</strong><small>Operation · Inspection · Transportation</small></span><span class="overview-arrow">↗</span></a><a href="#opc" class="overview-topic"><span class="overview-no">04</span><span><strong>แผนภูมิกระบวนการผลิต OPC</strong><small>Operation Process Chart สัญลักษณ์ ○ และ □</small></span><span class="overview-arrow">↗</span></a><a href="#variety" class="overview-topic"><span class="overview-no">05</span><span><strong>ผลิตหลากหลาย–น้อย vs ชนิดน้อย–มาก</strong><small>ความหลากหลายและปริมาณสัมพันธ์กับผัง</small></span><span class="overview-arrow">↗</span></a><a href="#data" class="overview-topic"><span class="overview-no">06</span><span><strong>เตรียมข้อมูลคำนวณเครื่องจักรและพื้นที่</strong><small>คำสั่งผลิต เวลางาน ขนาดเครื่องและพื้นที่เผื่อ</small></span><span class="overview-arrow">↗</span></a></div>
 <div class="overview-outcome"><span>🎯</span><div><strong>เป้าหมายเมื่อจบบทเรียน</strong><p>นักศึกษาสามารถ <strong>อ่าน Routing สร้าง OPC อย่างง่าย แยกสัญลักษณ์ และเตรียมข้อมูลตั้งต้น</strong> สำหรับคำนวณจำนวนเครื่องจักรในสัปดาห์ที่ 3</p></div><a class="btn outline" href="#activity">ทดลองกิจกรรม ↗</a></div></section>
@@ -261,9 +278,9 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
 <div class="source"><strong>[4] OpenStax. (2026). Introduction to Business 2e, §10.2 “The Production Process: How Do We Make It?”</strong><p>ตำราออนไลน์เปิด: ความสัมพันธ์ระหว่างการผลิตแบบหลากหลายกับปริมาณผลิต รวมถึง Mass Production และ Intermittent Processes</p><a class="ref-link" href="https://openstax.org/books/introduction-business-2e/pages/10-2-the-production-process-how-do-we-make-it" target="_blank" rel="noopener noreferrer">อ่าน OpenStax บท 10.2 ↗</a></div>
 <div class="source"><strong>[5] Massachusetts Institute of Technology (MIT). Introduction to Operations Management. MIT OpenCourseWare.</strong><p>รายวิชาออนไลน์ประกอบการศึกษาต่อ: Process Analysis, Operations Planning และ Manufacturing Operations</p><a class="ref-link" href="https://learn.mit.edu/?resource=4423" target="_blank" rel="noopener noreferrer">ศึกษาเนื้อหาผ่าน MIT Learn ↗</a></div></div>
 <p class="note">หมายเหตุ: ชิ้นงาน A–B จำนวนพื้นที่ 6 ส่วน และตัวเลขเวลาเป็น <strong>กรณีศึกษาจำลองเพื่อการสอน</strong> โดยยึดโครงสร้างโรงงาน CNC จากแผนการสอนรายวิชา ไม่ใช่ข้อมูลการปฏิบัติงานจริง และไม่มีการนำภาพต้นฉบับของหนังสือมาใช้</p>
-<div class="crossweek"><div class="soft-card"><span style="font-size:25px">◀</span><div><strong>สัปดาห์ที่ 1</strong><p>รู้จักโรงงานและการออกแบบผัง</p><a href="Industrial_Plant_Design_Week_01_Interactive.html">กลับไปทบทวนบทเรียนเดิม ↗</a></div></div><div class="soft-card"><span style="font-size:25px">▶</span><div><strong>สัปดาห์ที่ 3 (บทถัดไป)</strong><p>กำลังการผลิตและจำนวนเครื่องจักรเบื้องต้น · นำ Q, t และ H ไปคำนวณ</p><a href="Industrial_Plant_Design_Week_03_Interactive.html">เปิดบทเรียนสัปดาห์ที่ 3 ↗</a></div></div></div>
+
 <div class="toggle-row" style="margin-top:20px"><button type="button" class="btn outline" id="resetProgress">↺ ล้างความก้าวหน้าและคะแนน (เครื่องนี้)</button><a class="btn secondary" href="#start">↑ กลับสู่ด้านบน</a></div></div></section>
-<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 02</strong><br>สื่อการสอนสำหรับนักศึกษาวิศวกรรมการผลิต · อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน<br>ระบบบันทึกใบงาน ความก้าวหน้า และคะแนนไว้ใน <strong>localStorage ของเบราว์เซอร์อุปกรณ์นี้</strong> เท่านั้น ไม่มีการส่งข้อมูลไปยังเซิร์ฟเวอร์<br>หัวข้อต่อไป W03: Basic Capacity &amp; Machine Requirement</footer>
+<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 02</strong><br>สำหรับนักศึกษาวิศวกรรมการผลิต · อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</footer>
 </main></div></div>
 <div class="announce" id="toast" aria-live="polite"></div>
 <dialog id="visualDialog" class="layout-zoom-dialog" aria-label="ภาพประกอบขยาย"><div class="zoom-heading"><div><span class="section-kicker">INTERACTIVE FIGURE · FULL VIEW</span><h2 id="visualTitle">ภาพขยาย</h2><p class="tiny">ขยายเพื่อดูรายละเอียดของแผนภาพประกอบ</p></div><button class="btn secondary" type="button" id="closeVisual">✕ ปิด</button></div><div id="visualHolder" class="zoom-svg-holder"></div><div class="zoom-footer"><span class="tiny">ภาพวาดต้นฉบับเพื่อการศึกษา · ไม่ใช่ผังตามมาตราส่วนจริง</span><button type="button" class="image-zoom" id="closeVisualBottom">กลับสู่บทเรียน</button></div></dialog>

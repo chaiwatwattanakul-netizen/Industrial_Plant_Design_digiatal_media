@@ -181,14 +181,31 @@ h3{font-size:1.30rem}
  body{font-size:16.5px}
  .mobile-nav a{font-size:13.5px}
 }
+
+/* GitHub Pages navigation: root-level index.html is supplied by the course owner. */
+.home-sidebar-link{color:#fff;text-decoration:none;cursor:pointer;transition:transform .2s ease,filter .2s ease;}
+.home-sidebar-link:hover{transform:translateY(-2px);filter:brightness(1.09)}
+.home-sidebar-link:focus-visible,.home-top-link:focus-visible{outline:3px solid var(--accent, #1b8b9b);outline-offset:3px;}
+.home-top-link{display:none;color:var(--ink);text-decoration:none;font-weight:800;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--surface);border-radius:12px;min-width:43px;width:43px;height:41px;flex:none;}
+.home-top-link:hover{background:var(--soft,#eaf7f6)}
+@media(max-width:850px){.home-top-link{display:inline-flex;}}
+@media(max-width:520px){
+ .topbar{gap:6px;padding-left:10px;padding-right:10px;}
+ .home-top-link{min-width:39px;width:39px;height:39px;}
+ .topbar-title{flex:0 1 81px;min-width:0;max-width:81px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+ .topbar-progress{min-width:52px;margin-left:auto;flex:1;}
+ .topbar-progress .progress-labels span:first-child{display:none;}
+ .topbar .top-btn{padding:6px 7px;white-space:nowrap;font-size:12px;}
+}
+@media print{.home-sidebar-link,.home-top-link{display:none!important;}}
 </style></head><body>
 <a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
 <div class="app">
 <aside class="sidebar" aria-label="สารบัญบทเรียน">
-<div class="brand"><span class="brand-symbol" aria-hidden="true">▦</span><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
+<div class="brand"><a class="brand-symbol home-sidebar-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
 <div class="side-divider"></div><div class="side-label">WEEK 03 · CONTENT</div>
 <nav class="side-nav" id="sideNav">
-<a href="#start"><span class="navnum">⌂</span> เริ่มต้นบทเรียน</a>
+<a href="#start"><span class="navnum">↑</span> เริ่มต้นบทเรียน</a>
 <a href="#week-overview"><span class="navnum">☷</span> หัวข้อสัปดาห์ที่ 3</a>
 <a href="#demand"><span class="navnum">01</span> ความต้องการผลิตและเวลา</a>
 <a href="#cycle"><span class="navnum">02</span> ความหมาย Cycle Time</a>
@@ -202,7 +219,7 @@ h3{font-size:1.30rem}
 <a href="#submission"><span class="navnum">⇩</span> ส่งหลักฐาน .txt</a><a href="#references"><span class="navnum">↗</span> ตำราอ้างอิง</a>
 </nav><div class="side-bottom"><div class="side-divider"></div><div class="side-info">รหัสวิชา 03-407-051-307<br>อาจารย์ชัยวัฒน์ วัฒนะกุล<br>นักศึกษาวิศวกรรมการผลิต<br>ใช้งานออฟไลน์ได้ ยกเว้นลิงก์ตำรา</div></div>
 </aside>
-<div class="main"><header class="topbar"><div class="topbar-title">W03 <span style="color:var(--muted)">/ 17</span> • Capacity &amp; Machines</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div class="track" id="progressbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="ความก้าวหน้าการเรียนรู้"><div class="fill" id="progressFill"></div></div></div><button class="top-btn" id="themeBtn" aria-label="สลับโหมดสี" type="button">☾ สี</button><button class="top-btn" type="button" onclick="window.print()" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
+<div class="main"><header class="topbar"><a class="home-top-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div class="topbar-title">W03 <span style="color:var(--muted)">/ 17</span> • Capacity &amp; Machines</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div class="track" id="progressbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="ความก้าวหน้าการเรียนรู้"><div class="fill" id="progressFill"></div></div></div><button class="top-btn" id="themeBtn" aria-label="สลับโหมดสี" type="button">☾ สี</button><button class="top-btn" type="button" onclick="window.print()" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
 <main class="content" id="main">
 <section class="hero" id="start" aria-labelledby="heroTitle">
 <div><span class="eyebrow">✦ FOUNDATION · สัปดาห์ที่ 3 / 17</span><h1 id="heroTitle"><span class="hero-week">สัปดาห์ที่ 3</span><br>กำลังการผลิตและ<br><span>จำนวนเครื่องจักรเบื้องต้น</span></h1><p class="lead">Basic Capacity &amp; Machine Requirement · จาก <strong>Routing / OPC</strong> ในสัปดาห์ที่ 2 สู่คำถามสำคัญ: <strong>ต้องใช้เครื่องจักรกี่เครื่อง และต้องเตรียมพื้นที่เท่าไร?</strong></p><div class="hero-actions"><a class="btn primary" href="#week-overview">สำรวจหัวข้อทั้งหมด ↗</a><a class="btn secondary" href="#calculator">ทดลองคำนวณเลย ∑</a></div><div class="hero-meta"><span class="pill">🕒 3 ชั่วโมง</span><span class="pill">🎓 พื้นฐาน–ปานกลาง</span><span class="pill">⚙ กรณีศึกษา CNC เดิม</span><span class="pill">✓ ทดสอบ 10 ข้อ</span></div></div>
@@ -276,8 +293,8 @@ h3{font-size:1.30rem}
 </div></section>
 <section class="section" id="references"><div class="section-card"><div class="section-top"><span class="badge-no" style="background:var(--blue-soft);color:var(--blue)">↗</span><div><div class="section-kicker">ACADEMIC SOURCES · INTERNATIONAL ONLINE BOOKS</div><h2>แหล่งอ้างอิงทางวิชาการและคำอธิบายเพิ่มเติม</h2><p class="section-subtitle">แนวคิด Capacity, Available Time, Utilization และ Machine Capacity เทียบเคียงกับตำราวิชาการสากล · ภาพ สูตรตัวอย่าง และตัวเลขโรงงาน CNC เป็นสื่อวาดใหม่</p></div></div>
 <div class="sources"><div class="source"><strong>[1] Seneca Polytechnic. Introduction to Operations Management — Strategic Capacity Planning.</strong><p>นิยาม Design Capacity และ Effective Capacity รวมถึงการพิจารณาเวลาสูญเสียและความสามารถในการผลิต เหมาะอ่านต่อยอดบทเรียน</p><a href="https://pressbooks.senecapolytechnic.ca/operationsmanagementintro/chapter/strategic-capacity-planning/" target="_blank" rel="noopener noreferrer">อ่านตำราออนไลน์ ↗</a></div><div class="source"><strong>[2] Business LibreTexts. Introduction to Operations Management — Strategic Capacity Planning §7.1.</strong><p>ภาพรวมของการวางแผนกำลังผลิตและการตัดสินใจจัดหาทรัพยากร พร้อมตัวอย่างและสมการด้านกำลังผลิต</p><a href="https://biz.libretexts.org/Bookshelves/Management/Introduction_to_Operations_Management/07%3A_Strategic_Capacity_Planning/7.01%3A_Introduction_to_Strategic_Capacity_Planning" target="_blank" rel="noopener noreferrer">อ่าน LibreTexts ↗</a></div><div class="source"><strong>[3] Reid, R. D., &amp; Sanders, N. R. Operations Management: An Integrated Approach, 5th ed., Ch. 14 (Wiley, 2012).</strong><p>ตัวอย่างการคำนวณ Available Capacity ของทรัพยากรหลายเครื่องเมื่อคำนึงถึงเวลาการทำงานและการใช้ทรัพยากร</p><a href="https://www.oreilly.com/library/view/operations-management-an/9781118122679/ch14-sec032.html" target="_blank" rel="noopener noreferrer">ดูหน้าตำราและ Formula Review ↗</a></div><div class="source"><strong>[4] eCampusOntario. Fundamentals of Operations Management — Key Capacity Measures and Performance Indicators §4.3.</strong><p>แนวคิด Capacity, Efficiency, Utilization และการตีความความสามารถผลิตในทางปฏิบัติ</p><a href="https://ecampusontario.pressbooks.pub/fundamentalsopsmgmt/chapter/4-3-key-capacity-measures-and-performance-indicators/" target="_blank" rel="noopener noreferrer">อ่าน Open Educational Resource ↗</a></div><div class="source"><strong>[5] แผนการจัดการเรียนรู้รายวิชา Industrial Plant Design ฉบับ 17 สัปดาห์ (เอกสารของผู้สอน), สัปดาห์ที่ 3.</strong><p>กำหนดเนื้อหา 6 หัวข้อ กิจกรรมตัวอย่าง 120 ชิ้น/วัน, 10 นาที/ชิ้น, 420 นาที/วัน → 3 เครื่อง และชิ้นงานโรงงาน CNC ต่อเนื่องจากสัปดาห์ก่อน</p></div></div><div class="note">คำเตือนด้านวิชาการ: แบบจำลองเบื้องต้นสมมติว่าแต่ละเครื่องผลิตชิ้นงานได้ทีละ 1 ชิ้น มีเวลาต่อชิ้นคงที่ และ H คือเวลาที่ใช้ผลิตได้แล้ว การคำนวณแบบวิชาชีพต้องตรวจ Setup, Scrap, Reliability, Product Mix, ข้อกำหนดความปลอดภัยและพื้นที่จริงเพิ่มเติม</div>
-<div class="crossweek"><div class="soft-card"><span style="font-size:26px">◀</span><div><strong>สัปดาห์ที่ 2</strong><p>Routing · OPC · เวลาต่อสถานี</p><a href="Industrial_Plant_Design_Week_02_Interactive.html">กลับไปทบทวน ↗</a></div></div><div class="soft-card"><span style="font-size:26px">▶</span><div><strong>สัปดาห์ที่ 4 (บทถัดไป)</strong><p>ปัจจัยการเลือกทำเลที่ตั้งโรงงาน · Factor Rating</p></div></div></div><div class="toggle-row" style="margin-top:20px"><button class="btn outline" id="resetProgress" type="button">↺ ล้างความก้าวหน้า คะแนน และใบงาน (เครื่องนี้)</button><a class="btn secondary" href="#start">↑ กลับด้านบน</a></div></div></section>
-<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 03</strong><br>สำหรับนักศึกษาวิศวกรรมการผลิต · อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน<br>ระบบบันทึกคำตอบและความก้าวหน้าใน localStorage ของเบราว์เซอร์อุปกรณ์นี้เท่านั้น · ไม่มีการส่งข้อมูลไปยังเซิร์ฟเวอร์<br>บทเรียนถัดไป W04: Facility Location &amp; Factor Rating</footer>
+<div class="toggle-row" style="margin-top:20px"><button class="btn outline" id="resetProgress" type="button">↺ ล้างความก้าวหน้า คะแนน และใบงาน (เครื่องนี้)</button><a class="btn secondary" href="#start">↑ กลับด้านบน</a></div></div></section>
+<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 03</strong><br>สำหรับนักศึกษาวิศวกรรมการผลิต · อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</footer>
 </main></div></div>
 <dialog id="visualDialog" class="layout-zoom-dialog" aria-label="ภาพประกอบขยาย"><div class="zoom-heading"><div><span class="section-kicker">FULL SIZE DIAGRAM</span><h2 id="visualTitle">ภาพขยาย</h2><p class="tiny">ภาพประกอบสำหรับใช้วิเคราะห์ในบทเรียน</p></div><button class="btn secondary" type="button" id="closeVisual">✕ ปิด</button></div><div class="zoom-svg-holder" id="visualHolder"></div><div class="zoom-footer"><span class="tiny">ข้อมูลตัวอย่างสำหรับการสอน · ไม่ใช่มาตราส่วนจริง</span><button class="image-zoom" type="button" id="closeVisualBottom">กลับสู่บทเรียน</button></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

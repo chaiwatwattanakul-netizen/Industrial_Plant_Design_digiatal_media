@@ -245,11 +245,50 @@ body{font-size:18px;line-height:1.8}.section-card p,.section-card li,.soft-card 
 @media(max-width:850px){body{font-size:17px}.section-card p,.section-card li,.soft-card p{font-size:16.5px}.formula-two{grid-template-columns:1fr}.math-legend{grid-template-columns:1fr}.answer-options{grid-template-columns:1fr}.overview-topic strong{font-size:16px}.overview-topic small{font-size:14px}.form-field input,.form-field textarea,.form-field select{font-size:16px}.topbar-title{font-size:12px}.section-subtitle{font-size:15px}.calc-piece{min-width:104px}.math-block{font-size:22px}.small-stat strong{font-size:15px}}
 @media(max-width:560px){.form-cols,.result-cards,.status-grid{grid-template-columns:1fr}.mini-site-map{grid-template-columns:repeat(3,minmax(0,1fr))}.map-badge{font-size:12px;padding:12px 4px}.map-clients{font-size:13.5px}.flow-pieces{gap:5px}.calc-piece{min-width:93px;padding:8px 6px}.calc-piece strong{font-size:19px}.plus-sign,.equals-sign{font-size:18px}.hero h1{font-size:clamp(1.96rem,8vw,2.5rem)}.math-legend{font-size:14px}.slider-row label{flex-wrap:wrap}.callout-strip{grid-template-columns:1fr 1fr}.small-stat:last-child{grid-column:1/-1}.table-scroll .clean-table{font-size:13px}.overview-topic{padding:12px 10px}}
 @media print{.sidebar,.topbar,.mobile-nav,.control-actions,.map-picker,#quizSubmit,#quizReset,#downloadEvidence{display:none!important}.content{padding:0 15px}.section-card{break-inside:avoid}.app{display:block}}
+
+/* Week 04-06 cross-lesson navigation: shared Master Template visual language */
+.week-link-panel{margin:24px 0 30px;padding:23px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.week-link-panel .week-link-heading{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}
+.week-link-panel .week-link-title{font-size:20px;line-height:1.4;font-weight:800;color:var(--ink)}
+.week-link-panel .week-link-sub{font-size:15px;color:var(--muted);line-height:1.7}
+.week-link-panel .week-link-hub{font-size:15px;font-weight:750;text-decoration:none;white-space:nowrap;border-bottom:1px solid currentColor}
+.week-link-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.week-link-card{min-width:0;padding:15px 16px;border:1.5px solid var(--line);border-radius:16px;background:var(--bg);display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--ink);transition:transform .18s,border-color .18s,box-shadow .18s}
+.week-link-card:is(a):hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 5px 20px rgba(18,81,86,.11)}
+.week-link-card:is(a):focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.week-link-card .week-link-kicker{font-size:15px;font-weight:850;color:var(--teal-dark)}
+.week-link-card strong{font-size:17px;line-height:1.45}
+.week-link-card small{font-size:14px;line-height:1.5;color:var(--muted)}
+.week-link-card .week-link-action{font-size:14px;font-weight:800;color:var(--teal-dark);margin-top:6px}
+.week-link-card.is-current{border-color:var(--teal);background:var(--mint)}
+.week-link-card.is-current .week-link-action{color:var(--ink)}
+.week-follow-nav{margin:24px 0 28px;display:flex;flex-wrap:wrap;align-items:stretch;justify-content:space-between;gap:12px}
+.week-follow-nav a{flex:1 1 200px;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;text-decoration:none;color:var(--teal-dark);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font-size:16px;font-weight:800;line-height:1.6}
+.week-follow-nav a:hover{border-color:var(--teal);background:var(--mint)}
+@media(max-width:800px){.week-link-panel{padding:17px}.week-link-grid{grid-template-columns:1fr;gap:9px}.week-link-card{padding:12px 14px}.week-link-panel .week-link-title{font-size:18px}.week-link-card strong{font-size:16.5px}.week-follow-nav{gap:8px}.week-follow-nav a{flex:1 1 100%;font-size:16px}}
+@media print{.week-link-panel,.week-follow-nav{display:none!important}}
+
+/* GitHub Pages navigation: root-level index.html is supplied by the course owner. */
+.home-sidebar-link{color:#fff;text-decoration:none;cursor:pointer;transition:transform .2s ease,filter .2s ease;}
+.home-sidebar-link:hover{transform:translateY(-2px);filter:brightness(1.09)}
+.home-sidebar-link:focus-visible,.home-top-link:focus-visible{outline:3px solid var(--accent, #1b8b9b);outline-offset:3px;}
+.home-top-link{display:none;color:var(--ink);text-decoration:none;font-weight:800;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--surface);border-radius:12px;min-width:43px;width:43px;height:41px;flex:none;}
+.home-top-link:hover{background:var(--soft,#eaf7f6)}
+@media(max-width:850px){.home-top-link{display:inline-flex;}}
+@media(max-width:520px){
+ .topbar{gap:6px;padding-left:10px;padding-right:10px;}
+ .home-top-link{min-width:39px;width:39px;height:39px;}
+ .topbar-title{flex:0 1 81px;min-width:0;max-width:81px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+ .topbar-progress{min-width:52px;margin-left:auto;flex:1;}
+ .topbar-progress .progress-labels span:first-child{display:none;}
+ .topbar .top-btn{padding:6px 7px;white-space:nowrap;font-size:12px;}
+}
+@media print{.home-sidebar-link,.home-top-link{display:none!important;}}
 </style></head><body><a class="skip" href="#main">ข้ามไปยังเนื้อหาหลัก</a><div class="app"><aside aria-label="สารบัญบทเรียน" class="sidebar">
-<div class="brand"><span aria-hidden="true" class="brand-symbol">▦</span><div><strong>INDUSTRIAL<br/>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
+<div class="brand"><a class="brand-symbol home-sidebar-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div><strong>INDUSTRIAL<br/>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
 <div class="side-divider"></div><div class="side-label">WEEK 05 · CONTENT</div>
-<nav class="side-nav" id="sideNav"><a href="#start"><span class="navnum">⌂</span> เริ่มต้นบทเรียน</a><a href="#week-overview"><span class="navnum">☷</span> หัวข้อสัปดาห์ที่ 5</a><a href="#data"><span class="navnum">01</span> ข้อมูลการขนส่งและระยะทาง</a><a href="#load-distance"><span class="navnum">02</span> การคำนวณ Load–Distance</a><a href="#selection"><span class="navnum">03</span> การเลือกทำเลและข้อจำกัด</a><a href="#cog-concept"><span class="navnum">04</span> แนวคิด Center of Gravity</a><a href="#cog-example"><span class="navnum">05</span> การคำนวณพิกัด COG</a><a href="#comparison"><span class="navnum">06</span> เปรียบเทียบกับ Factor Rating</a><a href="#calculator"><span class="navnum">∑</span> เครื่องคำนวณโต้ตอบ</a><a href="#activity"><span class="navnum">✎</span> กิจกรรมและใบงาน</a><a href="#quiz"><span class="navnum">✓</span> แบบทดสอบ 10 ข้อ</a><a href="#submission"><span class="navnum">⇩</span> ส่งหลักฐาน .txt</a><a href="#references"><span class="navnum">↗</span> ตำราอ้างอิง</a></nav><div class="side-bottom"><div class="side-divider"></div><div class="side-info">รหัสวิชา 03-407-051-307<br/>อาจารย์ชัยวัฒน์ วัฒนะกุล<br/>นักศึกษาวิศวกรรมการผลิต<br/>ใช้งานออฟไลน์ได้ ยกเว้นลิงก์ตำรา</div></div>
-</aside><div class="main"><header class="topbar"><div class="topbar-title">W05 / 17 · Load–Distance &amp; COG</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div aria-label="ความก้าวหน้าการเรียนรู้" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="track" id="progressbar" role="progressbar"><div class="fill" id="progressFill"></div></div></div><button aria-label="สลับโหมดสี" class="top-btn" id="themeBtn" type="button">☾ สี</button><button aria-label="พิมพ์บทเรียน" class="top-btn" onclick="window.print()" type="button">⎙ พิมพ์</button></header><main class="content" id="main"><section class="hero" id="start" aria-labelledby="heroTitle">
+<nav class="side-nav" id="sideNav"><a href="#start"><span class="navnum">↑</span> เริ่มต้นบทเรียน</a><a href="#week-overview"><span class="navnum">☷</span> หัวข้อสัปดาห์ที่ 5</a><a href="#data"><span class="navnum">01</span> ข้อมูลการขนส่งและระยะทาง</a><a href="#load-distance"><span class="navnum">02</span> การคำนวณ Load–Distance</a><a href="#selection"><span class="navnum">03</span> การเลือกทำเลและข้อจำกัด</a><a href="#cog-concept"><span class="navnum">04</span> แนวคิด Center of Gravity</a><a href="#cog-example"><span class="navnum">05</span> การคำนวณพิกัด COG</a><a href="#comparison"><span class="navnum">06</span> เปรียบเทียบกับ Factor Rating</a><a href="#calculator"><span class="navnum">∑</span> เครื่องคำนวณโต้ตอบ</a><a href="#activity"><span class="navnum">✎</span> กิจกรรมและใบงาน</a><a href="#quiz"><span class="navnum">✓</span> แบบทดสอบ 10 ข้อ</a><a href="#submission"><span class="navnum">⇩</span> ส่งหลักฐาน .txt</a><a href="#references"><span class="navnum">↗</span> ตำราอ้างอิง</a></nav><div class="side-bottom"><div class="side-divider"></div><div class="side-info">รหัสวิชา 03-407-051-307<br/>อาจารย์ชัยวัฒน์ วัฒนะกุล<br/>นักศึกษาวิศวกรรมการผลิต<br/>ใช้งานออฟไลน์ได้ ยกเว้นลิงก์ตำรา</div></div>
+</aside><div class="main"><header class="topbar"><a class="home-top-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div class="topbar-title">W05 / 17 · Load–Distance &amp; COG</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div aria-label="ความก้าวหน้าการเรียนรู้" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="track" id="progressbar" role="progressbar"><div class="fill" id="progressFill"></div></div></div><button aria-label="สลับโหมดสี" class="top-btn" id="themeBtn" type="button">☾ สี</button><button aria-label="พิมพ์บทเรียน" class="top-btn" onclick="window.print()" type="button">⎙ พิมพ์</button></header><main class="content" id="main"><section class="hero" id="start" aria-labelledby="heroTitle">
  <div><span class="eyebrow">✦ FACILITY LOCATION · สัปดาห์ที่ 5 / 17</span>
   <h1 id="heroTitle"><span class="hero-week">สัปดาห์ที่ 5</span><br>การคำนวณเปรียบเทียบ<br><span>ทำเลอย่างง่าย</span></h1>
   <p class="lead"><strong>Simple Quantitative Location Analysis</strong> · ต่อยอดจาก <strong>Factor Rating ในสัปดาห์ที่ 4</strong> ด้วยการวัดปริมาณขนส่ง ระยะทาง และพิกัด เพื่อใช้เหตุผลเชิงตัวเลขเลือกทำเลโรงงาน CNC</p>
@@ -267,6 +306,7 @@ body{font-size:18px;line-height:1.8}.section-card p,.section-card li,.soft-card 
  </svg><div class="art-tag">แผนภาพจำลอง ไม่ใช่แผนที่จริง</div></div>
 </section>
 <div class="callout-strip"><div class="small-stat"><span class="icon">↔</span><div><strong>3 จุดส่งสินค้า</strong><span>ปริมาณเที่ยว/วัน</span></div></div><div class="small-stat"><span class="icon">∑</span><div><strong>2 วิธีคำนวณ</strong><span>Load–Distance + COG</span></div></div><div class="small-stat"><span class="icon">⇩</span><div><strong>1 ไฟล์ส่งงาน</strong><span>กิจกรรม + ข้อสอบ</span></div></div></div>
+
 <section class="week-overview section" id="week-overview"><div class="overview-head"><div><div class="section-kicker">WEEK 05 · LEARNING ROADMAP</div><h2>หัวข้อการเรียนรู้ประจำสัปดาห์ที่ 5</h2><p><strong>หัวข้อหลัก: การคำนวณเปรียบเทียบทำเลอย่างง่าย</strong><br>ข้อมูล → คำนวณ → เลือกทำเล → ตรวจสอบกับปัจจัยเชิงคุณภาพ</p></div><span class="overview-count">6<br><small>หัวข้อ</small></span></div>
 <div class="overview-topics">
 <a class="overview-topic" href="#data"><span class="overview-no">01</span><span><strong>การอ่านข้อมูลจุดส่งสินค้า ระยะทาง และปริมาณขนส่ง</strong><small>แยกตำแหน่ง ปริมาณ และระยะทางอย่างถูกหน่วย</small></span><span class="overview-arrow">↗</span></a>
@@ -345,7 +385,8 @@ body{font-size:18px;line-height:1.8}.section-card p,.section-card li,.soft-card 
 <li><strong>แผนการสอน Industrial Plant Design (17 สัปดาห์) ของผู้สอน</strong> — สัปดาห์ที่ 5: Load–Distance, Center of Gravity และการเปรียบเทียบผลกับ Factor Rating สัปดาห์ที่ 4</li></ol>
 <div class="note">หมายเหตุทางวิชาการ: <strong>Center of Gravity แบบพิกัดเฉลี่ยถ่วงน้ำหนัก</strong> ให้จุดอ้างอิงตามปริมาณขนส่ง แต่ไม่รับประกันตำแหน่งที่ทำให้ผลรวม <strong>ระยะทางตามแนวแกน (Manhattan)</strong> ต่ำที่สุดเสมอไป ผลคะแนน Factor Rating และจุด COG จึงต้องใช้เป็นเครื่องมือประกอบการประเมิน ไม่ใช่คำตอบสำเร็จรูป</div>
 </div></section>
-<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 05</strong><br>สำหรับนักศึกษาวิศวกรรมการผลิต · อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน<br>สื่อ HTML เปิดใช้งานแบบออฟไลน์ได้ ยกเว้นลิงก์ตำราวิชาการ · ข้อมูลคำตอบบันทึกในอุปกรณ์ผู้เรียนเท่านั้น</footer></main></div></div><script>(()=>{'use strict';
+
+<footer class="footer"><strong>INDUSTRIAL PLANT DESIGN · WEEK 05</strong><br>สำหรับนักศึกษาวิศวกรรมการผลิต · อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</footer></main></div></div><script>(()=>{'use strict';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const STORE='IPD_W05_MASTER_2026';
 const OBSERVED=['start','week-overview','data','load-distance','selection','cog-concept','cog-example','comparison','calculator','activity','quiz','submission','references'];
