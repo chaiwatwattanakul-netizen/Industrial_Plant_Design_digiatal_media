@@ -110,7 +110,7 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
 @media(max-width:390px){body{font-size:16.5px}.mobile-nav a{font-size:13.5px}}
 @media print{.evidence-actions{display:none!important}}
 
-/* GitHub Pages navigation: root-level index.html is supplied by the course owner. */
+/* GitHub Pages: lessons/*.html -> ../index.html (repository root). */
 .home-sidebar-link{color:#fff;text-decoration:none;cursor:pointer;transition:transform .2s ease,filter .2s ease;}
 .home-sidebar-link:hover{transform:translateY(-2px);filter:brightness(1.09)}
 .home-sidebar-link:focus-visible,.home-top-link:focus-visible{outline:3px solid var(--accent, #1b8b9b);outline-offset:3px;}
@@ -129,7 +129,7 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
 </style></head><body><a class="skip" href="#start">ข้ามไปเนื้อหาหลัก</a>
 <div class="app">
 <aside class="sidebar" aria-label="สารบัญบทเรียน">
-  <div class="brand"><a class="brand-symbol home-sidebar-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
+  <div class="brand"><a class="brand-symbol home-sidebar-link" href="../index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div><strong>INDUSTRIAL<br>PLANT DESIGN</strong><small>RMUTI · Learning Studio</small></div></div>
   <div class="side-divider"></div><div class="side-label">WEEK 02 · CONTENT</div>
   <nav class="side-nav" id="sideNav">
     <a href="#start"><span class="navnum">↑</span> เริ่มต้นบทเรียน</a>
@@ -148,7 +148,7 @@ body.dark .evidence-box{background:var(--bg);border-color:var(--line)}
   <div class="side-bottom"><div class="side-divider"></div><div class="side-info">รหัสวิชา 03-407-051-307<br>อาจารย์ชัยวัฒน์ วัฒนะกุล<br>นักศึกษาวิศวกรรมการผลิต<br>บทเรียน HTML ใช้งานออฟไลน์ได้ (ยกเว้นการเปิดเว็บไซต์อ้างอิง)</div></div>
 </aside>
 <div class="main">
-<header class="topbar"><a class="home-top-link" href="index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div class="topbar-title">W02 <span style="color:var(--muted)">/ 17</span> • Routing &amp; OPC</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div id="progressbar" class="track" role="progressbar" aria-label="ความก้าวหน้าการเรียนรู้" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="progressFill"></div></div></div><button type="button" class="top-btn" id="themeBtn" aria-label="สลับโหมดสี">☾ สี</button><button type="button" class="top-btn" onclick="window.print()" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
+<header class="topbar"><a class="home-top-link" href="../index.html" aria-label="กลับเมนูหลัก" title="กลับหน้าเมนูหลัก"><svg aria-hidden="true" viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></a><div class="topbar-title">W02 <span style="color:var(--muted)">/ 17</span> • Routing &amp; OPC</div><div class="topbar-progress"><div class="progress-labels"><span>ความก้าวหน้าการเรียนรู้</span><span id="progressText">0%</span></div><div id="progressbar" class="track" role="progressbar" aria-label="ความก้าวหน้าการเรียนรู้" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="progressFill"></div></div></div><button type="button" class="top-btn" id="themeBtn" aria-label="สลับโหมดสี">☾ สี</button><button type="button" class="top-btn" onclick="window.print()" aria-label="พิมพ์บทเรียน">⎙ พิมพ์</button></header>
 <nav class="mobile-nav" id="mobileNav" aria-label="สารบัญมือถือ"><a href="#start">เริ่มต้น</a><a href="#week-overview">หัวข้อ</a><a href="#relation">01 สินค้า</a><a href="#routing">02 Routing</a><a href="#events">03 สัญลักษณ์</a><a href="#opc">04 OPC</a><a href="#variety">05 ปริมาณ</a><a href="#data">06 ข้อมูล</a><a href="#calculator">คำนวณ</a><a href="#activity">กิจกรรม</a><a href="#quiz">ทดสอบ</a><a href="#references">อ้างอิง</a></nav>
 <main class="content">
 <section id="start" class="hero" aria-labelledby="heroTitle">
