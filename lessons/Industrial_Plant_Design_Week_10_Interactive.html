@@ -24,7 +24,8 @@
 
 
 /* Week 09 — master visual language inherited from the supplied Week 07 HTML */
-html,body{max-width:100%;overflow-x:hidden}.brand-symbol{font-size:13px;letter-spacing:.02em}body{font-size:18px;line-height:1.85}.section-card p,.section-card li{font-size:17px;line-height:1.88}
+/* Prevent horizontal overflow without creating a scroll container that breaks sticky sidebar. */
+html,body{max-width:100%;overflow-x:clip;overflow-y:visible}.brand-symbol{font-size:13px;letter-spacing:.02em}body{font-size:18px;line-height:1.85}.section-card p,.section-card li{font-size:17px;line-height:1.88}
 .side-nav a{font-size:14px}.topbar-title{font-size:14px}.hero h1{font-size:clamp(2.05rem,4vw,3.35rem)}
 .overview-topic strong{font-size:16.5px}.overview-topic small{font-size:14px}
 .section-subtitle{font-size:15px}.eyebrow,.section-kicker{font-size:13px}
