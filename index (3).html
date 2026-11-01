@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102638">
+  <meta name="description" content="ศูนย์รวมบทเรียนออนไลน์ 17 สัปดาห์ รายวิชาการออกแบบโรงงานอุตสาหกรรม Industrial Plant Design มทร.อีสาน นครราชสีมา">
+  <title>Industrial Plant Design · 17-Week Learning Hub</title>
+  <link rel="icon" href="assets/icons/week-01.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    /* Course-resource navigation: self-contained so only index.html needs replacing */
+    .course-docs{padding-top:70px;padding-bottom:0}
+    .docs-title-wrap{margin-bottom:25px}
+    .docs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
+    .doc-card{--doc-accent:#0d9f89;--doc-bg:#ebf9f5;position:relative;min-width:0;min-height:220px;display:flex;gap:21px;align-items:flex-start;overflow:hidden;padding:30px 31px;border:1px solid #d9e9e5;border-radius:17px;background:linear-gradient(135deg,#fff 37%,var(--doc-bg));box-shadow:0 6px 25px rgba(20,55,65,.045);transition:transform .2s,border-color .2s,box-shadow .2s}
+    .doc-card:hover{transform:translateY(-4px);border-color:var(--doc-accent);box-shadow:0 17px 33px rgba(19,64,78,.12)}
+    .doc-card-assignments{--doc-accent:#2c90b8;--doc-bg:#eaf5fb;border-color:#dce8f1}
+    .doc-icon{width:76px;height:76px;flex:0 0 76px;display:grid;place-items:center;border-radius:18px;background:var(--doc-bg);color:var(--doc-accent);border:1px solid rgba(21,116,104,.08)}
+    .doc-icon svg{width:54px;height:54px}
+    .doc-copy{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+    .doc-eyebrow{font:800 10px/1.5 var(--font-en);letter-spacing:1.3px;color:var(--doc-accent);margin:0 0 9px}
+    .doc-copy strong{color:#17394b;font-size:clamp(17px,1.5vw,21px);line-height:1.5;font-weight:700}
+    .doc-description{color:#657f8c;font-size:12px;line-height:1.8;margin:10px 0 17px;max-width:380px}
+    .doc-action{font-size:12px;font-weight:700;color:var(--doc-accent);display:inline-flex;align-items:center;gap:10px;margin-top:auto}
+    .doc-action span{font-family:var(--font-en);font-size:17px}
+    .doc-corner{position:absolute;right:19px;top:12px;font:800 64px/1 var(--font-en);color:var(--doc-accent);opacity:.075;pointer-events:none}
+    .course-docs+.lessons{padding-top:95px}
+    .footer-doc-links{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-bottom:8px}.footer-doc-links a:hover,.footer-right>a:hover{text-decoration:underline}
+    @media(max-width:1010px){.doc-card{padding:25px 23px;gap:14px}.doc-icon{width:61px;height:61px;flex-basis:61px}.doc-icon svg{width:43px;height:43px}}
+    @media(max-width:760px){.docs-grid{grid-template-columns:1fr;gap:13px}.course-docs{padding-top:52px}.course-docs+.lessons{padding-top:73px}.doc-card{min-height:0}}
+    @media(max-width:570px){.course-docs{padding-top:41px}.docs-title-wrap{margin-top:15px;margin-bottom:20px}.doc-card{padding:19px 17px;gap:13px;border-radius:13px}.doc-icon{width:49px;height:49px;flex-basis:49px;border-radius:12px}.doc-icon svg{width:34px;height:34px}.doc-eyebrow{font-size:9px}.doc-copy strong{font-size:17px}.doc-description{font-size:11px;margin:8px 0 12px}.doc-corner{font-size:43px}.footer-doc-links{justify-content:flex-start}}
+    @media(prefers-reduced-motion:reduce){.doc-card{transition:none}}
+  </style>
+  <script src="js/config.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#lessons">ข้ามไปยังรายการบทเรียน</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Industrial Plant Design - หน้าแรก">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M7 37V21l11 7V17l12 7V11h10v26H7Z" fill="#6ce0c8" stroke="#0d3543" stroke-width="2.4" stroke-linejoin="round"/><path d="M14 33h5m6 0h5m6 0h2" stroke="#0d3543" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </span>
+        <span><strong>INDUSTRIAL <em>PLANT</em> DESIGN</strong><small>RMUTI · COURSE LEARNING HUB</small></span>
+      </a>
+      <nav class="header-nav" aria-label="เมนูหลัก">
+        <a href="#overview">ภาพรวม</a>
+        <a href="#lessons">บทเรียน</a>
+        <a href="syllabus.html">แผนการสอน</a>
+        <a href="assignments.html">แผนส่งงาน</a>
+      </nav>
+      <a href="#lessons" class="top-link">เลือกสัปดาห์ <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="overview" aria-labelledby="hero-title">
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> DIGITAL LEARNING PLATFORM <span class="eyebrow-divider"></span> 03-407-051-307</div>
+          <div class="hero-label">รายวิชาการออกแบบโรงงานอุตสาหกรรม</div>
+          <h1 id="hero-title">คิดเป็นระบบ<br><span>ออกแบบโรงงาน</span><br>อย่างมืออาชีพ</h1>
+          <p class="hero-en">Industrial Plant Design</p>
+          <p class="hero-desc">รวมสื่อการสอนออนไลน์ 17 สัปดาห์ ตั้งแต่เข้าใจระบบผลิต วิเคราะห์ทำเล วางผังโรงงาน ไปจนถึงการประเมินและนำเสนอผังดิจิทัล</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#lessons">สำรวจบทเรียนทั้งหมด <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline" href="#pathway">ดูเส้นทางการเรียนรู้ <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-lecturer"><span class="avatar" aria-hidden="true">ชว</span><span>ผู้สอน <strong>อาจารย์ชัยวัฒน์ วัฒนะกุล</strong><br><small>มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</small></span></div>
+        </div>
+        <div class="hero-visual" aria-label="ภาพจำลองแนวคิดผังโรงงานและเส้นทางการไหลของวัสดุ" role="img">
+          <div class="visual-topline"><span><span class="online-indicator"></span> LIVE LAYOUT CONCEPT</span><span class="mono">PLANT-001 / 2D</span></div>
+          <svg class="plant-map" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><pattern id="drawinggrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#c8e4e2" stroke-opacity=".18" stroke-width="1"/></pattern><linearGradient id="flow" x1="0" x2="1"><stop stop-color="#30d0ab"/><stop offset="1" stop-color="#7dbefa"/></linearGradient></defs>
+            <rect x="14" y="13" width="532" height="374" rx="12" fill="#15394b" stroke="#4c8292" stroke-width="2"/>
+            <rect x="14" y="13" width="532" height="374" rx="12" fill="url(#drawinggrid)"/>
+            <g stroke="#86b1bb" stroke-width="2" opacity=".52"><path d="M34 80H525M34 314H525"/><path d="M54 33V363M510 33V363"/></g>
+            <g font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+              <rect x="43" y="105" width="111" height="99" rx="12" fill="#1c716f" stroke="#4dd1b4" stroke-width="2"/><text x="98" y="150" fill="#d5fff2">RAW</text><text x="98" y="169" fill="#d5fff2">STORAGE</text>
+              <rect x="190" y="67" width="130" height="140" rx="12" fill="#234e71" stroke="#7bb8e3" stroke-width="2"/><text x="255" y="134" fill="#e4f3ff">CNC</text><text x="255" y="153" fill="#e4f3ff">MACHINING</text>
+              <rect x="363" y="105" width="145" height="99" rx="12" fill="#715b3a" stroke="#f5bc77" stroke-width="2"/><text x="435" y="149" fill="#ffe8cb">QUALITY</text><text x="435" y="168" fill="#ffe8cb">CHECK</text>
+              <rect x="363" y="244" width="145" height="80" rx="12" fill="#1c716f" stroke="#4dd1b4" stroke-width="2"/><text x="435" y="291" fill="#e3fff3">PACKING</text>
+              <rect x="191" y="244" width="129" height="80" rx="12" fill="#284b69" stroke="#7bb8e3" stroke-width="2"/><text x="255" y="284" fill="#e4f3ff">FINISHED</text><text x="255" y="300" fill="#e4f3ff">GOODS</text>
+            </g>
+            <g stroke="url(#flow)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M156 154H182"/><path d="M176 145L186 154L176 163"/><path d="M322 154H352"/><path d="M344 145L355 154L344 163"/><path d="M434 209V230"/><path d="M425 224L434 234L443 224"/><path d="M358 284H328"/><path d="M335 275L325 284L335 293"/></g>
+            <g fill="#60dac1"><circle cx="98" cy="154" r="5"/><circle cx="255" cy="154" r="5"/><circle cx="434" cy="154" r="5"/><circle cx="434" cy="284" r="5"/><circle cx="255" cy="284" r="5"/></g>
+            <g fill="#a4d4d7" font-family="Arial,sans-serif" font-size="10" letter-spacing="2"><text x="44" y="46">MATERIAL FLOW / SIMULATION</text><text x="40" y="352">IN</text><text x="484" y="352">OUT</text></g>
+          </svg>
+          <div class="visual-bottom"><span><i class="legend-dot cyan"></i> การไหลของวัสดุ</span><span><i class="legend-dot gold"></i> หน่วยผลิต/ตรวจสอบ</span><span class="mono">SCALE 1:200</span></div>
+          <span class="floating-sticker">DESIGN<br><b>→ ANALYZE</b><br>→ IMPROVE</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts container" aria-label="ข้อมูลรายวิชา">
+      <div class="fact"><span class="fact-icon">◫</span><span><strong>17 <small>สัปดาห์</small></strong><span>ตลอดภาคการศึกษา</span></span></div>
+      <div class="fact"><span class="fact-icon">▦</span><span><strong>15 <small>บทเรียน</small></strong><span>สัปดาห์เนื้อหา</span></span></div>
+      <div class="fact"><span class="fact-icon">◷</span><span><strong>51 <small>ชั่วโมง</small></strong><span>เรียน 45 ชม. · สอบ 6 ชม.</span></span></div>
+      <div class="fact"><span class="fact-icon">✧</span><span><strong>2 <small>การสอบ</small></strong><span>กลางภาคและปลายภาค</span></span></div>
+    </section>
+
+    <!-- เอกสารรายวิชา: ลิงก์ภายใน GitHub Pages (อยู่ระดับเดียวกับ index.html) -->
+    <section class="course-docs container" id="course-docs" aria-labelledby="course-docs-title">
+      <div class="section-kicker"><span class="kicker-line"></span> COURSE RESOURCES <span class="section-kicker-num">เอกสารประกอบรายวิชา</span></div>
+      <div class="section-title-wrap docs-title-wrap">
+        <div>
+          <h2 id="course-docs-title">แผนการเรียนและการส่งงาน<span class="headline-dot">.</span></h2>
+          <p>ดูรายละเอียดการเรียนรู้ตลอด 17 สัปดาห์ และกำหนดส่งรายงานโครงงานได้จากสองเมนูนี้</p>
+        </div>
+      </div>
+      <div class="docs-grid">
+        <a class="doc-card doc-card-syllabus" href="syllabus.html" aria-label="เปิดแผนการสอน 17 สัปดาห์">
+          <span class="doc-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 16c7-3 14-2 22 2v34c-8-4-15-5-22-2V16Z" fill="#d5f7ec" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M54 16c-7-3-14-2-22 2v34c8-4 15-5 22-2V16Z" fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M17 27h9M17 34h9M38 27h9M38 34h9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+          </span>
+          <span class="doc-copy">
+            <span class="doc-eyebrow">01 · TEACHING PLAN</span>
+            <strong>แผนการสอน 17 สัปดาห์</strong>
+            <span class="doc-description">หัวข้อเรียน กิจกรรม ใบงาน ผลลัพธ์การเรียนรู้ และเกณฑ์การประเมินรายวิชา</span>
+            <span class="doc-action">เปิดแผนการสอน <span aria-hidden="true">↗</span></span>
+          </span>
+          <span class="doc-corner" aria-hidden="true">01</span>
+        </a>
+        <a class="doc-card doc-card-assignments" href="assignments.html" aria-label="เปิดแผนการส่งงานและ Gantt Chart">
+          <span class="doc-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="12" width="48" height="43" rx="7" fill="#e1f4ff" stroke="currentColor" stroke-width="3"/><path d="M8 24h48M21 8v9M43 8v9" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><rect x="16" y="30" width="12" height="6" rx="2" fill="currentColor"/><rect x="30" y="30" width="17" height="6" rx="2" fill="currentColor" opacity=".48"/><rect x="16" y="41" width="22" height="6" rx="2" fill="currentColor" opacity=".75"/><path d="m43 44 3 3 6-7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="doc-copy">
+            <span class="doc-eyebrow">02 · ASSIGNMENT SCHEDULE</span>
+            <strong>แผนการส่งงานและ Gantt Chart</strong>
+            <span class="doc-description">กำหนดส่งรายงานบทที่ 1–5 ตารางงาน 17 สัปดาห์ และความก้าวหน้าของ 5 กลุ่ม</span>
+            <span class="doc-action">เปิดแผนการส่งงาน <span aria-hidden="true">↗</span></span>
+          </span>
+          <span class="doc-corner" aria-hidden="true">02</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="lessons section container" id="lessons" aria-labelledby="lesson-title">
+      <div class="section-kicker"><span class="kicker-line"></span> COURSE LIBRARY <span class="section-kicker-num">01 / 02</span></div>
+      <div class="section-title-wrap"><div><h2 id="lesson-title">เลือกเรียนตามสัปดาห์<span class="headline-dot">.</span></h2><p>สำรวจเนื้อหา เครื่องมือ และกิจกรรมประจำสัปดาห์ได้จากการ์ดบทเรียนด้านล่าง</p></div><div class="section-counter"><span id="availableCount">—</span><small>บทเรียนออนไลน์ที่พร้อมเปิด</small></div></div>
+      <div class="search-panel">
+        <label class="search-box" for="lessonSearch"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="lessonSearch" type="search" placeholder="ค้นหาหัวข้อ เช่น CNC, SLP, ทำเลที่ตั้ง..." autocomplete="off"><kbd>/</kbd></label>
+        <div class="filters" id="phaseFilters" aria-label="กรองหมวดหมู่บทเรียน">
+          <button class="filter active" type="button" data-phase="all" aria-pressed="true">ทั้งหมด <span>17</span></button>
+          <button class="filter" type="button" data-phase="foundation" aria-pressed="false">พื้นฐาน</button>
+          <button class="filter" type="button" data-phase="analysis" aria-pressed="false">วิเคราะห์</button>
+          <button class="filter" type="button" data-phase="design" aria-pressed="false">ออกแบบ</button>
+          <button class="filter" type="button" data-phase="application" aria-pressed="false">ประยุกต์</button>
+          <button class="filter" type="button" data-phase="exam" aria-pressed="false">การสอบ</button>
+        </div>
+      </div>
+      <div class="grid-tools"><span id="resultsCount" role="status" aria-live="polite">แสดงทั้งหมด 17 สัปดาห์</span><span class="status-explainer"><span class="status-dot ready"></span> พร้อมเรียน <span class="status-dot notyet"></span> รออัปโหลดไฟล์</span></div>
+      <div class="week-grid" id="weekGrid" aria-live="off"></div>
+      <div id="noResults" class="no-results" hidden><span aria-hidden="true">⌕</span><h3>ไม่พบบทเรียนที่ค้นหา</h3><p>ลองใช้คำค้นอื่น หรือเลือกแสดงบทเรียนทั้งหมด</p><button type="button" id="resetFilters" class="btn btn-dark">แสดงทั้งหมด</button></div>
+    </section>
+
+    <section class="pathway section" id="pathway" aria-labelledby="pathway-title">
+      <div class="container">
+        <div class="section-kicker"><span class="kicker-line"></span> YOUR LEARNING JOURNEY <span class="section-kicker-num">02 / 02</span></div>
+        <div class="section-title-wrap"><div><h2 id="pathway-title">เส้นทางการเรียนรู้ 4 ระยะ<span class="headline-dot">.</span></h2><p>เรียนรู้เป็นลำดับจากการเข้าใจระบบผลิต ไปสู่การออกแบบที่นำไปใช้งานได้จริง</p></div></div>
+        <div class="pathway-steps">
+          <div class="path-step"><div class="step-count">01 <span>FOUNDATION</span></div><div class="step-visual">▣</div><h3>รู้จักระบบผลิต</h3><p>รู้จักโรงงาน → อ่านขั้นตอนผลิต → นับเครื่องจักร</p><span class="step-weeks">สัปดาห์ 1–3</span></div>
+          <div class="path-step"><div class="step-count">02 <span>ANALYSIS</span></div><div class="step-visual">⌖</div><h3>คิดเลือกและมองปัญหา</h3><p>เลือกทำเล → เลือกชนิดผัง → ตรวจปัญหาเดิม</p><span class="step-weeks">สัปดาห์ 4–7</span></div>
+          <div class="path-step"><div class="step-count">03 <span>DESIGN</span></div><div class="step-visual">▦</div><h3>สร้างและตรวจผัง</h3><p>วัดการไหล → จัดความสัมพันธ์ → ลงพื้นที่ → ประเมิน</p><span class="step-weeks">สัปดาห์ 9–13</span></div>
+          <div class="path-step"><div class="step-count">04 <span>APPLICATION</span></div><div class="step-visual">↗</div><h3>ใช้โปรแกรมและสื่อสาร</h3><p>เขียนผังดิจิทัล → ปรับปรุงกรณีศึกษา → นำเสนอ</p><span class="step-weeks">สัปดาห์ 14–16</span></div>
+        </div>
+        <div class="path-notice"><span aria-hidden="true">ⓘ</span><p><b>หมายเหตุการสอบ</b> สัปดาห์ที่ 8 เป็นการสอบกลางภาค (เนื้อหาสัปดาห์ 1–7) และสัปดาห์ที่ 17 เป็นการสอบปลายภาค (เนื้อหาสัปดาห์ 9–16) ไม่เพิ่มเนื้อหาใหม่</p></div>
+      </div>
+    </section>
+
+    <section class="bottom-cta container" aria-label="เริ่มใช้งานบทเรียน">
+      <div><span class="small-caps">READY TO LEARN?</span><h2>เริ่มจากหนึ่งบทเรียน<br>สู่การออกแบบโรงงานทั้งระบบ</h2><p>เลือกสัปดาห์ที่ต้องการแล้วกดเปิดบทเรียน ระบบจะแจ้งหากยังไม่มีไฟล์สื่อการสอน</p></div><a class="btn btn-primary" href="#lessons">เลือกบทเรียน <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><div><strong>INDUSTRIAL <span>PLANT</span> DESIGN</strong><p>สื่อการสอนรายวิชา 03-407-051-307 · วิศวกรรมการผลิต<br>มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</p></div><div class="footer-right"><p>© <span id="year"></span> · Course Learning Hub</p><div class="footer-doc-links"><a href="syllabus.html">แผนการสอน</a><span aria-hidden="true">·</span><a href="assignments.html">แผนส่งงาน</a></div><a href="#top">กลับขึ้นด้านบน ↑</a></div></div></footer>
+
+  <dialog id="missingDialog" class="missing-dialog" aria-labelledby="missingTitle"><div class="dialog-icon" aria-hidden="true">↗</div><h3 id="missingTitle">ยังไม่พบไฟล์บทเรียน</h3><p id="missingDesc">บทเรียนนี้ยังไม่ได้อัปโหลดขึ้นเว็บไซต์ กรุณาตรวจสอบอีกครั้งภายหลัง</p><div class="dialog-path" id="missingPath"></div><form method="dialog"><button class="btn btn-dark" type="submit">เข้าใจแล้ว</button></form></dialog>
+</body>
+</html>
