@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#102638">
+<meta name="description" content="แผนการสอน Industrial Plant Design 17 สัปดาห์ รหัส 03-407-051-307 หัวข้อเรียน กิจกรรม ใบงาน และการประเมินผล">
+<title>แผนการสอน 17 สัปดาห์ | Industrial Plant Design · RMUTI</title>
+<link rel="icon" href="assets/icons/week-01.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#102638;--deep:#102d41;--ink:#1c3445;--muted:#6c7d87;--teal:#13b396;--sea:#0a917c;--gold:#f5bb67;--bg:#f8faf9;--line:#e4eae9;--font-th:'IBM Plex Sans Thai',Tahoma,sans-serif;--font-en:'Plus Jakarta Sans',Arial,sans-serif;scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.75 var(--font-th);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}svg{display:block}img{max-width:100%}::selection{background:#a4e7d8;color:#133f4d}
+:focus-visible{outline:3px solid #f5bc70;outline-offset:3px}.skip-link{position:absolute;left:16px;top:-60px;background:white;z-index:999;padding:10px;border-radius:8px}.skip-link:focus{top:10px}
+.container{width:min(1252px,calc(100% - 72px));margin-inline:auto}.wrap{max-width:1252px;margin-inline:auto;padding:0 0}
+/* Header — matching the original course hub */
+.site-header{position:relative;background:#102638;color:#fff;z-index:10;border-bottom:1px solid #ffffff16}
+.header-inner{min-height:91px;display:flex;align-items:center;gap:15px;justify-content:space-between}
+.home-icon{width:46px;height:46px;display:grid;place-items:center;border:1px solid #477079;border-radius:12px;flex:none;color:#b0fce4;background:#174353;transition:.2s;box-shadow:inset 0 1px #ffffff15}.home-icon:hover{background:#1e665f;color:white;transform:translateY(-2px)}.home-icon svg{width:25px;height:25px}
+.brand{display:flex;align-items:center;gap:12px;flex:none}.brand-mark{width:47px;height:47px;display:grid;place-items:center;border-radius:12px;background:#9ef4db}.brand-mark svg{width:35px;height:35px}.brand strong{font:800 13px/1.3 var(--font-en);letter-spacing:.2px;display:block}.brand strong em{font-style:normal;color:#53ddbf}.brand small{display:block;font:600 9px/1.3 var(--font-en);letter-spacing:1.2px;color:#9eb6c2;margin-top:6px}
+.header-nav{display:flex;align-items:center;gap:22px;margin-left:auto}.header-nav a{font-size:12px;font-weight:600;color:#bbd0d7;transition:color .2s;white-space:nowrap}.header-nav a:hover,.header-nav a.current{color:#75ebca}.header-nav a.current:after{content:"";display:block;height:2px;background:#64ddbb;border-radius:2px;margin-top:3px}.top-link{border:1px solid #477079;padding:10px 14px;border-radius:8px;color:#e3fffa;font-size:12px;font-weight:700;white-space:nowrap}.top-link span{color:#6af0cd;margin-left:4px}.top-link:hover{background:#ffffff14}
+/* Hero consistent with homepage and assignments.html */
+.hero{position:relative;background:#102638;overflow:hidden;color:#fff}.hero:before{content:"";position:absolute;right:-100px;top:-160px;width:650px;height:650px;border-radius:50%;background:radial-gradient(circle,#1a75693d,transparent 68%);pointer-events:none}.hero:after{content:"";position:absolute;left:18%;bottom:-320px;width:550px;height:550px;background:radial-gradient(circle,#116e7940,transparent 65%);pointer-events:none}.hero-grid-pattern{position:absolute;inset:0;background-image:linear-gradient(#ffffff04 1px,transparent 1px),linear-gradient(90deg,#ffffff04 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(90deg,transparent,#000)}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.06fr;align-items:center;gap:56px;padding-top:66px;padding-bottom:94px}.hero-copy{max-width:575px}.eyebrow{display:flex;align-items:center;gap:11px;font:700 10px/1.4 var(--font-en);letter-spacing:1.8px;color:#7bedd3;white-space:nowrap}.eyebrow-dot{width:8px;height:8px;flex:none;border-radius:50%;background:#55dcba;box-shadow:0 0 0 5px #55dcba26}.eyebrow-divider{height:13px;width:1px;background:#66818a;margin-inline:5px}.hero-label{margin-top:31px;color:#b7d2d7;font-weight:600;font-size:16px}.hero h1{font-size:clamp(42px,4vw,63px);font-weight:700;line-height:1.29;margin:12px 0 3px;letter-spacing:-1.6px}.hero h1 span{color:#70e9cf}.hero-en{font:700 clamp(16px,1.85vw,24px)/1.35 var(--font-en);color:#efffff;letter-spacing:-.4px;margin:15px 0 18px}.hero-desc{font-size:14px;color:#aec7cd;max-width:500px;line-height:2;margin:0 0 26px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:17px;border:0;border-radius:11px;padding:13px 20px;font-weight:700;font-size:13px;min-height:47px;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:#7be8cb;color:#113c45;box-shadow:0 8px 24px #002e2523}.btn-primary:hover{background:#abf3df}.btn-outline{background:#ffffff08;border:1px solid #67818a;color:#e3f2f4}.btn-outline:hover{background:#ffffff17}.hero-lecturer{display:flex;align-items:center;gap:12px;margin-top:31px;color:#a9c1ca;font-size:12px;line-height:1.9}.hero-lecturer strong{color:#fff;font-weight:600}.hero-lecturer small{color:#89a7b3}.avatar{width:37px;height:37px;flex:none;background:#21575a;color:#baf6e8;border:1px solid #4d938a;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700}
+.hero-visual{position:relative;border-radius:18px;background:linear-gradient(155deg,#1d4559,#122f42);padding:16px 18px 12px;box-shadow:0 38px 75px #0513206b,0 0 0 1px #8ac7c32c,inset 0 1px #ffffff24;transform:rotate(1.1deg);min-width:0}.visual-topline,.visual-bottom{display:flex;justify-content:space-between;align-items:center;color:#adc9cf;gap:10px}.visual-topline{padding:2px 3px 13px;font:700 10px var(--font-en);letter-spacing:1px}.visual-topline>span:first-child{display:flex;align-items:center;gap:8px}.online-indicator{height:7px;width:7px;border-radius:100%;background:#6ff0c4;box-shadow:0 0 0 4px #7be8cb1f}.mono{font-family:var(--font-en);font-size:9px;color:#80a6b4}.visual-bottom{padding:11px 4px 2px;font-size:10px}.visual-bottom>span{display:flex;align-items:center;gap:6px;white-space:nowrap}.legend-dot{width:8px;height:8px;border-radius:3px;display:inline-block}.legend-dot.cyan{background:#50d0b6}.legend-dot.gold{background:#efb86b}.floating-sticker{position:absolute;right:-18px;bottom:60px;transform:rotate(-7deg);background:#f8c67a;color:#244255;box-shadow:0 12px 28px #0004;border-radius:6px;padding:12px 16px;font:800 10px/1.7 var(--font-en);letter-spacing:.8px}.floating-sticker b{color:#166e70}
+.roadmap-board{border:1px solid #57809061;background:linear-gradient(145deg,#183c4c,#122c3c);border-radius:13px;padding:21px 21px 17px;position:relative;overflow:hidden}.roadmap-board:after{content:"";position:absolute;right:-60px;bottom:-90px;width:230px;height:230px;background:radial-gradient(circle,#107c7833,transparent 72%);pointer-events:none}.roadmap-board-title{display:flex;justify-content:space-between;gap:8px;color:#d2f7ec;font:800 11px var(--font-en);letter-spacing:1px;border-bottom:1px solid #ffffff20;padding-bottom:14px}.roadmap-board-title span{color:#80a7b0;font-size:8px;align-self:center}.roadmap-path{position:absolute;top:91px;bottom:37px;left:37px;border-left:2px dashed #5cafa26c}.roadmap-row{display:flex;align-items:center;gap:13px;position:relative;z-index:1;background:#ffffff09;border:1px solid #ffffff15;border-radius:10px;margin-top:10px;padding:12px 11px 12px 9px;min-width:0}.roadmap-no{width:36px;height:36px;flex:none;border:1px solid #53dbbb93;color:#97f7d9;background:#113f48;border-radius:10px;display:grid;place-items:center;font:800 14px var(--font-en)}.roadmap-info{display:flex;flex:1;flex-direction:column;min-width:0}.roadmap-info strong{font-size:13px;line-height:1.45;color:#effefb}.roadmap-info small{font-size:10px;line-height:1.5;color:#9bbfc3}.roadmap-week{white-space:nowrap;border:1px solid #ffffff30;border-radius:5px;padding:5px 7px;color:#bbefdf;font:800 10px var(--font-en)}.roadmap-exam{margin:7px 0 0 50px;display:flex;align-items:center;gap:8px;color:#f7c98b;font:800 10px var(--font-en);letter-spacing:.6px}.roadmap-exam span{color:#f7c98b}.roadmap-exam b{margin-left:auto;border:1px solid #dfaa6380;padding:3px 8px;border-radius:5px}.roadmap-final{margin-top:10px}
+/* Details area */
+main.wrap{position:relative;margin-top:-39px;padding-bottom:83px;z-index:2;width:min(1252px,calc(100% - 72px))}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background:white;border-radius:15px;box-shadow:0 15px 55px #122d4112;border:1px solid #e7eeed;padding:24px 0}.stat{padding:0 18px;text-align:center;border-right:1px solid #e6eeed}.stat:last-child{border:0}.stat b{font:800 30px/1.2 var(--font-en);color:#152f40;display:block}.stat span{font-size:12px;color:#70818b;margin-top:4px;display:block}
+.page-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:white;border:1px solid var(--line);padding:17px 19px;border-radius:14px;margin-top:24px;box-shadow:0 4px 20px #17394c08}.page-nav-caption{font-size:12px;font-weight:800;color:#234657;margin-right:auto}.page-nav>a{display:inline-flex;align-items:center;gap:8px;border:1px solid #e3eeea;background:#f8fbfa;color:#315464;font-size:12px;font-weight:700;border-radius:8px;padding:8px 11px}.page-nav>a:hover{background:#e6f8f1;border-color:#c3e8db}.page-nav>a b{color:#0a9b83;font:800 11px var(--font-en)}.page-nav>a>span{color:#0aa287}.page-nav .page-nav-assignment{background:#173f50;border-color:#173f50;color:white}.page-nav .page-nav-assignment:hover{background:#236478}.page-nav .page-nav-assignment svg{height:16px;width:16px;color:#9ef4db}
+.section{margin-top:75px;scroll-margin-top:96px}.section-kicker{font:800 11px var(--font-en);letter-spacing:1.8px;color:#07967e;display:flex;align-items:center;gap:10px}.section-kicker:before{content:"";height:2px;width:27px;background:#0dbd9e}.section h2{font-size:clamp(25px,3vw,36px);color:#193446;line-height:1.36;margin:13px 0 13px;letter-spacing:-.7px}.lead{margin:0;color:#788890;font-size:14px;max-width:900px;line-height:1.85}.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:24px;box-shadow:0 5px 25px #152b3607}
+.outcomes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:23px}.outcome{padding:21px 19px;background:white;border:1px solid var(--line);border-radius:14px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 3px 18px #173d4905}.outcome b{font:800 25px/1.4 var(--font-en);color:#10a187;background:#e8f9f2;border-radius:10px;padding:5px 9px}.outcome p{margin:4px 0 0;font-size:14px;font-weight:600;color:#234253}
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:22px}.phase{background:white;border:1px solid var(--line);border-radius:14px;padding:19px 17px;box-shadow:0 3px 17px #10293808;border-top:4px solid #18af93}.phase:nth-child(2){border-top-color:#398fc0}.phase:nth-child(3){border-top-color:#956ac3}.phase:nth-child(4){border-top-color:#d49a4d}.phase .when{font:800 11px var(--font-en);color:#119b87}.phase h3{font-size:16px;color:#1b374a;line-height:1.5;margin:9px 0 6px}.phase p{font-size:12px;color:#6a7f88;margin:0}
+.overview{overflow-x:auto;border-radius:13px;border:1px solid var(--line);background:white;-webkit-overflow-scrolling:touch;box-shadow:0 5px 25px #10293807}.overview table{width:100%;border-collapse:collapse;min-width:800px}.overview th{background:#143649;color:#e7f6f5;padding:13px 15px;text-align:left;font-size:12px}.overview td{font-size:13px;padding:11px 15px;border-bottom:1px solid #e8efec;vertical-align:top}.overview tr:last-child td{border-bottom:0}.overview tr:nth-child(even){background:#f7faf9}.overview tr:hover{background:#eefaf5}.overview tr.is-exam{background:#e7f7f1;font-weight:800}.overview td:nth-child(1){font:800 13px var(--font-en);color:#0b9d84;width:86px}.overview td:nth-child(4){font-size:12px;white-space:nowrap}.overview a{text-decoration:none;color:#173f52;font-weight:700}.overview a:hover{text-decoration:underline;text-decoration-color:#18b599}
+.related-page{margin-top:19px;display:flex;flex-wrap:wrap;align-items:center;gap:11px;padding:13px 17px;border:1px solid #cbebdf;background:#ecf8f3;border-radius:12px;font-size:13px;font-weight:600;color:#365b57}.related-icon{display:grid;place-items:center;background:#d5efe4;border-radius:9px;width:37px;height:37px;color:#118e78}.related-icon svg{width:23px;height:23px}.related-page a{margin-left:auto;color:#086b5c;font-weight:800;white-space:nowrap}.related-page a:hover{text-decoration:underline}
+.week-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:23px}.week-nav a{text-decoration:none;display:grid;place-items:center;background:white;border:1px solid #d5e5e1;border-radius:9px;width:44px;height:41px;font:800 12px var(--font-en);color:#1c4656;transition:.2s}.week-nav a:hover{background:#e6f8f2;border-color:#12af94;transform:translateY(-2px)}.week-nav a.exam{background:#fce9e9;border-color:#f0cfcc;color:#a14f54}.week-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:21px 0 16px}.week-toolbar p{margin:0;font-size:12px;color:#7b8990}.week-toolbar button{background:white;color:#0e8b78;border:1px solid #b9dcd3;border-radius:8px;padding:8px 12px;font-weight:700;font-size:12px;cursor:pointer}.week-toolbar button:hover{background:#e8f8f2}
+.group{margin-top:32px;scroll-margin-top:95px}.group-head{border-left:4px solid #18b395;padding:4px 0 6px 14px;margin-bottom:16px}.group-head h3{margin:0;color:#17374a;font-size:20px}.group-head p{margin:0;color:#859098;font-size:12px}.week-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.week-card{--accent:#0aaa94;--soft:#e8f8f3;position:relative;background:white;border:1px solid var(--line);box-shadow:0 3px 18px #10334406;border-radius:15px;padding:21px 22px 20px;scroll-margin-top:96px;min-width:0;overflow:hidden;transition:box-shadow .2s,transform .2s}.week-card:hover{box-shadow:0 15px 32px #1b4e5e17;transform:translateY(-2px)}.week-card-foundation{--accent:#0aaf93;--soft:#e8f8f3}.week-card-analysis{--accent:#338bc3;--soft:#e7f3ff}.week-card-design{--accent:#9972cc;--soft:#f4effa}.week-card-application{--accent:#cb9050;--soft:#fff1df}.week-card-exam{--accent:#b56d8d;--soft:#faeef4;background:linear-gradient(128deg,#fff,#fffbfd)}.week-card:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent)}.week-top{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;margin-bottom:15px;padding-right:85px;position:relative;z-index:1}.week-pill{display:inline-flex;align-items:baseline;gap:7px;color:var(--accent);font-size:12px;font-weight:800}.week-pill b{font:800 25px/1 var(--font-en);color:#173747}.level{font-size:10px;font-weight:800;color:#49758a;background:#edf4f6;border-radius:30px;padding:5px 9px;white-space:nowrap}.week-art{position:absolute;top:12px;right:11px;width:105px;height:96px;object-fit:contain;pointer-events:none;opacity:.91;filter:drop-shadow(0 3px 7px #102b3a0a)}.week-card h4{position:relative;z-index:1;margin:4px 0 2px;padding-right:100px;font-size:19px;line-height:1.45;color:#153749}.eng{font:600 11px/1.6 var(--font-en);color:#718994;margin:4px 0 13px;padding-right:100px}.focus{font-size:13px;color:#496977;margin:0 0 14px;line-height:1.65;padding-right:30px}.field{background:#f5f9f8;border:1px solid #edf2ef;border-radius:10px;padding:12px 13px;margin-top:9px;font-size:12px}.field b{display:block;color:#137f6c;font-size:11px;margin-bottom:3px}.field p{margin:0;color:#365662}.details{border-top:1px solid #e5ece8;margin-top:16px;padding-top:11px}.details summary{cursor:pointer;font-size:12px;font-weight:800;color:#087e70;display:flex;align-items:center;justify-content:space-between;gap:8px;list-style:none}.details summary::-webkit-details-marker{display:none}.details summary:after{content:"+";font-size:20px;line-height:1;color:var(--accent)}.details[open] summary:after{content:"−"}.details ol{padding-left:23px;margin:12px 0 4px;font-size:12px;color:#49616c}.details li{padding-left:2px;margin:5px 0}.next{font-size:11px;color:#758c92;border-top:1px dashed #dce8e5;padding-top:10px;margin:13px 0 0}.next strong{color:#1b746a}.week-card.exam{border-left:1px solid var(--line)}
+.class-time{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.class-time .time{background:#f1f9f6;border:1px solid #deefe8;border-radius:12px;padding:17px}.time b{display:block;color:#059782;font:800 23px/1.2 var(--font-th)}.time p{font-size:12px;color:#456671;margin:9px 0 0}.small{font-size:12px;color:var(--muted);margin:12px 0 0}.case-line{border:1px solid #cae9df;background:#eaf9f2;padding:17px;border-radius:12px;font-size:13px;color:#255451;margin-top:19px}.case-line b{display:block;color:#126d5c;margin-bottom:4px}.case-line p{margin:0}.assessment{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.assess{background:#f0f9f5;padding:19px;border-radius:12px;border:1px solid #e2eeea}.assess b{font:800 28px/1 var(--font-en);color:#0ba589}.assess p{font-size:12px;color:#415c68;margin:10px 0 0}.notes{font-size:12px;color:var(--muted);margin:13px 0 0}
+.site-footer{background:#102638;color:#c7d9de;padding:32px 0 38px;font-size:12px}.site-footer .footer-in{display:flex;justify-content:space-between;gap:25px;align-items:start}.footer-mark{font:800 10px var(--font-en);letter-spacing:1.4px;color:#69e4c8}.footer-mark b{color:#f4c47b}.site-footer strong{color:white;font-size:13px}.site-footer p{margin:7px 0}.site-footer a{color:#9af3db}.site-footer a:hover{text-decoration:underline}
+@media(max-width:1150px){.header-nav{gap:14px}.header-nav a{font-size:11px}.top-link{display:none}.hero-inner{gap:26px}.roadmap-info strong{font-size:12px}}
+@media(max-width:990px){.hero-inner{grid-template-columns:1fr;gap:38px;padding-top:57px}.hero-copy{max-width:760px}.hero-desc{max-width:660px}.hero-visual{max-width:700px;transform:none}.phases,.class-time,.assessment{grid-template-columns:repeat(2,minmax(0,1fr))}.header-inner{flex-wrap:wrap;gap:12px;padding:12px 0}.header-nav{width:100%;justify-content:center;order:3;margin-left:0;gap:20px;padding:9px 0;border-top:1px solid #ffffff19}.home-icon{order:0}.brand{order:1}.stats{grid-template-columns:repeat(4,1fr)}.week-grid{grid-template-columns:1fr}}
+@media(max-width:690px){.container,main.wrap{width:calc(100% - 32px)}.header-inner{min-height:76px;gap:10px}.brand-mark{width:39px;height:39px}.brand-mark svg{width:29px;height:29px}.home-icon{width:42px;height:42px}.brand strong{font-size:11px}.brand small{font-size:8px}.header-nav{justify-content:space-between;gap:8px;flex-wrap:wrap}.header-nav a{font-size:11px}.hero-inner{padding:42px 0 79px}.hero h1{font-size:clamp(34px,9vw,49px)}.hero-label{margin-top:25px}.eyebrow{white-space:normal}.hero-visual{padding:12px}.roadmap-board{padding:15px}.roadmap-row{gap:8px}.roadmap-info strong{font-size:12px}.roadmap-info small{font-size:10px}.roadmap-week{font-size:9px}.floating-sticker{right:-6px;bottom:42px;font-size:9px;padding:8px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));padding:9px 0}.stat{border:0;padding:14px 9px}.stat:nth-child(odd){border-right:1px solid #e6eeed}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid #e6eeed}.stat b{font-size:25px}.stat span{font-size:11px}.page-nav{padding:12px}.page-nav-caption{width:100%}.page-nav>a{font-size:11px;padding:7px 10px}.section{margin-top:52px}.outcomes{grid-template-columns:1fr}.phases{grid-template-columns:repeat(2,1fr)}.phase{padding:15px}.phase h3{font-size:14px}.panel{padding:15px}.week-card{padding:18px 17px}.week-art{width:90px;height:85px}.week-top,.week-card h4,.eng{padding-right:76px}.week-card h4{font-size:17px}.week-toolbar{align-items:flex-start;flex-wrap:wrap}.week-toolbar button{padding:8px}.related-page a{margin-left:0}.site-footer .footer-in{flex-direction:column}.overview table{min-width:750px}}
+@media(max-width:420px){.brand strong{font-size:9px}.brand small{font-size:7px}.header-nav{justify-content:center;gap:9px 15px}.header-nav a{font-size:10px}.home-icon{width:39px;height:39px}.hero-actions .btn{width:100%}.visual-topline{font-size:8px}.visual-topline .mono{display:none}.roadmap-board-title span{display:none}.roadmap-info small{font-size:9px}.roadmap-week{padding:4px}.week-top{padding-right:68px;flex-wrap:wrap}.week-card h4{padding-right:65px}.eng{padding-right:65px}.phases{grid-template-columns:1fr}.class-time{grid-template-columns:1fr 1fr}.week-nav a{width:39px;height:37px}.week-art{width:78px;height:75px}.page-nav>a{flex:1 1 130px}}
+@media print{@page{size:A4;margin:14mm}html{scroll-behavior:auto}body{background:white;font-size:11px}.site-header,.page-nav,.week-nav,.week-toolbar,.related-page,.site-footer,.hero-visual,.hero-actions{display:none!important}.hero{background:white!important;color:#111!important}.hero:before,.hero:after,.hero-grid-pattern{display:none}.hero-inner{display:block;padding:0 0 15px}.hero h1{font-size:25px}.hero h1 span,.hero-en,.hero-label,.hero-desc{color:#1c3848}.hero-lecturer{margin-top:8px;color:#123}.hero-lecturer strong{color:#123}.hero-lecturer small{color:#345}.eyebrow{color:#234}.container,main.wrap{width:auto;max-width:none;margin:0;padding:0}.stats{margin:0;grid-template-columns:repeat(4,1fr);box-shadow:none}.section{margin-top:22px}.week-grid{grid-template-columns:repeat(2,1fr);gap:9px}.week-card,.phase,.stat,.panel,.outcome{break-inside:avoid;box-shadow:none;padding:10px;transform:none!important}.week-art{width:57px;height:53px}.week-card h4{font-size:14px;padding-right:48px}.week-top,.eng{padding-right:48px}.week-card .details ol{display:block}.details summary{display:none}.overview{overflow:visible}.overview table{min-width:0}.overview td,.overview th{padding:6px;font-size:10px}.group{break-inside:avoid}.field,.case-line,.assess,.time{background:white!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#overview">ข้ามไปยังเนื้อหา</a>
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="home-icon" href="index.html" title="กลับหน้าหลัก" aria-label="กลับหน้าหลัก Industrial Plant Design">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 10 9-7 9 7v9.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 19.5V10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 21v-7h5v7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="brand" href="index.html" aria-label="Industrial Plant Design - กลับหน้าหลัก">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M7 37V21l11 7V17l12 7V11h10v26H7Z" fill="#6ce0c8" stroke="#0d3543" stroke-width="2.4" stroke-linejoin="round"/><path d="M14 33h5m6 0h5m6 0h2" stroke="#0d3543" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      <span class="brand-name"><strong>INDUSTRIAL <em>PLANT</em> DESIGN</strong><small>RMUTI · COURSE LEARNING HUB</small></span>
+    </a>
+    <nav class="header-nav" aria-label="เมนูเว็บไซต์รายวิชา">
+      <a href="index.html">หน้าหลัก</a>
+      <a href="syllabus.html" class="current" aria-current="page">แผนการสอน</a>
+      <a href="assignments.html">แผนการส่งงาน</a>
+      <a href="index.html#lessons">สื่อการสอน 17 สัปดาห์</a>
+    </nav>
+    <a class="top-link" href="assignments.html">ดูแผนส่งงาน <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-grid-pattern" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> TEACHING &amp; LEARNING PLAN <span class="eyebrow-divider"></span> 03-407-051-307</div>
+      <div class="hero-label">รายวิชาการออกแบบโรงงานอุตสาหกรรม</div>
+      <h1 id="hero-title">แผนการสอน<br><span>ครบ 17 สัปดาห์</span></h1>
+      <p class="hero-en">Industrial Plant Design · Course Syllabus</p>
+      <p class="hero-desc">จากพื้นฐานระบบผลิต สู่การวิเคราะห์ทำเล ออกแบบผัง ประเมินทางเลือก และนำเสนอผังโรงงานด้วยโปรแกรม — พร้อมกิจกรรม ใบงาน และแนวทางประเมินผลตลอดภาคเรียน</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#weekly">ดูแผนรายสัปดาห์ <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-outline" href="#overview">สำรวจภาพรวมรายวิชา <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-lecturer"><span class="avatar" aria-hidden="true">ชว</span><span>ผู้สอน <strong>อาจารย์ชัยวัฒน์ วัฒนะกุล</strong><br><small>มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</small></span></div>
+    </div>
+    <div class="hero-visual" role="img" aria-label="ภาพเส้นทางการเรียนรู้ 4 ระยะ: พื้นฐาน สัปดาห์ 1 ถึง 3, วิเคราะห์ สัปดาห์ 4 ถึง 7, ออกแบบ สัปดาห์ 9 ถึง 13 และประยุกต์ สัปดาห์ 14 ถึง 16 พร้อมสอบกลางภาคสัปดาห์ 8 และปลายภาคสัปดาห์ 17">
+      <div class="visual-topline"><span><i class="online-indicator"></i> LEARNING ROADMAP / 17 WEEKS</span><span class="mono">4 PHASES · 2 EXAMS</span></div>
+      <div class="roadmap-board">
+        <div class="roadmap-board-title"><strong>LEARNING JOURNEY</strong><span>FOUNDATION → APPLICATION</span></div>
+        <div class="roadmap-path" aria-hidden="true"></div>
+        <div class="roadmap-row"><span class="roadmap-no">01</span><span class="roadmap-info"><strong>รู้จักระบบผลิต</strong><small>พื้นฐานโรงงาน · ผลิตภัณฑ์ · เครื่องจักร</small></span><span class="roadmap-week">W01–03</span></div>
+        <div class="roadmap-row"><span class="roadmap-no">02</span><span class="roadmap-info"><strong>คิดเลือกและมองปัญหา</strong><small>ทำเล · ชนิดผัง · วิเคราะห์ผังเดิม</small></span><span class="roadmap-week">W04–07</span></div>
+        <div class="roadmap-exam"><span>◆</span> MIDTERM EXAM <b>W08</b></div>
+        <div class="roadmap-row"><span class="roadmap-no">03</span><span class="roadmap-info"><strong>สร้างและตรวจผัง</strong><small>From-To · ARC · Block Layout · ประเมิน</small></span><span class="roadmap-week">W09–13</span></div>
+        <div class="roadmap-row"><span class="roadmap-no">04</span><span class="roadmap-info"><strong>ใช้โปรแกรมและสื่อสาร</strong><small>ผังดิจิทัล · กรณีศึกษา · นำเสนอ</small></span><span class="roadmap-week">W14–16</span></div>
+        <div class="roadmap-exam roadmap-final"><span>◆</span> FINAL EXAM <b>W17</b></div>
+      </div>
+      <div class="visual-bottom"><span><i class="legend-dot cyan"></i> 15 สัปดาห์เนื้อหา</span><span><i class="legend-dot gold"></i> 2 สัปดาห์สอบ</span><span class="mono">51 HOURS</span></div>
+      <span class="floating-sticker">LEARN<br><b>→ DESIGN</b><br>→ EVALUATE</span>
+    </div>
+  </div>
+</section>
+<main class="wrap"><div aria-label="สรุปชั่วโมงเรียน" class="stats">
+<div class="stat"><b>17</b><span>สัปดาห์ทั้งหมด</span></div><div class="stat"><b>15</b><span>สัปดาห์เรียนเนื้อหา</span></div><div class="stat"><b>45</b><span>ชั่วโมงเรียนเนื้อหา</span></div><div class="stat"><b>6</b><span>ชั่วโมงสอบ (กลางภาคและปลายภาค)</span></div>
+</div><nav aria-label="ส่วนต่าง ๆ ของแผนการสอน" class="page-nav"><span class="page-nav-caption">สำรวจแผนการสอน</span><a href="#outcomes"><b>01</b> ผลลัพธ์การเรียนรู้ <span aria-hidden="true">↗</span></a><a href="#overview"><b>02</b> ภาพรวม 17 สัปดาห์ <span aria-hidden="true">↗</span></a><a href="#weekly"><b>03</b> หัวข้อรายสัปดาห์ <span aria-hidden="true">↗</span></a><a href="#assessment"><b>04</b> การประเมินผล <span aria-hidden="true">↗</span></a><a class="page-nav-assignment" href="assignments.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="16" rx="2" stroke="currentColor" stroke-width="1.9" width="14" x="5" y="4"></rect><path d="M8.5 9h7M8.5 13h7M8.5 17h4" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path></svg> แผนการส่งงาน ↗</a></nav>
+<section class="section" id="outcomes"><div class="section-kicker">COURSE LEARNING OUTCOMES</div><h2>ผลลัพธ์การเรียนรู้ของรายวิชา</h2><div class="outcomes">
+<div class="outcome"><b>01</b><p>อธิบายหลักการออกแบบโรงงานและระบบสนับสนุน</p></div>
+<div class="outcome"><b>02</b><p>ประเมินและเลือกผังจากทางเลือก</p></div>
+<div class="outcome"><b>03</b><p>ใช้โปรแกรมสำเร็จรูปออกแบบผังจากสถานการณ์จำลอง</p></div></div></section>
+<section class="section" id="overview"><div class="section-kicker">COURSE OVERVIEW</div><h2>ภาพรวมเนื้อหาตลอดภาคเรียน</h2><p class="lead">เรียนสัปดาห์ละ 3 ชั่วโมง รวม 51 ชั่วโมง โดยสัปดาห์ที่ 8 และ 17 เป็นสัปดาห์สอบ ไม่มีเนื้อหาใหม่</p>
+<div class="phases">
+<article class="phase"><div class="when">สัปดาห์ 01–03</div><h3>รู้จักระบบผลิต</h3><p>รู้จักโรงงาน → อ่านขั้นตอนผลิต → นับเครื่องจักร</p></article>
+<article class="phase"><div class="when">สัปดาห์ 04–07</div><h3>คิดเลือกและมองปัญหา</h3><p>เลือกทำเล → เลือกชนิดผัง → ตรวจปัญหาเดิม</p></article>
+<article class="phase"><div class="when">สัปดาห์ 09–13</div><h3>สร้างและตรวจผัง</h3><p>วัดการไหล → จัดความสัมพันธ์ → ลงพื้นที่ → ประเมิน</p></article>
+<article class="phase"><div class="when">สัปดาห์ 14–16</div><h3>ใช้โปรแกรมและสื่อสาร</h3><p>เขียนผังดิจิทัล → ปรับปรุงกรณีศึกษา → นำเสนอ</p></article>
+</div><div aria-label="ตารางภาพรวม 17 สัปดาห์" class="overview" role="region" style="margin-top:21px" tabindex="0"><table><thead><tr><th scope="col">สัปดาห์</th><th scope="col">หัวข้อหลัก</th><th scope="col">เนื้อหาแกนกลาง</th><th scope="col">ระดับ</th></tr></thead><tbody>
+<tr class=""><td>01</td><td><a href="#week-01">รู้จักโรงงานและการออกแบบผัง</a></td><td>ความหมาย • วัตถุประสงค์ • องค์ประกอบ</td><td>พื้นฐาน</td></tr>
+<tr class=""><td>02</td><td><a href="#week-02">ผลิตภัณฑ์และลำดับกระบวนการผลิต</a></td><td>ผลิตภัณฑ์ • Routing • OPC</td><td>พื้นฐาน</td></tr>
+<tr class=""><td>03</td><td><a href="#week-03">กำลังการผลิตและจำนวนเครื่องจักรเบื้องต้น</a></td><td>กำลังการผลิต • จำนวนเครื่อง • พื้นที่ตั้งต้น</td><td>พื้นฐาน–ปานกลาง</td></tr>
+<tr class=""><td>04</td><td><a href="#week-04">ปัจจัยการเลือกทำเลที่ตั้งโรงงาน</a></td><td>ปัจจัยเลือกทำเล • Factor Rating</td><td>พื้นฐาน</td></tr>
+<tr class=""><td>05</td><td><a href="#week-05">คำนวณเปรียบเทียบทำเลอย่างง่าย</a></td><td>Load-Distance • Center of Gravity เบื้องต้น</td><td>พื้นฐาน–ปานกลาง</td></tr>
+<tr class=""><td>06</td><td><a href="#week-06">ชนิดของผังโรงงานและการเลือกใช้</a></td><td>Product / Process / Fixed / Cellular Layout</td><td>พื้นฐาน</td></tr>
+<tr class=""><td>07</td><td><a href="#week-07">ปัญหาผังเดิมและสิ่งอำนวยความสะดวก</a></td><td>ปัญหาผังเดิม • พื้นที่สนับสนุน</td><td>พื้นฐาน–ปานกลาง</td></tr>
+<tr class="is-exam"><td>08</td><td><a href="#week-08">สอบกลางภาค</a></td><td>สอบกลางภาค (สัปดาห์ 1–7)</td><td>สอบ 3 ชม.</td></tr>
+<tr class=""><td>09</td><td><a href="#week-09">การวิเคราะห์การไหลของวัสดุ</a></td><td>Flow Diagram • From-To • Spaghetti</td><td>ปานกลาง</td></tr>
+<tr class=""><td>10</td><td><a href="#week-10">การวางผังอย่างเป็นระบบ ขั้นพื้นฐาน</a></td><td>SLP • ARC • Relationship Diagram</td><td>ปานกลาง</td></tr>
+<tr class=""><td>11</td><td><a href="#week-11">การกำหนดพื้นที่และผังโรงงานแบบบล็อก</a></td><td>พื้นที่ใช้งาน • Block Layout 2 ทางเลือก</td><td>ปานกลาง</td></tr>
+<tr class=""><td>12</td><td><a href="#week-12">ระบบขนถ่ายวัสดุและความปลอดภัย</a></td><td>Forklift • Conveyor • AGV/AMR • เส้นทางปลอดภัย</td><td>พื้นฐาน–ปานกลาง</td></tr>
+<tr class=""><td>13</td><td><a href="#week-13">ประเมินและตัดสินใจเลือกผังโรงงาน</a></td><td>ระยะทาง • ต้นทุน • คะแนนถ่วงน้ำหนัก</td><td>ปานกลาง</td></tr>
+<tr class=""><td>14</td><td><a href="#week-14">เขียนผังโรงงานด้วยโปรแกรมสำเร็จรูป</a></td><td>ผัง 2 มิติ • Excel • โปรแกรมสำเร็จรูป</td><td>พื้นฐาน–ปานกลาง</td></tr>
+<tr class=""><td>15</td><td><a href="#week-15">กรณีศึกษาออกแบบและปรับปรุงผังโรงงาน</a></td><td>ทำกรณีศึกษาผังโรงงาน CNC</td><td>ปานกลาง</td></tr>
+<tr class=""><td>16</td><td><a href="#week-16">นำเสนอโครงงานและสรุปความรู้</a></td><td>นำเสนอผังเดิม–ใหม่และผลประเมิน</td><td>ปานกลาง</td></tr>
+<tr class="is-exam"><td>17</td><td><a href="#week-17">สอบปลายภาค</a></td><td>สอบปลายภาค (สัปดาห์ 9–16)</td><td>สอบ 3 ชม.</td></tr>
+</tbody></table></div></section>
+<section class="section" id="weekly"><div class="section-kicker">WEEK BY WEEK</div><h2>รายละเอียดการเรียนรู้รายสัปดาห์</h2><p class="lead">คลิกหมายเลขสัปดาห์เพื่อไปยังหัวข้อเรียน และเลือก “ดูหัวข้อย่อย 6 ข้อ” เพื่ออ่านเนื้อหา กิจกรรม และใบงานตามแผนการสอน</p><div class="related-page"><span aria-hidden="true" class="related-icon"><svg fill="none" viewbox="0 0 24 24"><path d="M7 3v4M17 3v4M4 9h16M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path><path d="m9 15 2 2 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></span><span>ต้องการดูกำหนดส่งโครงงานและ Gantt Chart?</span><a href="assignments.html">เปิดแผนการส่งงาน <span aria-hidden="true">↗</span></a></div>
+<nav aria-label="เลือกสัปดาห์" class="week-nav">
+<a aria-label="ไปยังสัปดาห์ที่ 1" class="" href="#week-01">01</a>
+<a aria-label="ไปยังสัปดาห์ที่ 2" class="" href="#week-02">02</a>
+<a aria-label="ไปยังสัปดาห์ที่ 3" class="" href="#week-03">03</a>
+<a aria-label="ไปยังสัปดาห์ที่ 4" class="" href="#week-04">04</a>
+<a aria-label="ไปยังสัปดาห์ที่ 5" class="" href="#week-05">05</a>
+<a aria-label="ไปยังสัปดาห์ที่ 6" class="" href="#week-06">06</a>
+<a aria-label="ไปยังสัปดาห์ที่ 7" class="" href="#week-07">07</a>
+<a aria-label="ไปยังสัปดาห์ที่ 8" class="exam" href="#week-08">08</a>
+<a aria-label="ไปยังสัปดาห์ที่ 9" class="" href="#week-09">09</a>
+<a aria-label="ไปยังสัปดาห์ที่ 10" class="" href="#week-10">10</a>
+<a aria-label="ไปยังสัปดาห์ที่ 11" class="" href="#week-11">11</a>
+<a aria-label="ไปยังสัปดาห์ที่ 12" class="" href="#week-12">12</a>
+<a aria-label="ไปยังสัปดาห์ที่ 13" class="" href="#week-13">13</a>
+<a aria-label="ไปยังสัปดาห์ที่ 14" class="" href="#week-14">14</a>
+<a aria-label="ไปยังสัปดาห์ที่ 15" class="" href="#week-15">15</a>
+<a aria-label="ไปยังสัปดาห์ที่ 16" class="" href="#week-16">16</a>
+<a aria-label="ไปยังสัปดาห์ที่ 17" class="exam" href="#week-17">17</a>
+</nav><div class="week-toolbar"><p>หัวข้อรายสัปดาห์ตามลำดับการเรียนเดิม</p><div><button id="expand" type="button">เปิดทั้งหมด</button> <button id="collapse" type="button">ย่อทั้งหมด</button></div></div>
+<section aria-label="ช่วงที่ 1 · รู้จักระบบผลิต" class="group"><div class="group-head"><h3>ช่วงที่ 1 · รู้จักระบบผลิต</h3><p>สัปดาห์ที่ 1–3</p></div><div class="week-grid">
+<article class="week-card week-card-foundation" id="week-01">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>01</b></span><span class="level">พื้นฐาน</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-01.svg"/><h4>รู้จักโรงงานและการออกแบบผัง</h4><p class="eng">Introduction to Industrial Plant Design</p>
+<p class="focus">ความหมาย • วัตถุประสงค์ • องค์ประกอบ</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ดูภาพโรงงาน 2 แบบแล้วระบุข้อดี–ปัญหาของผัง</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: องค์ประกอบโรงงานและปัญหาที่สังเกตได้</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>โรงงานอุตสาหกรรมคืออะไร: คน เครื่องจักร วัสดุ พื้นที่ และข้อมูล</li>
+<li>ความแตกต่างของ Plant Design, Plant Layout และ Facility Planning</li>
+<li>เป้าหมายของผังที่ดี: ไหลสะดวก ใช้พื้นที่คุ้มค่า ปลอดภัย และยืดหยุ่น</li>
+<li>ภาพรวมรูปแบบการผลิต Job Shop, Batch และ Mass Production</li>
+<li>ขั้นตอนง่าย ๆ จากเก็บข้อมูลไปสู่การออกแบบและประเมินผัง</li>
+<li>ตัวอย่างโรงงานสมัยใหม่: Smart Factory ในระดับแนวคิด</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> วางความเข้าใจภาพรวมก่อนศึกษากระบวนการผลิต</p></article>
+<article class="week-card week-card-foundation" id="week-02">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>02</b></span><span class="level">พื้นฐาน</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-02.svg"/><h4>ผลิตภัณฑ์และลำดับกระบวนการผลิต</h4><p class="eng">Product &amp; Process Analysis</p>
+<p class="focus">ผลิตภัณฑ์ • Routing • OPC</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ใช้ชิ้นส่วน CNC 1 แบบ สร้างขั้นตอนการผลิต 5–7 ขั้น</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: Routing และ OPC</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>ความสัมพันธ์ระหว่างชิ้นงาน ขั้นตอนการผลิต และเครื่องจักร</li>
+<li>เส้นทางชิ้นงานจากวัตถุดิบถึงสินค้าสำเร็จรูป (Routing)</li>
+<li>ความหมายของงานแปรรูป การตรวจสอบ และการขนย้าย</li>
+<li>อ่านและเขียน Operation Process Chart (OPC) อย่างง่าย</li>
+<li>ความต่างระหว่างการผลิตหลายชนิด–ปริมาณน้อย กับชนิดน้อย–ปริมาณมาก</li>
+<li>เตรียมข้อมูลที่จำเป็นสำหรับคำนวณเครื่องจักรและพื้นที่</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> ใช้ข้อมูลขั้นตอนผลิตไปคำนวณทรัพยากรในสัปดาห์ที่ 3</p></article>
+<article class="week-card week-card-foundation" id="week-03">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>03</b></span><span class="level">พื้นฐาน–ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-03.svg"/><h4>กำลังการผลิตและจำนวนเครื่องจักรเบื้องต้น</h4><p class="eng">Basic Capacity &amp; Machine Requirement</p>
+<p class="focus">กำลังการผลิต • จำนวนเครื่อง • พื้นที่ตั้งต้น</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ตัวอย่าง 120 ชิ้น/วัน, 10 นาที/ชิ้น, 420 นาที/วัน → 3 เครื่อง</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ตารางเครื่องจักรและข้อมูลพื้นที่</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>ความต้องการผลิตต่อวันและเวลาทำงานที่มีอยู่</li>
+<li>ความหมายของ Cycle Time (เวลาต่อชิ้น) จากตัวอย่างจริง</li>
+<li>คำนวณกำลังการผลิตต่อเครื่องแบบหนึ่งขั้นตอน</li>
+<li>คำนวณจำนวนเครื่องจักรที่ต้องใช้โดยปัดขึ้นเป็นจำนวนเต็ม</li>
+<li>รวบรวมขนาดเครื่องจักรและพื้นที่เผื่อการทำงานอย่างง่าย</li>
+<li>สร้างตารางสรุปข้อมูลเครื่องจักรเพื่อใช้วางผัง</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> ทราบขนาด–กำลังผลิตก่อนตัดสินใจเรื่องทำเลและชนิดผัง</p></article>
+</div></section>
+<section aria-label="ช่วงที่ 2 · คิดเลือกและมองปัญหา" class="group"><div class="group-head"><h3>ช่วงที่ 2 · คิดเลือกและมองปัญหา</h3><p>สัปดาห์ที่ 4–7</p></div><div class="week-grid">
+<article class="week-card week-card-analysis" id="week-04">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>04</b></span><span class="level">พื้นฐาน</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-04.svg"/><h4>ปัจจัยการเลือกทำเลที่ตั้งโรงงาน</h4><p class="eng">Facility Location: Qualitative Factors</p>
+<p class="focus">ปัจจัยเลือกทำเล • Factor Rating</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ให้คะแนนเปรียบเทียบทำเลโรงงาน 3 แห่งจากตารางข้อมูล</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ตาราง Factor Rating</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>เหตุใดทำเลมีผลต่อการผลิตและโลจิสติกส์</li>
+<li>ปัจจัยด้านลูกค้า วัตถุดิบ การขนส่ง แรงงาน และสาธารณูปโภค</li>
+<li>ปัจจัยด้านกฎหมาย สิ่งแวดล้อม ความปลอดภัย และชุมชน</li>
+<li>กำหนดเกณฑ์และน้ำหนักการให้คะแนนทำเลอย่างง่าย</li>
+<li>วิธี Factor Rating เปรียบเทียบทำเล 2–3 ทางเลือก</li>
+<li>ข้อจำกัดของการตัดสินใจด้วยคะแนนเพียงอย่างเดียว</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> เพิ่มมิติการขนส่งเชิงตัวเลขในสัปดาห์ที่ 5</p></article>
+<article class="week-card week-card-analysis" id="week-05">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>05</b></span><span class="level">พื้นฐาน–ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-05.svg"/><h4>คำนวณเปรียบเทียบทำเลอย่างง่าย</h4><p class="eng">Simple Quantitative Location Analysis</p>
+<p class="focus">Load-Distance • Center of Gravity เบื้องต้น</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ทดลองคำนวณ Load-Distance ด้วยเครื่องคิดเลขหรือ Excel</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ตารางเลือกทำเลพร้อมเหตุผล</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>อ่านข้อมูลจุดส่งสินค้า ระยะทาง และปริมาณขนส่ง</li>
+<li>คิดค่าระยะทางถ่วงน้ำหนักแบบ Load-Distance สำหรับ 2 ทางเลือก</li>
+<li>เลือกทำเลที่มีค่าระยะทางถ่วงน้ำหนักน้อยกว่า พร้อมพิจารณาข้อจำกัด</li>
+<li>รู้จัก Center of Gravity จากแผนที่พิกัด 2 มิติ</li>
+<li>สาธิตการคำนวณพิกัดถ่วงน้ำหนัก 3 จุด (ไม่เน้นสูตรซับซ้อน)</li>
+<li>เปรียบเทียบผลเชิงตัวเลขกับเกณฑ์เชิงคุณภาพจากสัปดาห์ก่อน</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> เมื่อทราบทำเลแล้ว จึงเลือกแนวทางจัดเครื่องจักรในโรงงาน</p></article>
+<article class="week-card week-card-analysis" id="week-06">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>06</b></span><span class="level">พื้นฐาน</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-06.svg"/><h4>ชนิดของผังโรงงานและการเลือกใช้</h4><p class="eng">Types of Plant Layout</p>
+<p class="focus">Product / Process / Fixed / Cellular Layout</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>จับคู่ภาพโรงงาน 4 แบบกับชนิดผัง พร้อมอธิบายเหตุผล</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ตารางเปรียบเทียบผัง 4 ประเภท</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>Product Layout: เหมาะกับงานที่ขั้นตอนต่อเนื่อง</li>
+<li>Process Layout: รวมเครื่องจักรชนิดเดียวกันไว้ใกล้กัน</li>
+<li>Fixed-Position Layout: ชิ้นงานอยู่กับที่ เครื่องมือเข้าไปทำงาน</li>
+<li>Cellular Layout: จัดกลุ่มเครื่องจักรตามตระกูลชิ้นงาน</li>
+<li>ตัวอย่าง Hybrid Layout โดยไม่ลงรายละเอียดการออกแบบเซลล์</li>
+<li>เลือกชนิดผังจากปริมาณผลิต ความหลากหลาย และเส้นทางงาน</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> เริ่มมองหาข้อบกพร่องของผังจริงในสัปดาห์ที่ 7</p></article>
+<article class="week-card week-card-analysis" id="week-07">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>07</b></span><span class="level">พื้นฐาน–ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-07.svg"/><h4>ปัญหาผังเดิมและสิ่งอำนวยความสะดวก</h4><p class="eng">Layout Problems &amp; Supporting Facilities</p>
+<p class="focus">ปัญหาผังเดิม • พื้นที่สนับสนุน</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>วงตำแหน่งปัญหา 5 จุดบนผังเดิม พร้อมเสนอแนวทางเบื้องต้น</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ผังปัญหา (Existing Layout)</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>ปัญหาผังใหม่กับการปรับปรุงผังโรงงานเดิม</li>
+<li>ปัญหาการเดินไกล ทางตัดกัน งานไหลย้อนกลับ และพื้นที่คับแคบ</li>
+<li>แนวคิด Flow Diagram แบบวาดลูกศรบนผัง</li>
+<li>พื้นที่รับวัตถุดิบ คลังสินค้า ตรวจสอบคุณภาพ และซ่อมบำรุง</li>
+<li>พื้นที่ทางเดิน จุดรับ–ส่งวัสดุ และหลักความปลอดภัยทั่วไป</li>
+<li>ฝึกระบุปัญหาจากผัง CNC ตัวอย่างก่อนปรับปรุง</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> หลังสอบกลางภาคนำผังปัญหาไปวิเคราะห์การไหลอย่างเป็นระบบ</p></article>
+</div></section>
+<section aria-label="การสอบกลางภาค" class="group"><div class="group-head"><h3>การสอบกลางภาค</h3><p>สัปดาห์ที่ 8</p></div><div class="week-grid">
+<article class="week-card exam week-card-exam" id="week-08">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>08</b></span><span class="level">สอบ 3 ชม.</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-08.svg"/><h4>สอบกลางภาค</h4><p class="eng">Midterm Examination</p>
+<p class="focus">ประเมินความเข้าใจจากสัปดาห์ที่ 1–7 ด้วยคำถามและโจทย์คำนวณสั้น</p><div class="field"><b>หลักฐานการประเมิน</b><p>ข้อสอบกลางภาค 3 ชั่วโมง</p></div>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> ผ่านพื้นฐานก่อนเข้าสู่เครื่องมือออกแบบผังอย่างเป็นระบบ</p></article>
+</div></section>
+<section aria-label="ช่วงที่ 3 · สร้างและตรวจผัง" class="group"><div class="group-head"><h3>ช่วงที่ 3 · สร้างและตรวจผัง</h3><p>สัปดาห์ที่ 9–13</p></div><div class="week-grid">
+<article class="week-card week-card-design" id="week-09">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>09</b></span><span class="level">ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-09.svg"/><h4>การวิเคราะห์การไหลของวัสดุ</h4><p class="eng">Material Flow Analysis</p>
+<p class="focus">Flow Diagram • From-To • Spaghetti</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ทำ From-To Chart จากข้อมูลเที่ยวขนย้ายที่เตรียมไว้</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: From-To Chart + Spaghetti Diagram</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>ทบทวน Flow Diagram และเส้นทางผลิตจากกรณีศึกษาเดิม</li>
+<li>แนวคิดปริมาณการเคลื่อนย้ายระหว่างแผนก</li>
+<li>จัดทำ From-To Chart แบบ 4–5 แผนก</li>
+<li>วาด Spaghetti Diagram เพื่อมองเห็นทางอ้อมและทางย้อน</li>
+<li>วัดระยะทางตามแนวทางเดินจริง (Rectilinear Distance แบบง่าย)</li>
+<li>สรุปคู่แผนกที่มีการขนย้ายถี่และควรอยู่ใกล้กัน</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> ใช้ความถี่การขนย้ายเป็นข้อมูลสร้างความสัมพันธ์แผนก</p></article>
+<article class="week-card week-card-design" id="week-10">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>10</b></span><span class="level">ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-10.svg"/><h4>การวางผังอย่างเป็นระบบ ขั้นพื้นฐาน</h4><p class="eng">Systematic Layout Planning (SLP)</p>
+<p class="focus">SLP • ARC • Relationship Diagram</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ทำ ARC จากแผนก CNC 6 แผนกและเหตุผลกำกับ</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ARC และ Relationship Diagram</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>ภาพรวม SLP: จากข้อมูลการไหลสู่ผังทางเลือก</li>
+<li>ความสัมพันธ์ระหว่างแผนกที่ควรอยู่ใกล้–ควรแยก</li>
+<li>ระดับ A, E, I, O, U, X และการเขียนเหตุผลประกอบ</li>
+<li>สร้าง Activity Relationship Chart (ARC) 5–6 แผนก</li>
+<li>แปลง ARC เป็น Relationship Diagram อย่างง่าย</li>
+<li>เชื่อมข้อมูล From-To กับความสัมพันธ์ด้านความปลอดภัย/การทำงาน</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> ใช้ความสัมพันธ์แผนกไปกำหนดพื้นที่และตำแหน่งจริง</p></article>
+<article class="week-card week-card-design" id="week-11">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>11</b></span><span class="level">ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-11.svg"/><h4>การกำหนดพื้นที่และผังโรงงานแบบบล็อก</h4><p class="eng">Space Planning &amp; Block Layout</p>
+<p class="focus">พื้นที่ใช้งาน • Block Layout 2 ทางเลือก</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>จัดวางบล็อก 6 แผนกภายในอาคารสมมุติที่กำหนด</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: Block Layout 2 ทางเลือก</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>อ่านขนาดเครื่องจักรและพื้นที่ที่คำนวณไว้ตั้งแต่สัปดาห์ที่ 3</li>
+<li>คำนวณพื้นที่ติดตั้ง + พื้นที่ทำงาน + พื้นที่เผื่อทางเดินอย่างง่าย</li>
+<li>จัดพื้นที่คลังวัตถุดิบ ตรวจสอบคุณภาพ และจัดส่งสินค้า</li>
+<li>แปลง Relationship Diagram เป็น Block Layout</li>
+<li>กำหนดทางเดินหลักและทางเข้าออกของวัสดุ</li>
+<li>วาดผังทางเลือกอย่างน้อย 2 แบบและตรวจสอบขนาดพื้นที่</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> ตรวจสอบว่าอุปกรณ์ขนถ่ายใช้งานกับผังที่ออกแบบได้จริง</p></article>
+<article class="week-card week-card-design" id="week-12">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>12</b></span><span class="level">พื้นฐาน–ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-12.svg"/><h4>ระบบขนถ่ายวัสดุและความปลอดภัย</h4><p class="eng">Material Handling Systems</p>
+<p class="focus">Forklift • Conveyor • AGV/AMR • เส้นทางปลอดภัย</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>เลือกอุปกรณ์ให้ผังทางเลือก พร้อมคิดจำนวนเที่ยว/วันอย่างง่าย</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ตัวเลือกอุปกรณ์และการปรับผัง</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>หลักการลดการขนย้ายที่ไม่จำเป็นและลดการสัมผัสชิ้นงาน</li>
+<li>รู้จักรถเข็น Hand Pallet Truck, Forklift และ Conveyor</li>
+<li>รู้จัก AGV / AMR พร้อมตัวอย่างการประยุกต์ (ไม่เขียนโปรแกรม)</li>
+<li>เปรียบเทียบอุปกรณ์จากน้ำหนัก ระยะทาง ความถี่ และพื้นที่</li>
+<li>คำนวณจำนวนเที่ยวหรือจำนวนรถขนถ่ายแบบโจทย์หนึ่งขั้นตอน</li>
+<li>ตรวจสอบจุดตัด ทางสัญจร และระยะเผื่อการทำงานใน Block Layout</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> นำผังที่ปรับแล้วไปวัดผลและเลือกทางเลือก</p></article>
+<article class="week-card week-card-design" id="week-13">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>13</b></span><span class="level">ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-13.svg"/><h4>ประเมินและตัดสินใจเลือกผังโรงงาน</h4><p class="eng">Layout Evaluation &amp; Decision Making</p>
+<p class="focus">ระยะทาง • ต้นทุน • คะแนนถ่วงน้ำหนัก</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>เปรียบเทียบ Before–After จากชุดข้อมูลเดียวกัน</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ใบงาน: ตารางประเมิน 2 ผังและเหตุผลการเลือก</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>เลือกตัวชี้วัดที่สื่อความหมาย เช่น ระยะทางขนย้ายและการใช้พื้นที่</li>
+<li>คำนวณระยะทางถ่วงน้ำหนักของผัง 2 ทางเลือกจาก From-To</li>
+<li>คำนวณต้นทุนขนย้ายด้วยอัตราต้นทุนต่อระยะทางอย่างง่าย</li>
+<li>ประเมินความปลอดภัย ความยืดหยุ่น และแนวคิดใช้พลังงานคุ้มค่า</li>
+<li>ใช้ตารางคะแนนถ่วงน้ำหนักประกอบผลการคำนวณ</li>
+<li>สรุปผังที่แนะนำพร้อมข้อจำกัด ไม่เน้นหาค่าที่เหมาะสมที่สุดขั้นสูง</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> เตรียมผังที่ผ่านการตัดสินใจไปเขียนแบบในโปรแกรม</p></article>
+</div></section>
+<section aria-label="ช่วงที่ 4 · ใช้โปรแกรมและสื่อสาร" class="group"><div class="group-head"><h3>ช่วงที่ 4 · ใช้โปรแกรมและสื่อสาร</h3><p>สัปดาห์ที่ 14–16</p></div><div class="week-grid">
+<article class="week-card week-card-application" id="week-14">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>14</b></span><span class="level">พื้นฐาน–ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-14.svg"/><h4>เขียนผังโรงงานด้วยโปรแกรมสำเร็จรูป</h4><p class="eng">Computer-Aided Layout Design</p>
+<p class="focus">ผัง 2 มิติ • Excel • โปรแกรมสำเร็จรูป</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>สร้างผัง Proposed Layout ฉบับดิจิทัลจากงานสัปดาห์ที่ 13</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ชิ้นงาน: ผัง 2 มิติ + ตารางผลวิเคราะห์</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>เตรียมขนาดอาคาร ขนาดเครื่องจักร และ Block Layout ที่เลือก</li>
+<li>สร้างผัง 2 มิติแบบง่ายด้วย diagrams.net หรือ AutoCAD</li>
+<li>กำหนดขนาด ตำแหน่ง บล็อกเครื่องจักร และชื่อพื้นที่</li>
+<li>วาดเส้นทางวัสดุและพื้นที่ทางเดินบนผัง</li>
+<li>ใช้ Excel สรุประยะทางและตัวชี้วัด ก่อน–หลัง</li>
+<li>แนะนำแบบจำลอง 3 มิติเป็นสื่อเสริม ไม่บังคับสร้าง 3 มิติ</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> รวมไฟล์และหลักฐานเพื่อทำกรณีศึกษาฉบับสมบูรณ์</p></article>
+<article class="week-card week-card-application" id="week-15">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>15</b></span><span class="level">ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-15.svg"/><h4>กรณีศึกษาออกแบบและปรับปรุงผังโรงงาน</h4><p class="eng">Integrated Plant Layout Case Study</p>
+<p class="focus">ทำกรณีศึกษาผังโรงงาน CNC</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>ทำงานกลุ่มปรับปรุงผังและตรวจความถูกต้องของข้อมูลทั้งหมด</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>โครงงานกลุ่ม: รายงานกรณีศึกษา + ผังเดิม/ใหม่</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>ทบทวนสถานการณ์โรงงาน CNC ขนาดเล็กที่ใช้ร่วมกันทั้งรายวิชา</li>
+<li>จัดชุดข้อมูล Routing, จำนวนเครื่องจักร, พื้นที่ และ From-To</li>
+<li>แสดงปัญหาผังเดิมด้วยภาพและตัวชี้วัด</li>
+<li>ปรับปรุงผังใหม่โดยใช้ ARC, Block Layout และเส้นทางขนถ่าย</li>
+<li>เปรียบเทียบผังเดิม–ใหม่ด้วยระยะทาง ต้นทุน และความปลอดภัย</li>
+<li>จัดทำรายงานสั้นพร้อมภาพผังและข้อเสนอแนะ</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> นำเสนอข้อสรุปและรับข้อเสนอแนะในสัปดาห์ถัดไป</p></article>
+<article class="week-card week-card-application" id="week-16">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>16</b></span><span class="level">ปานกลาง</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-16.svg"/><h4>นำเสนอโครงงานและสรุปความรู้</h4><p class="eng">Project Presentation &amp; Course Synthesis</p>
+<p class="focus">นำเสนอผังเดิม–ใหม่และผลประเมิน</p><div class="field"><b>กิจกรรม / ตัวอย่าง</b><p>นำเสนอโครงงานกลุ่มและประเมินเพื่อนด้วยเกณฑ์ที่กำหนด</p></div><div class="field"><b>ผลผลิตการเรียนรู้</b><p>ผลงานสรุป: รายงานและการนำเสนอ</p></div>
+<details class="details"><summary>ดูหัวข้อย่อย 6 ข้อ</summary><ol>
+<li>นำเสนอเป้าหมายและข้อจำกัดการออกแบบ</li>
+<li>แสดงข้อมูลผลิตภัณฑ์ กระบวนการ และปัญหาผังเดิม</li>
+<li>นำเสนอ Proposed Layout จากโปรแกรมพร้อมเหตุผลการจัดวาง</li>
+<li>แสดงตารางเปรียบเทียบระยะทางและต้นทุนก่อน–หลัง</li>
+<li>อภิปรายผลด้านความปลอดภัยและข้อจำกัดของผังที่เลือก</li>
+<li>สรุปภาพรวมกระบวนการออกแบบโรงงานตั้งแต่ต้นจนจบ</li>
+</ol></details>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> สรุปแนวคิดสำคัญเพื่อสอบปลายภาค</p></article>
+</div></section>
+<section aria-label="การสอบปลายภาค" class="group"><div class="group-head"><h3>การสอบปลายภาค</h3><p>สัปดาห์ที่ 17</p></div><div class="week-grid">
+<article class="week-card exam week-card-exam" id="week-17">
+<div class="week-top"><span class="week-pill">สัปดาห์ <b>17</b></span><span class="level">สอบ 3 ชม.</span></div><img alt="" class="week-art" decoding="async" loading="lazy" src="assets/icons/week-17.svg"/><h4>สอบปลายภาค</h4><p class="eng">Final Examination</p>
+<p class="focus">ประเมินเนื้อหาสัปดาห์ที่ 9–16 เน้นการประยุกต์ใช้ From-To, ARC, ผังทางเลือก และการประเมินผล</p><div class="field"><b>หลักฐานการประเมิน</b><p>ข้อสอบปลายภาค 3 ชั่วโมง</p></div>
+<p class="next"><strong>เชื่อมต่อสัปดาห์ถัดไป:</strong> สิ้นสุดรายวิชา</p></article>
+</div></section>
+</section>
+<section class="section" id="teaching"><div class="section-kicker">TEACHING APPROACH</div><h2>แนวทางการเรียนรู้ในชั้นเรียน</h2><p class="lead">ตัวอย่างการแบ่งเวลาเรียน 3 ชั่วโมงต่อสัปดาห์ตามเอกสารแผนการสอน</p><div class="panel" style="margin-top:17px"><div class="class-time">
+<div class="time"><b>80 นาที</b><p>อธิบายหลักการด้วยภาพและงานผลิตใกล้ตัว</p></div>
+<div class="time"><b>55 นาที</b><p>สาธิตโจทย์ / วิเคราะห์กรณีศึกษาแบบมีแนวทาง</p></div>
+<div class="time"><b>35 นาที</b><p>ทำใบงานรายบุคคลหรือกลุ่มเล็ก</p></div>
+<div class="time"><b>10 นาที</b><p>เฉลย สรุป และโยงไปสัปดาห์ถัดไป</p></div>
+</div><p class="small">เป็นรูปแบบการแบ่งเวลาภายในชั่วโมงทฤษฎี สามารถปรับช่วงเวลาสำหรับฝึกโปรแกรมและกรณีศึกษาในสัปดาห์ที่ 14–16 ได้</p>
+<div class="case-line"><b>กรณีศึกษาร่วมตลอดภาคเรียน</b><p>โรงงานผลิตชิ้นส่วน CNC ขนาดเล็ก (ข้อมูลจำลอง) ประกอบด้วย 6 พื้นที่ ได้แก่ คลังวัตถุดิบ, CNC Lathe, CNC Milling, Inspection, Packing และคลังสินค้าสำเร็จรูป โดยใช้ข้อมูลที่ผู้สอนจัดเตรียมให้</p></div></div></section>
+<section class="section" id="assessment"><div class="section-kicker">ASSESSMENT</div><h2>ตัวอย่างการวัดและประเมินผล</h2><p class="lead">สัดส่วนต่อไปนี้เป็น “ตัวอย่างการวัดและประเมินผล (ข้อเสนอปรับใช้)” ตามแผนการสอนต้นฉบับ</p>
+<div class="panel" style="margin-top:17px"><div class="assessment">
+<div class="assess"><b>15%</b><p>แบบฝึกหัด / ใบงานระหว่างเรียน</p></div>
+<div class="assess"><b>25%</b><p>สอบกลางภาค (สัปดาห์ที่ 8)</p></div>
+<div class="assess"><b>30%</b><p>โครงงานกลุ่ม: ผังเดิม–ใหม่และเหตุผลการตัดสินใจ</p></div>
+<div class="assess"><b>30%</b><p>สอบปลายภาค (สัปดาห์ที่ 17)</p></div>
+</div><p class="notes">รวม 100% · แนวทางตรวจงานเน้นความเข้าใจ การคำนวณ การตัดสินใจ และการใช้โปรแกรมตามความเหมาะสมกับพื้นฐานผู้เรียน</p></div></section>
+</main><footer class="site-footer"><div class="wrap footer-in"><span class="footer-mark">RMUTI <b>·</b> INDUSTRIAL PLANT DESIGN</span><div><strong>Industrial Plant Design · รหัสวิชา 03-407-051-307</strong><p>อาจารย์ชัยวัฒน์ วัฒนะกุล · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</p><p>ข้อมูลอ้างอิง: แผนการสอน Industrial Plant Design 17 สัปดาห์ ฉบับทบทวนสำหรับผู้เริ่มต้น</p><p>หัวข้อรายสัปดาห์ วิธีสอน โครงงาน และสัดส่วนคะแนนในเอกสารแผนต้นฉบับเป็นข้อเสนอเพื่อปรับใช้ตามการจัดการเรียนการสอน</p></div><div><a href="index.html">กลับหน้าหลัก</a> · <a href="assignments.html">แผนการส่งงานกรณีศึกษา</a></div></div></footer><script>
+(function(){
+  const details=[...document.querySelectorAll('details.details')];
+  document.getElementById('expand').addEventListener('click',()=>details.forEach(d=>d.open=true));
+  document.getElementById('collapse').addEventListener('click',()=>details.forEach(d=>d.open=false));
+  // Anchor links to accordion cards retain native browser behavior; no external dependencies.
+})();
+</script>
+</body>
+</html>
