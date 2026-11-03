@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#13384c">
+<meta name="description" content="สื่อการสอน Interactive: เลือกทำเลโรงงานจากศูนย์รวบรวม 3–6 แห่งด้วย Center of Gravity, Weighted Median และ Geometric Median เปรียบเทียบ Rectilinear/Euclidean พร้อมอธิบายขั้นตอนและ SVG">
+<title>PlantLoc LEARN | เลือกทำเล 3–6 ศูนย์ · 3 วิธี · 2 รูปแบบระยะทาง</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b3a4d;--navy:#13384c;--navy2:#1d5368;--teal:#0b8c7b;--teal-dark:#087769;--blue:#5969bb;--amber:#cd8840;--light:#f3f7f8;--paper:#fff;--muted:#647e8b;--edge:#dce7ea;--mint:#e8f7f2;--blue-soft:#eff1ff;--warn:#fff6e7;--shadow:0 8px 24px rgba(18,52,72,.055)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--light);color:var(--ink);font:16px/1.85 'Prompt','Leelawadee UI',Tahoma,sans-serif}button,input,select{font:inherit}button{cursor:pointer}input,select{color:var(--ink)}a{color:inherit}h1,h2,h3,p{overflow-wrap:anywhere}strong,b{font-weight:700}h1,h2,h3{line-height:1.5}::selection{background:#c1ece4}
+.topbar{background:rgba(19,56,76,.97);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 6px 18px #112f4015}.topinner{max-width:1290px;padding:10px 24px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.brandgroup{display:flex;gap:11px;align-items:center}.home{display:grid;place-items:center;text-decoration:none;border-radius:11px;width:42px;height:42px;border:1px solid #ffffff45;background:#ffffff16}.home:hover,.home:focus-visible{background:var(--teal);outline:2px solid #bbf2e9;outline-offset:2px}.brand{text-decoration:none;display:flex;align-items:center;gap:9px;font-size:19px;font-weight:800;white-space:nowrap}.brand .icon{display:grid;place-items:center;background:#25a394;width:34px;height:34px;border-radius:10px;font-size:20px}.brand small{display:block;font-size:10px;font-weight:600;line-height:1.2;color:#b9e6e6;letter-spacing:1px}.topnav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.topnav a{white-space:nowrap;text-decoration:none;font-size:13px;font-weight:600;color:#d7e6ed;padding:8px 10px;border-radius:7px}.topnav a:hover{background:#ffffff20;color:#fff}
+.wrap{max-width:1260px;margin:auto;padding:24px 25px 55px}.hero{border-radius:22px;background:linear-gradient(118deg,#11374b,#1b6272);padding:37px 43px;color:#fff;position:relative;overflow:hidden;box-shadow:0 17px 35px #183d5417}.hero:before{content:'';position:absolute;border-radius:50%;width:430px;height:430px;right:-110px;top:-200px;border:1px solid #ffffff23;box-shadow:0 0 0 48px #ffffff09,0 0 0 100px #ffffff07}.hero .eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid #ffffff50;border-radius:100px;padding:3px 11px}.hero h1{position:relative;font-size:clamp(28px,3.3vw,45px);font-weight:800;margin:12px 0 8px;max-width:950px}.hero h1 span{color:#95eee0}.hero p{position:relative;margin:0;max-width:925px;font-size:16px;color:#dfedef}.chips{position:relative;display:flex;flex-wrap:wrap;gap:9px;margin-top:21px}.chips span{font-size:12px;background:#ffffff1e;padding:4px 11px;border-radius:8px;border:1px solid #ffffff21}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:16px 0 0}.stat{background:var(--paper);border:1px solid var(--edge);border-radius:14px;padding:16px 20px;box-shadow:var(--shadow)}.stat small{display:block;font-size:12px;color:var(--muted)}.stat b{font-size:23px;color:var(--navy);font-variant-numeric:tabular-nums}.stat .unit{font-size:12px;color:var(--muted)}
+section{scroll-margin-top:95px;margin-top:24px}.card{background:var(--paper);padding:27px 29px;border:1px solid var(--edge);border-radius:18px;box-shadow:var(--shadow)}.head{margin-bottom:21px}.head .overline{color:var(--teal);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px}.head h2{margin:3px 0 4px;color:var(--navy);font-size:clamp(21px,2.3vw,29px)}.head p{margin:0;color:var(--muted);font-size:15px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.note{border-radius:12px;background:#edf5f7;border:1px solid #d9e8ec;padding:15px 18px;font-size:15px}.note strong{color:#155b69}.note.warn{background:var(--warn);border-color:#f1d9a8;color:#805719}.note.good{background:var(--mint);border-color:#bfe6d9}.info{border:1px solid var(--edge);background:#f8fbfc;padding:18px 20px;border-radius:14px}.info h3{font-size:19px;margin:0 0 10px}.info p{margin:5px 0}.info ul{margin:8px 0 0;padding-left:24px}.info li{margin:3px 0}.info.blue{background:#f3f4ff;border-color:#dce0fb}.info.blue h3{color:#485baa}.info.green{background:#eefaf5;border-color:#cde9dd}.info.green h3{color:#087b68}.tag{display:inline-flex;align-items:center;font-size:11px;padding:2px 9px;border-radius:99px;background:#e9f4f4;color:#096d6a;font-weight:800;letter-spacing:.5px}.math{font-family:Cambria,Georgia,serif}.formula{margin:12px 0;padding:15px;background:#153f52;border-radius:12px;color:white;font-family:'Prompt','Leelawadee UI',sans-serif;overflow-x:auto;font-size:clamp(16px,1.8vw,20px);text-align:center;font-variant-numeric:tabular-nums}.formula em{font-style:normal;color:#a4efe1}.tiny{font-size:13px;color:var(--muted)}
+.tablebox{overflow-x:auto;border-radius:12px;border:1px solid var(--edge)}table{width:100%;border-collapse:collapse;font-size:15px}th,td{text-align:right;border-bottom:1px solid #e5edef;padding:11px 12px;white-space:nowrap;font-variant-numeric:tabular-nums}th:first-child,td:first-child{text-align:left}thead th{background:#eaf2f5;color:#365a69;font-size:14px;font-weight:700}tr:last-child>td{border-bottom:0}tbody tr:hover{background:#f7fbfc}tfoot th,tfoot td{background:#f0f7f5;font-weight:800}td.strong{color:var(--teal-dark);font-weight:800}.inputtable{min-width:740px}.inputtable input{width:100%;max-width:130px;min-width:95px;border:1px solid #cedee3;padding:8px 10px;border-radius:9px;background:white;text-align:right;height:44px;font-size:16px}.inputtable input[type=text]{width:160px;max-width:none;min-width:145px;text-align:left}.inputtable input:focus,.setting input:focus{outline:2px solid #71d7c3;outline-offset:2px}.inputtable th:nth-child(1){width:210px}.tableline{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:16px 0 4px}.btnrow{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid transparent;border-radius:10px;min-height:44px;font-size:14px;font-weight:700;padding:9px 16px;transition:transform .15s,background .15s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--teal);color:white}.btn.primary:hover{background:var(--teal-dark)}.btn.secondary{background:#e9f2f5;color:#2e5768;border-color:#d5e4e9}.btn.secondary:hover{background:#d9ebef}.btn.outline{background:#fff;color:#25576b;border-color:#cadde3}.btn.active{background:#0d7c70;color:#fff;box-shadow:0 0 0 2px #a4e0d3}.btn.blue.active{background:var(--blue)}.btn:focus-visible{outline:3px solid #8eceec;outline-offset:2px}.status{padding:11px 15px;background:var(--mint);border-radius:10px;border:1px solid #cce8de;font-size:14px;color:#166e59;margin-top:13px}.status.error{background:#fff0ed;color:#ab3e35;border-color:#f0c0ba}.setting{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:15px}.setting label{font-size:14px;font-weight:700}.setting input{max-width:120px;height:41px;border:1px solid #cedde2;border-radius:9px;padding:6px 11px;text-align:right}.setting small{color:var(--muted);font-size:12px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stepbox{border:1px solid var(--edge);border-radius:14px;background:#fafcfd;padding:17px 18px}.stepbox h3{color:var(--navy);margin:0 0 8px;font-size:18px}.stepbox .value{font-weight:800;color:var(--teal-dark);font-size:26px;font-variant-numeric:tabular-nums}.equations{border:1px solid #cfe5e3;border-radius:12px;padding:15px 17px;background:#f1faf7;line-height:2}.equations b{color:#08766c}.stepbox table{font-size:13px}.stepbox th,.stepbox td{padding:9px}.stepbox thead th{font-size:12px}.cross td{background:#e3f6ed;font-weight:700}.chosen-result{border-radius:13px;padding:14px 20px;margin-top:14px;border:1px solid #c9e5d9;background:#eef9f4;font-size:16px}.chosen-result strong{color:#087767}
+.maptoolbar{display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap;margin-bottom:15px}.maptoolbar .btnrow .btn{font-size:13px}.select{border:1px solid #cfdfe4;border-radius:10px;background:#fff;min-height:43px;padding:7px 12px;font-weight:600;font-size:14px}.mapbox{border:1px solid #d9e5e8;border-radius:15px;background:#fbfdfd;overflow:hidden}.mapbox svg{width:100%;height:auto;display:block}.maplegend{display:flex;flex-wrap:wrap;gap:15px;margin-top:12px;font-size:13px;color:#526e7e}.legenddot{display:inline-block;width:11px;height:11px;border-radius:99px;vertical-align:middle;margin-right:5px}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}.routecard{background:#f7fafb;border:1px solid var(--edge);border-radius:12px;padding:14px 17px}.routecard strong{color:var(--navy)}.routecard .number{font-size:21px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--teal)}.routecard small{display:block;color:var(--muted);font-size:12px}.routecard p{margin:5px 0 0;font-size:14px}.chartbars{display:grid;gap:15px;margin:18px 0}.barrow{display:grid;grid-template-columns:175px 1fr 180px;gap:12px;align-items:center}.barlabel{font-size:14px;font-weight:700}.bartrack{height:32px;border-radius:7px;background:#eaf0f2;overflow:hidden}.barfill{height:100%;border-radius:7px;transition:width .3s}.barfill.blue{background:#697cce}.barfill.green{background:#1b9d88}.barval{font-size:15px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}.winner{background:#e8f7f1!important}.kpirow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.kpi{padding:17px;border:1px solid var(--edge);background:#f7fafb;border-radius:13px}.kpi small{font-size:13px;display:block;color:var(--muted)}.kpi b{display:block;font-size:23px;color:var(--navy)}.kpi.good{background:#effaf5;border-color:#c9e9dc}.kpi.good b{color:var(--teal)}.analysis{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:14px}.analysis article{background:#f4f8f9;border:1px solid var(--edge);border-radius:13px;padding:17px 19px}.analysis article h3{font-size:17px;margin:0 0 5px;color:var(--navy)}.analysis article p{margin:0;color:#4e6877;font-size:15px}.finalbox{background:linear-gradient(125deg,#ecf9f4,#e5f5f1);border:1px solid #bce3d5;padding:20px 23px;border-radius:14px;margin:17px 0}.finalbox h3{margin:0 0 6px;color:#096d61;font-size:21px}.finalbox p{margin:5px 0;color:#31596a}.quiz{display:grid;grid-template-columns:1fr 1fr;gap:14px}.question{border:1px solid var(--edge);border-radius:13px;padding:18px;background:#fbfdfd}.question h3{font-size:17px;color:var(--navy);margin:0 0 10px}.question label{display:block;margin:5px 0;font-size:15px;cursor:pointer}.question input{accent-color:var(--teal);margin-right:8px}.quizanswer{display:none;margin-top:11px;padding:11px 13px;border-radius:10px;background:#ebf8f4;border:1px solid #c8e8d9;font-size:14px}.quizanswer.visible{display:block}.quizanswer.bad{background:#fff5e7;border-color:#eed6a4}.footer{text-align:center;font-size:12px;color:var(--muted);margin-top:25px}.footer strong{color:var(--teal)}details{border-radius:11px;border:1px solid var(--edge);margin-top:12px;overflow:hidden}details summary{cursor:pointer;padding:12px 15px;font-size:15px;font-weight:700;background:#f5fafb;color:#28586a}details>div{padding:13px 17px;font-size:14px;color:#4f6a78}
+@media(max-width:1020px){.topinner{display:block}.topnav{margin-top:7px}.grid3{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.card{padding:22px}.barrow{grid-template-columns:145px 1fr 145px}.barval{font-size:13px}}
+@media(max-width:700px){body{font-size:15.5px}.wrap{padding:12px 12px 40px}.topinner{padding:10px 12px}.brand{font-size:17px}.topnav a{font-size:12px;padding:7px 8px}.hero{padding:25px 21px}.hero p{font-size:15px}.chips{gap:6px}.chips span{font-size:11px}.stats{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:11px 13px}.stat b{font-size:19px}section{scroll-margin-top:18px;margin-top:14px}.topbar{position:relative}.card{padding:18px 15px}.grid2,.grid3,.steps,.detailgrid,.analysis,.quiz{grid-template-columns:1fr}.head{margin-bottom:15px}.head p{font-size:14px}.kpirow{grid-template-columns:1fr}.btn{font-size:13px;padding:9px 12px}.maptoolbar{align-items:stretch}.mapbox{overflow-x:auto}.mapbox svg{width:790px;max-width:none}.barrow{grid-template-columns:1fr auto;gap:5px 9px}.bartrack{grid-column:1/-1;grid-row:2}.barval{text-align:right}.formula{font-size:15px}.inputtable input{font-size:14px}.tablebox table{font-size:13px}.tablebox th,.tablebox td{padding:9px}.stat .unit{display:block}}
+@media print{body{background:#fff;font-size:12px}.topbar,.tableline,.btnrow,.setting,.maptoolbar,.quiz,.footer,.no-print{display:none!important}.wrap{padding:0;max-width:none}.hero{background:#eef5f6!important;color:#143f51!important;border-radius:0;box-shadow:none;padding:14px}.hero p{color:#395869}.hero h1 span{color:#167a72}.hero .eyebrow,.chips span{color:#2c6473;border-color:#b7d3db}.card,.stat{box-shadow:none;break-inside:avoid;padding:13px}.grid2,.steps,.analysis{grid-template-columns:1fr 1fr}.section,section{margin-top:12px;scroll-margin-top:0}.head{margin-bottom:8px}.head h2{font-size:18px}.mapbox svg{max-height:360px}.tablebox{overflow:visible}.tablebox table{min-width:0!important;font-size:10px}.tablebox th,.tablebox td{padding:5px}.inputtable input{border:none;height:auto;font-size:11px;min-width:0;max-width:90px;padding:2px}.inputtable input[type=text]{width:110px;min-width:0}.stats{margin-top:8px}}
+
+/* v3 dynamic 3–6 sources and Euclidean/Rectilinear comparative lesson */
+.stats{grid-template-columns:repeat(5,minmax(0,1fr))}
+.stat{min-width:0}.stat b{font-size:clamp(17px,1.8vw,23px);white-space:nowrap}
+.center-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0 0;padding:15px 17px;border-radius:12px;background:#f0f8f7;border:1px solid #d4e9e5}
+.center-controls label{color:#245365;font-size:15px}
+.center-controls .select{min-width:128px}
+.inputtable{min-width:830px}.inputtable td:last-child,.inputtable th:last-child{text-align:center}
+.btn.remove-center{background:#fff2ed;color:#a25335;border-color:#f0d4c7;padding:7px 12px;min-height:37px;font-size:13px}
+.btn:disabled{opacity:.43;cursor:not-allowed;transform:none}
+.inputtable input[data-key="name"]{width:170px}
+.info.amber{background:#fff8ef;border-color:#f0dfc5}.info.amber h3{color:#985f23}
+.distance-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:19px 0}
+.distance-metrics article{border:1px solid #d9e7e8;background:#f8fbfb;border-radius:14px;padding:17px}
+.distance-metrics h3{font-size:17px;margin:2px 0 5px;color:#254e62}
+.distance-metrics p{margin:0 0 7px}.distance-metrics b{font-size:14px;color:#087567}
+.metric-icon{display:inline-grid;place-items:center;background:#e0f3ee;color:#087d71;font-size:28px;border-radius:10px;width:43px;height:43px}
+.microgrid{display:flex;justify-content:space-between;align-items:center;gap:7px;font-size:11px;color:#5d7784;margin-top:10px}
+.microgrid i{width:45%;height:35px;border:1px dashed #d6e3e6;position:relative;display:block}
+.grid-path:after{content:'';position:absolute;left:9px;right:9px;bottom:8px;top:6px;border-left:4px solid #089482;border-bottom:4px solid #089482}
+.straight-path:after{content:'';position:absolute;left:7px;right:7px;top:19px;border-top:4px solid #b67738;transform:rotate(-22deg)}
+.route-settings{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:15px;margin-bottom:15px;background:#f2f8f8;border:1px solid #dae8e8;border-radius:13px}
+.route-settings label{font-size:15px}.route-settings .select{min-width:min(100%,390px)}
+.compare-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#f1f8f7;border:1px solid #d4e8e6;border-radius:10px;margin-bottom:12px;padding:12px 15px;font-size:14px}
+.compare-top b{color:#086f66}.compare-top span{color:#4e6f7a}
+.stale{opacity:.38;pointer-events:none}
+#geoDetail table{min-width:460px}#crossMetric table{min-width:590px}
+@media(max-width:1050px){.stats{grid-template-columns:repeat(3,1fr)}.distance-metrics{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat b{font-size:17px}.distance-metrics{grid-template-columns:1fr}.center-controls{padding:12px;gap:8px}.inputtable{min-width:850px}.route-settings .select{width:100%}.stepbox .grid2{grid-template-columns:1fr}.compare-top{display:block}}
+@media print{.center-controls,.remove-center{display:none!important}.stats{grid-template-columns:repeat(3,1fr)}.distance-metrics{grid-template-columns:repeat(3,1fr)}.route-settings{display:none!important}}
+
+/* Lesson v4: one distance illustration for each location method, with identical A/B. */
+.theory-intro{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 23px}
+.theory-intro>div{display:flex;align-items:flex-start;gap:13px;border:1px solid #d8e8e8;background:#f3f9f9;padding:17px 18px;border-radius:13px}
+.theory-intro>div:first-child{background:#f6f7ff;border-color:#e0e3fb}
+.theory-intro b{font-size:17px;color:var(--navy);display:block;margin-bottom:4px}
+.theory-intro p{margin:0;font-size:15px;color:#4b6878;line-height:1.8}
+.theory-intro-symbol{font-size:25px;color:var(--teal-dark);background:#e0f4f0;min-width:45px;height:45px;display:grid;place-items:center;border-radius:11px}
+.learning-subtitle{font-size:20px;color:var(--navy);margin:0 0 13px}
+.method-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.method-card{display:flex;flex-direction:column;gap:9px;min-width:0;border-radius:17px;padding:19px 19px 17px;border:1px solid var(--edge);background:#f8fbfc}
+.method-card.method-cog{background:#f4f5ff;border-color:#dce0fb}.method-card.method-median{background:#eef9f4;border-color:#cfebdd}.method-card.method-geo{background:#fff8ef;border-color:#f3ddc2}
+.method-card .method-number{font-size:12px;font-weight:800;color:#186f69;letter-spacing:.15px}
+.method-card h3{margin:0;color:var(--navy);font-size:19px;line-height:1.46;min-height:70px}
+.method-card h3 small{font-size:14px;font-weight:600;display:block;margin-top:3px;color:#567383}
+.method-card>p{font-size:15px;margin:0;line-height:1.8;min-height:109px}
+.method-card .formula{font-size:clamp(15px,1.5vw,19px);line-height:1.6;padding:12px 8px;min-height:79px;display:grid;align-content:center;margin:0}
+.method-kind{font-weight:750;font-size:14px;line-height:1.55;border-radius:8px;padding:7px 9px;align-self:flex-start}
+.kind-euclid{color:#975e24;background:#fbe9d6}.kind-rect{color:#0b7766;background:#d7f2e8}
+.method-figure{margin-top:auto;background:#ffffff9c;border:1px solid #dce7ea;border-radius:12px;padding:12px 11px 10px}
+.method-figure>b{display:block;color:#315a68;font-size:13px;margin-bottom:8px}
+.route-mini-svg{display:block;width:100%;height:auto;max-width:360px;margin:auto;overflow:visible}
+.method-figure>span{display:block;text-align:center;font-size:13px;margin-top:7px;color:#466372}
+.method-figure>span strong{color:var(--teal-dark)}
+.method-card p.method-tip{min-height:0;margin:0;font-size:13px;color:#526e7d;border-top:1px dashed #c7d9de;padding-top:10px}
+.mini-comparison{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;background:#eff7f8;border:1px solid #d7e8ea;border-radius:12px;padding:14px 17px;font-size:15px}
+.mini-comparison>b{color:var(--navy);flex-basis:100%}.mini-comparison strong{color:var(--teal-dark)}
+.network-note{margin-top:16px;display:flex;gap:14px;align-items:flex-start;border:1px solid #ecd8b9;background:#fff9ed;border-radius:13px;padding:17px 19px}
+.network-note h3{font-size:18px;margin:0 0 6px;color:#885d28}.network-note p{font-size:15px;margin:0;color:#5a6570}
+.network-icon{font-size:25px;min-width:43px;height:43px;background:#fff0d8;border-radius:10px;display:grid;place-items:center}
+.learning-track{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid var(--edge);padding:12px 15px;border-radius:13px;margin-top:16px;font-size:13px}
+.learning-track b{color:var(--navy);margin-right:8px}.learning-track a{color:#136a65;text-decoration:none;background:#eaf6f3;border-radius:8px;padding:5px 10px;font-weight:700}.learning-track a:hover{text-decoration:underline}
+@media(max-width:1080px){.method-cards{grid-template-columns:1fr 1fr}.method-card h3,.method-card>p{min-height:0}}
+@media(max-width:710px){.method-cards,.theory-intro{grid-template-columns:1fr}.method-card{padding:17px}.method-card h3{min-height:0}.method-card>p{min-height:0}.theory-intro>div{padding:14px}.learning-track{gap:7px}.learning-track a{padding:4px 8px}.network-note{padding:14px}.network-note h3{font-size:16px}}
+@media print{.method-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.method-card{break-inside:avoid}.method-card h3{min-height:0;font-size:13px}.method-card p{font-size:11px!important;min-height:0}.network-note,.theory-intro>div{break-inside:avoid}.learning-track{display:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topinner"><div class="brandgroup"><a href="../index.html" class="home" title="กลับหน้าหลัก" aria-label="กลับหน้าหลัก"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h6v-7h2v7h6V9"/></svg></a><a href="#home" class="brand"><span class="icon">⌖</span><span>PlantLoc <span style="color:#8de8da">LEARN</span><small>FACILITY LOCATION · 3 METHODS</small></span></a></div><nav class="topnav" aria-label="เมนูบทเรียน"><a href="#case">ข้อมูลโจทย์</a><a href="#theory">ระยะทางและวิธี</a><a href="#steps">วิธีคำนวณ</a><a href="#routes">เส้นทาง</a><a href="#comparison">เปรียบเทียบ</a><a href="#conclusion">บทสรุป</a><a href="#exercise">แบบฝึกหัด</a></nav></div></header>
+<main id="home" class="wrap">
+<div class="hero"><span class="eyebrow">Interactive Engineering Lesson · Facility Location</span><h1>เลือกทำเลโรงงานด้วย <span>3 วิธี</span><br><span style="font-size:.57em;color:#eefaf9">Center of Gravity · Weighted Median · Geometric Median</span></h1><p>เรียนรู้การเลือกทำเลโรงงานจากศูนย์รวบรวม <b>3–6 แห่ง</b> ด้วย 3 วิธี พร้อมเปรียบเทียบ <b>ระยะทางถนนกริด Rectilinear</b> และ <b>ระยะทางเส้นตรง Euclidean</b> มีสูตร ตารางคำนวณทีละขั้น แผนภาพการเดินทาง และเหตุผลในการเลือกทำเลที่สอดคล้องกับรูปแบบระยะทาง</p><div class="chips"><span>✓ คำนวณในเบราว์เซอร์</span><span>✓ ไม่ต้อง Excel Solver</span><span>✓ เพิ่ม–ลดศูนย์ 3–6 แห่ง</span><span>✓ เลือก Rectilinear / Euclidean</span><span>✓ แผนภาพ SVG</span><span>✓ ใช้ได้บนมือถือ</span></div></div>
+<div class="stats"><div class="stat"><small>จำนวนศูนย์รับวัตถุดิบ</small><b id="statSources">4</b><span class="unit">แห่ง</span></div><div class="stat"><small>ปริมาณขนส่งรวม</small><b id="statTon">1,000</b><span class="unit">ตัน/วัน</span></div><div class="stat"><small>พิกัดวิธีจุดศูนย์ถ่วง</small><b id="statCOG">(52, 74)</b><span class="unit">กม.</span></div><div class="stat"><small>พิกัดวิธีมัธยฐานถ่วงน้ำหนัก</small><b id="statMED">(60, 40)</b><span class="unit">กม.</span></div><div class="stat"><small>พิกัด Geometric Median</small><b id="statGEO">—</b><span class="unit">กม.</span></div></div>
+
+<div class="learning-track" aria-label="ลำดับการเรียนรู้"><b>📖 เรียนตามลำดับ</b><a href="#case">1. อ่านโจทย์</a><a href="#theory">2. เลือกระยะทางและวิธี</a><a href="#steps">3. คำนวณ</a><a href="#routes">4. ดูเส้นทาง</a><a href="#comparison">5. เปรียบเทียบ</a><a href="#conclusion">6. สรุปตัดสินใจ</a></div>
+<section id="case"><div class="card"><div class="head"><span class="overline">01 / Case Study & Editable Data</span><h2>โจทย์กรณีศึกษา: โรงงานแปรรูปส่วนกลางแห่งใหม่</h2><p>บริษัท อีสานการเกษตร จำกัด ต้องการตั้งโรงงานเพื่อรับวัตถุดิบจากศูนย์รวบรวมสินค้าเกษตร โดยเริ่มจากข้อมูลต้นฉบับ 4 แห่ง และทดลองปรับจำนวนเป็น 3–6 แห่งได้</p></div>
+<p>กำหนดให้ <b>(Xᵢ, Yᵢ)</b> เป็นพิกัดของศูนย์รวบรวม <b>Wᵢ</b> เป็นปริมาณขนส่ง (ตัน/วัน) และต้องหา <b>(X, Y)</b> ของโรงงานส่วนกลางเพื่อเปรียบเทียบภาระการขนส่งของแต่ละวิธีตามสมมติฐานระยะทาง</p>
+<div class="tablebox"><table class="inputtable" aria-label="ข้อมูลพิกัดและวัตถุดิบที่แก้ไขได้"><thead><tr><th>ศูนย์รวบรวมวัตถุดิบ</th><th>พิกัด X (กม.)</th><th>พิกัด Y (กม.)</th><th>วัตถุดิบ Wᵢ (ตัน/วัน)</th><th class="no-print">จัดการ</th></tr></thead><tbody id="inputBody"></tbody><tfoot><tr><th colspan="3">ปริมาณวัตถุดิบรวม ΣWᵢ</th><th id="inputTotal">1,000</th><th class="no-print">—</th></tr></tfoot></table></div>
+<div class="center-controls"><label for="sourceCount"><b>จำนวนศูนย์รวบรวม</b></label><select id="sourceCount" class="select" aria-label="เลือกจำนวนศูนย์รวบรวม"><option value="3">3 แห่ง</option><option value="4" selected>4 แห่ง</option><option value="5">5 แห่ง</option><option value="6">6 แห่ง</option></select><button type="button" class="btn secondary" id="addCenterBtn">＋ เพิ่มศูนย์</button><span id="centerCountInfo" class="tiny" aria-live="polite">ปัจจุบัน 4 แห่ง</span></div>
+<div class="tableline"><div class="btnrow"><button class="btn primary" id="calcBtn" type="button">▶ คำนวณใหม่และเปรียบเทียบ</button><button class="btn secondary" id="resetBtn" type="button">↺ คืนค่าโจทย์ต้นฉบับ</button></div><div class="btnrow"><button class="btn outline" id="sampleBtn" type="button">🔁 ทดลองเพิ่มวัตถุดิบขอนแก่น</button></div></div>
+<div class="setting"><label for="rate">อัตราค่าขนส่ง (สมมติ)</label><input id="rate" type="number" min="0" step="0.1" value="1" aria-label="อัตราค่าขนส่ง บาทต่อตันกิโลเมตร"><span>บาท/(ตัน·กม.)</span><label for="days">วันดำเนินงานต่อปี</label><input id="days" type="number" min="1" max="366" step="1" value="300" aria-label="จำนวนวันดำเนินงานต่อปี"><span>วัน</span></div>
+<div class="status" id="status" role="status" aria-live="polite">พร้อมคำนวณจากโจทย์ต้นฉบับ</div>
+<div class="note warn" style="margin-top:15px"><strong>ข้อจำกัดของข้อมูลต้นฉบับ:</strong> พิกัดตัวเลขในโจทย์ไม่มีการระบุตำแหน่ง GPS หรือโครงข่ายถนนจริง จึงยังไม่สามารถคำนวณระยะทางขับรถบนถนนจริงได้โดยตรง บทเรียนนี้ใช้ <b>Rectilinear Distance</b> เพื่อจำลองถนนแนวตั้ง–แนวนอนที่เชื่อมต่อกันทั้งหมด ไม่ได้อ้างว่าเป็นเส้นทางบนแผนที่จริง</div>
+</div></section>
+
+<section id="theory"><div class="card">
+<div class="head"><span class="overline">02 / Understand Distance → Choose Method</span><h2>เข้าใจลักษณะการเดินทางก่อนเลือกวิธีคำนวณ</h2><p>เริ่มจากรูปแบบระยะทาง แล้วจึงเลือกวิธีหาทำเลที่ตั้งโรงงาน · ภาพทั้ง 3 ใช้ต้นทาง A และปลายทาง B <b>ตำแหน่งเดียวกัน</b> เพื่อเปรียบเทียบได้ชัดเจน</p></div>
+<div class="theory-intro" aria-label="สรุปความเชื่อมโยงรูปแบบระยะทางกับวิธีคำนวณ">
+<div><span class="theory-intro-symbol">↗</span><div><b>กรณีเดินทางเส้นตรง (Euclidean)</b><p>COG ใช้หาจุดเริ่มต้น → Geometric Median ใช้หาค่าต่ำสุดของระยะทางเส้นตรงรวมถ่วงน้ำหนัก</p></div></div>
+<div><span class="theory-intro-symbol">▦</span><div><b>กรณีถนนกริด (Rectilinear)</b><p>ใช้ Weighted Median หาค่าต่ำสุดของระยะทางตามแกน X และ Y รวมถ่วงน้ำหนัก</p></div></div>
+</div>
+<h3 class="learning-subtitle">ทำความรู้จัก 3 วิธี — เรียงจากวิธีพื้นฐานสู่การหาค่าเหมาะสมที่สุด</h3>
+<div class="method-cards">
+<article class="method-card method-cog">
+<span class="method-number">วิธีที่ 1 · หาตำแหน่งเบื้องต้น</span><h3>จุดศูนย์ถ่วง <small>(Center of Gravity: COG)</small></h3>
+<div class="method-kind kind-euclid">↗ เส้นตรง / Euclidean · ใช้เป็นตำแหน่งประมาณ</div>
+<p>นำพิกัดของศูนย์รวบรวมมาเฉลี่ยแบบถ่วงน้ำหนักตามปริมาณวัตถุดิบ <b>คำนวณง่ายและเหมาะเป็นจุดตั้งต้น</b> แต่ไม่รับประกันว่าผลรวมระยะทางเส้นตรงถ่วงน้ำหนักต่ำที่สุด</p>
+<div class="formula">X̄ = Σ(WᵢXᵢ)/ΣWᵢ<br>Ȳ = Σ(WᵢYᵢ)/ΣWᵢ</div>
+<div class="method-figure"><b>รูปแบบระยะทางที่นำมาประเมิน</b><svg class="route-mini-svg" viewBox="0 0 320 155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ตัวอย่างเส้นทางจาก A พิกัด 0,0 ไป B พิกัด 40,30 : ระยะทางเส้นตรง 50 กิโลเมตร">
+    <defs><marker id="arrow-cog" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L6 3 L0 6 Z" fill="#b77534"/></marker></defs>
+    <rect x="1" y="1" width="318" height="153" rx="11" fill="#ffffff" stroke="#d5e5e7"/>
+    <path d="M40 115 H267 V30" fill="none" stroke="#e8eef1" stroke-width="1.5"/>
+    <path d="M40 115 H267 V30" fill="none" stroke="#a6b7c0" stroke-dasharray="5 6" stroke-width="2"/><path d="M40 115 L267 30" fill="none" stroke="#b77534" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-cog)"/>
+    <circle cx="40" cy="115" r="6" fill="#173d52" stroke="white" stroke-width="2"/>
+    <circle cx="267" cy="30" r="6" fill="#173d52" stroke="white" stroke-width="2"/>
+    <text x="17" y="140" fill="#264b5e" font-size="13" font-weight="700">A (0,0)</text>
+    <text x="204" y="17" fill="#264b5e" font-size="13" font-weight="700">B (40,30)</text>
+    <rect x="110" y="70" width="91" height="31" rx="9" fill="#fff0df" opacity=".97"/>
+    <text x="155" y="90" fill="#b77534" text-anchor="middle" font-size="16" font-weight="800">50 กม.</text>
+    <text x="222" y="143" fill="#66808b" text-anchor="middle" font-size="11">ΔX = 40 · ΔY = 30</text>
+    </svg><span>ตัวอย่าง A → B : d = √(40² + 30²) = <strong>50 กม.</strong></span></div>
+<p class="method-tip">ข้อเท็จจริง: COG ทำให้ <b>ผลรวมระยะทางยุคลิดกำลังสองถ่วงน้ำหนัก</b> ต่ำสุด ไม่ใช่ผลรวมระยะทางแบบไม่ยกกำลังสอง</p>
+</article>
+<article class="method-card method-median">
+<span class="method-number">วิธีที่ 2 · คำตอบดีที่สุดสำหรับถนนกริด</span><h3>มัธยฐานถ่วงน้ำหนัก <small>(Weighted Median)</small></h3>
+<div class="method-kind kind-rect">▦ ถนนกริด / Rectilinear · ค่าต่ำสุด</div>
+<p>เรียงพิกัด <b>X และ Y แยกกัน</b> แล้วหาพิกัดที่น้ำหนักสะสมถึงครึ่งหนึ่งของปริมาณรวม ให้ภาระขนส่งต่ำสุดสำหรับถนนแบบตารางสมบูรณ์</p>
+<div class="formula">Min L₁ = ΣWᵢ (|X−Xᵢ| + |Y−Yᵢ|)</div>
+<div class="method-figure"><b>รูปแบบระยะทางที่เหมาะสม</b><svg class="route-mini-svg" viewBox="0 0 320 155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ตัวอย่างเส้นทางจาก A พิกัด 0,0 ไป B พิกัด 40,30 : ระยะทางถนนกริด 70 กิโลเมตร">
+    <defs><marker id="arrow-median" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L6 3 L0 6 Z" fill="#078c78"/></marker></defs>
+    <rect x="1" y="1" width="318" height="153" rx="11" fill="#ffffff" stroke="#d5e5e7"/>
+    <path d="M40 115 H267 V30" fill="none" stroke="#e8eef1" stroke-width="1.5"/>
+    <path d="M40 115 H267 V30" fill="none" stroke="#078c78" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-median)"/>
+    <circle cx="40" cy="115" r="6" fill="#173d52" stroke="white" stroke-width="2"/>
+    <circle cx="267" cy="30" r="6" fill="#173d52" stroke="white" stroke-width="2"/>
+    <text x="17" y="140" fill="#264b5e" font-size="13" font-weight="700">A (0,0)</text>
+    <text x="204" y="17" fill="#264b5e" font-size="13" font-weight="700">B (40,30)</text>
+    <rect x="110" y="70" width="91" height="31" rx="9" fill="#dff5ee" opacity=".97"/>
+    <text x="155" y="90" fill="#078c78" text-anchor="middle" font-size="16" font-weight="800">70 กม.</text>
+    <text x="222" y="143" fill="#66808b" text-anchor="middle" font-size="11">ΔX = 40 · ΔY = 30</text>
+    </svg><span>ตัวอย่าง A → B : d = 40 + 30 = <strong>70 กม.</strong></span></div>
+<p class="method-tip">เหมาะสำหรับแบบจำลองถนนที่เดินแนวนอน–แนวตั้งได้ต่อเนื่อง ไม่ได้หมายความว่าเป็นระยะทางขับรถจริงบนถนนทุกแห่ง</p>
+</article>
+<article class="method-card method-geo">
+<span class="method-number">วิธีที่ 3 · คำตอบดีที่สุดสำหรับเส้นตรง</span><h3>มัธยฐานเชิงเรขาคณิต <small>(Geometric Median)</small></h3>
+<div class="method-kind kind-euclid">↗ เส้นตรง / Euclidean · ค่าต่ำสุด</div>
+<p>ค้นหาพิกัดที่ทำให้ <b>ผลรวมระยะทางเส้นตรงถ่วงน้ำหนักต่ำที่สุด</b> ใช้วิธีทำซ้ำ Modified Weiszfeld โดยเริ่มจาก COG ได้</p>
+<div class="formula">Min L₂ = ΣWᵢ √[(X−Xᵢ)²+(Y−Yᵢ)²]</div>
+<div class="method-figure"><b>รูปแบบระยะทางที่เหมาะสม</b><svg class="route-mini-svg" viewBox="0 0 320 155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ตัวอย่างเส้นทางจาก A พิกัด 0,0 ไป B พิกัด 40,30 : ระยะทางเส้นตรง 50 กิโลเมตร">
+    <defs><marker id="arrow-geo" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L6 3 L0 6 Z" fill="#b77534"/></marker></defs>
+    <rect x="1" y="1" width="318" height="153" rx="11" fill="#ffffff" stroke="#d5e5e7"/>
+    <path d="M40 115 H267 V30" fill="none" stroke="#e8eef1" stroke-width="1.5"/>
+    <path d="M40 115 H267 V30" fill="none" stroke="#a6b7c0" stroke-dasharray="5 6" stroke-width="2"/><path d="M40 115 L267 30" fill="none" stroke="#b77534" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-geo)"/>
+    <circle cx="40" cy="115" r="6" fill="#173d52" stroke="white" stroke-width="2"/>
+    <circle cx="267" cy="30" r="6" fill="#173d52" stroke="white" stroke-width="2"/>
+    <text x="17" y="140" fill="#264b5e" font-size="13" font-weight="700">A (0,0)</text>
+    <text x="204" y="17" fill="#264b5e" font-size="13" font-weight="700">B (40,30)</text>
+    <rect x="110" y="70" width="91" height="31" rx="9" fill="#fff0df" opacity=".97"/>
+    <text x="155" y="90" fill="#b77534" text-anchor="middle" font-size="16" font-weight="800">50 กม.</text>
+    <text x="222" y="143" fill="#66808b" text-anchor="middle" font-size="11">ΔX = 40 · ΔY = 30</text>
+    </svg><span>ตัวอย่าง A → B : d = √(40² + 30²) = <strong>50 กม.</strong></span></div>
+<p class="method-tip">ผลลัพธ์อาจอยู่คนละจุดกับ COG เพราะแก้โจทย์ลด <b>ระยะทางรวม</b> ไม่ใช่ระยะทางกำลังสองรวม</p>
+</article>
+</div>
+<div class="mini-comparison" role="note"><b>สรุปตัวอย่างเดียวกัน: A = (0,0), B = (40,30)</b><span>↗ เส้นตรง <strong>50 กม.</strong></span><span>▦ ถนนกริด <strong>70 กม.</strong></span><span class="tiny">ความแตกต่างมาจากวิธีวัดระยะทาง ไม่ใช่พิกัดต้นทางหรือปลายทาง</span></div>
+<div class="network-note"><span class="network-icon">🚚</span><div><h3>เส้นทางขนส่งจริง (Actual Road / Shipping / Air Network)</h3><p>การขนส่งจริงอาจมีถนนไม่เป็นกริด เส้นทางอ้อม สิ่งกีดขวาง ชายฝั่ง ร่องน้ำ และข้อจำกัดด้านการบิน จึงต้องใช้ <b>ข้อมูลโครงข่ายเส้นทางจริง (Routing / Network Distance)</b> ประเมินเพิ่มเติม ไม่ควรนำระยะทางจำลองทั้งสองแบบไปใช้แทนระยะทางขับรถหรือเดินเรือโดยตรง</p></div></div>
+<details><summary>เหตุใด Weighted Median จึงเหมาะกับถนนกริด แต่ Geometric Median เหมาะกับเส้นตรง?</summary><div>ผลรวมระยะทาง Rectilinear แยกเป็น <b>ΣWᵢ|X−Xᵢ| + ΣWᵢ|Y−Yᵢ|</b> ได้ จึงแก้แต่ละแกนด้วยมัธยฐานถ่วงน้ำหนักอย่างอิสระ ส่วน Euclidean มี <b>√[(X−Xᵢ)²+(Y−Yᵢ)²]</b> ทำให้แกน X และ Y สัมพันธ์กัน ต้องหาจุดต่ำสุดร่วมกันด้วย Geometric Median · ทั้งสองวิธีตั้งอยู่บนสมมติฐานว่าสามารถเลือกตำแหน่งโรงงานได้อิสระบนระนาบ</div></details>
+</div></section>
+
+<section id="steps"><div class="card"><div class="head"><span class="overline">03 / Transparent step-by-step calculations</span><h2>ลงมือคำนวณตามลำดับ: COG → Weighted Median → Geometric Median</h2><p>ทุกตารางจะคำนวณใหม่เมื่อปรับข้อมูล 3–6 ศูนย์ ทั้งสูตรค่าเฉลี่ย น้ำหนักสะสม และผลคำนวณเชิงตัวเลข</p></div>
+<div class="steps"><div class="stepbox"><h3>① Center of Gravity · ค่าเฉลี่ยถ่วงน้ำหนัก</h3><div class="tablebox" id="cogDetail"></div><div class="equations" id="cogMath" style="margin-top:12px"></div></div>
+<div class="stepbox"><h3>② Weighted Median · สะสมถึง 50% แยก X, Y</h3><p id="halfNote" style="font-size:14px;color:var(--muted);margin:6px 0 12px"></p><b>แกน X</b><div class="tablebox" id="medianX"></div><b style="display:block;margin-top:12px">แกน Y</b><div class="tablebox" id="medianY"></div><div class="equations" id="medianMath" style="margin-top:12px"></div></div></div>
+<div class="stepbox" style="margin-top:17px"><h3>③ Geometric Median · วิธีวนซ้ำ Modified Weiszfeld (หัวข้อเสริม)</h3><p>ตั้งต้นที่จุดศูนย์ถ่วง แล้วใช้ค่าน้ำหนักกลับตามระยะทางเพื่อขยับพิกัดทีละรอบ จนตำแหน่งเปลี่ยนแปลงน้อยมาก การตรวจสอบพิเศษเมื่ออยู่ตรงกับศูนย์รวบรวมช่วยป้องกันการหารด้วยศูนย์</p>
+<div class="formula" style="text-align:left">X₍ₖ₊₁₎ = [Σ(WᵢXᵢ / dᵢ₍ₖ₎)] / [Σ(Wᵢ / dᵢ₍ₖ₎)]<br>Y₍ₖ₊₁₎ = [Σ(WᵢYᵢ / dᵢ₍ₖ₎)] / [Σ(Wᵢ / dᵢ₍ₖ₎)]<div class="tiny" style="color:#cbe3e9">สูตรข้างต้นใช้เมื่อพิกัดปัจจุบันไม่ทับกับศูนย์ใด; กรณีทับซ้อนใช้ขั้นตอน Modified Weiszfeld</div></div>
+<div class="grid2"><div id="geoSummary" class="equations"></div><div class="tablebox" id="geoDetail"></div></div><p class="tiny">ค่าของ Geometric Median แสดงเป็นค่าประมาณ 2 ตำแหน่ง แต่โปรแกรมเก็บความละเอียดเต็มระหว่างคำนวณและเปรียบเทียบ</p></div>
+<div class="chosen-result" id="stepSummary"></div>
+</div></section>
+
+<section id="routes"><div class="card"><div class="head"><span class="overline">04 / Interactive route simulator</span><h2>ดูเส้นทางจริงในแบบจำลอง: จากศูนย์รวบรวมถึงโรงงาน</h2><p>เลือกชนิดระยะทางและวิธีคำนวณเพื่อดูผลของศูนย์ 3–6 แห่งบนพิกัดเดียวกัน เส้นทางที่วาดเป็นแบบจำลอง ไม่ใช่แผนที่นำทางจริง</p></div>
+<div class="route-settings"><label for="metricSelect"><b>รูปแบบระยะทางที่จะใช้ตัดสินใจ</b></label><select id="metricSelect" class="select" aria-label="เลือกชนิดระยะทาง"><option value="rect">▦ Rectilinear — ถนนกริดแนวตั้ง/แนวนอน</option><option value="euclid">↗ Euclidean — เส้นตรงในระนาบ</option></select><span class="tiny">เมื่อเปลี่ยนรูปแบบ ระบบจะเลือกแสดงตำแหน่งจากวิธีที่ให้ภาระขนส่งต่ำสุดตามเกณฑ์ระยะทางที่เลือกโดยอัตโนมัติ</span></div>
+<div class="maptoolbar"><div class="btnrow"><button type="button" class="btn outline blue" id="viewCOG" aria-pressed="false">● Center of Gravity</button><button type="button" class="btn outline" id="viewMEDIAN" aria-pressed="true">● Weighted Median</button><button type="button" class="btn outline" id="viewGEO" aria-pressed="false">● Geometric Median</button></div><div><label for="routeMode" class="tiny" style="font-weight:700">ลำดับการเดินทางบนกริด:</label> <select id="routeMode" class="select"><option value="h">แนวนอน → แนวตั้ง</option><option value="v">แนวตั้ง → แนวนอน</option></select></div></div>
+<div class="mapbox"><svg id="mapSvg" viewBox="0 0 1040 610" role="img" aria-label="แผนภาพเส้นทาง 3 ถึง 6 ศูนย์ และพิกัดโรงงานสามวิธี"></svg></div>
+<p id="routingExplanation" class="tiny" style="margin:9px 0 0"></p><div class="maplegend"><span><i class="legenddot" style="background:#ce8b48"></i>ศูนย์รวบรวม</span><span><i class="legenddot" style="background:#6674ce"></i>COG</span><span><i class="legenddot" style="background:#0b947b"></i>Weighted Median</span><span><i class="legenddot" style="background:#c57835"></i>Geometric Median</span></div>
+<div class="chosen-result" id="routeTotal"></div><div class="detailgrid" id="routeBreakdown"></div>
+<div class="note"><b>ชวนคิด:</b> เมื่อเลือก Rectilinear การเดินแนวนอนก่อนหรือแนวตั้งก่อนให้ระยะทางเท่ากันเฉพาะกริดสมบูรณ์ เมื่อเลือก Euclidean โปรแกรมวาดเส้นตรงระหว่างพิกัด ในโลกจริงต้องตรวจเส้นทางขนส่งจากโครงข่ายจริงก่อนใช้ลงทุน</div>
+</div></section>
+
+<section id="comparison"><div class="card"><div class="head"><span class="overline">05 / Same-metric comparison</span><h2>เปรียบเทียบภาระขนส่งโดยใช้ระยะทางชนิดเดียวกัน</h2><p>ประเมินพิกัดจากทั้ง 3 วิธีด้วยเกณฑ์ระยะทางเดียวกันเสมอ แม้บางวิธีไม่ได้ออกแบบมาให้ดีที่สุดสำหรับเกณฑ์นั้น เพื่อเรียนรู้ความแตกต่างอย่างเป็นธรรม</p></div>
+<div class="compare-top"><b>กำลังประเมิน: <span id="metricTitle">ถนนกริด Rectilinear</span></b><span id="comparisonHint">วิธีที่เหมาะสมขึ้นกับรูปแบบระยะทาง</span><div id="metricQuick" class="btnrow"><button class="btn outline active" data-metric="rect" type="button" aria-pressed="true">▦ ถนนกริด</button><button class="btn outline" data-metric="euclid" type="button" aria-pressed="false">↗ เส้นตรง</button></div></div>
+<div class="tablebox" id="comparisonTable"></div><h3 style="font-size:19px;color:var(--navy);margin:22px 0 10px">กราฟภาระขนส่งรวม (ตัน·กม./วัน)</h3><div class="chartbars" id="bars"></div>
+<div class="kpirow"><div class="kpi"><small>ภาระขนส่งวิธี COG</small><b id="kpiCOG">—</b><span class="tiny">ตัน·กม./วัน</span></div><div class="kpi good"><small id="kpiBestLabel">ภาระขนส่งวิธีที่เหมาะสม</small><b id="kpiMED">—</b><span class="tiny">ตัน·กม./วัน</span></div><div class="kpi good"><small>ภาระขนส่งที่ลดลงเทียบกับ COG</small><b id="kpiSaving">—</b><span class="tiny" id="kpiSavingPct">—</span></div></div>
+<div class="note good" style="margin-top:14px" id="costSummary"></div>
+<h3 style="font-size:19px;margin:23px 0 9px;color:var(--navy)">ตารางเปรียบเทียบข้ามโมเดล (3 วิธี × 2 ระยะทาง)</h3><p class="tiny">เครื่องหมาย ★ ระบุวิธีที่เหมาะสมกับฟังก์ชันวัตถุประสงค์ในแต่ละคอลัมน์ ไม่ควรนำตัวเลขต่างชนิดระยะทางมาหักลบเป็นผลประหยัดโดยตรง</p><div class="tablebox" id="crossMetric"></div>
+</div></section>
+
+<section id="conclusion"><div class="card"><div class="head"><span class="overline">06 / Engineering Decision</span><h2>บทวิเคราะห์และข้อเสนอแนะในการเลือกทำเล</h2><p>ข้อเสนอแนะและเหตุผลจะเปลี่ยนตามระยะทางที่เลือก พร้อมตรวจสอบความเหมาะสมเชิงวิศวกรรม</p></div>
+<div class="finalbox" id="finalResult"></div><div class="analysis" id="analysisCards"></div>
+<h3 style="font-size:19px;margin:24px 0 9px;color:var(--navy)">เงื่อนไขก่อนนำผลไปใช้ก่อสร้างจริง</h3><div class="grid2"><div class="note warn"><strong>การหาตำแหน่งบนถนนจริง:</strong> ต้องทราบพิกัดภูมิศาสตร์ของศูนย์รวบรวมทั้งหมดและใช้ข้อมูลโครงข่ายถนน (Road Network) เพื่อคำนวณระยะทางขับขี่จริง รวมถึงเลือกตำแหน่งที่ก่อสร้างโรงงานได้จริง ไม่ควรนำพิกัดจำลอง (X,Y) ไปถือเป็นพิกัด GPS</div><div class="note"><strong>ปัจจัยเพิ่มเติม:</strong> ราคาที่ดิน น้ำท่วม สาธารณูปโภค การเข้าถึงทางหลวง ระยะเวลาขนส่ง รถบรรทุกหนัก กฎหมายผังเมือง ต้นทุนลงทุน และการเติบโตของปริมาณวัตถุดิบ เป็นเงื่อนไขที่ยังไม่ได้อยู่ในตัวแบบนี้</div></div>
+</div></section>
+
+<section id="exercise"><div class="card"><div class="head"><span class="overline">07 / Review & Mini Quiz</span><h2>แบบทดสอบหลังเรียน</h2><p>เลือกคำตอบแล้วตรวจทันที เพื่อทบทวนแนวคิดสำคัญก่อนนำไปแก้โจทย์อื่น</p></div><div class="quiz"><div class="question"><h3>ข้อ 1 · วิธีใดให้ค่าต่ำสุดของผลรวม Wᵢ(|X−Xᵢ|+|Y−Yᵢ|)?</h3><label><input type="radio" name="q1" value="a">Center of Gravity</label><label><input type="radio" name="q1" value="b">Weighted Median</label><label><input type="radio" name="q1" value="c">ทั้งสองวิธีต้องได้ค่าเท่ากันเสมอ</label><button type="button" class="btn secondary" data-quiz="1">ตรวจคำตอบข้อ 1</button><div id="feedback1" class="quizanswer"></div></div><div class="question"><h3>ข้อ 2 · Rectilinear Distance จาก (20,30) ไป (60,40) เท่ากับกี่กม.?</h3><label><input type="radio" name="q2" value="a">ประมาณ 41.23 กม.</label><label><input type="radio" name="q2" value="b">50 กม.</label><label><input type="radio" name="q2" value="c">70 กม.</label><button type="button" class="btn secondary" data-quiz="2">ตรวจคำตอบข้อ 2</button><div id="feedback2" class="quizanswer"></div></div><div class="question"><h3>ข้อ 3 · หากเดินทางแบบเส้นตรงในระนาบ และต้องการลด ΣWᵢdᵢ วิธีใดเหมาะสมที่สุด?</h3><label><input type="radio" name="q3" value="a">Center of Gravity ทุกกรณี</label><label><input type="radio" name="q3" value="b">Weighted Median ของ X และ Y</label><label><input type="radio" name="q3" value="c">Geometric Median</label><button type="button" class="btn secondary" data-quiz="3">ตรวจคำตอบข้อ 3</button><div id="feedback3" class="quizanswer"></div></div></div>
+<div class="tableline"><div class="btnrow"><button class="btn outline" id="csvBtn" type="button">↓ ส่งออกผลคำนวณ CSV</button><button class="btn outline" id="printBtn" type="button">⎙ พิมพ์ / บันทึกเป็น PDF</button></div></div></div></section>
+<footer class="footer"><strong>PlantLoc LEARN</strong> · 3–6 Centers · Center of Gravity / Weighted Median / Geometric Median · Rectilinear / Euclidean Distance · สื่อการสอนวิศวกรรมอุตสาหการ<br>ไฟล์ HTML เดียว · ไม่ใช้ไลบรารีภายนอกในการคำนวณ · กรณีศึกษาตามข้อมูลที่ผู้ใช้ให้มา · พิกัดเป็นข้อมูลจำลอง ไม่ใช่ถนนจริง</footer>
+</main>
+<script>
+'use strict';
+/* พิกัดในโจทย์เป็นระบบคาร์ทีเซียนสมมติ (กม.) ไม่ใช่ GPS หรือถนนจริง */
+const ORIGINAL=[
+  {name:'ศูนย์โคราช',x:20,y:30,w:400},
+  {name:'ศูนย์ขอนแก่น',x:80,y:120,w:300},
+  {name:'ศูนย์อุดรธานี',x:80,y:180,w:100},
+  {name:'ศูนย์บุรีรัมย์',x:60,y:40,w:200}
+];
+const EXTRA=[
+  {name:'ศูนย์ชัยภูมิ',x:40,y:100,w:150},
+  {name:'ศูนย์สุรินทร์',x:110,y:45,w:120}
+];
+const MIN_CENTERS=3,MAX_CENTERS=6;
+const $=id=>document.getElementById(id);
+const fmt=(v,n=2)=>Number(Math.abs(v)<1e-10?0:v).toLocaleString('en-US',{maximumFractionDigits:n});
+const fix=(v,n=2)=>Number(v).toLocaleString('en-US',{minimumFractionDigits:n,maximumFractionDigits:n});
+const sum=a=>a.reduce((v,x)=>v+x,0);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const near=(a,b)=>Math.abs(a-b)<1e-9*Math.max(1,Math.abs(a),Math.abs(b));
+const clone=r=>r.map(o=>({...o}));
+const dist=(r,p,metric)=>metric==='euclid'?Math.hypot(r.x-p.x,r.y-p.y):Math.abs(r.x-p.x)+Math.abs(r.y-p.y);
+const coordinates=p=>`(${fmt(p.x)}, ${fmt(p.y)})`;
+const METHODS={cog:{name:'Center of Gravity',th:'จุดศูนย์ถ่วง',color:'#6674ce'},median:{name:'Weighted Median',th:'มัธยฐานถ่วงน้ำหนัก',color:'#0b947b'},geo:{name:'Geometric Median',th:'มัธยฐานเชิงเรขาคณิต',color:'#c57835'}};
+let state={rows:clone(ORIGINAL),view:'median',route:'h',metric:'rect',rate:1,days:300};
+let last=null,debounce=0;
+function setError(text){$('status').className='status error';$('status').textContent='⚠ '+text;for(const id of ['steps','routes','comparison','conclusion'])$(id).classList.add('stale');}
+function clearError(){for(const id of ['steps','routes','comparison','conclusion'])$(id).classList.remove('stale');}
+function inputVal(el){if(el.value.trim()==='')throw Error('กรุณากรอกข้อมูลในตารางให้ครบทุกช่อง');const n=Number(el.value);if(!Number.isFinite(n)||Math.abs(n)>1e6)throw Error('พิกัดและปริมาณต้องเป็นตัวเลขในช่วงที่โปรแกรมกำหนด');return n;}
+function syncRows(){
+ const rows=clone(state.rows);
+ for(const el of document.querySelectorAll('#inputBody input')){
+   const i=Number(el.dataset.row),k=el.dataset.key;
+   if(k==='name'){const name=el.value.trim();if(!name)throw Error(`กรุณาใส่ชื่อศูนย์ลำดับ ${i+1}`);rows[i].name=name;continue;}
+   const n=inputVal(el);if(k==='w'&&n<0)throw Error('ปริมาณวัตถุดิบต้องไม่ติดลบ');rows[i][k]=n;
+ }
+ if(rows.length<MIN_CENTERS||rows.length>MAX_CENTERS)throw Error('ต้องมีศูนย์รวบรวมตั้งแต่ 3–6 แห่ง');
+ if(sum(rows.map(r=>r.w))<=0)throw Error('ปริมาณวัตถุดิบรวมต้องมากกว่า 0');
+ state.rows=rows;return rows;
+}
+function renderInputs(){
+ $('inputBody').innerHTML=state.rows.map((r,i)=>`<tr>
+ <td><input type="text" maxlength="40" value="${esc(r.name)}" data-row="${i}" data-key="name" aria-label="ชื่อศูนย์ที่ ${i+1}"></td>
+ <td><input type="number" step="any" value="${r.x}" data-row="${i}" data-key="x" aria-label="พิกัด X ศูนย์ที่ ${i+1}"></td>
+ <td><input type="number" step="any" value="${r.y}" data-row="${i}" data-key="y" aria-label="พิกัด Y ศูนย์ที่ ${i+1}"></td>
+ <td><input type="number" min="0" step="any" value="${r.w}" data-row="${i}" data-key="w" aria-label="ปริมาณศูนย์ที่ ${i+1}"></td>
+ <td><button class="btn remove-center" data-remove="${i}" type="button" ${state.rows.length<=MIN_CENTERS?'disabled':''} aria-label="ลบ${esc(r.name)}" title="ลบศูนย์นี้">× ลบ</button></td></tr>`).join('');
+ $('sourceCount').value=state.rows.length;
+ $('addCenterBtn').disabled=state.rows.length>=MAX_CENTERS;
+ $('centerCountInfo').textContent=`ปัจจุบัน ${state.rows.length} แห่ง · เพิ่ม/ลบได้ในช่วง ${MIN_CENTERS}–${MAX_CENTERS} แห่ง`;
+}
+function setCount(n){
+ try{
+  syncRows();if(n<MIN_CENTERS||n>MAX_CENTERS)throw Error('จำนวนศูนย์ต้องอยู่ระหว่าง 3–6 แห่ง');
+  while(state.rows.length<n){const i=state.rows.length;state.rows.push({...EXTRA[i-ORIGINAL.length]||{name:`ศูนย์ใหม่ ${i+1}`,x:40+25*i,y:20+10*i,w:100}});}
+  while(state.rows.length>n)state.rows.pop();
+  renderInputs();compute();
+ }catch(e){setError(e.message);$('sourceCount').value=state.rows.length;}
+}
+function deleteRow(i){try{syncRows();if(state.rows.length<=MIN_CENTERS)return;state.rows.splice(i,1);renderInputs();compute();}catch(e){setError(e.message);}}
+function resetInputs(){
+ state={rows:clone(ORIGINAL),view:'median',route:'h',metric:'rect',rate:1,days:300};
+ $('rate').value=1;$('days').value=300;$('metricSelect').value='rect';$('routeMode').value='h';
+ renderInputs();compute();
+}
+function weightedMedian(rows,key){
+ const sorted=[...rows].sort((a,b)=>a[key]-b[key]),total=sum(rows.map(r=>r.w)),half=total/2;
+ const groups=[];
+ for(const r of sorted){
+   const p=groups[groups.length-1];
+   if(p&&p.value===r[key]){p.weight+=r.w;p.names.push(r.name);}
+   else groups.push({value:r[key],weight:r.w,names:[r.name]});
+ }
+ let acc=0;for(const g of groups){acc+=g.weight;g.cumulative=acc;g.percent=acc/total*100;}
+ const tol=1e-12*total;
+ const low=groups.find(g=>g.cumulative>=half-tol).value;
+ const high=groups.find(g=>g.cumulative>half+tol).value;
+ return {value:low,low,high,half,total,groups};
+}
+function evaluate(rows,point,metric){
+ const list=rows.map(r=>{const dx=Math.abs(r.x-point.x),dy=Math.abs(r.y-point.y),d=dist(r,point,metric);return {...r,dx,dy,d,work:r.w*d};});
+ return {list,total:sum(list.map(r=>r.work))};
+}
+/* Modified Weiszfeld iteration: treats coincident input points via subgradient test.
+   Optimizes sum W_i * sqrt((x-x_i)^2+(y-y_i)^2), not squared distance. */
+function geometricMedian(rows,start){
+ const pts=rows.filter(r=>r.w>0),span=Math.max(1,...pts.map(r=>Math.hypot(r.x-start.x,r.y-start.y)));
+ const snapEps=Math.max(1e-12,span*1e-12),stop=1e-10*span;
+ let p={...start},converged=false,iterations=0,atSource=false;
+ for(let it=0;it<20000;it++){
+  iterations=it+1;
+  let numX=0,numY=0,den=0,rx=0,ry=0,weightHere=0;
+  for(const r of pts){
+    const d=Math.hypot(p.x-r.x,p.y-r.y);
+    if(d<=snapEps){weightHere+=r.w;continue;}
+    const t=r.w/d;den+=t;numX+=t*r.x;numY+=t*r.y;
+    rx+=t*(r.x-p.x);ry+=t*(r.y-p.y);
+  }
+  if(den<=0){converged=true;atSource=true;break;}
+  const normR=Math.hypot(rx,ry);
+  if(weightHere>0&&normR<=weightHere+1e-10*sum(pts.map(r=>r.w))){converged=true;atSource=true;break;}
+  let next={x:numX/den,y:numY/den};
+  if(weightHere>0&&normR>0){const t=weightHere/normR;next={x:(1-t)*next.x+t*p.x,y:(1-t)*next.y+t*p.y};}
+  const movement=Math.hypot(next.x-p.x,next.y-p.y);
+  p=next;
+  if(movement<=stop){converged=true;break;}
+ }
+ // A point of exact coincidence can have positive subgradient enclosure.
+ // Rounding the display to 2 decimals is not used for any computation.
+ return {x:p.x,y:p.y,iterations,converged,atSource,objective:evaluate(rows,p,'euclid').total};
+}
+function compute(){
+ try{
+  const rows=syncRows(),W=sum(rows.map(r=>r.w));
+  if($('rate').value.trim()===''||$('days').value.trim()==='')throw Error('กรุณากรอกอัตราค่าขนส่งและวันทำงาน');
+  const rate=Number($('rate').value),days=Number($('days').value);
+  if(!Number.isFinite(rate)||rate<0||rate>1e6)throw Error('อัตราค่าขนส่งต้องอยู่ระหว่าง 0–1,000,000');
+  if(!Number.isInteger(days)||days<1||days>366)throw Error('จำนวนวันทำงานต่อปีต้องเป็นจำนวนเต็ม 1–366');
+  state.rate=rate;state.days=days;
+  const WX=sum(rows.map(r=>r.w*r.x)),WY=sum(rows.map(r=>r.w*r.y));
+  const cog={x:WX/W,y:WY/W};
+  const mx=weightedMedian(rows,'x'),my=weightedMedian(rows,'y'),median={x:mx.value,y:my.value};
+  const geo=geometricMedian(rows,cog);
+  const scores={};for(const [key,p] of Object.entries({cog,median,geo}))scores[key]={rect:evaluate(rows,p,'rect'),euclid:evaluate(rows,p,'euclid')};
+  last={rows,W,WX,WY,cog,median,geo,mx,my,scores,rate,days};
+  renderAll();clearError();
+  $('status').className='status';$('status').textContent=`✓ คำนวณข้อมูล ${rows.length} ศูนย์สำเร็จ · น้ำหนักรวม ${fmt(W)} ตัน/วัน · ${state.metric==='rect'?'ถนนกริด (Rectilinear)':'เส้นตรง (Euclidean)'} · วิธีแนะนำ ${METHODS[bestMethod()].th}`;
+ }catch(e){last=null;setError(e.message);}
+}
+function bestMethod(){return state.metric==='rect'?'median':'geo';}
+function medianTable(m,axis){return `<table><thead><tr><th>พิกัด ${axis} ↑</th><th>Wᵢ</th><th>ΣWᵢ สะสม</th><th>% สะสม</th></tr></thead><tbody>${m.groups.map(g=>`<tr class="${near(g.value,m.low)?'cross':''}"><td><b>${fmt(g.value)}</b><small class="tiny" style="display:block;white-space:normal">${esc(g.names.join(' / '))}</small></td><td>${fmt(g.weight)}</td><td>${fmt(g.cumulative)}</td><td>${fix(g.percent)}%</td></tr>`).join('')}</tbody></table>`;}
+function renderSteps(){
+ const {rows,W,WX,WY,cog,median,mx,my,geo}=last;
+ $('cogDetail').innerHTML=`<table><thead><tr><th>ศูนย์</th><th>Wᵢ</th><th>WᵢXᵢ</th><th>WᵢYᵢ</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.name)}</td><td>${fmt(r.w)}</td><td>${fmt(r.w*r.x)}</td><td>${fmt(r.w*r.y)}</td></tr>`).join('')}</tbody><tfoot><tr><th>รวม</th><th>${fmt(W)}</th><th>${fmt(WX)}</th><th>${fmt(WY)}</th></tr></tfoot></table>`;
+ $('cogMath').innerHTML=`<b>ΣWᵢ = ${fmt(W)} ตัน/วัน</b><br>X̄ = ${fmt(WX)} ÷ ${fmt(W)} = <b>${fmt(cog.x)} กม.</b><br>Ȳ = ${fmt(WY)} ÷ ${fmt(W)} = <b>${fmt(cog.y)} กม.</b>`;
+ $('halfNote').innerHTML=`น้ำหนักรวม ${fmt(W)} ตัน/วัน ⇒ เกณฑ์ 50% เท่ากับ <b>${fmt(W/2)}</b> ตัน/วัน · เรียง X, Y <b>แยกกัน</b>`;
+ $('medianX').innerHTML=medianTable(mx,'X');$('medianY').innerHTML=medianTable(my,'Y');
+ const iv=m=>near(m.low,m.high)?fmt(m.low):`[${fmt(m.low)}, ${fmt(m.high)}]`;
+ $('medianMath').innerHTML=`<b>พิกัดที่ทำให้ระยะทางตั้งฉากถ่วงน้ำหนักต่ำสุด</b><br>X* ∈ ${iv(mx)} กม. · Y* ∈ ${iv(my)} กม.<br>เลือกจุดแสดงผล = <b>${coordinates(median)}</b>${!near(mx.low,mx.high)||!near(my.low,my.high)?'<br><small>เมื่อมีช่วงคำตอบเท่ากัน เลือกขอบล่างเพื่อแสดง ไม่ใช่คำตอบที่เป็นไปได้เพียงจุดเดียว</small>':''}`;
+ $('stepSummary').innerHTML=`<b>สรุปตำแหน่งที่ได้ทั้งสามวิธี</b> · COG <strong>${coordinates(cog)}</strong> · Weighted Median <strong>${coordinates(median)}</strong> · Geometric Median <strong>${coordinates(geo)}</strong> (กม.) · โปรดเปรียบเทียบด้วย <b>ชนิดระยะทางเดียวกัน</b> ก่อนตัดสินใจ`;
+ $('geoSummary').innerHTML=`<strong>Geometric Median ≈ ${coordinates(geo)} กม.</strong><br>ค่าต่ำสุดของ ΣWᵢ√[(X−Xᵢ)²+(Y−Yᵢ)²] ≈ <b>${fmt(geo.objective)} ตัน·กม./วัน</b><br>คำนวณด้วย Modified Weiszfeld ${fmt(geo.iterations,0)} รอบ · ${geo.converged?'✓ ผ่านเกณฑ์หยุดการวนซ้ำ':'⚠ ถึงจำนวนรอบสูงสุด'}${geo.atSource?' · จุดเหมาะสมอยู่ที่พิกัดศูนย์รวบรวม':''}`;
+ $('geoDetail').innerHTML=`<table><thead><tr><th>ศูนย์</th><th>Wᵢ</th><th>d เส้นตรง (กม.)</th><th>Wᵢd (ตัน·กม./วัน)</th></tr></thead><tbody>${last.scores.geo.euclid.list.map(r=>`<tr><td>${esc(r.name)}</td><td>${fmt(r.w)}</td><td>${fmt(r.d,4)}</td><td>${fmt(r.work,4)}</td></tr>`).join('')}</tbody><tfoot><tr><th>รวม</th><th>${fmt(W)}</th><th>—</th><th>${fmt(geo.objective,4)}</th></tr></tfoot></table>`;
+}
+function renderAll(){
+ $('inputTotal').textContent=fmt(last.W)+' ตัน/วัน';
+ $('statSources').textContent=last.rows.length;$('statTon').textContent=fmt(last.W);
+ $('statCOG').textContent=coordinates(last.cog);$('statMED').textContent=coordinates(last.median);$('statGEO').textContent=coordinates(last.geo);
+ $('metricSelect').value=state.metric;
+ renderSteps();renderRoute();renderCompare();renderDecision();
+}
+function selectView(view){state.view=view;renderRoute();}
+function renderRoute(){
+ if(!last)return;
+ const {rows,cog,median,geo,scores}=last;
+ for(const key of Object.keys(METHODS)){$('view'+key.toUpperCase()).classList.toggle('active',state.view===key);$('view'+key.toUpperCase()).setAttribute('aria-pressed',String(state.view===key));}
+ $('routeMode').disabled=state.metric==='euclid';$('routeMode').value=state.route;
+ $('routingExplanation').textContent=state.metric==='rect'?'เส้นทางแสดงการเคลื่อนที่แนวนอน–แนวตั้งตามกริดสมมติ ไม่ใช่ถนนจริง':'เส้นทางเป็นเส้นตรงสมมติระหว่างพิกัด ไม่ใช่เส้นทางบินหรือเรือจริง';
+ const p=last[state.view],active=METHODS[state.view],all=[...rows,cog,median,geo];
+ const minX=Math.min(...all.map(r=>r.x)),maxX=Math.max(...all.map(r=>r.x)),minY=Math.min(...all.map(r=>r.y)),maxY=Math.max(...all.map(r=>r.y));
+ const sxRange=Math.max(20,maxX-minX),syRange=Math.max(20,maxY-minY),pad=Math.max(14,.13*Math.max(sxRange,syRange));
+ const L=minX-pad,R=maxX+pad,B=minY-pad,T=maxY+pad;
+ const scale=Math.min(850/(R-L),440/(T-B));
+ const aw=(R-L)*scale,ah=(T-B)*scale,ox=(1040-aw)/2,oy=55+(470-ah)/2;
+ const X=x=>ox+(x-L)*scale,Y=y=>oy+(T-y)*scale,f=v=>Number(v).toFixed(2);
+ let svg='<defs><filter id="mapShadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#163b4b" flood-opacity=".17"/></filter></defs><rect width="1040" height="610" fill="#fbfdfd"/>';
+ const step=Math.max(5,Math.ceil(Math.max(R-L,T-B)/12/5)*5);
+ for(let x=Math.ceil(L/step)*step;x<=R;x+=step){const v=X(x);svg+=`<line x1="${f(v)}" y1="${f(oy)}" x2="${f(v)}" y2="${f(oy+ah)}" stroke="#dfebee" stroke-dasharray="4 5"/><text x="${f(v)}" y="${f(oy+ah+22)}" text-anchor="middle" fill="#748b96" font-size="12">${fmt(x,0)}</text>`;}
+ for(let y=Math.ceil(B/step)*step;y<=T;y+=step){const v=Y(y);svg+=`<line x1="${f(ox)}" y1="${f(v)}" x2="${f(ox+aw)}" y2="${f(v)}" stroke="#dfebee" stroke-dasharray="4 5"/><text x="${f(ox-14)}" y="${f(v+4)}" text-anchor="end" fill="#748b96" font-size="12">${fmt(y,0)}</text>`;}
+ svg+=`<rect x="${f(ox)}" y="${f(oy)}" width="${f(aw)}" height="${f(ah)}" fill="none" stroke="#b6cbd1"/><text x="${f(ox+aw/2)}" y="${f(oy+ah+49)}" fill="#526c78" font-size="16" font-weight="700" text-anchor="middle">แกน X (กม.)</text><text x="${f(ox-55)}" y="${f(oy+ah/2)}" text-anchor="middle" transform="rotate(-90 ${f(ox-55)} ${f(oy+ah/2)})" fill="#526c78" font-size="16" font-weight="700">แกน Y (กม.)</text>`;
+ const colors=['#d58b50','#b96f45','#b89c49','#b27f55','#a48b30','#cb6d6f'];
+ rows.forEach((r,i)=>{
+   const px=X(p.x),py=Y(p.y),qx=X(r.x),qy=Y(r.y),c=colors[i%colors.length],stroke=Math.max(2.5,Math.min(8,2+r.w/160));
+   if(state.metric==='rect'){
+    const bx=state.route==='h'?qx:px,by=state.route==='h'?py:qy;
+    svg+=`<polyline points="${f(px)},${f(py)} ${f(bx)},${f(by)} ${f(qx)},${f(qy)}" fill="none" stroke="${c}" stroke-width="${stroke}" stroke-opacity=".72" stroke-linejoin="round" stroke-linecap="round"><title>${esc(r.name)}: d = ${fmt(Math.abs(r.x-p.x))} + ${fmt(Math.abs(r.y-p.y))} = ${fmt(dist(r,p,'rect'))} กม.</title></polyline>`;
+   }else{
+    svg+=`<line x1="${f(px)}" y1="${f(py)}" x2="${f(qx)}" y2="${f(qy)}" stroke="${c}" stroke-width="${stroke}" stroke-opacity=".75" stroke-linecap="round"><title>${esc(r.name)}: d = ${fmt(dist(r,p,'euclid'))} กม. (เส้นตรง)</title></line>`;
+   }
+ });
+ // Draw unselected method markers first, and the active method last.
+ const drawSite=(key,selected)=>{
+   const pt=last[key],m=METHODS[key],x=X(pt.x),y=Y(pt.y),rad=selected?14:9;
+   svg+=`<circle cx="${f(x)}" cy="${f(y)}" r="${rad+3}" fill="white"/><circle cx="${f(x)}" cy="${f(y)}" r="${rad}" fill="${m.color}" stroke="white" stroke-width="2.5" ${selected?'filter="url(#mapShadow)"':''}><title>${esc(m.name)}: ${coordinates(pt)}</title></circle>`;
+   if(selected)svg+=`<text x="${f(x)}" y="${f(y+4)}" font-size="14" text-anchor="middle" font-weight="800" fill="white">★</text>`;
+   svg+=`<text x="${f(x+18)}" y="${f(y-14)}" font-size="13" font-weight="750" paint-order="stroke" stroke="white" stroke-width="5" fill="${m.color}">${key==='cog'?'COG':key==='median'?'Median':'Geo'} ${coordinates(pt)}</text>`;
+ };
+ for(const key of Object.keys(METHODS))if(key!==state.view)drawSite(key,false);
+ rows.forEach((r,i)=>{const x=X(r.x),y=Y(r.y);svg+=`<circle cx="${f(x)}" cy="${f(y)}" r="12" fill="${colors[i%colors.length]}" stroke="white" stroke-width="2.5" filter="url(#mapShadow)"><title>${esc(r.name)} ${coordinates(r)} · ${fmt(r.w)} ตัน/วัน</title></circle><text x="${f(x)}" y="${f(y+4)}" text-anchor="middle" font-size="12" fill="white" font-weight="800">${i+1}</text><text x="${f(x+17)}" y="${f(y+24)}" fill="#345568" paint-order="stroke" stroke="white" stroke-width="4" font-size="13" font-weight="700">${esc(r.name)} · ${fmt(r.w)} ตัน</text>`;});
+ drawSite(state.view,true);
+ svg+=`<text x="22" y="30" font-size="16" font-weight="700" fill="#244c60">${esc(active.th)} · ${state.metric==='rect'?'Rectilinear':'Euclidean'} Distance</text><text x="22" y="593" font-size="12" fill="#647f8a">ใช้สเกลเดียวกันทั้ง X และ Y · พิกัดสมมติ ไม่ใช่แผนที่ถนน/เส้นทางจริง</text>`;
+ $('mapSvg').innerHTML=svg;
+ const result=scores[state.view][state.metric];
+ $('routeBreakdown').innerHTML=result.list.map((r,i)=>`<div class="routecard"><strong>${i+1}. ${esc(r.name)}</strong><small>${fmt(r.w)} ตัน/วัน · จาก ${coordinates(r)} ถึง ${coordinates(p)}</small><p>${state.metric==='rect'?`|ΔX| ${fmt(r.dx)} + |ΔY| ${fmt(r.dy)}`:`√(${fmt(r.dx)}² + ${fmt(r.dy)}²)`} = <b>${fmt(r.d,3)} กม.</b></p><div class="number">${fmt(r.work)} <span class="tiny">ตัน·กม./วัน</span></div></div>`).join('');
+ $('routeTotal').innerHTML=`วิธี <b>${active.name}</b> · ภาระขนส่งตามเกณฑ์ <b>${state.metric==='rect'?'Rectilinear':'Euclidean'}</b> = <strong>${fmt(result.total)} ตัน·กม./วัน</strong>`;
+}
+function renderCompare(){
+ if(!last)return;
+ const {rows,scores,cog,median,geo,rate,days}=last,metric=state.metric;
+ const ordered=['cog','median','geo'],base=scores.cog[metric].total,bestKey=bestMethod(),best=scores[bestKey][metric].total,difference=Math.max(0,base-best),pct=base>0?100*difference/base:0;
+ const header=ordered.map(k=>`<th colspan="2">${METHODS[k].name}<br><small>${coordinates(last[k])}</small></th>`).join('');
+ $('comparisonTable').innerHTML=`<table style="min-width:1100px"><thead><tr><th rowspan="2">ศูนย์รวบรวม</th><th rowspan="2">Wᵢ (ตัน/วัน)</th>${header}</tr><tr>${ordered.map(()=>'<th>dᵢ (กม.)</th><th>Wᵢdᵢ (ตัน·กม./วัน)</th>').join('')}</tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${esc(r.name)}</td><td>${fmt(r.w)}</td>${ordered.map(k=>`<td>${fmt(scores[k][metric].list[i].d,3)}</td><td>${fmt(scores[k][metric].list[i].work)}</td>`).join('')}</tr>`).join('')}</tbody><tfoot><tr><th>รวม</th><th>${fmt(last.W)}</th>${ordered.map(k=>`<th>—</th><th class="${k===bestKey?'strong':''}">${fmt(scores[k][metric].total)}</th>`).join('')}</tr></tfoot></table>`;
+ const highest=Math.max(1,...ordered.map(k=>scores[k][metric].total));
+ $('bars').innerHTML=ordered.map(k=>`<div class="barrow"><div class="barlabel">${METHODS[k].name}${k===bestKey?' ★':''}</div><div class="bartrack"><div class="barfill" style="width:${100*scores[k][metric].total/highest}%;background:${METHODS[k].color}"></div></div><div class="barval">${fmt(scores[k][metric].total)} ตัน·กม./วัน</div></div>`).join('');
+ $('kpiCOG').textContent=fmt(base);$('kpiMED').textContent=fmt(best);$('kpiSaving').textContent=fmt(difference);
+ $('kpiSavingPct').textContent=`ลด ${fix(pct)}% เทียบกับ COG`;
+ $('kpiBestLabel').textContent=`ภาระขนส่งวิธี ${METHODS[bestKey].name}`;
+ $('metricTitle').textContent=metric==='rect'?'ถนนกริด Rectilinear':'เส้นตรง Euclidean';
+ $('comparisonHint').innerHTML=metric==='rect'?'กรณีนี้ <b>Weighted Median</b> ให้ค่าต่ำสุดภายใต้ Rectilinear Distance':'กรณีนี้ <b>Geometric Median</b> ให้ค่าต่ำสุดภายใต้ Euclidean Distance';
+ $('costSummary').innerHTML=`<strong>แปลงภาระขนส่งเป็นค่าใช้จ่าย (อัตราต่อตัน·กม.เท่ากันทุกศูนย์):</strong> ที่อัตรา ${fix(rate)} บาท/(ตัน·กม.) · COG = <b>${fix(base*rate)} บาท/วัน</b> · ${METHODS[bestKey].name} = <b>${fix(best*rate)} บาท/วัน</b> · ผลต่าง <b>${fix(difference*rate)} บาท/วัน</b> หรือ <b>${fix(difference*rate*days)} บาท/ปี</b> (${fmt(days)} วัน/ปี)`;
+ document.querySelectorAll('#metricQuick button').forEach(btn=>{const active=btn.dataset.metric===metric;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});
+ $('crossMetric').innerHTML=`<table><thead><tr><th>วิธีคำนวณ</th><th>พิกัด (X,Y)</th><th>Rectilinear<br>ตัน·กม./วัน</th><th>Euclidean<br>ตัน·กม./วัน</th></tr></thead><tbody>${ordered.map(k=>`<tr class="${k===bestKey?'cross':''}"><td>${METHODS[k].name}</td><td>${coordinates(last[k])}</td><td>${fmt(scores[k].rect.total)}${k==='median'?' ★':''}</td><td>${fmt(scores[k].euclid.total)}${k==='geo'?' ★':''}</td></tr>`).join('')}</tbody></table>`;
+}
+function renderDecision(){
+ if(!last)return;
+ const metric=state.metric,chosen=bestMethod(),model=metric==='rect'?'ถนนกริด (Rectilinear Distance)':'เส้นตรง (Euclidean Distance)',opt=last.scores[chosen][metric].total,cog=last.scores.cog[metric].total;
+ const saving=Math.max(0,cog-opt),pct=cog>0?saving/cog*100:0,p=last[chosen];
+ const equal=near(cog,opt),intervals=!near(last.mx.low,last.mx.high)||!near(last.my.low,last.my.high);
+ $('finalResult').innerHTML=`<h3>${equal?'✓ คะแนนประเมินของ COG เท่ากับค่าต่ำสุด':'✓ พิกัดแนะนำตามรูปแบบระยะทาง: '+coordinates(p)+' กม.'}</h3><p>สำหรับการเดินทางแบบ <b>${model}</b> ควรใช้ <b>${METHODS[chosen].name}</b> · ภาระขนส่งที่คำนวณได้ = <strong>${fmt(opt)} ตัน·กม./วัน</strong>${equal?' (COG ให้ค่าเท่ากันในข้อมูลชุดนี้)':` ต่ำกว่า COG ${fmt(saving)} ตัน·กม./วัน (${fix(pct)}%)`}</p><p>${metric==='rect'?'เพราะฟังก์ชันวัตถุประสงค์คือ Min ΣWᵢ(|X−Xᵢ| + |Y−Yᵢ|) ซึ่งแก้โดยมัธยฐานถ่วงน้ำหนักของแต่ละแกน':'เพราะฟังก์ชันวัตถุประสงค์คือ Min ΣWᵢ√[(X−Xᵢ)²+(Y−Yᵢ)²] ซึ่ง Geometric Median ลดระยะทางเส้นตรงรวมได้ตรงเป้าหมาย'}</p>`;
+ $('analysisCards').innerHTML=`<article><h3>1. เลือกวิธีให้ตรงระยะทาง</h3><p>${metric==='rect'?'ใช้ Weighted Median สำหรับโครงข่ายกริดที่เดินทางแนวนอนและแนวตั้ง':'ใช้ Geometric Median สำหรับระยะทางเส้นตรงในระนาบ (วิธี Weiszfeld)'} ไม่ควรถือว่า COG เหมาะที่สุดกับทุกสมมติฐาน</p></article><article><h3>2. บทบาทของ COG</h3><p>COG คำนวณง่าย ใช้เป็นตำแหน่งตั้งต้น และเป็นตัวทำให้ผลรวม <b>ระยะทางยุคลิดกำลังสองถ่วงน้ำหนัก</b> ต่ำสุด แต่ไม่รับประกันว่าค่ารวมระยะทางจริง (ไม่ยกกำลังสอง) ต่ำสุด</p></article><article><h3>3. ตีความผลเปรียบเทียบ</h3><p>ภาระขนส่ง ${fmt(opt)} ตัน·กม./วัน = ผลรวมของระยะทางคูณปริมาณ ไม่ใช่ระยะทางรถหรือเรือหนึ่งคันวิ่งเท่านั้น ${equal?'กรณีนี้บางวิธีอาจได้ค่าต่ำสุดเท่ากัน':`เมื่อเปลี่ยนโมเดลระยะทางอันดับจึงเปลี่ยนได้`}</p></article><article><h3>4. ความไวของผลลัพธ์</h3><p>แก้ไข X, Y, W หรือเพิ่ม–ลดศูนย์เป็น 3–6 แห่ง แล้วเปรียบเทียบผลใหม่${intervals?' · ในตัวอย่างนี้ Weighted Median มีช่วงพิกัดที่ให้ค่าต่ำสุดเท่ากัน':''} · พิจารณาถนนจริง พื้นที่ใช้ประโยชน์ และต้นทุนอื่นก่อนลงทุน</p></article>`;
+}
+function csvExport(){
+ if(!last){setError('ต้องคำนวณข้อมูลที่ถูกต้องก่อนส่งออก');return;}
+ const {rows,W,cog,median,geo,scores,rate,days}=last,methods=['cog','median','geo'];
+ const data=[['PlantLoc LEARN · 3 methods / 2 distance models'],['Note','Abstract Cartesian coordinates (km) – NOT real road network / actual flight or shipping route'],['Sources',rows.length],[],['ศูนย์','X (กม.)','Y (กม.)','W (ตัน/วัน)',...methods.flatMap(k=>[METHODS[k].name+' Rect d',METHODS[k].name+' Rect ton-km',METHODS[k].name+' Euclid d',METHODS[k].name+' Euclid ton-km'])]];
+ rows.forEach((r,i)=>data.push([r.name,r.x,r.y,r.w,...methods.flatMap(k=>[scores[k].rect.list[i].d,scores[k].rect.list[i].work,scores[k].euclid.list[i].d,scores[k].euclid.list[i].work])]));
+ data.push([],['ปริมาณรวม',W],['อัตราขนส่ง บาท/(ตัน·กม.)',rate],['วันทำงาน/ปี',days]);
+ for(const k of methods)data.push([METHODS[k].name,'X',last[k].x,'Y',last[k].y,'Rectilinear ton-km/day',scores[k].rect.total,'Euclidean ton-km/day',scores[k].euclid.total]);
+ data.push(['Recommendation Rectilinear','Weighted Median'],['Recommendation Euclidean','Geometric Median']);
+ const csv='\uFEFF'+data.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');a.href=url;a.download='PlantLoc_3to6_Centers_Three_Methods.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+$('inputBody').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(compute,250);});
+$('inputBody').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(b)deleteRow(Number(b.dataset.remove));});
+$('sourceCount').addEventListener('change',e=>setCount(Number(e.target.value)));
+$('addCenterBtn').addEventListener('click',()=>setCount(state.rows.length+1));
+$('calcBtn').addEventListener('click',()=>{clearTimeout(debounce);compute();});
+$('rate').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(compute,250);});
+$('days').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(compute,250);});
+$('resetBtn').addEventListener('click',resetInputs);
+$('sampleBtn').addEventListener('click',()=>{resetInputs();const el=document.querySelector('#inputBody input[data-row="1"][data-key="w"]');el.value='700';compute();});
+$('metricSelect').addEventListener('change',e=>{state.metric=e.target.value;state.view=bestMethod();if(last){renderAll();$('status').textContent=`✓ เปลี่ยนเกณฑ์ระยะทางแล้ว: ${state.metric==='rect'?'Rectilinear → Weighted Median':'Euclidean → Geometric Median'}`;}});
+$('metricQuick').addEventListener('click',e=>{const btn=e.target.closest('button[data-metric]');if(!btn)return;$('metricSelect').value=btn.dataset.metric;$('metricSelect').dispatchEvent(new Event('change',{bubbles:true}));});
+$('viewCOG').addEventListener('click',()=>selectView('cog'));
+$('viewMEDIAN').addEventListener('click',()=>selectView('median'));
+$('viewGEO').addEventListener('click',()=>selectView('geo'));
+$('routeMode').addEventListener('change',e=>{state.route=e.target.value;renderRoute();});
+$('csvBtn').addEventListener('click',csvExport);
+$('printBtn').addEventListener('click',()=>window.print());
+document.querySelectorAll('[data-quiz]').forEach(btn=>btn.addEventListener('click',()=>{
+ const k=btn.dataset.quiz,v=document.querySelector(`input[name="q${k}"]:checked`),el=$('feedback'+k);
+ el.classList.add('visible');if(!v){el.classList.add('bad');el.textContent='โปรดเลือกคำตอบก่อน';return;}
+ const correct={1:'b',2:'b',3:'c'}[k],passed=v.value===correct;el.classList.toggle('bad',!passed);
+ const reasons={1:'Weighted Median ทำให้ผลรวม Manhattan/Rectilinear ถ่วงน้ำหนักต่ำสุด',2:'|60−20| + |40−30| = 50 กม.',3:'Geometric Median ลดผลรวมระยะทางเส้นตรงถ่วงน้ำหนัก (ไม่ใช่ระยะทางกำลังสอง)'};
+ el.textContent=(passed?'✓ ถูกต้อง · ':'✕ ยังไม่ถูก · ')+reasons[k];
+}));
+resetInputs();
+</script>
+</body>
+</html>
