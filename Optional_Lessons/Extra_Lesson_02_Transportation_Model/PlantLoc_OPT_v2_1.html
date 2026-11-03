@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12344b">
+<meta name="description" content="PlantLoc OPT: โปรแกรมเลือกทำเลโรงงานด้วยตัวแบบการขนส่ง พร้อมบทเรียน กรณีศึกษา การคำนวณค่าเหมาะสมที่สุด และการวิเคราะห์เชิงวิศวกรรม">
+<title>PlantLoc OPT | ระบบวิเคราะห์และเลือกทำเลที่ตั้งโรงงาน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#193447;--navy:#12344b;--navy2:#194a60;--teal:#0b867d;--teal2:#16a399;--cyan:#d7f2ee;--amber:#b87821;--gold:#f4cf82;--muted:#64788a;--border:#dce6ea;--canvas:#f3f7f9;--white:#fff;--soft:#eef4f6;--danger:#bd493d;--redbg:#fff1ee;--shadow:0 12px 38px rgba(16,45,66,.055);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--canvas);color:var(--ink);font-family:'Noto Sans Thai','Leelawadee UI','Segoe UI',Tahoma,sans-serif;line-height:1.76;font-size:15px}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}::selection{background:#bceae3}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(16,46,66,.96);backdrop-filter:blur(16px);border-bottom:1px solid #ffffff22;color:#fff}
+.topin{max-width:1380px;margin:auto;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:850;font-size:19px;letter-spacing:.15px;display:flex;align-items:center;gap:11px;white-space:nowrap;text-decoration:none}.brand-mark{display:grid;place-items:center;border-radius:11px;width:34px;height:34px;background:var(--teal2);color:white;font-size:18px}.brand small{font-size:10px;font-weight:600;letter-spacing:1px;color:#c4e6eb;display:block;line-height:1.05}
+.navigation{display:flex;gap:5px;overflow:auto;scrollbar-width:none}.navigation a{flex:none;color:#d7e9f0;font-weight:650;text-decoration:none;font-size:12px;padding:8px 11px;border-radius:9px}.navigation a:hover,.navigation a:focus-visible{background:#ffffff25;color:white}
+.container{max-width:1320px;margin:auto;padding:24px 28px 52px}.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);background:linear-gradient(115deg,#133850,#1d5970 85%);border-radius:23px;box-shadow:0 20px 55px #12344b1b;color:white;min-height:270px;padding:35px 42px;gap:30px}.hero:before{content:'';position:absolute;right:-145px;top:-150px;width:420px;height:420px;border:1px solid #ffffff15;border-radius:50%;box-shadow:0 0 0 43px #ffffff08,0 0 0 90px #ffffff07}.hero-content{position:relative;z-index:1}.hero .eyebrow{display:inline-flex;align-items:center;gap:8px;letter-spacing:.8px;text-transform:uppercase;border:1px solid #ffffff36;border-radius:99px;font-size:11px;padding:5px 11px;color:#dcf5f4;font-weight:700}.hero h1{font-size:clamp(29px,3.5vw,46px);line-height:1.28;letter-spacing:-.5px;margin:14px 0 11px;max-width:730px}.hero h1 em{font-style:normal;color:#94e5db}.hero p{max-width:760px;opacity:.91;font-size:14px;margin:0}.hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:21px}.hero-meta span{font-size:11px;border-radius:8px;background:#ffffff20;padding:5px 10px}.hero-visual{align-self:center;position:relative;z-index:1;min-width:0}.hero-visual svg{width:100%;max-height:215px;filter:drop-shadow(0px 10px 20px #001a302b)}
+.quick-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:17px}.stat{background:white;border:1px solid var(--border);border-radius:15px;padding:16px 20px;box-shadow:var(--shadow)}.stat small{display:block;color:var(--muted);font-size:12px;font-weight:600}.stat strong{display:block;font-size:23px;line-height:1.45;font-variant-numeric:tabular-nums}.stat span{font-size:11px;color:#758a96}
+.section{scroll-margin-top:87px;margin-top:24px}.card{background:white;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}.section-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:20px}.section-heading .eyebrow{display:block;font-size:11px;font-weight:850;color:var(--teal);text-transform:uppercase;letter-spacing:1.35px;margin-bottom:5px}.section-heading h2{font-size:clamp(20px,2.2vw,27px);letter-spacing:-.4px;margin:0;color:var(--navy);line-height:1.45}.section-heading p{margin:7px 0 0;color:var(--muted);font-size:13px;max-width:900px}.badge{font-size:11px;font-weight:750;color:#086e69;background:#dff6f0;border:1px solid #c1e9e0;white-space:nowrap;padding:5px 10px;border-radius:99px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.callout{background:#f1f7f8;border:1px solid #dbe9eb;padding:18px 20px;border-radius:13px}.callout h3,.info-box h3{font-size:16px;margin:0 0 7px;color:var(--navy)}.callout p,.info-box p{margin:0;color:#506777;font-size:13px}.callout strong{color:#0a736c}.step-tag{display:inline-flex;background:#dff3ee;color:#087c73;border-radius:7px;font-size:10px;font-weight:850;padding:2px 8px;margin-bottom:9px}.info-box{border:1px solid var(--border);border-radius:14px;padding:18px;background:white}.info-box dl{display:grid;grid-template-columns:125px 1fr;gap:5px;margin:0;font-size:13px}.info-box dt{color:var(--navy);font-weight:750}.info-box dd{margin:0;color:#5f7483}.note{color:var(--muted);font-size:12px}.kicker{font-size:12px;color:var(--teal);font-weight:850;letter-spacing:.5px}.subhead{font-size:17px;font-weight:800;color:var(--navy);margin:21px 0 11px}.body-copy{font-size:14px;color:#476073;margin:0 0 14px}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.principle{padding:18px;border-radius:12px;background:#f3f8fa;border-left:3px solid var(--teal);font-size:13px}.principle b{display:block;color:var(--navy);margin-bottom:5px}.principle p{margin:0;color:#597181}.formula{background:#12374c;color:#eaf8fb;border-radius:13px;padding:18px 22px;margin:15px 0;font-family:'Segoe UI',Tahoma,sans-serif;text-align:center;font-size:clamp(16px,2vw,21px);overflow:auto}.formula small{font-family:'Noto Sans Thai',Tahoma,sans-serif;font-size:12px;color:#b6d7df;display:block;margin-top:8px}.formula .accent{color:#95eddf}.definition{background:#edf7f5;border:1px solid #d2e8e3;border-radius:12px;padding:12px 18px;margin:14px 0;font-size:13px}.definition b{color:#0e716c}
+.table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:12px;max-width:100%}table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}th,td{padding:12px 11px;border-bottom:1px solid #e7eff1;text-align:right;vertical-align:middle;white-space:nowrap}thead th{background:#edf4f7;color:#37596b;font-weight:800;font-size:12px}th:first-child,td:first-child{text-align:left}tbody tr:last-child td{border-bottom:0}tbody tr:hover td{background:#f8fbfc}tfoot th,tfoot td{background:#f1f7f8;font-weight:850}table strong{font-weight:850}.table-scroll table{min-width:850px}.inputs-table th,.inputs-table td{padding:9px 7px}.inputs-table thead th{padding:11px 7px}.inputs-table input{width:100%;min-width:82px;max-width:128px;height:39px;padding:7px 9px;border:1px solid #cedce2;border-radius:8px;background:#fff;color:#1c384c;text-align:right;font-size:13px;font-weight:650;font-variant-numeric:tabular-nums}.inputs-table input:focus{outline:2px solid #7dd7c9;outline-offset:1px;border-color:#14a191}.inputs-table input:invalid{border-color:#e7a5a0;background:#fff7f6}.inputs-table .rowlabel{min-width:117px;font-weight:800}.inputs-table .rowlabel small{display:block;color:#708996;font-weight:600;font-size:10px}.inputs-table tr.candidate .rowlabel{color:#0d7a74}.inputs-table tr.candidate{background:#f9fdfc}.inputs-table .demand td{background:#eef7f7}.inputs-table input[data-group='demand']{background:#fcfffd}.note-strip{margin-top:13px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.mini-legend{font-size:12px;color:#577082}.mini-legend:before{content:'';display:inline-block;background:var(--teal);width:8px;height:8px;border-radius:99px;margin-right:5px}.mini-legend.old:before{background:#5e7ca1}
+.toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:18px 0 8px}.toolbar .left{display:flex;gap:9px;flex-wrap:wrap}.btn{display:inline-flex;gap:7px;align-items:center;justify-content:center;border:1px solid transparent;border-radius:10px;padding:11px 16px;font-size:13px;font-weight:800;white-space:nowrap;transition:transform .15s,background .15s,box-shadow .15s}.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0)}.primary{background:var(--teal);color:white;box-shadow:0 6px 14px #0c877c22}.primary:hover{background:#096f68}.secondary{background:#eaf2f5;color:#284b5d;border-color:#d8e6eb}.secondary:hover{background:#dcebf0}.outline{background:white;border-color:#cfdfe5;color:#315467}.outline:hover{background:#f5fafb}.btn:focus-visible,.tab:focus-visible{outline:3px solid #88cfed;outline-offset:2px}.state{padding:12px 15px;background:#e8f6f0;border:1px solid #c6e8dc;color:#116a55;border-radius:11px;font-size:13px;margin-top:11px}.state.warn{background:#fff7e8;border-color:#f3daa3;color:#875b11}.state.error{background:var(--redbg);border-color:#f0beb6;color:#a43d35}.input-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:13px}.input-summary>div{border:1px solid #dce9ec;background:#f8fbfc;border-radius:10px;padding:10px 13px}.input-summary small{display:block;color:#6e8492;font-size:11px}.input-summary b{font-size:17px;font-variant-numeric:tabular-nums}.preset{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:14px;border-top:1px dashed #dce6ea;margin-top:17px}.preset label{font-size:12px;font-weight:800;color:#4b687a}.select{height:42px;max-width:100%;border:1px solid #cedce3;background:white;border-radius:10px;padding:7px 12px;color:#294e63;font-weight:700;font-size:13px}
+.analysis-hero{display:grid;grid-template-columns:.96fr 1.04fr;gap:13px}.winner-card{padding:22px;border-radius:15px;background:linear-gradient(115deg,#0e827b,#0a655f);color:white;display:flex;flex-direction:column;justify-content:center;min-height:167px}.winner-card small{font-size:12px;color:#e0fdf5;font-weight:800}.winner-card strong{font-size:clamp(26px,3vw,37px);margin:7px 0 4px;line-height:1.3}.winner-card span{font-size:12px;color:#d8f3ef}.num-cards{display:grid;grid-template-columns:1fr 1fr;gap:11px}.num-card{border:1px solid #dce8ec;background:#f6fafb;padding:15px;border-radius:13px}.num-card small{display:block;font-size:11px;color:#718898}.num-card b{font-size:clamp(17px,2vw,23px);line-height:1.45;display:block;color:var(--navy);font-variant-numeric:tabular-nums}.num-card span{font-size:11px;color:#6a808f}.num-card.emphasis b{color:#077e76}
+.win-row td{background:#eaf7f2!important}.win-row td:first-child{color:#087968;font-weight:850}.nowrap{white-space:nowrap}.rank{border-radius:99px;padding:4px 9px;font-weight:800;font-size:11px;background:#e9eff2;color:#456273}.rank.best{color:#08755b;background:#d7f0e5}.rank.bad{color:#ab4736;background:#ffede9}.chart{display:grid;gap:14px;padding:6px 0 0}.chart-row{display:grid;grid-template-columns:90px 1fr 150px;gap:13px;align-items:center;font-size:13px}.chart-row .label{font-weight:800;color:#35586a}.chart-row .number{text-align:right;font-weight:800;color:#274556;font-variant-numeric:tabular-nums}.chart-track{height:25px;border-radius:7px;background:#edf3f5;overflow:hidden;display:flex}.seg-production{background:#2e7187}.seg-transport{background:#e6a84b}.chart-row.best .chart-track{outline:2px solid #4fb29d;outline-offset:2px}.chart-legend{display:flex;align-items:center;gap:17px;flex-wrap:wrap;font-size:12px;color:#607987;margin-bottom:12px}.dot{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:6px}.insights{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.insight{border-radius:13px;background:#f3f8fa;border:1px solid #e0ebef;padding:16px 18px;font-size:13px;color:#526a7a}.insight b{display:block;color:#20495e;font-size:14px;margin-bottom:5px}.insight p{margin:0}.insight.accent{border-color:#b3e1d6;background:#edfaf6}.insight.accent b{color:#087a6b}
+.section-subtitle{font-size:17px;font-weight:850;color:var(--navy);margin:20px 0 11px}.detail-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}.detail-top label{font-size:13px;font-weight:750}.detail-top .select{min-width:180px}.detail-top .actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.flow-wrap{overflow-x:auto;max-width:100%;border:1px solid #dce8ec;border-radius:12px;background:linear-gradient(100deg,#f8fbfc,#ffffff)}.flow-wrap svg{display:block;width:100%;min-width:650px;height:auto}.flowkey{display:flex;align-items:center;flex-wrap:wrap;gap:13px;font-size:11px;color:#698293;margin:11px 0}.flowkey b{color:var(--ink)}.duo-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:13px 0}.duo-metrics div{background:#f1f7f9;border-radius:11px;border:1px solid #e0eaed;padding:13px}.duo-metrics small{font-size:11px;color:#6f8291;display:block}.duo-metrics strong{font-size:20px;color:var(--navy);font-variant-numeric:tabular-nums}
+.equation-card{background:#f1f6f8;border:1px solid var(--border);border-radius:12px;padding:18px}.equation-card b{color:#1a4259}.eq-list{margin:9px 0 0;padding-left:23px;color:#4b6372;font-size:13px}.eq-list li{margin:5px 0}.math{font-family:Cambria,Georgia,'Times New Roman',serif}.matrix-label{font-size:12px;color:#667f8e;margin:11px 0}.model-matrix td,.model-matrix th{text-align:center}.model-matrix td:first-child,.model-matrix th:first-child{text-align:left}
+.method-table td{text-align:left}.method-table td:nth-child(n+2){text-align:right}.method-table th{text-align:left}.method-table th:nth-child(n+2){text-align:right}
+.details-block{border:1px solid var(--border);border-radius:13px;overflow:hidden;margin:13px 0;background:white}.details-block summary{cursor:pointer;font-weight:800;font-size:14px;padding:12px 16px;color:#244b5e;background:#f6fafb;list-style:none}.details-block summary::-webkit-details-marker{display:none}.details-block summary:after{content:'＋';float:right;color:var(--teal)}.details-block[open] summary:after{content:'－'}.details-block .details-content{padding:15px 19px;font-size:13px;color:#526b7c}
+.footer{font-size:12px;text-align:center;color:#738894;padding:29px 0 8px}.footer b{color:var(--teal)}.hidden{display:none!important}
+@media(max-width:1000px){.navigation{gap:0}.navigation a{padding:7px 8px}.hero{padding:27px;grid-template-columns:1.5fr .5fr}.hero-visual svg{max-height:160px}.stat{padding:13px}.stat strong{font-size:20px}.card{padding:22px}.grid3{grid-template-columns:1fr}.principles{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.topin{padding:9px 14px;display:block}.brand{font-size:17px}.navigation{margin-top:8px;padding-bottom:2px}.container{padding:12px 12px 34px}.hero{display:block;padding:25px 22px}.hero-visual{display:none}.hero h1{font-size:30px}.quick-stats{grid-template-columns:repeat(2,1fr);gap:8px}.stat strong{font-size:19px}.stat{padding:12px}.card{padding:17px}.section{margin-top:14px}.section-heading{display:block;margin-bottom:16px}.section-heading .badge{display:inline-flex;margin-top:8px}.grid2,.analysis-hero,.insights{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.principles{grid-template-columns:1fr}.input-summary{grid-template-columns:1fr 1fr}.chart-row{grid-template-columns:60px 1fr 105px;gap:7px;font-size:11px}.chart-track{height:20px}.duo-metrics{grid-template-columns:1fr}.info-box dl{grid-template-columns:95px 1fr}.btn{font-size:12px;padding:10px 13px}.detail-top{display:block}.detail-top .actions{margin-top:10px}.formula{font-size:16px;padding:14px}.topbar{position:relative}.section{scroll-margin-top:15px}}
+@media print{body{background:white;font-size:11px}.topbar,.toolbar,.preset,.btn,.footer,.hero-visual,.no-print{display:none!important}.container{padding:0;max-width:100%}.hero{border-radius:0;box-shadow:none;min-height:0;padding:10px 0;background:white!important;color:#193447!important}.hero h1,.hero h1 em{color:#153f54}.hero p{color:#384f5a}.hero-meta span,.hero .eyebrow{color:#254c61;background:none;border-color:#ddd}.quick-stats{margin-top:8px}.stat,.card{box-shadow:none;border:1px solid #cad8dc;break-inside:avoid}.section{margin-top:9px}.card{padding:13px}.section-heading{margin-bottom:9px}.flow-wrap svg{min-width:0}.table-scroll{overflow:visible}.table-scroll table{min-width:0;font-size:9px}.table-scroll td,.table-scroll th{padding:5px}.inputs-table input{border:none;background:transparent!important;max-width:70px;min-width:45px;padding:2px;font-size:9px;height:auto}.analysis-hero{grid-template-columns:1fr 1fr}.winner-card{background:#edf7f4;color:#173f3e;min-height:0}.winner-card small,.winner-card span{color:#285f5a}.grid2,.insights{grid-template-columns:1fr 1fr}.section,.card{break-inside:avoid}}
+
+
+/* Detailed algorithm learning module; compatible with the original design */
+.algorithm-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin:16px 0}
+.algorithm-panel{background:#f4f9fa;border:1px solid #dce9eb;border-radius:15px;padding:20px 22px}
+.algorithm-panel h3{margin:0 0 10px;font-size:17px;color:#173f52}
+.algorithm-panel p{margin:0 0 12px;color:#526c7e;font-size:14px;line-height:1.86}
+.algorithm-panel ol,.algorithm-panel ul{margin:10px 0 0 22px;padding:0;color:#536d7d;font-size:14px;line-height:1.9}
+.algorithm-cards{display:grid;grid-template-columns:1fr;gap:12px}
+.algo-card{background:#fff;border:1px solid #dce7ea;border-radius:14px;padding:15px 17px}
+.algo-card .tag{display:inline-block;padding:4px 9px;border-radius:999px;background:#e7f5f1;color:#0d8f7f;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.algo-card h4{margin:0 0 7px;font-size:15px;color:#173f52}.algo-card p{margin:0;color:#5c7484;font-size:13px;line-height:1.78}
+.algo-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:15px}
+.algo-step{background:#f7fbfa;border:1px solid #dce7ea;border-radius:13px;padding:15px}
+.algo-step b{display:block;color:#173f52;margin-bottom:7px;font-size:13px}
+.algo-step p{margin:0;color:#5e7685;font-size:13px;line-height:1.78}
+.method-highlight{background:linear-gradient(120deg,#153f53,#1d6c78);color:#fff;border-radius:15px;padding:20px 22px;border:1px solid #194d60}
+.method-highlight b{display:block;margin-bottom:8px;font-size:17px}.method-highlight p{margin:0;font-size:14px;line-height:1.85;color:#e5f4f4}
+.algo-example{margin-top:16px;background:#eef8f5;border:1px solid #cfe7e0;border-radius:14px;padding:16px 20px}
+.algo-example h3{font-size:16px;margin:0 0 8px;color:#17665d}.algo-example p{font-size:14px;line-height:1.85;color:#4c6875;margin:6px 0}
+@media(max-width:1000px){.algorithm-grid{grid-template-columns:1fr}.algo-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.algorithm-panel{padding:16px}.algo-flow{grid-template-columns:1fr}.method-highlight{padding:17px}.algo-example{padding:15px}}
+/* Prompt font used throughout, including controls, tables, formulas and chart labels */
+body,button,input,select,textarea,table,.formula,.formula small,.math,svg text{font-family:'Prompt','Leelawadee UI',Tahoma,sans-serif!important}
+
+
+/* Accessibility improvements: preserve all lesson content and calculations. */
+.top-brand{display:flex;align-items:center;gap:12px;min-width:0}
+.home-link{display:inline-grid;place-items:center;flex:0 0 43px;width:43px;height:43px;color:#def7f3;border:1px solid #73b8b355;border-radius:11px;background:#ffffff16;text-decoration:none;transition:background-color .2s,border-color .2s,transform .2s}
+.home-link:hover{background:#1aa398;color:#fff;border-color:#89e3da;transform:translateY(-1px)}
+.home-link:focus-visible{outline:3px solid #a8f4e9;outline-offset:3px}
+.home-link svg{display:block}
+/* Reading size, spacing, and accessible hierarchy; font remains Prompt. */
+body{font-size:17px;line-height:1.9}
+.section .card{line-height:1.9}
+.hero p{font-size:16px;line-height:1.88}
+.section-heading p,.body-copy,.callout p,.info-box p,.principle,.principle p,
+.definition,.details-block .details-content,.algorithm-panel p,
+.algorithm-panel ol,.algorithm-panel ul,.algo-card p,.algo-step p,
+.method-highlight p,.algo-example p,.eq-list,.insight p,.note,
+.details-block summary,.state,.info-box dl,.preset label,.flowkey,
+.chart-legend,.detail-top label,.matrix-label,.mini-legend{font-size:16px;line-height:1.92}
+.section-heading h2{line-height:1.52}
+.callout h3,.info-box h3,.subhead,.algorithm-panel h3,.algo-card h4,.algo-example h3{font-size:18px;line-height:1.6}
+.section-subtitle{font-size:19px;line-height:1.6}
+.principle b,.algo-step b{font-size:16px}
+.formula small{font-size:15px;line-height:1.8}
+.stat small,.stat span,.badge,.input-summary small{font-size:14px;line-height:1.8}
+.chart-row{font-size:15px;line-height:1.7}
+.btn,.select,.inputs-table input{font-size:15px;line-height:1.55}
+.btn{min-height:44px}
+.table-scroll table{font-size:15px;line-height:1.65}
+.table-scroll th,.table-scroll thead th{font-size:14px;line-height:1.6}
+.table-scroll td,.table-scroll th{padding-top:13px;padding-bottom:13px}
+.inputs-table input{height:44px}
+.details-block summary{padding-top:15px;padding-bottom:15px}
+.details-block .details-content{padding-top:18px;padding-bottom:18px}
+.algorithm-panel li{margin-bottom:5px}
+@media(max-width:720px){
+  .top-brand{gap:9px}.home-link{width:41px;height:41px;flex-basis:41px}
+  .hero p{font-size:15px}
+  .section-heading p,.body-copy,.callout p,.info-box p,.principle,.principle p,
+  .definition,.details-block .details-content,.algorithm-panel p,
+  .algorithm-panel ol,.algorithm-panel ul,.algo-card p,.algo-step p,
+  .method-highlight p,.algo-example p,.eq-list,.insight p,.note,
+  .details-block summary,.state,.info-box dl,.preset label,.flowkey,
+  .chart-legend,.detail-top label,.matrix-label,.mini-legend{font-size:15.5px;line-height:1.9}
+  .chart-row{font-size:13px}
+  .table-scroll table{font-size:14px}
+  .table-scroll th,.table-scroll thead th{font-size:13px}
+}
+@media print{
+  body{font-size:11px;line-height:1.65}
+  .section-heading p,.body-copy,.callout p,.info-box p,.principle,.principle p,
+  .definition,.details-block .details-content,.algorithm-panel p,
+  .algorithm-panel ol,.algorithm-panel ul,.algo-card p,.algo-step p,
+  .method-highlight p,.algo-example p,.eq-list,.insight p,.note,
+  .details-block summary,.state,.info-box dl{font-size:11px;line-height:1.55}
+  .table-scroll table{font-size:9px}
+  .table-scroll th,.table-scroll thead th{font-size:9px}
+  .table-scroll td,.table-scroll th{padding:5px}
+  .inputs-table input{font-size:9px;height:auto}
+  .top-brand,.home-link{display:none!important}
+}
+
+
+.balance-panel{border:1px solid #c9e2e0;background:#f5fbf9;border-radius:15px;padding:18px 20px;margin:18px 0}
+.balance-title{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#16485b;font-size:17px;margin-bottom:13px}
+.balance-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.balance-controls>label{font-weight:700;font-size:14px;color:#345d6c}
+.balance-controls .select{min-width:min(100%,310px);font-size:14px}
+.penalty-wrap{display:flex;align-items:center;gap:8px;color:#5e7381;font-size:14px}
+.penalty-wrap input{width:115px;height:42px;border-radius:10px;border:1px solid #c6d8de;padding:8px 10px;text-align:right;font:inherit;color:#173b4e}
+.balance-help{color:#536c7a;font-size:14px;line-height:1.9;margin:12px 0 0}
+.shortage-model{margin-top:16px;background:#f7fbfa}
+.executive-summary{margin-top:20px;border-radius:15px;background:#eaf7f3;border:1px solid #bce4da;padding:20px 22px}
+.executive-summary h3{font-size:20px;color:#116f65;margin:0 0 10px}
+.executive-summary p{font-size:15px;line-height:1.9;color:#315968;margin:6px 0}
+.shortage-warning{background:#fff6e6;border:1px solid #ead2a4;color:#865a15;border-radius:12px;padding:14px 17px;margin:12px 0;line-height:1.85}
+.shortage-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:15px 0}
+.shortage-metrics>div{background:#f8fbfc;border:1px solid #d8e6e8;border-radius:13px;padding:13px 15px}
+.shortage-metrics small{display:block;color:#637f8c;font-size:12px}.shortage-metrics b{font-size:21px;color:#16465a;display:block;margin-top:3px}
+.shortage-row td,.shortage-row th{background:#fff8eb;color:#8c5b13}
+@media(max-width:850px){.shortage-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.balance-title{align-items:flex-start;flex-direction:column}.balance-controls{align-items:flex-start;flex-direction:column}.balance-controls .select{width:100%}.shortage-metrics{grid-template-columns:1fr 1fr}.shortage-metrics b{font-size:17px}}
+
+/* v2.1: live capacity status for each candidate site (does not imply a selection) */
+.input-summary{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.input-summary>div{min-width:0;padding:13px 14px}
+.input-summary .capacity-option{border:1px solid #cbe8e4;background:#f5fbfa}
+.input-summary .capacity-option.deficit{border-color:#f1dcc1;background:#fffaf2}
+.input-summary .capacity-option.surplus{border-color:#cfe4f6;background:#f4f9fd}
+.input-summary .capacity-option .scenario-line{display:block;font-size:12px;color:#557381;line-height:1.55}
+.input-summary .capacity-option .capacity-status{display:block;font-size:12px;font-weight:750;line-height:1.55;color:#0b7b6f}
+.input-summary .capacity-option.deficit .capacity-status{color:#ac6b22}
+.input-summary .capacity-option.surplus .capacity-status{color:#276b9f}
+.input-summary .summary-caption{grid-column:1/-1;background:transparent;border:0;padding:1px 2px 0;font-size:12px;color:#627f8c;line-height:1.75}
+.input-summary .summary-caption strong{color:#284e62}
+.input-summary .summary-caption b,.input-summary .summary-caption strong{font-size:12px;line-height:1.7}
+@media(max-width:1100px){.input-summary{grid-template-columns:repeat(3,minmax(0,1fr))}.input-summary .base-card{grid-column:auto}}
+@media(max-width:650px){.input-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.input-summary .summary-caption{grid-column:1/-1}}
+@media(max-width:400px){.input-summary{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topin"><div class="top-brand"><a class="home-link" href="../index.html" aria-label="กลับหน้าหลัก" title="กลับหน้าหลัก"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a1 1 0 0 0 1 1h5v-7h2v7h5a1 1 0 0 0 1-1V9"/></svg></a><a class="brand" href="#home"><span class="brand-mark">⌁</span><span>PlantLoc <span style="color:#7ce0d5">OPT</span><small>TRANSPORTATION · FACILITY LOCATION</small></span></a></div><nav class="navigation" aria-label="สารบัญโปรแกรม"><a href="#theory">ทฤษฎี</a><a href="#case">ทำความเข้าใจโจทย์</a><a href="#input">ข้อมูลโจทย์</a><a href="#model">ตัวแบบ</a><a href="#results">ผลการคำนวณ</a><a href="#analysis">บทวิเคราะห์</a><a href="#method">ตรวจสอบวิธี</a></nav></div></header>
+<main class="container" id="home">
+<header class="hero"><div class="hero-content"><div class="eyebrow">Engineering Decision Support · Interactive Learning</div><h1>PlantLoc <em>OPT</em><br><span style="font-weight:650;font-size:.55em;display:block;line-height:1.65;letter-spacing:0">ระบบวิเคราะห์และเลือกทำเลที่ตั้งโรงงาน</span></h1><p>Facility Location Selection using Transportation Model<br>จากกรณีศึกษาสู่การตัดสินใจเชิงวิศวกรรม: เรียนรู้ทฤษฎี ปรับข้อมูล ทดลองสถานการณ์ และคำนวณคำตอบที่เหมาะสมที่สุดได้ในหน้าเดียว</p><div class="hero-meta"><span>Linear Programming</span><span>Min-Cost Flow Optimization</span><span>Interactive · Offline Calculation</span><span>กรณีศึกษา ตัวอย่างที่ 2.3</span></div></div>
+<div class="hero-visual" aria-hidden="true"><svg viewBox="0 0 330 205" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#80d7d1" stroke-width="3" stroke-linecap="round" opacity=".46"><path d="M53 31C130 31 160 46 275 22"/><path d="M53 31C138 31 170 100 275 97"/><path d="M53 31C135 29 177 175 275 171"/><path d="M53 100C120 101 194 20 275 22"/><path d="M53 100C115 99 194 99 275 97"/><path d="M53 100C114 99 192 170 275 171"/><path d="M53 174C139 170 172 26 275 22"/><path d="M53 174C155 169 179 97 275 97"/><path d="M53 174C170 174 204 170 275 171"/></g><g fill="#21a899" stroke="#bbfff7" stroke-width="2"><rect x="19" y="6" width="69" height="44" rx="12"/><rect x="19" y="78" width="69" height="44" rx="12"/><rect x="19" y="150" width="69" height="44" rx="12"/></g><g fill="#f0cc7f" stroke="#fff3d4" stroke-width="2"><circle cx="276" cy="22" r="19"/><circle cx="276" cy="97" r="19"/><circle cx="276" cy="171" r="19"/></g><g fill="white" font-family="Prompt, sans-serif" font-size="15" font-weight="bold" text-anchor="middle"><text x="53" y="33">ก</text><text x="53" y="105">ข</text><text x="53" y="178">ค</text></g><g fill="#21354b" font-family="Prompt, sans-serif" font-size="12" font-weight="bold" text-anchor="middle"><text x="276" y="26">ด</text><text x="276" y="101">ต</text><text x="276" y="175">ถ</text></g></svg></div></header>
+<div class="quick-stats" aria-label="ข้อมูลสรุปโจทย์ต้นฉบับ"><div class="stat"><small>โรงงานเดิม</small><strong>2 <span style="font-size:14px">แห่ง</span></strong><span>ก. และ ข.</span></div><div class="stat"><small>ทำเลใหม่ที่ต้องเลือก</small><strong>1 <span style="font-size:14px">จาก 3</span></strong><span>ค. · ง. · จ.</span></div><div class="stat"><small>ลูกค้า / ปลายทาง</small><strong>5 <span style="font-size:14px">ราย</span></strong><span>ด. · ต. · ถ. · ท. · ธ.</span></div><div class="stat"><small>ความต้องการเริ่มต้น</small><strong>72,000</strong><span>หน่วยต่อสัปดาห์</span></div></div>
+
+<section class="section" id="theory"><div class="card"><div class="section-heading"><div><span class="eyebrow">01 / Academic foundation</span><h2>หลักการทางวิชาการ: ปัญหาการขนส่งกับการเลือกทำเลโรงงาน</h2><p>วิเคราะห์ปัญหาด้วยการวิจัยดำเนินงาน (Operations Research) และการกำหนดการเชิงเส้น (Linear Programming)</p></div><span class="badge">THEORY</span></div>
+<p class="body-copy"><b>ปัญหาการขนส่ง (Transportation Problem)</b> เป็นแบบจำลองการจัดสรรสินค้าจากแหล่งต้นทาง (Sources) หลายแห่งไปยังปลายทาง (Destinations) หลายแห่ง โดยกำหนดปริมาณการส่งผ่านแต่ละเส้นทางให้บรรลุความต้องการทั้งหมด ภายใต้ข้อจำกัดด้านกำลังผลิต และมีต้นทุนรวมน้อยที่สุด ปัญหานี้เป็นกรณีเฉพาะของ <b>Linear Programming</b> และเชื่อมโยงกับปัญหาการไหลในโครงข่ายที่มีต้นทุนต่ำสุด (Minimum-Cost Flow)</p>
+<div class="principles"><div class="principle"><b>1 · Facility Location</b><p>ตัดสินใจว่าโรงงานใหม่จะตั้งที่ใด โดยเลือกเพียงหนึ่งทำเลจากตัวเลือกที่กำหนด</p></div><div class="principle"><b>2 · Transportation Allocation</b><p>กำหนดว่าแต่ละโรงงานควรผลิตและจัดส่งสินค้าไปยังลูกค้ารายใด จำนวนเท่าใด</p></div><div class="principle"><b>3 · System Cost Optimization</b><p>ลดต้นทุนรวมทั้งระบบ ไม่ใช่ลดเฉพาะค่าขนส่งหรือเลือกโรงงานที่ต้นทุนผลิตถูกที่สุด</p></div></div>
+<div class="formula"><span class="math">Min Z = Σ<sub>i</sub> Σ<sub>j</sub> (<span class="accent">P<sub>i</sub> + C<sub>ij</sub></span>) X<sub>ij</sub></span><small>ต้นทุนรวมต่ำสุด = ผลรวมของ [ต้นทุนผลิตต่อหน่วย + ต้นทุนขนส่งต่อหน่วย] × ปริมาณสินค้าที่ส่ง</small></div>
+<div class="grid2"><div class="callout"><h3>ตัวแปรตัดสินใจ <span class="math">X<sub>ij</sub></span></h3><p>จำนวนสินค้าที่ส่งจากโรงงาน <i>i</i> ไปยังลูกค้า <i>j</i> (หน่วย/สัปดาห์) โปรแกรมจะค้นหาค่าของตัวแปรเหล่านี้ เพื่อให้ต้นทุนรวมต่ำที่สุด</p></div><div class="callout"><h3>เหตุใดต้องหาค่าเหมาะสมที่สุด?</h3><p>เส้นทางที่ถูกที่สุดสำหรับลูกค้ารายหนึ่ง อาจแย่งกำลังผลิตจากเส้นทางที่จำเป็นกว่าสำหรับลูกค้าอีกราย จึงต้องพิจารณาการจัดสรรทุกเส้นทางพร้อมกัน</p></div></div>
+<details class="details-block"><summary>คำศัพท์วิชาการที่ควรรู้</summary><div class="details-content"><b>Feasible Solution:</b> แผนขนส่งที่ไม่ละเมิดข้อจำกัด<br><b>Optimal Solution:</b> แผนที่เป็นไปได้และทำให้ต้นทุนรวมต่ำที่สุด<br><b>Balanced Transportation:</b> ผลรวมกำลังผลิตเท่ากับความต้องการรวม<br><b>Unbalanced Transportation:</b> ผลรวมกำลังผลิตไม่เท่ากับความต้องการรวม<br><b>Sensitivity Analysis:</b> วิเคราะห์ว่าการเปลี่ยนข้อมูลนำเข้าทำให้คำตอบเปลี่ยนอย่างไร<br><b>Decision Support:</b> ใช้ผลคำนวณประกอบการตัดสินใจ โดยยังต้องพิจารณาปัจจัยที่ไม่มีในตัวแบบ</div></details>
+</div></section>
+
+<section class="section" id="case"><div class="card"><div class="section-heading"><div><span class="eyebrow">02 / Understand the problem</span><h2>กรณีศึกษาและเงื่อนไขของโจทย์</h2><p>บริษัทมีโรงงานเดิม 2 แห่ง ต้องขยายกำลังผลิตด้วยโรงงานใหม่เพียง 1 แห่ง เพื่อรองรับลูกค้าทั้ง 5 ราย</p></div><span class="badge">CASE STUDY</span></div>
+<div class="grid3"><div class="callout"><span class="step-tag">เงื่อนไข A</span><h3>เลือกทำเลใหม่ 1 แห่งเท่านั้น</h3><p>ต้องเปรียบเทียบสามชุด: <strong>ก.+ข.+ค.</strong>, <strong>ก.+ข.+ง.</strong> และ <strong>ก.+ข.+จ.</strong> ห้ามนำกำลังผลิตของ ค., ง., จ. มารวมพร้อมกัน</p></div><div class="callout"><span class="step-tag">เงื่อนไข B</span><h3>ต้องส่งสินค้าให้ลูกค้าครบ</h3><p>ในโหมด Strict ลูกค้าต้องได้รับสินค้าครบทุกคน ส่วนโหมดวิเคราะห์กรณีขาดแคลนอนุญาตให้มียอดส่งไม่ครบและแสดงค่าปรับแยกจากต้นทุนจริง โดยทุกโรงงานต้องไม่ผลิตเกินกำลังสูงสุด</p></div><div class="callout"><span class="step-tag">เงื่อนไข C</span><h3>ต้นทุนที่เปรียบเทียบต้องครบถ้วน</h3><p>วิเคราะห์ <strong>ต้นทุนผลิตจริง + ต้นทุนขนส่งจริง</strong> ของแต่ละแผน หากกำลังผลิตเหลือ โปรแกรมอนุญาตให้ไม่ผลิตเต็มกำลัง</p></div></div>
+<h3 class="subhead">ตรวจสอบสมดุลของข้อมูลตั้งต้น</h3><p class="body-copy">โรงงานเดิมผลิตรวม <b>27,000 + 20,000 = 47,000</b> หน่วย/สัปดาห์ โรงงานใหม่ที่เลือกมีกำลังผลิต <b>25,000</b> หน่วย/สัปดาห์ รวมเป็น <b>72,000</b> หน่วย/สัปดาห์ เท่ากับความต้องการทั้งหมด <b>72,000</b> หน่วย/สัปดาห์ จึงเป็น <b>Balanced Transportation Problem</b> และทุกโรงงานที่เลือกต้องใช้กำลังผลิตเต็ม 100% ภายใต้โจทย์ต้นฉบับ</p>
+<div class="definition"><b>ตัวอย่างการแปลค่าต้นทุน:</b> โรงงาน ค. มีต้นทุนผลิต 70 บาท/หน่วย และส่งไปลูกค้า ถ. เสียค่าขนส่ง 8 บาท/หน่วย ดังนั้นต้นทุนรวมของเส้นทาง ค. → ถ. เท่ากับ <b>78 บาท/หน่วย</b> หากส่ง 16,000 หน่วย จะเกิดต้นทุน <b>1,248,000 บาท</b> สำหรับสินค้าบนเส้นทางนี้</div>
+<details class="details-block"><summary>สมมติฐานและขอบเขตการวิเคราะห์ (Assumptions & Scope)</summary><div class="details-content">(1) สินค้าทุกหน่วยเป็นชนิดที่ใช้ทดแทนกันได้ และส่งจากโรงงานใดก็ได้ (2) มีหนึ่งช่วงเวลาการวิเคราะห์คือหนึ่งสัปดาห์ (3) ต้นทุนผลิตและขนส่งต่อหน่วยคงที่และไม่ติดลบ (4) ทุกเส้นทางในตารางอนุญาตให้ขนส่ง (5) กรณีปกติต้องตอบสนองความต้องการให้ครบ ส่วนโหมดขาดแคลนแสดงยอดส่งไม่ครบและค่าปรับโดยไม่ถือว่าเป็นสินค้าจัดส่งจริง (6) กำลังผลิตแต่ละโรงงานเป็นเพดาน ไม่ใช่ข้อบังคับให้ผลิตเต็มเมื่อมีส่วนเกิน (7) ยังไม่ได้รวมค่าที่ดิน ค่าเปิดโรงงาน เงินลงทุนเริ่มต้น ภาษี ค่าใช้จ่ายคงที่ ระยะเวลา และความเสี่ยง<br><br><b>ข้อแตกต่างที่สำคัญ:</b> ตัวแบบนี้เป็นการเปรียบเทียบตัวเลือกทำเลแบบกำหนดไว้ล่วงหน้า (Scenario-Based Facility Location) ไม่ใช่แบบจำลองกำหนดตำแหน่งพิกัดทางภูมิศาสตร์โดยตรง และไม่ใช่แบบจำลองต้นทุนตลอดอายุโครงการ</div></details>
+</div></section>
+
+<section class="section" id="input"><div class="card"><div class="section-heading"><div><span class="eyebrow">03 / Editable input</span><h2>ข้อมูลต้นทุน กำลังผลิต และความต้องการสินค้า</h2><p>สามารถแก้ไขตัวเลขทุกช่อง แล้วกดคำนวณใหม่เพื่อดูผลต่อแผนการขนส่งและการเลือกทำเล</p></div><span class="badge">EDITABLE DATA</span></div>
+<div class="table-scroll"><table class="inputs-table" id="inputTable"><thead><tr><th>โรงงาน / ทำเล</th><th>ลูกค้า ด.</th><th>ลูกค้า ต.</th><th>ลูกค้า ถ.</th><th>ลูกค้า ท.</th><th>ลูกค้า ธ.</th><th>กำลังผลิต<br>(หน่วย/สัปดาห์)</th><th>ต้นทุนผลิต<br>(บาท/หน่วย)</th></tr></thead><tbody id="inputRows"></tbody><tfoot><tr class="demand"><th>ความต้องการ<br>(หน่วย/สัปดาห์)</th><td id="demandCell0"></td><td id="demandCell1"></td><td id="demandCell2"></td><td id="demandCell3"></td><td id="demandCell4"></td><td colspan="2">แก้ไขปริมาณความต้องการของลูกค้าแต่ละรายได้</td></tr></tfoot></table></div>
+<div class="note-strip"><span class="mini-legend old">โรงงานเดิม ก. และ ข.</span><span class="mini-legend">ทำเลใหม่ ค., ง. และ จ. (เลือกเพียง 1)</span><span class="note">ค่าขนส่งและต้นทุนผลิต: บาท/หน่วย · ปริมาณ: หน่วย/สัปดาห์</span></div>
+<div class="input-summary" id="inputSummary" aria-live="polite"></div>
+<div class="balance-panel" aria-label="ตั้งค่าการวิเคราะห์กำลังผลิตและความต้องการ">
+  <div class="balance-title"><b>⚖ ตั้งค่าการวิเคราะห์กรณีกำลังผลิตไม่เท่าความต้องการ</b><span class="badge">UNBALANCED TRANSPORTATION</span></div>
+  <div class="balance-controls">
+    <label for="modeSelect">รูปแบบการวิเคราะห์</label>
+    <select id="modeSelect" class="select"><option value="shortage">วิเคราะห์ต่อเมื่อขาดแคลน (Dummy Source + ค่าปรับ)</option><option value="strict">Strict — ลูกค้าต้องได้รับครบ 100%</option></select>
+    <label for="penaltyInput">ค่าปรับสินค้าส่งไม่ครบ</label>
+    <div class="penalty-wrap"><input type="number" id="penaltyInput" value="500" min="0" step="any" inputmode="decimal"><span>บาท/หน่วย</span></div>
+  </div>
+  <p class="balance-help">เมื่อ <b>กำลังผลิต &gt; ความต้องการ</b> โปรแกรมอนุญาตให้ผลิตไม่เต็มกำลังโดยอัตโนมัติ · เมื่อ <b>กำลังผลิต &lt; ความต้องการ</b> โหมดวิเคราะห์ต่อจะเพิ่ม <b>แหล่งต้นทางจำลอง (Dummy Source)</b> เพื่อแทน <b>ยอดส่งไม่ครบเท่านั้น</b> พร้อมค่าปรับที่กำหนดได้ (ไม่ถือเป็นสินค้าที่ส่งจริง) · โหมด Strict จะปฏิเสธทางเลือกที่ส่งสินค้าได้ไม่ครบตามเดิม</p>
+</div>
+<div class="toolbar"><div class="left"><button type="button" class="btn primary" id="solveBtn">▶ คำนวณหาค่าเหมาะสมที่สุด</button><button type="button" class="btn secondary" id="resetBtn">↺ คืนค่าโจทย์ต้นฉบับ</button></div><div><label for="weeksInput" class="note" style="font-weight:800">ใช้คำนวณผลต่อปี:</label> <input type="number" min="1" max="53" step="1" value="52" id="weeksInput" style="width:65px;height:38px;border:1px solid #cedce2;border-radius:8px;padding:5px 8px;text-align:center"> <span class="note">สัปดาห์</span></div></div>
+<div id="statusMsg" role="status" class="state">ระบบพร้อมใช้งาน: เลือกโรงงานใหม่ 1 แห่งต่อสถานการณ์ และคำนวณทั้ง 3 สถานการณ์แบบอัตโนมัติ</div>
+<div class="preset"><label for="presetSelect">ทดลองสถานการณ์ (What-if):</label><select class="select" id="presetSelect"><option value="" selected>— เลือกตัวอย่างสถานการณ์ —</option><option value="shipping">ค่าขนส่ง ค. → ถ. เพิ่มจาก 8 เป็น 15</option><option value="production">ต้นทุนผลิต ค. เพิ่มจาก 70 เป็น 71</option><option value="shortage">ความต้องการลูกค้า ท. เพิ่ม 3,000 หน่วย</option><option value="surplus">ความต้องการลูกค้า ท. ลด 6,000 หน่วย</option></select><button type="button" class="btn outline" id="applyPreset">ใช้สถานการณ์</button><span class="note">การเลือกตัวอย่างจะโหลดค่าโจทย์ต้นฉบับใหม่ ก่อนปรับค่าตามกรณีนั้น</span></div>
+</div></section>
+
+<section class="section" id="model"><div class="card"><div class="section-heading"><div><span class="eyebrow">04 / Mathematical formulation</span><h2>ตัวแบบทางคณิตศาสตร์และข้อจำกัด</h2><p>สมการอัปเดตตามกำลังผลิต ความต้องการ และทำเลที่กำลังเลือกแสดง</p></div><span class="badge">LP MODEL</span></div>
+<div class="grid2"><div class="equation-card"><b>ฟังก์ชันวัตถุประสงค์ (Objective)</b><div style="margin-top:10px;font-size:18px;color:#0f6e68" class="math">Min Z = Σ<sub>i∈F</sub> Σ<sub>j=1..5</sub> (P<sub>i</sub>+C<sub>ij</sub>) X<sub>ij</sub></div><p class="note">F = {ก., ข., ทำเลใหม่ที่เลือก} · ปริมาณ X ≥ 0</p></div><div class="equation-card"><b>ข้อจำกัดหลัก (Constraints)</b><ul class="eq-list"><li><span class="math">Σ<sub>j</sub>X<sub>ij</sub> ≤ S<sub>i</sub></span> — ไม่เกินกำลังผลิตทุกโรงงาน</li><li><span class="math">Σ<sub>i</sub>X<sub>ij</sub> = D<sub>j</sub></span> — ลูกค้าทุกรายได้รับครบในกรณีปกติ หรือรวม Uⱼ เมื่อใช้โหมดขาดแคลน</li><li><span class="math">X<sub>ij</sub> ≥ 0</span> — ปริมาณส่งไม่ติดลบ</li><li>เลือกและเปิดใช้งานทำเลใหม่เพียงแห่งเดียว</li></ul></div></div>
+<h3 class="section-subtitle">ต้นทุนรวมต่อหน่วยแต่ละเส้นทาง (P<sub>i</sub> + C<sub>ij</sub>)</h3><p class="note">ตารางนี้ใช้กับทำเลที่เลือกในส่วนผลการคำนวณ เมื่อต้นทุนการผลิตหรือต้นทุนขนส่งเปลี่ยน ตารางจะเปลี่ยนตาม</p><div class="table-scroll" id="effectiveCost">ยังไม่มีผลการคำนวณ</div>
+<div class="definition" id="constraintExamples">ตัวอย่างข้อจำกัดของระบบจะแสดงหลังคำนวณ</div>
+<div class="equation-card shortage-model" id="shortageModel"><b>ตัวแบบกรณีขาดแคลน (Dummy Source Model)</b><p class="note">Min Z = Σ(Pᵢ+Cᵢⱼ)Xᵢⱼ + ΣλⱼUⱼ โดย Uⱼ = ความต้องการที่ยังส่งไม่ครบของลูกค้า j · มีข้อจำกัด ΣᵢXᵢⱼ + Uⱼ = Dⱼ และ Uⱼ ≥ 0 · หากกำลังผลิตน้อยกว่าความต้องการ จะกำหนดผลรวม Uⱼ = Dรวม − Sรวม เพื่อให้จัดสรรสินค้าที่ผลิตได้จริงทั้งหมดก่อน โดยไม่ตีความ Dummy Source ว่าคือสินค้า</p></div>
+</div></section>
+
+<section class="section" id="results"><div class="card"><div class="section-heading"><div><span class="eyebrow">05 / Optimization results</span><h2>ผลการคำนวณและการเปรียบเทียบทำเล</h2><p>หาค่าต่ำสุดของต้นทุนผลิตและต้นทุนขนส่งร่วมกัน สำหรับแต่ละชุดโรงงาน ก.+ข.+ทำเลใหม่</p></div><span class="badge">OPTIMAL RESULTS</span></div>
+<div id="resultContent"><div class="state warn">กรุณากดคำนวณเพื่อแสดงผล</div></div>
+</div></section>
+
+<section class="section" id="allocation"><div class="card"><div class="section-heading"><div><span class="eyebrow">06 / Transportation plan</span><h2>รายละเอียดแผนขนส่งที่เหมาะสมที่สุด</h2><p>ตรวจสอบปริมาณสินค้าและเส้นทางที่ควรใช้ ตลอดจนความสอดคล้องกับข้อจำกัดด้านกำลังผลิตและความต้องการ</p></div><span class="badge">FLOW ALLOCATION</span></div>
+<div class="detail-top"><div class="actions"><label for="siteSelect">แสดงผลของทำเล</label><select class="select" id="siteSelect"><option value="2">ค. — โรงงาน ก.+ข.+ค.</option><option value="3">ง. — โรงงาน ก.+ข.+ง.</option><option value="4">จ. — โรงงาน ก.+ข.+จ.</option></select></div><div class="actions no-print"><button class="btn outline" id="csvBtn" type="button">↓ ส่งออกผลลัพธ์ CSV</button><button class="btn outline" id="printBtn" type="button">⎙ พิมพ์ / บันทึก PDF</button></div></div>
+<div id="detailContent"><p class="note">โปรดคำนวณผลลัพธ์ก่อน</p></div>
+</div></section>
+
+<section class="section" id="analysis"><div class="card"><div class="section-heading"><div><span class="eyebrow">07 / Engineering interpretation</span><h2>บทวิเคราะห์และข้อเสนอแนะเชิงวิศวกรรม</h2><p>สรุปผลโดยพิจารณาต้นทุนรวม ความสามารถในการผลิต ความเสี่ยง และความไวของคำตอบต่อข้อมูลนำเข้า</p></div><span class="badge">DECISION SUPPORT</span></div>
+<div id="analysisContent"><p class="note">ระบบจะแสดงบทวิเคราะห์เฉพาะข้อมูลล่าสุดหลังคำนวณ</p></div>
+<div class="executive-summary"><h3>บทสรุปผลการศึกษา (Executive Summary)</h3><div id="summaryContent" aria-live="polite">บทสรุปจะอัปเดตโดยอัตโนมัติตามค่าที่กรอก</div></div>
+<h3 class="section-subtitle">ปัจจัยที่ตัวแบบนี้ยังไม่ครอบคลุม</h3><div class="grid2"><div class="callout"><h3>ต้นทุนลงทุนและเศรษฐศาสตร์โครงการ</h3><p>ราคาที่ดิน ค่าก่อสร้าง เครื่องจักร ภาษี ต้นทุนคงที่ และมูลค่าเงินตามเวลา (เช่น NPV / EAC) ยังไม่อยู่ในข้อมูลโจทย์ จึงยังไม่สามารถสรุปว่าทำเลที่ดีที่สุดด้านต้นทุนดำเนินงานเป็นทางเลือกลงทุนที่ดีที่สุดแน่นอนได้</p></div><div class="callout"><h3>ความเสี่ยงและความพร้อมของระบบ</h3><p>ความเชื่อถือได้ของเส้นทางขนส่ง ความเร็วในการส่งมอบ อุบัติภัย สภาพแวดล้อม ความพร้อมแรงงาน สาธารณูปโภค และความสามารถรองรับความต้องการในอนาคต ควรพิจารณาด้วยการประเมินหลายเกณฑ์ (MCDA)</p></div></div>
+</div></section>
+
+<section class="section" id="method"><div class="card"><div class="section-heading"><div><span class="eyebrow">08 / Learning & verification</span><h2>วิธีหาคำตอบและการตรวจสอบความถูกต้อง</h2><p>เปรียบเทียบวิธีสร้างคำตอบเริ่มต้นกับการหาคำตอบที่เหมาะสมที่สุด พร้อมหลักการตรวจสอบข้อจำกัด</p></div><span class="badge">METHODOLOGY</span></div>
+<p class="body-copy"><b>ตัวแก้ปัญหาหลัก:</b> Minimum-Cost Flow ด้วยอัลกอริทึม Successive Shortest Augmenting Path (ใช้ node potentials และ reduced cost) ทำงานภายในเบราว์เซอร์โดยไม่ต้องใช้ Excel Solver หรือเชื่อมต่ออินเทอร์เน็ต โดยคำนวณต้นทุนรวมต่อหน่วย <span class="math">P<sub>i</sub>+C<sub>ij</sub></span> ของทุกเส้นทางพร้อมกัน</p>
+<div class="method-highlight"><b>อัลกอริทึมหลักที่ใช้ในโปรแกรมนี้: Minimum-Cost Flow แบบ Successive Shortest Path</b><p>โปรแกรมไม่ได้หยุดเพียงการสร้างคำตอบเริ่มต้น แต่แก้ปัญหาเชิงเหมาะที่สุดบนโครงข่ายโดยตรง ผ่านแนวคิดของ <b>Minimum-Cost Flow</b> ร่วมกับ <b>reduced-cost potentials</b> เพื่อหาว่าควรส่งสินค้าเท่าใดในแต่ละเส้นทาง จึงจะทำให้ <b>ต้นทุนการผลิต + ต้นทุนการขนส่ง</b> ต่ำที่สุด ภายใต้ข้อจำกัดด้านกำลังการผลิตและความต้องการของลูกค้า</p></div>
+<div class="algorithm-grid">
+  <div class="algorithm-panel">
+    <h3>ขยายความแนวคิดอัลกอริทึม</h3>
+    <p>ในเชิงคณิตศาสตร์ ปัญหานี้สามารถแปลงเป็นปัญหาการไหลในโครงข่าย (network flow) ได้ โดยสร้างโหนดต้นทางแทนโรงงาน โหนดปลายทางแทนลูกค้า และเส้นเชื่อมระหว่างโรงงานกับลูกค้าแทน “ทางเลือกในการส่งสินค้า” แต่ละเส้นมี <b>capacity</b> และ <b>cost</b> กำกับอยู่</p>
+    <ol>
+      <li><b>สร้างโครงข่าย:</b> มีเส้นจาก Source → โรงงาน, โรงงาน → ลูกค้า, และ ลูกค้า → Sink</li>
+      <li><b>กำหนดต้นทุนต่อหน่วย:</b> สำหรับเส้นโรงงาน → ลูกค้า ใช้ค่า <span class="math">P<sub>i</sub> + C<sub>ij</sub></span></li>
+      <li><b>ส่งการไหลทีละรอบ:</b> หาเส้นทางที่มีต้นทุนส่วนเพิ่มต่ำที่สุดจาก Source ไป Sink แล้วส่งปริมาณได้มากที่สุดเท่าที่ข้อจำกัดอนุญาต</li>
+      <li><b>อัปเดต residual network:</b> หลังส่งสินค้าแต่ละรอบ โปรแกรมจะปรับความจุคงเหลือและสร้างเส้นย้อนกลับเพื่อใช้ตรวจสอบว่ามีทางปรับลดต้นทุนได้อีกหรือไม่</li>
+      <li><b>หยุดเมื่อครบความต้องการ:</b> เมื่อความต้องการถูกเติมเต็มทั้งหมด (หรือคิดยอดส่งไม่ครบด้วย Dummy Source ในโหมดขาดแคลน) จึงได้แผนที่เป็นไปได้ตามตัวแบบ และตรวจสอบ optimality ต่อด้วย residual network</li>
+    </ol>
+    <p>เพื่อให้การหาเส้นทางสั้นที่สุดทำได้มีเสถียรภาพ โปรแกรมใช้ <b>potential</b> ช่วยปรับ reduced cost ทำให้ต้นทุนเชิงคำนวณไม่ติดลบระหว่างรอบ ซึ่งเป็นเทคนิคมาตรฐานของวิธี Successive Shortest Path</p>
+  </div>
+  <div class="algorithm-cards">
+    <div class="algo-card"><span class="tag">Algorithm A</span><h4>Northwest Corner</h4><p>เป็นวิธีสร้างคำตอบเริ่มต้นอย่างง่าย โดยเริ่มจัดสรรจากมุมซ้ายบนของตารางแล้วเลื่อนไปตามแถวและคอลัมน์ จุดเด่นคือเข้าใจง่าย แต่ไม่ได้คำนึงถึงต้นทุน จึงมักไม่ใช่คำตอบที่ดีที่สุด</p></div>
+    <div class="algo-card"><span class="tag">Algorithm B</span><h4>Least Cost Method</h4><p>เป็นวิธีสร้างคำตอบเริ่มต้นที่มองต้นทุนมากขึ้น โดยเลือกจัดสรรในช่องที่มีต้นทุนต่ำก่อน เหมาะสำหรับใช้เปรียบเทียบเพื่อการเรียนรู้ แต่ยังไม่รับประกัน optimality</p></div>
+    <div class="algo-card"><span class="tag">Algorithm C</span><h4>Successive Shortest Path Min-Cost Flow</h4><p>เป็นอัลกอริทึมหลักของโปรแกรมนี้ ใช้หาคำตอบที่เหมาะสมที่สุดในระดับโครงข่าย จึงตอบโจทย์งานตัดสินใจเชิงวิศวกรรมได้แม่นยำกว่า heuristic เริ่มต้น</p></div>
+    <div class="algo-card"><span class="tag">Why this one?</span><h4>เหตุผลที่เลือกใช้</h4><p>เพราะโจทย์มีขนาดไม่ใหญ่มาก แต่ต้องการความถูกต้องระดับวิชาการ อัลกอริทึมนี้จึงให้ทั้งความเร็ว ความโปร่งใสในการอธิบาย และความสามารถในการตรวจสอบ optimality ได้ในตัว</p></div>
+  </div>
+</div>
+<h3 class="section-subtitle">ลำดับการคำนวณในโปรแกรม</h3>
+<div class="algo-flow">
+  <div class="algo-step"><b>Step 1 · อ่านข้อมูล</b><p>รับค่าต้นทุนขนส่ง ต้นทุนผลิต กำลังผลิต และความต้องการ จากตารางที่ผู้ใช้แก้ไขได้</p></div>
+  <div class="algo-step"><b>Step 2 · แยก 3 สถานการณ์</b><p>คำนวณแยกสำหรับชุดโรงงาน ก.+ข.+ค., ก.+ข.+ง. และ ก.+ข.+จ. เพื่อเปรียบเทียบทำเลใหม่ทีละทางเลือก</p></div>
+  <div class="algo-step"><b>Step 3 · หาค่าเหมาะสมที่สุด</b><p>ใช้ Min-Cost Flow เพื่อหาปริมาณส่งในแต่ละเส้นทางให้ต้นทุนรวมต่ำที่สุด ภายใต้ข้อจำกัดทั้งหมด</p></div>
+  <div class="algo-step"><b>Step 4 · ตรวจสอบและสรุปผล</b><p>ตรวจสอบ feasibility, optimality และยอดส่งไม่ครบ (หากมี) ก่อนจัดอันดับทำเล พร้อมบทวิเคราะห์และบทสรุปตามสถานการณ์</p></div>
+</div>
+<div class="algo-example"><h3>ตัวอย่างช่วยทำความเข้าใจ: ทำไมไม่เลือกเฉพาะเส้นทางที่ถูกที่สุด?</h3>
+<p>สำหรับการส่งสินค้าไปยังลูกค้า <b>ถ.</b> เมื่อนำต้นทุนผลิตรวมกับค่าขนส่ง จะพบว่า <b>โรงงาน ค. → ถ.</b> มีต้นทุน <b>70 + 8 = 78 บาท/หน่วย</b> ขณะที่โรงงาน ก. → ถ. เท่ากับ 73 + 11 = 84 บาท/หน่วย และโรงงาน ข. → ถ. เท่ากับ 72 + 11 = 83 บาท/หน่วย</p>
+<p>แม้เส้นทาง ค. → ถ. จะมีต้นทุนต่อหน่วยต่ำกว่า แต่โรงงาน ค. มีกำลังผลิตจำกัดเพียง 25,000 หน่วย/สัปดาห์ และอาจจำเป็นต้องส่งให้ลูกค้ารายอื่นด้วย อัลกอริทึมจึงต้องจัดสรรเส้นทางทั้งระบบพร้อมกัน โดยสามารถย้อนปรับการส่งเดิมผ่าน <b>residual edges</b> เพื่อค้นหาต้นทุนรวมที่ต่ำที่สุด ไม่ใช่ตัดสินใจจากช่องที่มีตัวเลขต่ำที่สุดเพียงช่องเดียว</p>
+<p><b>หลักฐานความเหมาะสมที่สุด:</b> หลังจัดสรรครบทุกลูกค้า โปรแกรมตรวจสอบว่าไม่เหลือวงจรต้นทุนติดลบในโครงข่ายส่วนเหลือ เมื่อเงื่อนไขความเป็นไปได้ครบถ้วนและไม่พบวงจรดังกล่าว คำตอบที่ได้จึงเป็นต้นทุนต่ำที่สุดภายใต้แบบจำลองปัจจุบัน</p></div>
+<div class="definition"><b>ความแตกต่างเมื่อ Supply และ Demand ไม่สมดุล:</b><br><b>Supply &gt; Demand:</b> ใช้ข้อจำกัดกำลังผลิตแบบ ≤ โรงงานสามารถผลิตน้อยกว่าเพดานได้ จึงไม่จำเป็นต้องเพิ่ม Dummy Destination เพื่อหาคำตอบ · <b>Supply &lt; Demand:</b> เพิ่ม Dummy Source ขนาดเท่าปริมาณที่ขาด โดยคิดต้นทุนค่าปรับ ไม่ใช่ปริมาณที่ส่งจริง · ตัวแก้ปัญหา Min-Cost Flow จัดสรรสินค้าและยอดส่งไม่ครบพร้อมกัน ก่อนตรวจสอบผลด้วย residual network</div>
+<div id="methodContent">โปรดคำนวณก่อนเพื่อเปรียบเทียบวิธี</div>
+<div class="grid3" style="margin-top:14px"><div class="callout"><span class="step-tag">ขั้นที่ 1</span><h3>Feasibility</h3><p>ผลรวมส่งจริงแต่ละแถวไม่เกินกำลังผลิต ผลรวมส่งจริงและยอดส่งไม่ครบต่อคอลัมน์เท่าความต้องการ และทุกปริมาณไม่ติดลบ</p></div><div class="callout"><span class="step-tag">ขั้นที่ 2</span><h3>Optimality</h3><p>ตรวจสอบว่าไม่มีวงจรต้นทุนติดลบที่ปรับปรุงคำตอบได้อีกใน residual network ของระบบ</p></div><div class="callout"><span class="step-tag">ขั้นที่ 3</span><h3>Engineering Review</h3><p>ตรวจสอบความสมเหตุสมผลทางปฏิบัติและผลกระทบของข้อมูลใหม่ก่อนใช้งานตัดสินใจจริง</p></div></div>
+<details class="details-block"><summary>ข้อแตกต่างของ Northwest Corner, Least Cost และ Optimal Solution</summary><div class="details-content"><b>Northwest Corner Rule:</b> จัดสรรปริมาณเริ่มจากมุมซ้ายบนของตาราง ไม่พิจารณาต้นทุน จึงอาจได้ค่าใช้จ่ายสูง<br><b>Least Cost Method:</b> จัดสรรจากช่องที่มีต้นทุนต่อหน่วยต่ำที่สุดก่อน เป็นวิธีฮิวริสติกสำหรับหาคำตอบเริ่มต้น แต่ไม่รับประกันค่าเหมาะสมที่สุด<br><b>Optimal (Min-Cost Flow):</b> ปรับจัดสรรทั้งระบบเพื่อให้ต้นทุนต่ำที่สุด โดยตรวจสอบเงื่อนไขการไหลของโครงข่ายเพิ่มเติม<br><br>การเปรียบเทียบ Northwest Corner และ Least Cost ในโปรแกรมเปิดแสดงเฉพาะกรณี <b>Supply = Demand</b> เพราะทั้งสองวิธีในส่วนนี้ออกแบบสำหรับตารางขนส่งสมดุล ส่วนตัวแก้ปัญหาหลักรองรับทั้ง <b>Supply ≥ Demand</b> และกรณีขาดแคลนด้วย <b>Dummy Source</b> เมื่อเลือกโหมดวิเคราะห์ต่อ</div></details>
+</div></section>
+<footer class="footer"><b>PlantLoc OPT</b> · Facility Location & Transportation Optimization · สื่อการเรียนรู้วิศวกรรมอุตสาหการ · ประมวลผลภายในเครื่อง · ไม่มีการส่งข้อมูลไปยังเซิร์ฟเวอร์<br>กรณีศึกษาตั้งต้นจากตารางโจทย์ที่ผู้ใช้ให้มา · ผลการคำนวณเป็นแบบจำลองเชิงปริมาณเพื่อประกอบการตัดสินใจ</footer>
+</main>
+<script>
+'use strict';
+const ORIGINAL={factory:['ก.','ข.','ค.','ง.','จ.'],customer:['ด.','ต.','ถ.','ท.','ธ.'],ship:[[11,9,11,10,13],[8,11,11,12,13],[12,10,8,11,11],[11,8,9,10,12],[12,12,11,12,7]],capacity:[27000,20000,25000,25000,25000],production:[73,72,70,72,71],demand:[10000,15000,16000,19000,12000]};
+const EPS=1e-7,MAXQ=1e9,MAXC=1e8;let last=null,dirty=false,serial=0;
+const $=id=>document.getElementById(id);
+const sum=a=>a.reduce((v,x)=>v+x,0);
+const nf=(v,dp=0)=>Number(v).toLocaleString('en-US',{maximumFractionDigits:dp,minimumFractionDigits:0});
+const money=v=>nf(Math.abs(v)<0.0000001?0:v,2);
+const pct=(num,den)=>den>0?nf(num/den*100,2)+'%':'—';
+const eq=(a,b)=>Math.abs(a-b)<Math.max(EPS,1e-9*Math.max(Math.abs(a),Math.abs(b)));
+const cloneOrig=()=>JSON.parse(JSON.stringify(ORIGINAL));
+function drawInputs(d){const tbody=$('inputRows');tbody.innerHTML=d.factory.map((name,i)=>`<tr class="${i>1?'candidate':'old'}"><td class="rowlabel">โรงงาน ${name}<small>${i<2?'โรงงานเดิม':'ทำเลทางเลือก'}</small></td>${d.ship[i].map((v,j)=>`<td>${field(v,'ship',i,j)}</td>`).join('')}<td>${field(d.capacity[i],'capacity',i,0)}</td><td>${field(d.production[i],'production',i,0)}</td></tr>`).join('');d.demand.forEach((v,j)=>{$('demandCell'+j).innerHTML=field(v,'demand',0,j);});updateInputSummary();}
+function field(value,group,row,col){let qty=group==='capacity'||group==='demand';let label=group==='ship'?`ค่าขนส่ง โรงงาน ${ORIGINAL.factory[row]} ลูกค้า ${ORIGINAL.customer[col]}`:group==='capacity'?`กำลังผลิตโรงงาน ${ORIGINAL.factory[row]}`:group==='production'?`ต้นทุนผลิตโรงงาน ${ORIGINAL.factory[row]}`:`ความต้องการลูกค้า ${ORIGINAL.customer[col]}`;return `<input type="number" inputmode="decimal" min="0" step="${qty?'1':'any'}" value="${value}" data-group="${group}" data-row="${row}" data-col="${col}" aria-label="${label}">`;}
+function readData(strict=true){let d=cloneOrig();for(const el of document.querySelectorAll('#inputTable input')){const {group,row,col}=el.dataset;const r=Number(row),c=Number(col),value=Number(el.value);if(el.value.trim()===''||!Number.isFinite(value)||value<0){if(strict)throw Error('มีช่องที่ว่าง ไม่ใช่ตัวเลข หรือมีค่าติดลบ กรุณาตรวจสอบตารางข้อมูล');return null;}if((group==='capacity'||group==='demand')&&!Number.isInteger(value)){if(strict)throw Error('กำลังผลิตและความต้องการต้องเป็นจำนวนเต็มของหน่วยสินค้า');return null;}if(value>(group==='capacity'||group==='demand'?MAXQ:MAXC)){if(strict)throw Error('ค่าที่กรอกมีขนาดสูงเกินขอบเขตของโปรแกรม');return null;}if(group==='ship')d.ship[r][c]=value;else if(group==='demand')d.demand[c]=value;else d[group][r]=value;}return d;}
+function getWeeks(){let v=Number($('weeksInput').value);if(!Number.isInteger(v)||v<1||v>53)throw Error('จำนวนสัปดาห์ต่อปีต้องเป็นจำนวนเต็มระหว่าง 1–53');return v;}
+function updateInputSummary(){
+  const d=readData(false);
+  if(!d){
+    $('inputSummary').innerHTML='<div><small>ข้อมูลที่กรอก</small><b style="color:#b7483e">ตรวจสอบค่าตัวเลข</b></div>';
+    return;
+  }
+  const tot=sum(d.demand),base=d.capacity[0]+d.capacity[1];
+  const candidates=[2,3,4].map(i=>{
+    const capacity=base+d.capacity[i];
+    const balanced=eq(capacity,tot);
+    const status=balanced?'✓ สมดุล':capacity>tot?`↑ กำลังผลิตเกิน ${nf(capacity-tot)} หน่วย`:`⚠ กำลังผลิตขาด ${nf(tot-capacity)} หน่วย`;
+    const kind=balanced?'balanced':capacity>tot?'surplus':'deficit';
+    return `<div class="capacity-option ${kind}" aria-label="ทำเล ${d.factory[i]} กำลังผลิตรวม ${nf(capacity)} หน่วยต่อสัปดาห์ ${status}"><small>ทำเลทางเลือก ${d.factory[i]} (ก. + ข. + ${d.factory[i]})</small><b>${nf(capacity)}</b><span class="scenario-line">หน่วย/สัปดาห์</span><span class="capacity-status">${status}</span></div>`;
+  }).join('');
+  $('inputSummary').innerHTML=`<div class="base-card"><small>ความต้องการรวมของลูกค้า</small><b>${nf(tot)}</b><span class="note"> หน่วย/สัปดาห์</span></div><div class="base-card"><small>กำลังผลิตโรงงานเดิม (ก.+ข.)</small><b>${nf(base)}</b><span class="note"> หน่วย/สัปดาห์</span></div>${candidates}<div class="summary-caption"><strong>หมายเหตุ:</strong> ส่วนนี้ตรวจสอบเฉพาะความเพียงพอของกำลังผลิต <b>ทั้ง 3 ทางเลือกแยกกัน</b> ไม่ใช่การเลือกทำเลที่ดีที่สุด · กด <b>▶ คำนวณหาค่าเหมาะสมที่สุด</b> เพื่อเปรียบเทียบต้นทุนและแผนการขนส่งแต่ละกรณี</div>`;
+}
+function setStatus(text,cls=''){const el=$('statusMsg');el.className='state'+(cls?' '+cls:'');el.textContent=text;}
+function markDirty(){dirty=true;updateInputSummary();setStatus('มีการเปลี่ยนแปลงข้อมูล — กรุณากด “คำนวณหาค่าเหมาะสมที่สุด” เพื่ออัปเดตผลลัพธ์','warn');for(const id of ['resultContent','detailContent','analysisContent','methodContent','summaryContent'])$(id).style.opacity='.62';}
+function graphEdge(g,u,v,cap,cost){const forward={to:v,rev:g[v].length,cap,cost},reverse={to:u,rev:g[u].length,cap:0,cost:-cost};g[u].push(forward);g[v].push(reverse);return forward;}
+function verifyResidual(g){const N=g.length,dist=Array(N).fill(0);for(let iter=0;iter<N;iter++){let changed=false;for(let u=0;u<N;u++)for(const a of g[u])if(a.cap>EPS&&dist[a.to]>dist[u]+a.cost+1e-8){dist[a.to]=dist[u]+a.cost;changed=true;}if(!changed)return true;if(iter===N-1)return false;}return true;}
+function solveSite(d,site,mode,penalty){
+  const plants=[0,1,site],demand=sum(d.demand),available=sum(plants.map(i=>d.capacity[i])),short=Math.max(0,demand-available),partial=short>EPS;
+  const out={site,plants,demand,available,short,partial};
+  if(partial&&mode==='strict')return {...out,ok:false,reason:'capacity'};
+  const n=3,m=5,withDummy=partial&&mode==='shortage',dummy=withDummy?3:-1,sourceCount=n+(withDummy?1:0),N=sourceCount+m+2,src=N-2,sink=N-1;
+  const g=Array.from({length:N},()=>[]),arcs=Array.from({length:n},()=>Array(m));
+  for(let i=0;i<n;i++){
+    graphEdge(g,src,i,d.capacity[plants[i]],0);
+    for(let j=0;j<m;j++)arcs[i][j]=graphEdge(g,i,sourceCount+j,d.demand[j],d.production[plants[i]]+d.ship[plants[i]][j]);
+  }
+  let dummyArcs=[];
+  if(withDummy){graphEdge(g,src,dummy,short,0);for(let j=0;j<m;j++)dummyArcs.push(graphEdge(g,dummy,sourceCount+j,d.demand[j],penalty));}
+  for(let j=0;j<m;j++)graphEdge(g,sourceCount+j,sink,d.demand[j],0);
+  let sent=0,pot=Array(N).fill(0),iterations=0;
+  while(sent<demand-EPS){
+    if(++iterations>1000)throw Error('การคำนวณใช้รอบมากผิดปกติ');
+    const dist=Array(N).fill(Infinity),visited=Array(N).fill(false),prevV=Array(N).fill(-1),prevE=Array(N).fill(-1);dist[src]=0;
+    for(let k=0;k<N;k++){
+      let u=-1;for(let v=0;v<N;v++)if(!visited[v]&&(u<0||dist[v]<dist[u]))u=v;
+      if(u<0||!Number.isFinite(dist[u]))break;visited[u]=true;
+      for(let e=0;e<g[u].length;e++){
+        const a=g[u][e];if(a.cap<=EPS||visited[a.to])continue;
+        const candidate=dist[u]+a.cost+pot[u]-pot[a.to];
+        if(candidate<dist[a.to]-1e-9){dist[a.to]=candidate;prevV[a.to]=u;prevE[a.to]=e;}
+      }
+    }
+    if(!Number.isFinite(dist[sink]))return {...out,ok:false,reason:'flow'};
+    for(let v=0;v<N;v++)if(Number.isFinite(dist[v]))pot[v]+=dist[v];
+    let push=demand-sent;
+    for(let v=sink;v!==src;v=prevV[v]){if(prevV[v]<0)throw Error('เกิดปัญหาขณะย้อนเส้นทาง');push=Math.min(push,g[prevV[v]][prevE[v]].cap);}
+    if(push<=EPS)throw Error('ไม่สามารถเพิ่มปริมาณการขนส่งได้');
+    for(let v=sink;v!==src;v=prevV[v]){const u=prevV[v],e=g[u][prevE[v]];e.cap-=push;g[v][e.rev].cap+=push;}sent+=push;
+  }
+  const plan=arcs.map(row=>row.map(a=>g[a.to][a.rev].cap));
+  const unmet=withDummy?dummyArcs.map(a=>g[a.to][a.rev].cap):Array(m).fill(0);
+  const used=plan.map(sum),received=d.demand.map((_,j)=>sum(plan.map(row=>row[j])));
+  const delivered=sum(received),shortage=sum(unmet),unused=Math.max(0,available-delivered);
+  let production=0,transport=0;
+  for(let i=0;i<n;i++)for(let j=0;j<m;j++){production+=plan[i][j]*d.production[plants[i]];transport+=plan[i][j]*d.ship[plants[i]][j];}
+  const operating=production+transport,penaltyCost=penalty*shortage,total=operating+penaltyCost;
+  const checks=used.every((v,i)=>v<=d.capacity[plants[i]]+EPS)&&
+    received.every((v,j)=>eq(v+unmet[j],d.demand[j]))&&
+    plan.flat().concat(unmet).every(v=>v>=-EPS)&&eq(shortage,short)&&eq(delivered+shortage,demand);
+  const optimal=verifyResidual(g);
+  return {...out,ok:true,plan,unmet,used,received,delivered,shortage,unused,production,transport,operating,penaltyCost,total,checks,optimal,iterations};
+}
+function heuristic(d,site,kind){const plants=[0,1,site],supply=plants.map(i=>d.capacity[i]),demand=[...d.demand],plan=Array.from({length:3},()=>Array(5).fill(0)),eff=plants.map(i=>d.ship[i].map(v=>v+d.production[i]));if(kind==='nw'){let i=0,j=0;while(i<3&&j<5){let q=Math.min(supply[i],demand[j]);plan[i][j]+=q;supply[i]-=q;demand[j]-=q;if(supply[i]<=EPS)i++;if(demand[j]<=EPS)j++;}}else{while(sum(demand)>EPS){let best=null;for(let i=0;i<3;i++)if(supply[i]>EPS)for(let j=0;j<5;j++)if(demand[j]>EPS){let candidate={i,j,cost:eff[i][j],q:Math.min(supply[i],demand[j])};if(!best||candidate.cost<best.cost-EPS||eq(candidate.cost,best.cost)&&candidate.q>best.q+EPS)best=candidate;}if(!best)break;const {i,j,q}=best;plan[i][j]+=q;supply[i]-=q;demand[j]-=q;}}
+let value=0;for(let i=0;i<3;i++)for(let j=0;j<5;j++)value+=plan[i][j]*eff[i][j];return {plan,total:value,ok:sum(demand)<EPS};}
+function analyze(){
+  const d=readData(),weeks=getWeeks(),mode=$('modeSelect').value,pInput=$('penaltyInput');
+  const penalty=Number(pInput.value);
+  if(pInput.value.trim()===''||!Number.isFinite(penalty)||penalty<0||penalty>MAXC)throw Error('ค่าปรับต้องเป็นจำนวนไม่ติดลบและไม่เกิน '+nf(MAXC)+' บาท/หน่วย');
+  const results=[2,3,4].map(site=>solveSite(d,site,mode,penalty)),valid=results.filter(r=>r.ok),ordered=[...valid].sort((a,b)=>a.total-b.total||a.site-b.site),best=ordered[0]||null;
+  last={d,weeks,mode,penalty,results,ordered,best};serial++;dirty=false;
+  let status='';let cls='';
+  if(!valid.length){status='โหมด Strict: กำลังผลิตไม่เพียงพอสำหรับทุกทางเลือก จึงไม่มีคำตอบที่ส่งได้ครบ — สลับเป็นโหมดวิเคราะห์ขาดแคลนเพื่อดูแผนส่งจริงและยอดส่งไม่ครบ';cls='error';}
+  else if(results.some(r=>r.ok&&r.partial)){status=`คำนวณแล้ว: ${valid.length} ทำเลมีแผนจัดสรรตามโหมดที่เลือก · มีกรณีขาดแคลน จึงแสดงยอดส่งไม่ครบและค่าปรับแยกจากต้นทุนจริง`;cls='warn';}
+  else{status=`คำนวณเสร็จ: ${valid.length} ทำเลสามารถตอบสนองลูกค้าได้ครบ · ${results.some(r=>r.ok&&r.unused>EPS)?'มีส่วนเผื่อกำลังผลิตในบางทำเล':'ปัญหาสมดุล'} · ตรวจสอบแผนแล้ว`;}
+  setStatus(status,cls);
+  for(const id of ['resultContent','detailContent','analysisContent','methodContent','summaryContent'])$(id).style.opacity='1';
+  renderResults();if(best)$('siteSelect').value=String(best.site);renderDetail();renderModel();renderAnalysis();renderSummary();renderMethod();
+}
+function renderResults(){
+  const {d,weeks,results,ordered,best,mode,penalty}=last,totalDemand=sum(d.demand);
+  if(!best){$('resultContent').innerHTML=`<div class="state error"><b>ไม่มีแผนที่ตอบสนองลูกค้าได้ครบในโหมด Strict</b><br>กำลังผลิตไม่เพียงพอสำหรับทุกทางเลือก: ${results.map(r=>`ทำเล ${d.factory[r.site]} ขาด ${nf(r.short)} หน่วย`).join(' · ')}<br>หากต้องการศึกษาการจัดสรรทรัพยากรที่ขาดแคลน ให้เปลี่ยนเป็นโหมด Dummy Source หรือเพิ่มกำลังผลิตก่อน</div>`+compareTable(results,null);return;}
+  const next=ordered[1],delta=next?next.total-best.total:0,baseline=delta*weeks,partial=best.partial;
+  const note=partial?`กำลังผลิตต่ำกว่าความต้องการ ${nf(best.shortage)} หน่วย · เป็นแผนส่งมอบบางส่วนเท่านั้น`:best.unused>EPS?`กำลังผลิตส่วนเกิน ${nf(best.unused)} หน่วย · ไม่จำเป็นต้องผลิตเต็ม`:'ปัญหาสมดุล · ผลิตเต็มกำลัง';
+  const fullyServing=results.filter(r=>r.ok&&!r.partial);
+  const feasibilityWarning=partial&&fullyServing.length?`<div class="state error"><b>คำเตือนด้านการตัดสินใจ:</b> ทำเล ${fullyServing.map(r=>d.factory[r.site]).join(', ')} สามารถส่งสินค้าได้ครบตามความต้องการ แต่ทำเลที่มีต้นทุนประเมินต่ำสุดในโหมดค่าปรับยังส่งไม่ครบ ${nf(best.shortage)} หน่วย เนื่องจากสมมติฐานค่าปรับ ${money(penalty)} บาท/หน่วย · หากกำหนดให้ลูกค้าต้องได้รับครบ ให้ใช้โหมด <b>Strict</b> เพื่อเลือกเฉพาะทำเลที่ทำได้จริง</div>`:'';
+  const penaltyNote=results.some(r=>r.ok&&r.partial)?`<div class="shortage-warning"><b>โปรดอ่านผลลัพธ์ให้ถูกต้อง:</b> กรณีขาดแคลน ต้นทุนรวมที่ใช้จัดอันดับคือ <b>ต้นทุนผลิตจริง + ต้นทุนขนส่งจริง + ค่าปรับสมมติของยอดส่งไม่ครบ (${money(penalty)} บาท/หน่วย)</b> · Dummy Source ไม่ใช่โรงงานจริงและไม่ใช่สินค้าที่ส่งมอบ · หากทำเลที่แนะนำยังขาดแคลน จะต้องเพิ่มกำลังผลิตหรือมีมาตรการแก้ไขก่อนนำไปใช้จริง</div>`:'';
+  $('resultContent').innerHTML=`<div class="analysis-hero"><div class="winner-card"><small>🏆 ${partial?'ทำเลที่มีต้นทุนประเมินรวมต่ำสุด (ยังส่งไม่ครบ)':'ทำเลต้นทุนรวมต่ำที่สุด'}</small><strong>ทำเล ${d.factory[best.site]}</strong><span>${money(best.total)} บาท/สัปดาห์ · ส่งจริง ${nf(best.delivered)} / ${nf(best.demand)} หน่วย · ${pct(best.delivered,best.demand)} ของความต้องการ</span></div><div class="num-cards"><div class="num-card"><small>ต้นทุนผลิตจริง</small><b>${money(best.production)} ฿</b><span>ต่อสัปดาห์</span></div><div class="num-card"><small>ต้นทุนขนส่งจริง</small><b>${money(best.transport)} ฿</b><span>ต่อสัปดาห์</span></div><div class="num-card emphasis"><small>${partial?'ค่าปรับยอดส่งไม่ครบ':'ประหยัดเทียบอันดับ 2'}</small><b>${money(partial?best.penaltyCost:delta)} ฿</b><span>ต่อสัปดาห์</span></div><div class="num-card"><small>${partial?'สินค้าที่ยังส่งไม่ได้':'ผลประหยัดต่อปี (สมมติ '+weeks+' สัปดาห์)'}</small><b>${partial?nf(best.shortage)+' หน่วย':money(baseline)+' ฿'}</b><span>${partial?'ไม่ใช่สินค้าที่จัดส่งจริง':'เทียบกับทำเลอันดับ 2'}</span></div></div></div>
+  <div class="state ${partial?'warn':''}" style="margin:13px 0">${ordered.length>1&&eq(best.total,ordered[1].total)?'มีมากกว่าหนึ่งทำเลที่ต้นทุนรวมต่ำสุดเท่ากัน · ':''}ความต้องการรวม ${nf(totalDemand)} หน่วย/สัปดาห์ · กำลังผลิตชุดที่เลือก ${nf(best.available)} หน่วย/สัปดาห์ · ${note}</div>
+  ${penaltyNote}${feasibilityWarning}
+  <div class="shortage-metrics"><div><small>ความต้องการรวม</small><b>${nf(best.demand)}</b></div><div><small>กำลังผลิตรวม</small><b>${nf(best.available)}</b></div><div><small>ส่งจริง</small><b>${nf(best.delivered)}</b></div><div><small>${partial?'ยอดส่งไม่ครบ':'กำลังผลิตคงเหลือ'}</small><b>${nf(partial?best.shortage:best.unused)}</b></div></div>
+  ${compareTable(results,best)}<h3 class="section-subtitle">องค์ประกอบต้นทุนแยกตามทางเลือก</h3><div class="chart-legend"><span><i class="dot" style="background:#2e7187"></i>ต้นทุนผลิตจริง</span><span><i class="dot" style="background:#e6a84b"></i>ต้นทุนขนส่งจริง</span><span><i class="dot" style="background:#c46c51"></i>ค่าปรับสมมติ (หากขาดแคลน)</span></div>${buildChart(results,best)}<p class="note">การจัดอันดับเป็นไปตามต้นทุนรวมของตัวแบบที่เลือก โดยกรณีขาดแคลนมีค่าปรับที่กำหนดได้; การประหยัดต้นทุนเพียงอย่างเดียวไม่ได้แปลว่าสามารถส่งสินค้าได้ครบ</p>`;
+}
+function compareTable(results,best){
+  const valid=results.filter(r=>r.ok),ordered=[...valid].sort((a,b)=>a.total-b.total||a.site-b.site);
+  return `<h3 class="section-subtitle">ตารางเปรียบเทียบทำเลและสถานะการส่งมอบ</h3><div class="table-scroll"><table><thead><tr><th>ทำเลใหม่</th><th>กำลังผลิต</th><th>ส่งจริง</th><th>ยอดส่งไม่ครบ</th><th>ต้นทุนผลิตจริง</th><th>ต้นทุนขนส่งจริง</th><th>ค่าปรับ</th><th>ต้นทุนรวมประเมิน</th><th>สถานะ / อันดับ</th></tr></thead><tbody>${results.map(r=>`<tr class="${best&&r.ok&&eq(r.total,best.total)?'win-row':''}"><td><b>ทำเล ${ORIGINAL.factory[r.site]}</b></td><td>${nf(r.available)}</td><td>${r.ok?nf(r.delivered):'—'}</td><td>${nf(r.ok?r.shortage:r.short)}</td><td>${r.ok?money(r.production):'—'}</td><td>${r.ok?money(r.transport):'—'}</td><td>${r.ok?money(r.penaltyCost):'—'}</td><td><strong>${r.ok?money(r.total):'—'}</strong></td><td>${!r.ok?`<span class="rank bad">Strict: ขาด ${nf(r.short)}</span>`:`<span class="rank ${best&&eq(r.total,best.total)?'best':''}">${r.partial?'⚠ ส่งไม่ครบ · ':''}${best&&eq(r.total,best.total)?'★ อันดับ 1':`อันดับ ${ordered.findIndex(z=>z.site===r.site)+1}`}</span>`}</td></tr>`).join('')}</tbody></table></div>`;
+}
+function buildChart(results,best){
+  const mx=Math.max(...results.filter(r=>r.ok).map(r=>r.total),1);
+  return `<div class="chart" role="img" aria-label="กราฟเปรียบเทียบต้นทุนผลิต ต้นทุนขนส่ง และค่าปรับยอดส่งไม่ครบ">${results.map(r=>{
+    if(!r.ok)return `<div class="chart-row"><div class="label">ทำเล ${ORIGINAL.factory[r.site]}</div><div class="chart-track"></div><div class="number">Strict: ส่งไม่ครบ</div></div>`;
+    const w1=r.production/mx*100,w2=r.transport/mx*100,w3=r.penaltyCost/mx*100;
+    return `<div class="chart-row ${best&&eq(best.total,r.total)?'best':''}"><div class="label">ทำเล ${ORIGINAL.factory[r.site]}</div><div class="chart-track"><div class="seg-production" style="width:${w1}%" title="ต้นทุนผลิต ${money(r.production)} บาท"></div><div class="seg-transport" style="width:${w2}%" title="ต้นทุนขนส่ง ${money(r.transport)} บาท"></div><div style="width:${w3}%;background:#c46c51" title="ค่าปรับยอดส่งไม่ครบ ${money(r.penaltyCost)} บาท"></div></div><div class="number">${money(r.total)} ฿</div></div>`;
+  }).join('')}</div>`;
+}
+function renderDetail(){
+  if(!last)return;const {d,results}=last,site=Number($('siteSelect').value),r=results.find(x=>x.site===site);if(!r)return;
+  const content=$('detailContent');
+  if(!r.ok){content.innerHTML=`<div class="state error">โหมด Strict: โรงงาน ก. + ข. + ${d.factory[site]} มีกำลังผลิตรวม ${nf(r.available)} หน่วย/สัปดาห์ ต่ำกว่าความต้องการ ${nf(r.demand)} หน่วย/สัปดาห์ ขาด <b>${nf(r.short)} หน่วย</b> จึงไม่มีแผนที่ตอบสนองลูกค้าได้ครบ · เลือกโหมดวิเคราะห์ขาดแคลนเพื่อดูการจัดสรรสินค้า</div>`;return;}
+  const cols=d.customer.map(n=>`<th>ลูกค้า ${n}</th>`).join('');
+  let table=`<div class="duo-metrics"><div><small>ต้นทุนผลิตจริง</small><strong>${money(r.production)} ฿</strong></div><div><small>ต้นทุนขนส่งจริง</small><strong>${money(r.transport)} ฿</strong></div><div><small>ค่าปรับยอดส่งไม่ครบ</small><strong>${money(r.penaltyCost)} ฿</strong></div></div>
+  ${r.partial?`<div class="shortage-warning">⚠ ทำเลนี้ส่งสินค้าได้จริง ${nf(r.delivered)} จาก ${nf(r.demand)} หน่วย (${pct(r.delivered,r.demand)}) · <b>ยังส่งไม่ครบ ${nf(r.shortage)} หน่วย</b> ซึ่งเป็นผลจากข้อจำกัดกำลังผลิต ไม่ใช่สินค้าที่ส่งไปถึงลูกค้า</div>`:r.unused>EPS?`<div class="state">มีกำลังผลิตเหลือ ${nf(r.unused)} หน่วย/สัปดาห์ ไม่จำเป็นต้องเดินเครื่องเต็มกำลัง</div>`:`<div class="state">ระบบกำลังผลิตสมดุลกับความต้องการ ลูกค้าทุกแห่งได้รับสินค้าครบ</div>`}
+  <h3 class="section-subtitle">ตารางแผนขนส่งจริง (หน่วย/สัปดาห์)</h3><div class="table-scroll"><table><thead><tr><th>โรงงาน</th>${cols}<th>ผลิตจริง</th><th>กำลังผลิตสูงสุด</th><th>ใช้กำลังผลิต</th></tr></thead><tbody>${r.plan.map((row,i)=>`<tr><td><b>โรงงาน ${d.factory[r.plants[i]]}</b></td>${row.map(v=>`<td>${v>EPS?`<strong>${nf(v)}</strong>`:'—'}</td>`).join('')}<td><b>${nf(r.used[i])}</b></td><td>${nf(d.capacity[r.plants[i]])}</td><td>${pct(r.used[i],d.capacity[r.plants[i]])}</td></tr>`).join('')}
+  ${r.partial?`<tr class="shortage-row"><th>ยังส่งไม่ครบ (ไม่ใช่สินค้า)</th>${r.unmet.map(v=>`<td><b>${nf(v)}</b></td>`).join('')}<td><b>${nf(r.shortage)}</b></td><td>—</td><td>—</td></tr>`:''}</tbody><tfoot><tr><th>ลูกค้าได้รับจริง</th>${r.received.map(v=>`<th>${nf(v)}</th>`).join('')}<th>${nf(r.delivered)}</th><th>${nf(r.available)}</th><th>—</th></tr><tr><th>ความต้องการ</th>${d.demand.map(v=>`<th>${nf(v)}</th>`).join('')}<th>${nf(r.demand)}</th><th>—</th><th>—</th></tr></tfoot></table></div>
+  <p class="note">ผลิตจริง ${nf(r.delivered)} หน่วย · ${r.partial?'ยอดส่งไม่ครบ '+nf(r.shortage)+' หน่วย (Dummy Source ไม่ใช่โรงงานจริง)':'ลูกค้าได้รับครบทุกคน'} · ต้นทุนดำเนินงานจริง ${money(r.operating)} บาท/สัปดาห์ · ค่าปรับสมมติ ${money(r.penaltyCost)} บาท/สัปดาห์ · <b>ต้นทุนรวมประเมิน ${money(r.total)} บาท/สัปดาห์</b></p>
+  <h3 class="section-subtitle">แผนภาพเส้นทางขนส่งจริง (Transportation Flow Diagram)</h3><div class="flow-wrap">${flowSVG(d,r)}</div><div class="flowkey"><span><i class="dot" style="background:#597b9f"></i>โรงงาน ก.</span><span><i class="dot" style="background:#e1a546"></i>โรงงาน ข.</span><span><i class="dot" style="background:#169d8d"></i>โรงงานใหม่ ${d.factory[r.site]}</span><span>เส้นหนา = ปริมาณขนส่งมาก · เส้นแสดงเฉพาะสินค้าที่ส่งจริง</span></div>
+  <div class="definition"><b>ผลตรวจสอบ:</b> ${r.checks?'✓ ข้อจำกัดกำลังผลิตและยอดส่งจริง + ยอดส่งไม่ครบถูกต้อง':'⚠ ข้อจำกัดไม่ผ่าน'} · ${r.optimal?'✓ ไม่มีวงจรต้นทุนติดลบใน residual network':'⚠ ควรตรวจสอบค่าเหมาะสมที่สุด'} · รอบเพิ่มการไหล ${r.iterations} รอบ · <b>${r.partial?'แผนมีสินค้าขาดแคลน ไม่ใช่การส่งมอบครบ':'ลูกค้าได้รับครบตามความต้องการ'}</b></div>`;
+  content.innerHTML=table;
+}
+function flowSVG(d,r){const WIDTH=1040,HEIGHT=455,ys=[100,222,344],yd=[66,145,224,303,382],colors=['#577b9e','#e0a444','#149b8b'],peak=Math.max(...r.plan.flat(),1);let paths='';for(let i=0;i<3;i++)for(let j=0;j<5;j++){let q=r.plan[i][j];if(q<=EPS)continue;let sy=ys[i],ty=yd[j],stroke=1.5+q/peak*10;paths+=`<path d="M 198 ${sy} C 420 ${sy} 610 ${ty} 835 ${ty}" fill="none" stroke="${colors[i]}" stroke-width="${stroke}" stroke-opacity=".64" stroke-linecap="round"><title>โรงงาน ${d.factory[r.plants[i]]} → ลูกค้า ${d.customer[j]} · ${nf(q)} หน่วย/สัปดาห์ · ${nf(d.production[r.plants[i]]+d.ship[r.plants[i]][j],2)} บาท/หน่วย</title></path>`;}
+let boxes=r.plants.map((id,i)=>`<rect x="22" y="${ys[i]-29}" width="170" height="58" rx="12" fill="${colors[i]}"/><text x="108" y="${ys[i]-5}" text-anchor="middle" font-size="16" font-weight="bold" fill="white">โรงงาน ${d.factory[id]}</text><text x="108" y="${ys[i]+16}" text-anchor="middle" font-size="12" fill="white">ผลิต ${nf(r.used[i])} หน่วย</text>`).join('');boxes+=d.customer.map((id,j)=>`<rect x="845" y="${yd[j]-27}" width="170" height="54" rx="12" fill="#edf4f7" stroke="#c7dfe4"/><text x="930" y="${yd[j]-5}" font-size="15" font-weight="bold" text-anchor="middle" fill="#294f61">ลูกค้า ${id}</text><text x="930" y="${yd[j]+14}" font-size="12" text-anchor="middle" fill="#66808f">รับ ${nf(r.received[j])} หน่วย</text>`).join('');return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${WIDTH} ${HEIGHT}" role="img" aria-label="โครงข่ายการไหลระหว่างโรงงานสามแห่งกับลูกค้าห้าราย"><rect width="${WIDTH}" height="${HEIGHT}" fill="#fbfdfd"/><text x="26" y="27" font-size="14" font-weight="bold" fill="#446779">ต้นทาง / Sources</text><text x="843" y="27" font-size="14" font-weight="bold" fill="#446779">ปลายทาง / Destinations</text>${paths}${boxes}</svg>`;}
+function renderModel(){
+  if(!last)return;const {d,results,mode,penalty}=last,site=Number($('siteSelect').value),r=results.find(x=>x.site===site),plants=[0,1,site];
+  $('effectiveCost').innerHTML=`<table class="model-matrix"><thead><tr><th>ต้นทุนรวมต่อหน่วย</th>${d.customer.map(n=>`<th>${n}</th>`).join('')}<th>ต้นทุนผลิต/หน่วย</th></tr></thead><tbody>${plants.map(i=>`<tr><td><b>โรงงาน ${d.factory[i]}</b></td>${d.ship[i].map(v=>`<td>${money(v+d.production[i])}</td>`).join('')}<td>${money(d.production[i])}</td></tr>`).join('')}</tbody></table>`;
+  const balance=eq(r.available,r.demand)?'Balanced: กำลังผลิตเท่าความต้องการ':r.available>r.demand?'Excess Supply: กำลังผลิตส่วนเกิน':'Shortage: กำลังผลิตขาดแคลน';
+  $('constraintExamples').innerHTML=`<b>ตัวอย่างข้อจำกัดสำหรับโรงงาน ก. + ข. + ${d.factory[site]}</b><br><span class="math">Σ<sub>j</sub>X<sub>ก,j</sub> ≤ ${nf(d.capacity[0])}; &nbsp; Σ<sub>j</sub>X<sub>ข,j</sub> ≤ ${nf(d.capacity[1])}; &nbsp; Σ<sub>j</sub>X<sub>${d.factory[site]},j</sub> ≤ ${nf(d.capacity[site])}</span><br>ลูกค้า ${d.customer[0]}: <span class="math">Σ<sub>i</sub>X<sub>i,${d.customer[0]}</sub>${r.partial&&r.ok?' + U<sub>'+d.customer[0]+'</sub>':''} = ${nf(d.demand[0])}</span><br><b>สถานะ:</b> ${balance} · กำลังผลิต ${nf(r.available)} / ความต้องการ ${nf(r.demand)} หน่วย/สัปดาห์${r.partial?` · ขาด ${nf(r.short)} หน่วย · ${mode==='strict'?'Strict: ไม่มีคำตอบที่ส่งครบ':'กำหนด Uⱼ แทนยอดส่งไม่ครบ'}`:''}`;
+  $('shortageModel').innerHTML=`<b>แบบจำลองขาดแคลน: Dummy Source / Unmet Demand</b><p class="note"><b>โหมดปัจจุบัน:</b> ${mode==='strict'?'Strict — ต้องส่งครบทุกลูกค้า':'วิเคราะห์กรณีขาดแคลน'} · ค่าปรับ <b>${money(penalty)} บาท/หน่วย</b><br><span class="math">Min Z = Σ<sub>i,j</sub>(P<sub>i</sub>+C<sub>ij</sub>)X<sub>ij</sub> + Σ<sub>j</sub>λU<sub>j</sub></span> โดย λ = ${money(penalty)} บาท/หน่วย; <span class="math">Σ<sub>i</sub>X<sub>ij</sub> + U<sub>j</sub> = D<sub>j</sub></span>; <span class="math">U<sub>j</sub>≥0</span> · <b>Uⱼ เป็นยอดไม่ส่งมอบ ไม่ใช่สินค้าที่ลูกค้าได้รับ</b> · เมื่อมี shortage บังคับ <span class="math">ΣU<sub>j</sub> = Dรวม − Sรวม</span> เพื่อจัดสรรกำลังผลิตที่มีอยู่ให้ครบก่อน การจัดอันดับจึงอาศัยต้นทุนจริงรวมค่าปรับ ไม่ใช่ต้นทุนจริงเพียงอย่างเดียว</p>`;
+}
+function renderAnalysis(){
+  if(!last)return;const {d,weeks,results,ordered,best,mode,penalty}=last,holder=$('analysisContent');
+  if(!best){holder.innerHTML=`<div class="insights"><div class="insight"><b>1 · ผลความเป็นไปได้ในโหมด Strict</b><p>ยังไม่มีทำเลใดสามารถส่งสินค้าได้ครบตามความต้องการ เงื่อนไข Supply &lt; Demand ทำให้ปัญหาการจัดส่งครบไม่มีคำตอบที่เป็นไปได้ (Infeasible) การหาต้นทุนที่ต่ำที่สุดสำหรับการส่งครบจึงยังทำไม่ได้</p></div><div class="insight"><b>2 · ความต้องการเพิ่มกำลังผลิต</b><p>${results.map(r=>`ทำเล ${d.factory[r.site]} ต้องเพิ่มอย่างน้อย ${nf(r.short)} หน่วย/สัปดาห์`).join(' · ')} หรือจัดหาสินค้าภายนอก/เจรจาปรับความต้องการ หากต้องการดูแผนส่งจริงในข้อจำกัดปัจจุบันให้เลือกโหมด Dummy Source</p></div></div>`;return;}
+  const next=ordered[1],delta=next?next.total-best.total:0,partial=best.partial,otherPartial=results.some(r=>r.ok&&r.partial),deliveryLevel=best.delivered/(best.demand||1)*100;
+  const capMessage=partial?`โรงงานส่งได้จริง ${nf(best.delivered)} หน่วย หรือ ${pct(best.delivered,best.demand)} ของความต้องการทั้งหมด ยังขาด ${nf(best.shortage)} หน่วย จึงต้องเพิ่มกำลังผลิต จ้างผลิตภายนอก หรือจัดการคำสั่งซื้อที่ค้างอยู่`:
+    best.unused>EPS?`มีส่วนเผื่อกำลังผลิต ${nf(best.unused)} หน่วย/สัปดาห์ (${pct(best.unused,best.available)}) โรงงานไม่จำเป็นต้องผลิตเต็มกำลัง อย่างไรก็ดีไม่ได้รวมต้นทุนการรักษากำลังผลิตส่วนเกิน`:
+    `ระบบผลิตเต็มกำลัง 100% ไม่มีส่วนเผื่อหากเครื่องจักรหยุดหรือคำสั่งซื้อเพิ่มขึ้น ควรวิเคราะห์ความสามารถรองรับความเสี่ยง`;
+  const comparison=next?`อันดับ 2 คือทำเล ${d.factory[next.site]} มีต้นทุนประเมินรวมสูงกว่า ${money(delta)} บาท/สัปดาห์ หรือ ${money(delta*weeks)} บาท/ปี (สมมติ ${weeks} สัปดาห์และข้อมูลคงที่)${otherPartial?' โดยผลต่างนี้อาจรวมผลของจำนวนสินค้าที่ส่งไม่ครบและค่าปรับสมมติ มิใช่เงินประหยัดจริงทั้งหมด':''}`:'มีทางเลือกที่ประเมินได้เพียงหนึ่งแห่งในโหมดปัจจุบัน';
+  const shortageMessage=partial?`ผลลัพธ์แสดงแผนขนส่งจริงและยอดค้างส่งลูกค้าแยกราย · ต้นทุนดำเนินงานจริง ${money(best.operating)} บาท/สัปดาห์ · ค่าปรับสมมติ ${money(best.penaltyCost)} บาท/สัปดาห์ · ค่าปรับตั้งไว้ที่ ${money(penalty)} บาท/หน่วย และมีผลต่อการเลือกทำเลเมื่อจำนวนหน่วยค้างส่งแตกต่างกัน · ต้องใช้การประเมินความเสียหายจริงมาทดแทนค่าปรับสมมติก่อนตัดสินใจ`:
+    `ต้นทุนผลิตจริง ${money(best.production)} บาท/สัปดาห์ และต้นทุนขนส่งจริง ${money(best.transport)} บาท/สัปดาห์ รวม ${money(best.operating)} บาท/สัปดาห์ โดยไม่มีค่าปรับขาดแคลน`;
+  holder.innerHTML=`<div class="insights"><div class="insight accent"><b>1 · ข้อเสนอแนะเชิงปริมาณ${partial?' (แบบมีขาดแคลน)':''}</b><p>ทำเล <b>${d.factory[best.site]}</b> มีต้นทุนประเมินรวมต่ำที่สุด <b>${money(best.total)} บาท/สัปดาห์</b> จากตัวเลือกที่คำนวณได้ ${ordered.length} ทำเล${partial?' แต่ <b>ไม่สามารถส่งสินค้าได้ครบ</b> จึงเป็นเพียงข้อเสนอแนะภายใต้สมมติฐานค่าปรับ ไม่ใช่คำยืนยันความพร้อมดำเนินงาน':' และตอบสนองความต้องการของลูกค้าได้ครบตามเงื่อนไข'}</p></div>
+  <div class="insight"><b>2 · การเปรียบเทียบต้นทุนระหว่างทำเล</b><p>${comparison}</p></div>
+  <div class="insight"><b>3 · แยกต้นทุนจริงและต้นทุนสมมติ</b><p>${shortageMessage}</p></div>
+  <div class="insight"><b>4 · ความเพียงพอและความเสี่ยงกำลังการผลิต</b><p>${capMessage}</p></div>
+  <div class="insight"><b>5 · Sensitivity / What-if Analysis</b><p>${otherPartial?`เปลี่ยนค่าปรับต่อหน่วยแล้วกดคำนวณใหม่เพื่อดูผลต่ออันดับทำเลและการจัดสรรสินค้า · ต้นทุนผลิตหรือค่าขนส่งเปลี่ยนจะทำให้ลูกค้าที่ได้รับสินค้าก่อนอาจเปลี่ยนได้; <b>ค่าปรับเท่ากันทุกลูกค้าไม่สะท้อนความสำคัญแตกต่างกันของแต่ละลูกค้า</b>`:`ทดลองเปลี่ยนต้นทุนผลิต ค่าขนส่ง และความต้องการ เพื่อประเมินว่าลำดับทำเลเปลี่ยนไปหรือไม่; ข้อสรุปขึ้นอยู่กับข้อมูลที่ป้อน`}</p></div>
+  <div class="insight"><b>6 · ขอบเขตของข้อเสนอแนะ</b><p>ยังไม่รวมที่ดิน เงินลงทุนคงที่ ภาษี กำลังผลิตจริงในอนาคต ความเสี่ยง และเวลาส่งมอบ ควรพิจารณา NPV / EAC และปัจจัยหลายเกณฑ์ร่วมด้วย${partial?' โดยเฉพาะต้นทุนการสูญเสียลูกค้าและความเป็นไปได้ในการเติมกำลังผลิต':''}</p></div></div>`;
+}
+
+function renderSummary(){
+  if(!last)return;const {d,results,ordered,best,weeks,mode,penalty}=last;
+  if(!best){$('summaryContent').innerHTML=`<p><b>ข้อสรุป:</b> โหมด Strict ยังไม่พบทางเลือกที่สามารถส่งสินค้าให้ลูกค้าครบ ${nf(sum(d.demand))} หน่วย/สัปดาห์ได้</p><p>${results.map(r=>`ทำเล ${d.factory[r.site]} ขาด ${nf(r.short)} หน่วย`).join(' · ')} จึงควรปรับกำลังผลิตหรือเปิดโหมดวิเคราะห์ขาดแคลนก่อนเลือกทำเล</p>`;return;}
+  const second=ordered[1],partial=best.partial,fullAlternative=last.results.filter(r=>r.ok&&!r.partial);
+  $('summaryContent').innerHTML=partial?
+    `<p><b>ผลการประเมินเบื้องต้น:</b> ทำเล ${d.factory[best.site]} มีต้นทุนรวมประเมินต่ำสุด <b>${money(best.total)} บาท/สัปดาห์</b> เมื่อรวมต้นทุนดำเนินงานจริง ${money(best.operating)} บาท และค่าปรับสมมติ ${money(best.penaltyCost)} บาท/สัปดาห์</p><p><b>ข้อจำกัดสำคัญ:</b> สามารถจัดส่งสินค้าได้จริงเพียง <b>${nf(best.delivered)}</b> จาก ${nf(best.demand)} หน่วย (${pct(best.delivered,best.demand)}) และมี <b>ยอดส่งไม่ครบ ${nf(best.shortage)} หน่วย/สัปดาห์</b> การจัดสรรตามตัวแบบจึงยังไม่เพียงพอสำหรับสัญญาส่งมอบเต็มจำนวน</p><p><b>ข้อเสนอเชิงบริหาร:</b> ควรเพิ่มกำลังผลิตหรือจัดหาแหล่งผลิตสำรองอย่างน้อย ${nf(best.shortage)} หน่วย/สัปดาห์ และตรวจสอบค่าปรับ ${money(penalty)} บาท/หน่วยกับความเสียหายที่เกิดขึ้นจริง ก่อนนำผลการเปรียบเทียบไปประกอบการลงทุน${fullAlternative.length?` · <b>มีทำเลที่สามารถส่งครบได้:</b> ${fullAlternative.map(r=>d.factory[r.site]).join(", ")} ควรใช้ Strict เพื่อเทียบเฉพาะทางเลือกที่ส่งครบ`:""}${second?` · ส่วนต่างต้นทุนประเมินจากอันดับ 2 คือ ${money(second.total-best.total)} บาท/สัปดาห์ (รวมค่าปรับสมมติ)` :''}</p>`:
+    `<p><b>ข้อสรุป:</b> ทำเล ${d.factory[best.site]} มีต้นทุนการผลิตและขนส่งรวมต่ำสุด <b>${money(best.total)} บาท/สัปดาห์</b> ภายใต้ข้อมูลปัจจุบัน สามารถส่งสินค้าให้ลูกค้าได้ครบ <b>${nf(best.delivered)} หน่วย/สัปดาห์</b></p><p><b>สภาพกำลังผลิต:</b> ${best.unused>EPS?`มีกำลังผลิตเหลือ ${nf(best.unused)} หน่วย/สัปดาห์ ซึ่งเป็นส่วนเผื่อในการบริหารการผลิต`:`ระบบใช้กำลังผลิตเต็มตามความต้องการ จึงควรจัดเตรียมแผนรองรับความผันผวน`}${second?` · ประหยัดกว่าอันดับ 2 ${money(second.total-best.total)} บาท/สัปดาห์ หรือ ${money((second.total-best.total)*weeks)} บาท/ปี หากสมมติข้อมูลคงที่` :''}</p><p><b>ข้อเสนอเชิงบริหาร:</b> ทำเลที่ได้เป็นคำตอบด้านต้นทุนดำเนินงานเท่านั้น ควรวิเคราะห์เงินลงทุนและปัจจัยความเสี่ยงก่อนตัดสินใจลงทุนจริง</p>`;
+}
+
+function renderMethod(){
+  if(!last)return;const {d,results,mode}=last,site=Number($('siteSelect').value),r=results.find(z=>z.site===site);
+  if(!r.ok){$('methodContent').innerHTML='<div class="state warn">โหมด Strict ไม่อนุญาตให้ส่งสินค้าไม่ครบ หากต้องการศึกษาคำตอบที่จัดสรรสินค้ามีจำกัด ให้เปลี่ยนเป็นโหมดวิเคราะห์ขาดแคลนและคำนวณใหม่</div>';return;}
+  if(r.partial){$('methodContent').innerHTML=`<div class="state warn"><b>กรณีกำลังผลิตขาดแคลน:</b> ใช้ Dummy Source จำนวน ${nf(r.shortage)} หน่วยเพื่อแทนยอดส่งไม่ครบ โดยกำหนดค่าปรับแยกต่างหากจากต้นทุนสินค้า · ผลคำนวณ Min-Cost Flow ผ่าน feasibility ตามเงื่อนไข “ส่งจริง + ยอดไม่ครบ = ความต้องการ” ${r.checks?'✓':'✕'} และ residual optimality ${r.optimal?'✓':'✕'} · การประมวลผล ${r.iterations} รอบ <b>ไม่ถือว่ามีการส่งสินค้าจาก Dummy Source จริง</b></div>`;return;}
+  if(!eq(r.available,r.demand)){$('methodContent').innerHTML=`<div class="state"><b>กรณีกำลังผลิตส่วนเกิน:</b> คำนวณด้วย Min-Cost Flow ได้โดยตรงและไม่บังคับให้ผลิตเต็มกำลัง · กำลังผลิตเหลือ ${nf(r.unused)} หน่วย/สัปดาห์ · วิธี Northwest Corner และ Least Cost ในหน้านี้สาธิตเฉพาะโจทย์สมดุล · Feasibility ${r.checks?'✓':'✕'} Optimality ${r.optimal?'✓':'✕'}</div>`;return;}
+  const nw=heuristic(d,site,'nw'),lc=heuristic(d,site,'lc'),items=[{name:'Northwest Corner (คำตอบเริ่มต้น)',value:nw.total,tag:'จัดสรรจากมุมซ้ายบน'},{name:'Least Cost Method (คำตอบเริ่มต้น)',value:lc.total,tag:'เลือกช่องต้นทุนต่ำก่อน'},{name:'Min-Cost Flow (ค่าเหมาะสมที่สุด)',value:r.total,tag:'ปรับทั้งระบบและตรวจ optimality'}];
+  $('methodContent').innerHTML=`<div class="table-scroll"><table class="method-table"><thead><tr><th>วิธีคำนวณ</th><th>ต้นทุนรวม (บาท/สัปดาห์)</th><th>สูงกว่าค่าที่เหมาะสมที่สุด</th><th>คำอธิบาย</th></tr></thead><tbody>${items.map((item,i)=>`<tr class="${i===2?'win-row':''}"><td><b>${item.name}</b></td><td><b>${money(item.value)}</b></td><td>${money(Math.max(0,item.value-r.total))}</td><td style="text-align:left">${item.tag}</td></tr>`).join('')}</tbody></table></div><p class="note">การตรวจสอบ Min-Cost Flow: Feasibility ${r.checks?'ผ่าน':'ไม่ผ่าน'} · Residual optimality ${r.optimal?'ผ่าน':'ไม่ผ่าน'} · รอบการเพิ่มการไหล ${r.iterations}</p>`;
+}
+function downloadCSV(){
+  if(!last){setStatus('กรุณาคำนวณก่อนส่งออก','warn');return;}
+  const {d,weeks,results,mode,penalty}=last;
+  let rows=[['PlantLoc OPT — Facility Location and Transportation Optimization'],['โหมด',mode==='strict'?'Strict':'Dummy Source / Shortage'],['ค่าปรับยอดส่งไม่ครบ (บาท/หน่วย)',penalty],['จำนวนสัปดาห์ต่อปี',weeks],[],['ทำเล','กำลังผลิต','ส่งจริง','ยอดส่งไม่ครบ','ต้นทุนผลิตจริง','ต้นทุนขนส่งจริง','ค่าปรับ','ต้นทุนรวมประเมิน','สถานะ']];
+  for(const r of results)rows.push([d.factory[r.site],r.available,r.ok?r.delivered:'',r.short,r.ok?r.production:'',r.ok?r.transport:'',r.ok?r.penaltyCost:'',r.ok?r.total:'',r.ok?(r.partial?'ส่งสินค้าไม่ครบ':'ส่งครบ'):'Strict: Infeasible']);
+  for(const r of results){rows.push([],['ทำเล '+d.factory[r.site]]);if(!r.ok){rows.push(['Strict: ไม่มีแผนส่งครบ','ขาดกำลังผลิต',r.short]);continue;}
+    rows.push(['โรงงาน/ลูกค้า',...d.customer,'รวมส่งจริง','กำลังผลิต']);
+    r.plan.forEach((row,i)=>rows.push([d.factory[r.plants[i]],...row,r.used[i],d.capacity[r.plants[i]]]));
+    rows.push(['ลูกค้าได้รับจริง',...r.received,r.delivered,r.available]);rows.push(['ยอดส่งไม่ครบ (ไม่ใช่สินค้า)',...r.unmet,r.shortage]);
+    rows.push(['ความต้องการ',...d.demand,r.demand]);rows.push(['ต้นทุนผลิตจริง',r.production],['ต้นทุนขนส่งจริง',r.transport],['ค่าปรับสมมติ',r.penaltyCost],['ต้นทุนรวมประเมิน',r.total]);
+  }
+  rows.push([],['หมายเหตุ','Dummy Source แทนยอดส่งไม่ครบ มิใช่การขนส่งจริง; ผลรวมไม่รวมเงินลงทุนและต้นทุนคงที่']);
+  const esc=v=>`"${String(v??'').replace(/"/g,'""')}"`,csv='\uFEFF'+rows.map(row=>row.map(esc).join(',')).join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='PlantLoc_OPT_Results.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+}
+function applyScenario(){const key=$('presetSelect').value;if(!key){setStatus('โปรดเลือกสถานการณ์ตัวอย่างก่อน','warn');return;}const d=cloneOrig();if(key==='shipping')d.ship[2][2]=15;else if(key==='production')d.production[2]=71;else if(key==='shortage')d.demand[3]+=3000;else if(key==='surplus')d.demand[3]-=6000;drawInputs(d);runSolve();}
+function runSolve(){try{analyze();}catch(e){setStatus('ไม่สามารถคำนวณได้: '+e.message,'error');}}
+$('inputTable').addEventListener('input',markDirty);
+$('weeksInput').addEventListener('input',markDirty);
+$('modeSelect').addEventListener('change',markDirty);
+$('penaltyInput').addEventListener('input',markDirty);
+$('solveBtn').addEventListener('click',runSolve);
+$('resetBtn').addEventListener('click',()=>{drawInputs(cloneOrig());$('weeksInput').value=52;$('presetSelect').value='';$('modeSelect').value='shortage';$('penaltyInput').value=500;runSolve();});
+$('applyPreset').addEventListener('click',applyScenario);
+$('siteSelect').addEventListener('change',()=>{if(last){renderDetail();renderModel();renderMethod();}});
+$('csvBtn').addEventListener('click',downloadCSV);
+$('printBtn').addEventListener('click',()=>window.print());
+drawInputs(cloneOrig());runSolve();
+</script>
+</body>
+</html>
