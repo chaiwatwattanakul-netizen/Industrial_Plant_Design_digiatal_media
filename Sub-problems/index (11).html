@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#153a53">
+<meta name="description" content="ศูนย์รวมโจทย์ตัวอย่าง 10 ข้อ รายวิชาการออกแบบโรงงานอุตสาหกรรม Industrial Plant Design พร้อม Interactive HTML">
+<title>โจทย์ตัวอย่าง 1–10 | Industrial Plant Design</title>
+<style>
+:root{--navy:#173c55;--deep:#0d283d;--teal:#087f7b;--pale:#e6f4f0;--gold:#edb852;--ink:#172f41;--muted:#536e7d;--border:#d6e4e8;--bg:#f3f7f9;--white:#fff;--success:#12684c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Noto Sans Thai","Leelawadee UI",sans-serif;font-size:17px;line-height:1.7}a{color:inherit}.topline{background:var(--deep);color:#c3e6e5;padding:10px max(18px,calc((100% - 1190px)/2));font-weight:700;font-size:13px;letter-spacing:.03em}.hero{background:linear-gradient(118deg,#163b56,#0b5361);color:white;padding:35px max(18px,calc((100% - 1190px)/2)) 39px}.eyebrow{font-size:14px;color:#b3ebe4;font-weight:800;letter-spacing:.035em}.hero h1{font-size:clamp(27px,3.8vw,41px);line-height:1.35;margin:7px 0 13px}.hero p{max-width:790px;color:#e0eff2;margin:0 0 18px}.pillrow{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid rgba(255,255,255,.36);background:rgba(255,255,255,.09);padding:4px 11px;border-radius:30px;font-size:13px;font-weight:700}.container{max-width:1190px;margin:auto;padding:27px 18px 55px}.back{display:inline-flex;align-items:center;gap:8px;color:var(--teal);text-decoration:none;font-weight:800;margin-bottom:21px}.back:hover{text-decoration:underline}.toolbar{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:19px 0 20px}.field{flex:1 1 260px}.field label{display:block;font-size:15px;font-weight:800;margin-bottom:5px}.field input{font:inherit;width:100%;min-height:46px;border-radius:10px;border:1px solid #adbec7;padding:9px 14px;background:white;color:var(--ink)}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{background:#fff;border:1px solid var(--border);border-radius:12px;min-height:44px;padding:8px 13px;color:var(--ink);font:inherit;font-size:14px;font-weight:800;cursor:pointer}.filter[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}.section-title{font-size:21px;font-weight:800;margin:16px 0 11px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px 21px;display:flex;flex-direction:column;gap:10px;min-width:0;box-shadow:0 3px 18px rgba(15,43,58,.035)}.card.ready{border-top:4px solid #17887d}.card.pending{border-top:4px solid #bcc9cd}.card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.num{font-weight:900;color:var(--navy);font-size:14px;letter-spacing:.015em}.week{display:inline-flex;padding:2px 10px;border-radius:30px;background:#e8f2f7;color:#245471;font-size:12px;font-weight:800}.status{margin-left:auto;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:800}.ready .status{background:#e4f4ed;color:#116747}.pending .status{background:#eef2f4;color:#607481}.card h2{font-size:19px;line-height:1.42;margin:0;color:var(--ink)}.english{font-size:13px;color:#4e6c7c;font-weight:700;line-height:1.4;margin:-6px 0 0}.concept{color:var(--muted);font-size:14px;margin:0}.actions{margin-top:auto;display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding-top:4px}.open{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--teal);color:#fff;text-decoration:none;border-radius:11px;padding:10px 15px;min-height:44px;font-size:15px;font-weight:800}.open:hover{background:#05635f}.inactive{display:inline-flex;background:#edf1f2;color:#667782;border-radius:11px;padding:10px 15px;font-size:14px;font-weight:700}.note{border-left:4px solid var(--teal);background:#eef7f5;padding:13px 17px;border-radius:8px;margin-top:25px;font-size:14px;color:#284e59}.no-results{padding:25px;border:1px dashed var(--border);border-radius:12px;background:#fff;color:var(--muted)}.hidden{display:none!important}footer{background:#e9f0f3;text-align:center;color:#506a79;padding:17px;font-size:13px}input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #e8ae45;outline-offset:3px}@media(max-width:730px){.cards{grid-template-columns:1fr}.card{padding:17px}.hero{padding-top:29px;padding-bottom:33px}.container{padding-top:20px}}@media(max-width:390px){body{font-size:16px}.hero h1{font-size:27px}.filters{width:100%}.filter{flex:1 1 auto}.status{margin-left:0}}
+
+/* Home navigation for the exercises hub; no other course styles changed */
+.topline{display:flex;align-items:center;gap:12px}
+.home-link{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;border:1px solid rgba(195,230,229,.4);border-radius:10px;color:#c3e6e5;text-decoration:none}
+.home-link:hover{background:rgba(195,230,229,.12);color:#fff}
+.home-link svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<div class="topline"><a class="home-link" href="../index.html" title="กลับหน้าเว็บไซต์หลัก" aria-label="กลับหน้าเว็บไซต์หลัก"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></a><span>RMUTI · INDUSTRIAL PLANT DESIGN · NUMERICAL EXERCISES</span></div>
+<header class="hero">
+  <div class="eyebrow">สื่อการเรียนรู้เสริมรายวิชา · 03-407-051-307</div>
+  <h1>ชุดโจทย์ตัวอย่างการออกแบบโรงงานอุตสาหกรรม</h1>
+  <p>Industrial Plant Design · 10 Numerical Problems<br>ฝึกแก้ปัญหาด้วยมือ เรียนรู้วิธีลัด และตรวจคำตอบด้วย Interactive HTML</p>
+  <div class="pillrow"><span class="pill">10 โจทย์ตามแผนการสอน</span><span class="pill">เชื่อมโยงบทเรียนรายสัปดาห์</span><span class="pill">โจทย์พร้อมใช้งาน 1–6</span><span class="pill">HTML เปิดออฟไลน์ได้</span></div>
+</header>
+<main class="container">
+  <a class="back" href="../index.html">← กลับหน้าเว็บไซต์หลัก</a>
+  <div class="toolbar">
+    <div class="field"><label for="search">ค้นหาชื่อโจทย์ / สัปดาห์ / วิธีคำนวณ</label><input id="search" type="search" placeholder="เช่น Load-Distance, สัปดาห์ที่ 10, ARC" autocomplete="off"></div>
+    <div class="filters" role="group" aria-label="กรองสถานะโจทย์">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">ทั้งหมด</button>
+      <button class="filter" type="button" data-filter="ready" aria-pressed="false">พร้อมเรียน</button>
+      <button class="filter" type="button" data-filter="pending" aria-pressed="false">เร็ว ๆ นี้</button>
+    </div>
+  </div>
+  <div class="section-title">เลือกโจทย์ตัวอย่าง <span id="shown" style="color:#617e8c;font-size:14px;font-weight:600" aria-live="polite">(แสดง 10 ข้อ)</span></div>
+  <section class="cards" id="cards" aria-label="รายการโจทย์ตัวอย่าง">
+    <article class="card ready" data-status="ready" data-search="1 13 load distance การเลือกผังโรงงาน ต้นทุน การขนย้ายวัสดุ">
+      <div class="card-top"><span class="num">โจทย์ที่ 01</span><span class="week">สัปดาห์ที่ 13</span><span class="status">● พร้อมเรียน</span></div>
+      <h2>การเลือกผังโรงงานที่มีต้นทุนการขนย้ายวัสดุต่ำที่สุด</h2>
+      <p class="english">Minimum Material Handling Cost</p><p class="concept">เครื่องมือ: Load-Distance Method</p>
+      <div class="actions"><a class="open" href="IPD_W13_Problem01_Load_Distance_Interactive.html">เปิด Interactive HTML ↗</a></div>
+    </article>
+    <article class="card ready" data-status="ready" data-search="2 5 center gravity การหาตำแหน่งคลังสินค้า พิกัด ทำเล">
+      <div class="card-top"><span class="num">โจทย์ที่ 02</span><span class="week">สัปดาห์ที่ 5</span><span class="status">● พร้อมเรียน</span></div>
+      <h2>การหาตำแหน่งที่ตั้งคลังสินค้าที่เหมาะสม</h2>
+      <p class="english">Warehouse Location by Center of Gravity</p><p class="concept">เครื่องมือ: Center of Gravity Method</p>
+      <div class="actions"><a class="open" href="IPD_W05_Problem02_Center_of_Gravity_Interactive.html">เปิด Interactive HTML ↗</a></div>
+    </article>
+    <article class="card ready" data-status="ready" data-search="3 3 machine requirement capacity จำนวนเครื่องจักรขั้นต่ำ ผลิต กำลังการผลิต">
+      <div class="card-top"><span class="num">โจทย์ที่ 03</span><span class="week">สัปดาห์ที่ 3</span><span class="status">● พร้อมเรียน</span></div>
+      <h2>การหาจำนวนเครื่องจักรขั้นต่ำที่ต้องใช้ในการผลิต</h2>
+      <p class="english">Minimum Machine Requirement</p><p class="concept">เครื่องมือ: Machine Requirement / Capacity Calculation</p>
+      <div class="actions"><a class="open" href="IPD_W03_Problem03_Machine_Requirement_Interactive.html">เปิด Interactive HTML ↗</a></div>
+    </article>
+    <article class="card ready" data-status="ready" data-search="4 4 factor rating การเลือกทำเลที่ตั้งโรงงาน คะแนนถ่วงน้ำหนัก">
+      <div class="card-top"><span class="num">โจทย์ที่ 04</span><span class="week">สัปดาห์ที่ 4</span><span class="status">● พร้อมเรียน</span></div>
+      <h2>การเลือกทำเลที่ตั้งโรงงานด้วยคะแนนถ่วงน้ำหนัก</h2>
+      <p class="english">Facility Location by Weighted Factor Rating</p><p class="concept">เครื่องมือ: Factor Rating Method</p>
+      <div class="actions"><a class="open" href="IPD_W04_Problem04_Factor_Rating_Interactive.html">เปิด Interactive HTML ↗</a></div>
+    </article>
+    <article class="card ready" data-status="ready" data-search="5 9 from to flow analysis คู่แผนก การไหล วัสดุ">
+      <div class="card-top"><span class="num">โจทย์ที่ 05</span><span class="week">สัปดาห์ที่ 9</span><span class="status">● พร้อมเรียน</span></div>
+      <h2>การหาคู่แผนกที่ควรจัดให้อยู่ใกล้กันเพื่อลดการขนย้ายวัสดุ</h2>
+      <p class="english">From-To Chart / Material Flow Analysis</p><p class="concept">เครื่องมือ: From-To Chart, Pair Flow, Load-Distance</p>
+      <div class="actions"><a class="open" href="IPD_W09_Problem05_From_To_Interactive.html">เปิด Interactive HTML ↗</a></div>
+    </article>
+    <article class="card ready" data-status="ready" data-search="6 10 slp arc การเลือกผังโรงงาน คะแนนความสัมพันธ์ แผนก">
+      <div class="card-top"><span class="num">โจทย์ที่ 06</span><span class="week">สัปดาห์ที่ 10</span><span class="status">● พร้อมเรียน</span></div>
+      <h2>การเลือกผังโรงงานจากคะแนนความสัมพันธ์ระหว่างแผนก</h2>
+      <p class="english">Systematic Layout Planning / Activity Relationship Chart</p><p class="concept">เครื่องมือ: SLP / ARC / Relationship Diagram</p>
+      <div class="actions"><a class="open" href="IPD_W10_Problem06_SLP_ARC_Interactive.html">เปิด Interactive HTML ↗</a></div>
+    </article>
+    <article class="card pending" data-status="pending" data-search="7 11 block layout space requirement พื้นที่โรงงาน ผังบล็อก">
+      <div class="card-top"><span class="num">โจทย์ที่ 07</span><span class="week">สัปดาห์ที่ 11</span><span class="status">อยู่ระหว่างจัดทำ</span></div>
+      <h2>การคำนวณพื้นที่โรงงานและเลือกผังบล็อก</h2>
+      <p class="english">Space Requirement / Block Layout</p><p class="concept">เครื่องมือ: Space Planning & Block Layout</p><div class="actions"><span class="inactive">ยังไม่เปิดใช้งาน</span></div>
+    </article>
+    <article class="card pending" data-status="pending" data-search="8 12 material handling capacity จำนวนรถขนถ่ายวัสดุ">
+      <div class="card-top"><span class="num">โจทย์ที่ 08</span><span class="week">สัปดาห์ที่ 12</span><span class="status">อยู่ระหว่างจัดทำ</span></div>
+      <h2>การหาจำนวนรถขนถ่ายวัสดุขั้นต่ำที่ต้องใช้ในโรงงาน</h2>
+      <p class="english">Minimum Material Handling Vehicle Requirement</p><p class="concept">เครื่องมือ: Material Handling Capacity</p><div class="actions"><span class="inactive">ยังไม่เปิดใช้งาน</span></div>
+    </article>
+    <article class="card pending" data-status="pending" data-search="9 12 13 cost break even ระบบขนถ่ายวัสดุ ต้นทุนรวม">
+      <div class="card-top"><span class="num">โจทย์ที่ 09</span><span class="week">สัปดาห์ที่ 12–13</span><span class="status">อยู่ระหว่างจัดทำ</span></div>
+      <h2>การเลือกระบบขนถ่ายวัสดุที่มีต้นทุนรวมต่ำที่สุด</h2>
+      <p class="english">Material Handling System Cost Comparison</p><p class="concept">เครื่องมือ: Total Cost Analysis / Break-even Analysis</p><div class="actions"><span class="inactive">ยังไม่เปิดใช้งาน</span></div>
+    </article>
+    <article class="card pending" data-status="pending" data-search="10 13 weighted scoring layout evaluation การประเมินผังโรงงาน หลายเกณฑ์">
+      <div class="card-top"><span class="num">โจทย์ที่ 10</span><span class="week">สัปดาห์ที่ 13</span><span class="status">อยู่ระหว่างจัดทำ</span></div>
+      <h2>การเลือกผังโรงงานที่เหมาะสมจากเกณฑ์ประเมินหลายด้าน</h2>
+      <p class="english">Multi-Criteria Layout Evaluation</p><p class="concept">เครื่องมือ: Weighted Scoring / Layout Evaluation</p><div class="actions"><span class="inactive">ยังไม่เปิดใช้งาน</span></div>
+    </article>
+  </section>
+  <div id="no-results" class="no-results hidden" role="status">ไม่พบโจทย์ที่ตรงกับคำค้นหา กรุณาลองใช้คำอื่น</div>
+  <aside class="note"><strong>วิธีใช้งาน:</strong> เลือก “เปิด Interactive HTML” เพื่อทำโจทย์พร้อมตรวจคำตอบและใช้เครื่องมือคำนวณที่อยู่ในแต่ละบทเรียน หากต้องการไฟล์ Excel ให้ใช้ตัวเลือกดาวน์โหลดภายในหน้าของโจทย์นั้น ๆ เมื่อมีการจัดทำโจทย์ที่ 7–10 แล้วจึงค่อยเพิ่มลิงก์เปิดใช้งานจริง</aside>
+</main>
+<footer>Industrial Plant Design · ชุดโจทย์ตัวอย่าง 1–10 · มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</footer>
+<script>
+(function(){
+ 'use strict';
+ const search=document.getElementById('search');
+ const buttons=Array.from(document.querySelectorAll('.filter'));
+ const cards=Array.from(document.querySelectorAll('.card'));
+ const shown=document.getElementById('shown');
+ const empty=document.getElementById('no-results');
+ let filter='all';
+ function update(){
+  const term=search.value.trim().toLocaleLowerCase('th-TH');let count=0;
+  for(const card of cards){
+   const hay=(card.textContent+' '+card.dataset.search).toLocaleLowerCase('th-TH');
+   const visible=(filter==='all'||card.dataset.status===filter)&&(!term||hay.includes(term));
+   card.classList.toggle('hidden',!visible);if(visible)count++;
+  }
+  shown.textContent='(แสดง '+count+' ข้อ)';empty.classList.toggle('hidden',count!==0);
+ }
+ search.addEventListener('input',update);
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  filter=button.dataset.filter;
+  buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  update();
+ }));
+ update();
+})();
+</script>
+</body>
+</html>
