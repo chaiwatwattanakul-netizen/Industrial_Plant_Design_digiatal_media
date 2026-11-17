@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10293b">
+  <meta name="description" content="ศูนย์รวมการเรียนรู้ Excel Solver 7 หัวข้อ สำหรับการออกแบบโรงงานอุตสาหกรรม นักศึกษาวิศวกรรมการผลิต มทร.อีสาน นครราชสีมา">
+  <title>Excel Solver Learning Portal | การออกแบบโรงงานอุตสาหกรรม</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --navy:#122b3b;--navy2:#092335;--teal:#087b72;--teal-deep:#08625e;
+      --emerald:#0f9d76;--mint:#eaf7f3;--paper:#f6f9fa;--white:#fff;
+      --text:#1c3442;--sub:#5c7180;--line:#dce7e9;--line-deep:#cadae0;
+      --shadow:0 20px 55px rgba(11,45,54,.075);--radius:22px;
+      --max:1230px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{margin:0;font-family:'Prompt',Tahoma,sans-serif;font-size:18px;line-height:1.8;color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased}
+    button,input,a{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit}
+    svg{max-width:100%}
+    .icon{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+    .symbol-defs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+    .container{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
+    .skip-link{position:fixed;top:-100px;left:12px;z-index:120;color:#06352d;background:#fff;padding:10px 18px;border-radius:9px}
+    .skip-link:focus{top:10px}
+    :focus-visible{outline:3px solid #2ba896;outline-offset:4px}
+    .site-header{position:sticky;z-index:50;top:0;border-bottom:1px solid rgba(202,218,224,.8);background:rgba(255,255,255,.96);backdrop-filter:blur(20px)}
+    .nav-shell{max-width:1380px;padding:0 30px;margin:auto;min-height:82px;display:flex;align-items:center;gap:20px}
+    .back-home{display:grid;place-items:center;width:45px;height:45px;border-radius:13px;border:1px solid var(--line);background:#f4f9f9;color:var(--teal-deep);text-decoration:none;transition:background .2s,transform .2s}
+    .back-home:hover{background:var(--mint);transform:translateY(-2px)}
+    .back-home .icon{width:22px;height:22px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0;margin-right:auto}
+    .brand-mark{width:42px;height:42px;display:grid;place-items:center;flex:none;border-radius:13px;background:var(--navy);color:#a4eee0}
+    .brand-mark .icon{width:24px;height:24px}
+    .brand-text{display:flex;flex-direction:column;line-height:1.36;min-width:0}
+    .brand-text strong{font-size:17px;color:var(--navy);font-weight:700;white-space:nowrap}
+    .brand-text small{font-size:11px;letter-spacing:1.1px;color:#66818d;font-weight:600}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links a{padding:9px 11px;text-decoration:none;font-size:14px;color:#526876;border-radius:9px;white-space:nowrap;font-weight:500;transition:color .2s,background .2s}
+    .nav-links a:hover,.nav-links a[aria-current="location"]{background:#eaf6f3;color:var(--teal-deep)}
+    .header-tag{margin-left:5px;border:1px solid #cae6e0;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;color:#187764;white-space:nowrap;background:#f2faf7}
+    .menu-toggle{display:none;width:43px;height:43px;place-items:center;border:1px solid var(--line);color:var(--navy);background:white;border-radius:10px}
+    .hero-wrap{background:var(--navy2);color:white;position:relative;isolation:isolate;overflow:hidden}
+    .hero-wrap::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 77% 38%,rgba(22,152,127,.36),transparent 40%),radial-gradient(ellipse at 2% 4%,rgba(36,107,141,.24),transparent 42%),linear-gradient(115deg,#0e2d3e,#0d3540 64%,#0b484a);z-index:-2}
+    .hero-wrap::after{content:"";position:absolute;inset:0;opacity:.16;background-image:linear-gradient(#a7e4dd25 1px,transparent 1px),linear-gradient(90deg,#a7e4dd25 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(90deg,transparent 15%,#000 75%);z-index:-1}
+    .hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);gap:30px;align-items:center;min-height:555px;padding-top:62px;padding-bottom:56px}
+    .hero-copy{max-width:680px;position:relative;z-index:2}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:#b1eadc;text-transform:uppercase;letter-spacing:1.7px;font-size:12px;font-weight:600}
+    .eyebrow::before{content:"";width:28px;height:2px;background:#52c9aa;display:inline-block}
+    .hero h1{font-size:clamp(32px,3.5vw,50px);line-height:1.36;margin:20px 0 12px;letter-spacing:-.65px;font-weight:600}
+    .hero h1 span{color:#80e2cb}
+    .hero-title-en{color:#9dd7d4;font-size:16px;font-weight:500;line-height:1.55;margin:0 0 17px}
+    .hero-desc{color:#d1e3e6;max-width:570px;font-size:17px;line-height:1.85;margin:0 0 27px;font-weight:300}
+    .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;text-decoration:none;font-size:15px;font-weight:600;padding:12px 20px;border:1px solid transparent;transition:transform .18s,box-shadow .18s,background .18s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:#b5f2dc;color:#12493c;box-shadow:0 7px 20px #021d1d40}
+    .btn-primary:hover{background:#d0ffeb}
+    .btn-outline{background:#ffffff0d;color:#fff;border-color:#a3d6d45c}
+    .btn-outline:hover{background:#ffffff20}
+    .hero-visual{position:relative;max-width:520px;width:100%;margin:auto;filter:drop-shadow(0 25px 42px #0019254a)}
+    .visual-panel{background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(206,255,238,.035));border:1px solid #aae7d64d;border-radius:26px;padding:18px 16px;box-shadow:inset 0 1px 0 #ffffff39}
+    .visual-caption{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 9px 14px;color:#defaf1;font-size:13px;font-weight:500}
+    .mini-lights{display:flex;gap:5px}
+    .mini-lights i{display:block;width:7px;height:7px;background:#82e9b8;border-radius:50%;opacity:.8}
+    .mini-lights i:nth-child(2){background:#fbc581}.mini-lights i:nth-child(3){background:#90bae3}
+    .hero-svg{display:block;width:100%;height:auto;overflow:visible}
+    .hero-note{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 8px 1px;color:#b7ded9;font-size:11px;letter-spacing:.15px}
+    .hero-note strong{color:#aef4d9;font-size:12px}
+    .hero-stats{border-top:1px solid #d9fdfc1c;background:#082b37b3;position:relative}
+    .stats-inner{min-height:114px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;gap:0}
+    .stat{padding:17px 24px;border-right:1px solid #c3ece82c;display:flex;align-items:center;gap:13px}
+    .stat:first-child{padding-left:0}.stat:last-child{border-right:0}
+    .stat-num{font-size:32px;font-weight:600;color:#9cf4d4;line-height:1.2;letter-spacing:-.8px}
+    .stat-copy{font-size:12px;line-height:1.6;color:#cfdfdf}
+    .stat-copy b{display:block;font-size:13px;font-weight:500;color:#fff}
+    section{scroll-margin-top:106px}
+    .section{padding:89px 0}
+    .section-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+    .kicker{display:block;margin-bottom:8px;color:var(--teal-deep);letter-spacing:2px;text-transform:uppercase;font-size:12px;font-weight:700}
+    .section-heading{font-size:clamp(27px,3vw,38px);color:var(--navy);font-weight:600;letter-spacing:-.55px;line-height:1.45;margin:0 0 11px}
+    .section-desc{font-size:16px;line-height:1.85;color:var(--sub);margin:0;max-width:770px}
+    .count-pill{font-size:13px;color:#246c61;background:#ebf7f3;border:1px solid #cce8df;border-radius:999px;padding:6px 15px;white-space:nowrap;font-weight:500}
+    .modules{padding-top:82px}
+    .toolbar{border-radius:19px;background:white;border:1px solid var(--line);padding:19px 21px;box-shadow:0 6px 27px rgba(13,51,63,.035);margin-bottom:26px}
+    .toolbar-top{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:15px}
+    .search-field{display:flex;align-items:center;gap:10px;width:min(100%,510px);border:1px solid #ccdcdf;border-radius:12px;background:#fafdfd;padding:0 14px;transition:border-color .2s,box-shadow .2s}
+    .search-field:focus-within{border-color:#4ab79c;box-shadow:0 0 0 3px #21a88e1e}
+    .search-field .icon{color:#60818a}
+    .search-field input{font-size:15px;font-weight:400;border:0;background:transparent;padding:12px 0;outline:0;min-width:0;width:100%;color:var(--navy)}
+    .search-field input::placeholder{color:#8299a1}
+    .results-count{font-size:13px;color:var(--sub);text-align:right}
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .filter-label{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--sub);font-weight:600;margin-right:3px}
+    .filter-label .icon{width:16px;height:16px}
+    .filter-chip{border:1px solid #d7e6e7;color:#59717b;padding:8px 14px;border-radius:999px;background:white;font-size:12px;font-weight:500;transition:.18s}
+    .filter-chip:hover{background:#f0faf7;color:#126e60;border-color:#a5d8c9}
+    .filter-chip[aria-pressed="true"]{color:#fff;background:var(--teal-deep);border-color:var(--teal-deep);box-shadow:0 4px 12px #087b7226}
+    .topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .topic-card{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 24px rgba(10,39,50,.035);display:flex;flex-direction:column;min-width:0;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .topic-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#b7d8d2}
+    .topic-top{padding:22px 24px 0;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .topic-index{font-size:12px;letter-spacing:1.2px;font-weight:600;color:#6b8992}
+    .status{display:inline-flex;align-items:center;gap:6px;max-width:100%;font-size:11px;line-height:1.35;font-weight:600;border-radius:50px;padding:5px 10px}
+    .status .status-dot{height:6px;width:6px;border-radius:50%;background:currentColor;flex:none}
+    .status-ready{color:#08725b;background:#e7f7ed}
+    .status-unlinked{color:#8b661d;background:#fff5dd}
+    .status-planned{color:#647686;background:#edf2f5}
+    .topic-main{padding:16px 24px 0;display:flex;align-items:flex-start;gap:14px;min-height:116px}
+    .topic-icon{flex:none;width:59px;height:59px;display:grid;place-items:center;border-radius:17px;color:var(--teal-deep);background:linear-gradient(135deg,#dff5ed,#f2faf9);border:1px solid #d9ebe6}
+    .topic-icon .icon{height:30px;width:30px;stroke-width:1.55}
+    .topic-card:nth-child(3n+2) .topic-icon{background:linear-gradient(135deg,#e5f0f8,#f5faff);color:#246d92;border-color:#dbe9f0}
+    .topic-card:nth-child(3n) .topic-icon{background:linear-gradient(135deg,#f1f1e7,#fcfcf7);color:#718451;border-color:#e7ebd8}
+    .topic-heading{min-width:0;flex:1}
+    .topic-heading h3{font-size:18px;color:var(--navy);line-height:1.55;margin:0 0 2px;font-weight:600}
+    .topic-en{font-size:12px;color:#71909b;font-weight:500;line-height:1.6;margin:0;overflow-wrap:anywhere}
+    .topic-body{padding:2px 24px 18px;display:flex;flex:1;flex-direction:column}
+    .topic-desc{font-size:14px;color:#5d7380;line-height:1.85;margin:2px 0 17px;min-height:75px}
+    .topic-meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+    .meta-tag{font-size:11px;line-height:1.5;border-radius:8px;padding:5px 10px;border:1px solid #dae8e9;color:#4f6b74;background:#f8fbfb;font-weight:500}
+    .meta-tag.objective{border-color:#d0e9df;background:#f0faf5;color:#126f59}
+    .topic-outcome{border-top:1px solid #edf2f3;padding-top:13px;font-size:13px;color:#52707a;line-height:1.8;margin-top:auto}
+    .topic-outcome strong{color:#214657;font-weight:600;display:block;margin-bottom:2px}
+    .topic-caution{font-size:11px;line-height:1.75;color:#8a7044;margin:10px 0 0;padding:9px 11px;border-radius:9px;background:#fff8e9;border:1px solid #f2e7cd}
+    .card-footer{margin:0 24px 22px;padding-top:17px;border-top:1px solid #edf2f3}
+    .card-action{display:inline-flex;width:100%;align-items:center;justify-content:center;gap:8px;min-height:45px;text-decoration:none;border-radius:11px;border:1px solid #0c7669;color:white;background:#0b7b6f;font-size:14px;font-weight:600;transition:background .15s,transform .15s}
+    .card-action:hover{background:#065e56;transform:translateY(-1px)}
+    .card-action .icon{width:17px;height:17px}
+    .card-action:disabled{color:#788a92;background:#f0f3f4;border-color:#e1e9eb;cursor:not-allowed;transform:none}
+    .card-action.waiting{color:#936b27;background:#fff9eb;border-color:#f0e0b9}
+    .empty-state{margin-top:20px;text-align:center;border:1px dashed #b9d3d4;background:white;border-radius:20px;padding:44px 20px}
+    .empty-state .icon{width:34px;height:34px;color:var(--teal);margin-bottom:11px}
+    .empty-state h3{font-size:20px;margin:0;color:var(--navy)}
+    .empty-state p{font-size:15px;color:var(--sub);margin:6px 0 19px}
+    .empty-state button{background:#0c796a;border:0;border-radius:10px;color:#fff;font-size:14px;padding:8px 17px;font-weight:600}
+    .github-sync{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:#edf6f5;border:1px solid #cfdfde;border-radius:14px;padding:12px 17px;margin:0 0 20px}
+    .github-sync-copy{display:flex;align-items:center;gap:10px;color:#255c59;font-size:13px;line-height:1.65;min-width:0}
+    .github-sync-copy .icon{color:#13816c;width:19px;height:19px}
+    .github-sync-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+    .github-sync-actions button,.github-sync-actions a{font-size:12px;line-height:1.5;font-weight:500;padding:7px 11px;background:#fff;border-radius:9px;color:#17665a;border:1px solid #c9deda;text-decoration:none}
+    .github-sync-actions button:hover,.github-sync-actions a:hover{background:#e1f4ed}
+    .github-sync-actions button:disabled{opacity:.6;cursor:progress}
+    .github-sync[data-state="error"]{background:#fff9eb;border-color:#ebd9af}
+    .github-sync[data-state="error"] .github-sync-copy{color:#825d24}
+    .module-footnote{margin-top:18px;font-size:13px;color:#69818d;display:flex;align-items:flex-start;gap:8px}
+    .module-footnote .icon{width:16px;height:16px;margin-top:5px;color:#3e8e80}
+    .roadmap-section{background:#edf5f4;border-top:1px solid #e3eeed;border-bottom:1px solid #e3eeed}
+    .roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:35px;position:relative}
+    .phase-card{border:1px solid #d9e8e5;background:white;border-radius:19px;padding:25px 25px 23px;min-width:0;position:relative;box-shadow:0 9px 30px #124f4b08}
+    .phase-card:not(:last-child)::after{content:'→';position:absolute;right:-25px;top:42%;font:600 29px/1 'Prompt',sans-serif;color:#6bb9ac}
+    .phase-head{display:flex;gap:13px;align-items:center;margin-bottom:14px}
+    .phase-num{flex:none;display:grid;place-items:center;width:47px;height:47px;background:#dff6ed;color:#0a775e;font-size:20px;font-weight:600;border-radius:14px}
+    .phase-card:nth-child(2) .phase-num{background:#e6f0f9;color:#326f90}
+    .phase-card:nth-child(3) .phase-num{background:#eaeaf7;color:#6359a0}
+    .phase-label{font-size:11px;color:#689188;font-weight:600;letter-spacing:1px;line-height:1.5}
+    .phase-card h3{font-size:18px;font-weight:600;color:var(--navy);line-height:1.5;margin:2px 0 0}
+    .phase-card p{color:var(--sub);font-size:14px;line-height:1.8;margin:0 0 16px}
+    .phase-topics{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+    .phase-topics span{font-size:12px;font-weight:600;border-radius:7px;background:#f0f6f6;border:1px solid #e0ebeb;color:#4c6e76;padding:5px 9px}
+    .phase-bottom{margin-top:23px;font-size:14px;color:#53737a;display:flex;align-items:center;gap:8px}
+    .phase-bottom .icon{color:#087e72}
+    .solver-section{background:var(--white)}
+    .solver-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:33px}
+    .step{border:1px solid #dce8e9;background:#fbfdfd;border-radius:16px;padding:23px 22px;position:relative;min-height:206px}
+    .step-number{height:35px;width:35px;display:grid;place-items:center;background:#e3f7ef;color:#087c61;border:1px solid #cce8df;border-radius:11px;font-size:14px;font-weight:700;margin-bottom:14px}
+    .step h3{font-size:17px;line-height:1.55;margin:0 0 7px;font-weight:600;color:var(--navy)}
+    .step p{font-size:14px;color:var(--sub);line-height:1.85;margin:0}
+    .step::after{content:"";position:absolute;top:40px;right:21px;width:33px;height:33px;background:#f2f8f8;border-radius:10px}
+    .step .icon{position:absolute;top:48px;right:29px;width:17px;height:17px;color:#5a9f91;z-index:1}
+    .learning-tip{margin-top:24px;border-radius:15px;background:#edf7f3;border:1px solid #cfe8df;padding:19px 24px;display:flex;align-items:flex-start;gap:14px}
+    .learning-tip .icon{width:24px;height:24px;color:#0b8169;margin-top:2px}
+    .learning-tip strong{font-size:15px;color:#156752}
+    .learning-tip p{font-size:14px;color:#55776e;margin:0;line-height:1.85}
+    .course-section{padding:75px 0 83px}
+    .course-panel{background:linear-gradient(120deg,#123749,#0b504d);border-radius:26px;overflow:hidden;color:white;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);gap:30px;padding:42px 48px;position:relative;isolation:isolate}
+    .course-panel::after{content:"";position:absolute;width:470px;height:470px;border:1px solid #a6f6e128;border-radius:50%;right:-150px;top:-175px;box-shadow:0 0 0 80px #95e8d70b,0 0 0 160px #95e8d707;pointer-events:none;z-index:-1}
+    .course-panel .kicker{color:#91eed2}
+    .course-panel h2{margin:0 0 12px;font-size:clamp(25px,2.7vw,33px);line-height:1.45;font-weight:600}
+    .course-panel p{color:#cce5e3;font-size:15px;max-width:640px;line-height:1.9;margin:0}
+    .course-detail{border:1px solid #aedbdc52;border-radius:17px;background:#ffffff0d;padding:21px 24px;align-self:center}
+    .detail-line{display:flex;align-items:flex-start;gap:11px;color:#e2f4f3;font-size:14px;line-height:1.8;padding:7px 0}
+    .detail-line .icon{color:#a1e6d7;width:19px;height:19px;margin-top:4px}
+    .detail-line b{font-weight:600;color:#fff}
+    .references{padding:0 0 80px}
+    .reference-panel{display:flex;align-items:flex-start;gap:15px;padding:19px 24px;border:1px solid #d9e8e8;background:#fff;border-radius:15px}
+    .reference-panel>.icon{width:22px;height:22px;color:#0e786a;margin-top:4px}
+    .reference-panel h2{font-size:15px;line-height:1.6;margin:0 0 3px;font-weight:600;color:var(--navy)}
+    .reference-panel p{font-size:13px;color:var(--sub);line-height:1.9;margin:0}
+    .reference-panel a{color:#077568;text-underline-offset:3px}
+    .footer{background:#092638;color:#b9d2d8;padding:31px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .footer-main{font-size:13px;line-height:1.85}
+    .footer-main strong{display:block;font-size:15px;color:white;font-weight:600}
+    .footer-nav{display:flex;gap:15px;flex-wrap:wrap}
+    .footer-nav a{font-size:13px;color:#bee8de;text-decoration:none}
+    .footer-nav a:hover{text-decoration:underline}
+    [hidden]{display:none!important}
+    @media(max-width:1150px){
+      .header-tag{display:none}.nav-links a{padding:9px 8px;font-size:12px}
+      .brand-text strong{font-size:15px}.hero{grid-template-columns:minmax(0,1fr) minmax(330px,.85fr)}
+      .topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:880px){
+      .container{width:min(calc(100% - 38px),var(--max))}
+      .nav-shell{min-height:72px;padding:0 19px}.menu-toggle{display:grid}
+      .nav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;background:white;border-bottom:1px solid var(--line);box-shadow:0 18px 25px #102f371c;flex-direction:column;align-items:stretch;padding:14px 21px 20px}
+      .nav-links.open{display:flex}.nav-links a{font-size:15px;padding:11px 12px}
+      .hero{grid-template-columns:1fr;gap:31px;padding-top:49px;padding-bottom:42px}
+      .hero-copy{max-width:740px}.hero-visual{max-width:570px}
+      .stats-inner{grid-template-columns:repeat(2,1fr)}.stat{padding:17px 12px;border-bottom:1px solid #c3ece82c}.stat:nth-child(2){border-right:0}.stat:nth-child(3),.stat:nth-child(4){border-bottom:0}
+      .roadmap-grid{grid-template-columns:1fr;gap:22px}.phase-card:not(:last-child)::after{content:'↓';top:auto;bottom:-23px;right:50%;transform:translateX(50%);z-index:3;font-size:23px}
+      .solver-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .course-panel{grid-template-columns:1fr;padding:33px 29px;gap:22px}
+    }
+    @media(max-width:620px){
+      body{font-size:16px;line-height:1.8}
+      .container{width:min(calc(100% - 30px),var(--max))}
+      .nav-shell{gap:10px;padding:0 15px;min-height:68px}
+      .back-home{width:39px;height:39px;border-radius:11px}.brand-mark{width:37px;height:37px;border-radius:11px}
+      .brand{gap:8px}.brand-text strong{font-size:13px;letter-spacing:-.2px}.brand-text small{font-size:9px;letter-spacing:.6px}
+      .menu-toggle{width:39px;height:39px}
+      .hero{min-height:auto;padding-top:43px;padding-bottom:37px}
+      .hero h1{font-size:clamp(29px,7.1vw,39px);letter-spacing:-.4px}.hero-title-en{font-size:13px}.hero-desc{font-size:15px}
+      .hero-actions{align-items:stretch}.hero-actions .btn{font-size:13px;padding:11px 13px;flex:1}
+      .visual-panel{padding:13px 10px}.visual-caption{font-size:11px}.hero-note{font-size:10px}
+      .stat{gap:8px;padding:13px 8px}.stat-num{font-size:27px}.stat-copy{font-size:11px}.stat-copy b{font-size:12px}
+      .section{padding:64px 0}.modules{padding-top:60px}.section-intro{align-items:flex-start;flex-direction:column;gap:11px}
+      .section-heading{font-size:27px}.section-desc{font-size:15px}
+      .toolbar{padding:15px}.toolbar-top{flex-direction:column;align-items:stretch;gap:8px}.search-field{width:100%}.results-count{text-align:left}
+      .filter-label{width:100%;margin-bottom:1px}.filter-bar{gap:6px}.filter-chip{padding:6px 10px;font-size:11px}
+      .topic-grid{grid-template-columns:1fr;gap:15px}.topic-top{padding:18px 18px 0}.topic-main{padding:13px 18px 0;min-height:auto}.topic-icon{width:51px;height:51px}.topic-icon .icon{width:27px;height:27px}
+      .topic-heading h3{font-size:17px}.topic-body{padding:8px 18px 15px}.topic-desc{min-height:0;font-size:14px}.card-footer{margin:0 18px 18px}
+      .roadmap-grid{margin-top:24px}.phase-card{padding:21px}.solver-steps{grid-template-columns:1fr;gap:12px}.step{min-height:auto;padding:19px 21px}.learning-tip{padding:16px}
+      .course-section{padding:53px 0}.course-panel{padding:28px 21px;border-radius:21px}.course-panel h2{font-size:24px}.course-panel p{font-size:14px}.course-detail{padding:16px}
+      .references{padding:0 0 54px}.reference-panel{padding:18px}.footer-inner{align-items:flex-start;flex-direction:column}.footer{padding:26px 0}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    @media print{
+      .site-header,.hero-actions,.toolbar,.footer-nav,.card-action,.references{display:none!important}
+      body{background:#fff;font-size:13px}.hero-wrap{background:#173948!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.hero{min-height:auto;padding:20px 0;grid-template-columns:1fr 1fr}.hero h1{font-size:28px}.hero-desc{font-size:12px}.stats-inner{min-height:auto}
+      .section{padding:25px 0}.topic-grid{grid-template-columns:repeat(2,1fr)}.topic-card,.phase-card,.step{break-inside:avoid}.course-panel{background:#18464c!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    }
+  </style>
+</head>
+<body>
+  <svg class="symbol-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10Z"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 21V9l6 3V9l6 3V5h6v16H3Z"/><path d="M7 17h2m3 0h2m3 0h2M18 5V2"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v12H2zM14 10h4l4 4v4h-8"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M14 18H8"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-5 3 2 5-7"/><path d="M16 5h3v3"/></symbol>
+    <symbol id="i-forklift" viewBox="0 0 24 24"><path d="M3 17V8h8l3 9H3Zm11 0h6M11 8V4H5M21 4v15h-4"/><circle cx="7" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></symbol>
+    <symbol id="i-gears" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m10 2-.5 3-2.3 1-2.5-1.4-2 3.4L5 10l-.1 2.5L2 14l2 3.5 2.7-1 2.2 1.2.6 3.3h4.2l.5-3.1 2.1-1.4 2.6 1 2-3.5-2.4-1.9v-2.2L21 8l-2-3.4-2.7 1.3L14 5l-.5-3H10Z"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9" rx="1"/><path d="M7 8v4m4-4v3m4-3v4m3-4v3"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2H3Zm13-15a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5h-4"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h18M11 10v11M11 3v7M15 15h6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 5h18M7 12h10m-7 7h4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6C9 4 5 4 2 5v14c3-1 7-1 10 1 3-2 7-2 10-1V5c-3-1-7-1-10 1Zm0 0v14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11m6-11v11"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2" fill="white"/><circle cx="16" cy="12" r="2" fill="white"/><circle cx="11" cy="18" r="2" fill="white"/></symbol>
+    <symbol id="i-calculator" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 5-3 8-9 10-6-2-9-5-9-10V6l9-4Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-graduation" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5L2 9Zm4 4v5c3 3 9 3 12 0v-5M22 10v6"/></symbol>
+  </svg>
+  <a class="skip-link" href="#main">ข้ามไปยังเนื้อหาหลัก</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="back-home" href="../index.html" title="กลับสู่เว็บไซต์หลักระดับบน" aria-label="กลับสู่เว็บไซต์หลักระดับบน"><svg class="icon"><use href="#i-home"/></svg></a>
+      <a class="brand" href="#home" aria-label="Excel Solver Learning Portal หน้าหลัก">
+        <span class="brand-mark"><svg class="icon"><use href="#i-factory"/></svg></span>
+        <span class="brand-text"><strong>Excel Solver Learning Portal</strong><small>INDUSTRIAL PLANT DESIGN</small></span>
+      </a>
+      <nav id="primaryNav" class="nav-links" aria-label="เมนูหลัก">
+        <a href="#home" aria-current="location">หน้าหลัก</a>
+        <a href="#modules">บทเรียนทั้ง 7</a>
+        <a href="#roadmap">เส้นทางการเรียนรู้</a>
+        <a href="#solver">วิธีใช้ Excel Solver</a>
+        <a href="#about">เกี่ยวกับรายวิชา</a>
+      </nav>
+      <span class="header-tag">RMUTI · นครราชสีมา</span>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="เปิดเมนู"><svg class="icon"><use href="#i-menu"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap" id="home" aria-labelledby="heroTitle">
+      <div class="container hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Engineering Optimization · Learning Series</div>
+          <h1 id="heroTitle">การประยุกต์ใช้ <span>Excel Solver</span><br>สำหรับการออกแบบโรงงานอุตสาหกรรม</h1>
+          <p class="hero-title-en" lang="en">Excel Solver for Industrial Plant Layout and Design</p>
+          <p class="hero-desc">เรียนรู้การวิเคราะห์และตัดสินใจทางวิศวกรรมด้วยแบบจำลอง Optimization ตั้งแต่การขนส่งและวางแผนการผลิต ไปจนถึงการจัดสรรทรัพยากรและออกแบบผังโรงงาน</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#modules">สำรวจบทเรียนทั้ง 7 <svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-outline" href="#roadmap">ดูเส้นทางการเรียนรู้ <svg class="icon"><use href="#i-arrow-up"/></svg></a>
+          </div>
+        </div>
+        <div class="hero-visual" role="img" aria-label="ภาพจำลองเส้นทางขนส่งเชื่อมโรงงาน สินค้า และศูนย์กระจายสินค้า พร้อมแผนภาพ Optimization">
+          <div class="visual-panel">
+            <div class="visual-caption"><span>Factory Network · Optimization View</span><span class="mini-lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <svg class="hero-svg" viewBox="0 0 492 356" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="h-card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#234c5b"/><stop offset="1" stop-color="#133a4a"/></linearGradient>
+                <linearGradient id="h-node" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a6eddd"/><stop offset="1" stop-color="#55bca5"/></linearGradient>
+                <marker id="h-arrow" orient="auto" markerWidth="7" markerHeight="7" refX="6" refY="3.5"><path d="M0 0L7 3.5 0 7Z" fill="#70d7b9"/></marker>
+                <pattern id="h-dot" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#99e0d1" opacity=".27"/></pattern>
+              </defs>
+              <rect x="5" y="4" width="482" height="346" rx="19" fill="#0b2939" fill-opacity=".7" stroke="#8fd6c9" stroke-opacity=".2"/>
+              <rect x="5" y="4" width="482" height="346" rx="19" fill="url(#h-dot)"/>
+              <text x="23" y="28" fill="#99bfc2" font-size="10" font-family="Prompt,Tahoma,sans-serif" letter-spacing="2">SUPPLY NETWORK</text>
+              <text x="358" y="28" fill="#99bfc2" font-size="10" font-family="Prompt,Tahoma,sans-serif" letter-spacing="2">DEMAND POINTS</text>
+              <g fill="none" stroke="#70d7b9" stroke-width="2.1" stroke-linecap="round" marker-end="url(#h-arrow)" opacity=".84">
+                <path d="M138 93 C187 92 205 128 248 160" stroke-dasharray="5 6"/>
+                <path d="M138 249 C190 253 205 210 248 185" stroke-dasharray="5 6"/>
+                <path d="M302 173 C332 173 329 95 363 95" stroke-dasharray="5 6"/>
+                <path d="M302 173 C329 173 335 171 363 171" stroke-dasharray="5 6"/>
+                <path d="M302 173 C329 173 329 250 363 250" stroke-dasharray="5 6"/>
+              </g>
+              <g fill="url(#h-card)" stroke="#99c8c7" stroke-opacity=".42">
+                <rect x="22" y="58" width="116" height="78" rx="12"/>
+                <rect x="22" y="211" width="116" height="78" rx="12"/>
+                <rect x="360" y="61" width="112" height="69" rx="12"/>
+                <rect x="360" y="139" width="112" height="69" rx="12"/>
+                <rect x="360" y="217" width="112" height="69" rx="12"/>
+              </g>
+              <g fill="none" stroke="#a6eddd" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M38 104V80l16 8V80l16 8V69h23v35H38Z"/><path d="M45 96h5m9 0h5m11 0h5"/>
+                <path d="M38 256v-23l16 8v-8l16 8v-19h23v34H38Z"/><path d="M45 247h5m9 0h5m11 0h5"/>
+              </g>
+              <g font-family="Prompt,Tahoma,sans-serif" fill="#d4f0ea" font-size="11" font-weight="500">
+                <text x="81" y="110" text-anchor="middle">FACTORY A</text><text x="81" y="265" text-anchor="middle">FACTORY B</text>
+              </g>
+              <g fill="#bfe2dd" font-family="Prompt,Tahoma,sans-serif" font-size="10">
+                <text x="414" y="86" text-anchor="middle">CUSTOMER 01</text><text x="414" y="164" text-anchor="middle">CUSTOMER 02</text><text x="414" y="242" text-anchor="middle">CUSTOMER 03</text>
+              </g>
+              <g fill="#8fe6cb"><rect x="387" y="94" width="53" height="8" rx="4" opacity=".55"/><rect x="387" y="172" width="53" height="8" rx="4" opacity=".55"/><rect x="387" y="250" width="53" height="8" rx="4" opacity=".55"/></g>
+              <g>
+                <circle cx="271" cy="173" r="53" fill="#71d6b8" opacity=".09"/>
+                <circle cx="271" cy="173" r="41" fill="url(#h-node)"/>
+                <path d="m253 180 13-13 9 7 14-18" stroke="#0a574e" stroke-width="3.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M281 156h8v8" stroke="#0a574e" stroke-width="3.8" fill="none" stroke-linecap="round"/>
+                <text x="271" y="237" font-size="12" font-weight="600" fill="#b0f2e0" text-anchor="middle" font-family="Prompt,Tahoma,sans-serif">SOLVER · MIN COST</text>
+              </g>
+              <g stroke="#b8e6da" opacity=".55" fill="none" stroke-width="1"><path d="M25 309h443"/></g>
+              <g font-family="Prompt,Tahoma,sans-serif"><text x="23" y="330" fill="#b7ded8" font-size="10">CAPACITY → SHIPPING → DEMAND</text><text x="467" y="330" fill="#83dfc8" font-size="11" font-weight="500" text-anchor="end">OPTIMAL FLOW</text></g>
+            </svg>
+            <div class="hero-note"><span>Mathematical Models + Engineering Decisions</span><strong>LP → MILP → Layout</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="container stats-inner">
+          <div class="stat"><span class="stat-num" id="statAll">7</span><span class="stat-copy"><b>หัวข้อการเรียนรู้</b>เรียงลำดับอย่างเป็นระบบ</span></div>
+          <div class="stat"><span class="stat-num" id="statPrepared">—</span><span class="stat-copy"><b>ไฟล์คู่มือที่ตรวจพบ</b>อัปเดตจาก GitHub</span></div>
+          <div class="stat"><span class="stat-num" id="statPlanned">—</span><span class="stat-copy"><b>หัวข้อที่ยังไม่มีไฟล์</b>เพิ่มได้โดยไม่แก้หน้าเว็บ</span></div>
+          <div class="stat"><span class="stat-num" style="font-size:22px;letter-spacing:0">LP → Layout</span><span class="stat-copy"><b>จากพื้นฐานสู่บูรณาการ</b>วิเคราะห์และตัดสินใจ</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section modules" id="modules" aria-labelledby="modulesTitle">
+      <div class="container">
+        <div class="section-intro">
+          <div>
+            <span class="kicker">Explore Learning Modules</span>
+            <h2 class="section-heading" id="modulesTitle">เลือกบทเรียนที่ต้องการศึกษา</h2>
+            <p class="section-desc">7 หัวข้อที่เชื่อมโยงกัน ตั้งแต่การใช้ Simplex LP เพื่อแก้ปัญหาการไหลและการผลิต จนถึงการจัดสรรทรัพยากรและตำแหน่งแผนกในโรงงาน</p>
+          </div>
+          <span class="count-pill">หลักสูตรเสริม · 7 Modules</span>
+        </div>
+        <div id="githubSync" class="github-sync" data-state="loading" role="status" aria-live="polite">
+          <div class="github-sync-copy"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span id="githubSyncStatus">กำลังตรวจสอบรายชื่อไฟล์คู่มือจาก GitHub…</span></div>
+          <div class="github-sync-actions"><button type="button" id="refreshGitHub">ตรวจสอบไฟล์ใหม่</button><a href="https://github.com/chaiwatwattanakul-netizen/Industrial_Plant_Design_digital_media/tree/main/Excel_Solver_HandsOn" target="_blank" rel="noopener noreferrer">ดูโฟลเดอร์ GitHub ↗</a></div>
+        </div>
+        <div class="toolbar">
+          <div class="toolbar-top">
+            <label class="search-field" for="topicSearch"><svg class="icon"><use href="#i-search"/></svg><input id="topicSearch" type="search" autocomplete="off" placeholder="ค้นหาบทเรียน เช่น ขนส่ง, Machine, MILP ..." aria-label="ค้นหาบทเรียน"></label>
+            <div class="results-count" id="resultsCount" role="status" aria-live="polite">กำลังแสดง 7 จาก 7 เรื่อง</div>
+          </div>
+          <div class="filter-bar" role="group" aria-label="กรองตามกลุ่มบทเรียน">
+            <span class="filter-label"><svg class="icon"><use href="#i-filter"/></svg> ตัวกรอง</span>
+            <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">ทั้งหมด</button>
+            <button type="button" class="filter-chip" data-filter="flow" aria-pressed="false">การไหลและการผลิต</button>
+            <button type="button" class="filter-chip" data-filter="resource" aria-pressed="false">การจัดสรรทรัพยากร</button>
+            <button type="button" class="filter-chip" data-filter="layout" aria-pressed="false">การออกแบบผังโรงงาน</button>
+            <button type="button" class="filter-chip" data-filter="available" aria-pressed="false">คู่มือที่เปิดได้</button>
+          </div>
+        </div>
+        <div id="topicGrid" class="topic-grid" aria-label="รายการบทเรียน 7 เรื่อง"></div>
+        <div id="emptyState" class="empty-state" hidden>
+          <svg class="icon"><use href="#i-search"/></svg><h3>ไม่พบบทเรียนที่ตรงกับการค้นหา</h3>
+          <p>ลองเปลี่ยนคำค้นหา หรือเลือกแสดงบทเรียนทั้งหมด</p>
+          <button id="resetFilters" type="button">ล้างการค้นหาและตัวกรอง</button>
+        </div>
+        <div class="module-footnote"><svg class="icon"><use href="#i-info"/></svg><span>เว็บตรวจรายชื่อไฟล์ HTML จากโฟลเดอร์ Excel_Solver_HandsOn บน GitHub อัตโนมัติเมื่อเปิดหน้าใหม่ โดยตั้งชื่อไฟล์ให้สัมพันธ์กับหัวข้อ และเผยแพร่ผ่าน GitHub Pages เพื่อให้เปิดอ่านคู่มือเป็นหน้าเว็บได้</span></div>
+      </div>
+    </section>
+
+    <section class="section roadmap-section" id="roadmap" aria-labelledby="roadmapTitle">
+      <div class="container">
+        <span class="kicker">Progressive Learning Path</span>
+        <h2 class="section-heading" id="roadmapTitle">เส้นทางการเรียนรู้ 3 ระยะ</h2>
+        <p class="section-desc">เริ่มจากแบบจำลองที่เข้าใจง่าย ก่อนขยายไปสู่ข้อจำกัดด้านทรัพยากร และการตัดสินใจเกี่ยวกับผังโรงงานที่ซับซ้อนขึ้น</p>
+        <div class="roadmap-grid">
+          <article class="phase-card">
+            <div class="phase-head"><span class="phase-num">01</span><div><div class="phase-label">FOUNDATION</div><h3>การไหลและการผลิต</h3></div></div>
+            <p>ฝึกกำหนดตัวแปร ฟังก์ชันวัตถุประสงค์ และข้อจำกัดจากสถานการณ์โรงงานด้วย Simplex LP</p>
+            <div class="phase-topics"><span>01 · Transportation</span><span>02 · Production</span><span>03 · Material Handling</span></div>
+          </article>
+          <article class="phase-card">
+            <div class="phase-head"><span class="phase-num">02</span><div><div class="phase-label">RESOURCE OPTIMIZATION</div><h3>การจัดสรรทรัพยากร</h3></div></div>
+            <p>ตัดสินใจแบ่งภาระงาน พื้นที่ และแรงงาน พร้อมเรียนรู้ความต่างระหว่างตัวแปรต่อเนื่องกับจำนวนเต็ม</p>
+            <div class="phase-topics"><span>04 · Machines</span><span>05 · Space</span><span>06 · Workforce</span></div>
+          </article>
+          <article class="phase-card">
+            <div class="phase-head"><span class="phase-num">03</span><div><div class="phase-label">INTEGRATED LAYOUT</div><h3>บูรณาการผังโรงงาน</h3></div></div>
+            <p>นำ From-To Chart, Distance Matrix และ Block Layout มาวิเคราะห์การจัดตำแหน่งแผนกอย่างมีเหตุผล</p>
+            <div class="phase-topics"><span>07 · Facility Layout</span><span>QAP / MILP / Heuristic</span></div>
+          </article>
+        </div>
+        <div class="phase-bottom"><svg class="icon"><use href="#i-arrow"/></svg> พัฒนาจากการคำนวณต้นทุน ไปสู่การตัดสินใจที่คำนึงถึงข้อจำกัดทางวิศวกรรมจริง</div>
+      </div>
+    </section>
+
+    <section class="section solver-section" id="solver" aria-labelledby="solverTitle">
+      <div class="container">
+        <span class="kicker">Standard Solver Workflow</span>
+        <h2 class="section-heading" id="solverTitle">ขั้นตอนมาตรฐานการใช้ Excel Solver</h2>
+        <p class="section-desc">ทุกบทเรียนฝึกกระบวนการแก้ปัญหาในรูปแบบเดียวกัน เพื่อให้นักศึกษาสามารถนำแนวคิดไปประยุกต์ใช้กับโจทย์อื่นได้</p>
+        <div class="solver-steps">
+          <article class="step"><span class="step-number">01</span><svg class="icon"><use href="#i-target"/></svg><h3>กำหนดปัญหาและเป้าหมาย</h3><p>ระบุว่าจะลดต้นทุน เพิ่มกำไร หรือใช้ทรัพยากรให้เหมาะสม พร้อมกำหนดหน่วยที่ชัดเจน</p></article>
+          <article class="step"><span class="step-number">02</span><svg class="icon"><use href="#i-chart"/></svg><h3>สร้าง Mathematical Model</h3><p>เขียนตัวแปรตัดสินใจ ฟังก์ชันวัตถุประสงค์ และข้อจำกัดตามสถานการณ์จริง</p></article>
+          <article class="step"><span class="step-number">03</span><svg class="icon"><use href="#i-table"/></svg><h3>เตรียม Excel Worksheet</h3><p>จัดตารางข้อมูล เซลล์ตัวแปร และสูตร เช่น SUMPRODUCT ให้ตรวจสอบได้ง่าย</p></article>
+          <article class="step"><span class="step-number">04</span><svg class="icon"><use href="#i-sliders"/></svg><h3>ตั้งค่า Solver Parameters</h3><p>กำหนด Objective, Changing Variable Cells และ Constraints รวมถึงเงื่อนไขตัวแปร</p></article>
+          <article class="step"><span class="step-number">05</span><svg class="icon"><use href="#i-calculator"/></svg><h3>เลือกวิธีและคำนวณ</h3><p>ใช้ Simplex LP กับแบบจำลองเชิงเส้น และตั้ง Integer/Binary หรือวิธีอื่นเมื่อโจทย์กำหนด</p></article>
+          <article class="step"><span class="step-number">06</span><svg class="icon"><use href="#i-shield"/></svg><h3>ตรวจสอบและวิเคราะห์ผล</h3><p>ตรวจข้อจำกัด หน่วย ผลที่เป็นไปได้ และอธิบายความเหมาะสมในเชิงวิศวกรรม</p></article>
+        </div>
+        <div class="learning-tip"><svg class="icon"><use href="#i-info"/></svg><div><strong>ข้อควรรู้สำหรับผู้เริ่มต้น</strong><p>Solver ไม่ใช่เพียงปุ่มคำนวณ แต่เป็นกระบวนการสร้างแบบจำลอง ตรวจสอบข้อจำกัด และแปลผลให้ใช้งานได้จริง โดยปัญหา QAP ทั่วไปไม่ใช่ Simplex LP ธรรมดา</p></div></div>
+      </div>
+    </section>
+
+    <section class="course-section" id="about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <div class="course-panel">
+          <div><span class="kicker">About This Learning Portal</span><h2 id="aboutTitle">สื่อการเรียนรู้เสริมสำหรับนักศึกษาวิศวกรรมการผลิต</h2><p>เว็บไซต์นี้รวบรวมการประยุกต์ใช้ Microsoft Excel Solver กับโจทย์วิศวกรรมการออกแบบโรงงานอุตสาหกรรม เพื่อฝึกคิด วิเคราะห์แบบจำลอง และอธิบายผลการตัดสินใจอย่างเป็นระบบ เป็นชุดบทเรียนเสริมด้าน Optimization ไม่ใช่เนื้อหาทั้งหมดของแผนการสอน 17 สัปดาห์</p></div>
+          <div class="course-detail">
+            <div class="detail-line"><svg class="icon"><use href="#i-graduation"/></svg><span><b>รายวิชา</b><br>การออกแบบโรงงานอุตสาหกรรม (Industrial Plant Design)</span></div>
+            <div class="detail-line"><svg class="icon"><use href="#i-users"/></svg><span><b>ผู้สอน</b><br>อาจารย์ชัยวัฒน์ วัฒนะกุล</span></div>
+            <div class="detail-line"><svg class="icon"><use href="#i-factory"/></svg><span><b>สถาบัน</b><br>มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="references" aria-label="เอกสารและข้อมูลอ้างอิง">
+      <div class="container">
+        <div class="reference-panel"><svg class="icon"><use href="#i-book"/></svg><div><h2>แนวทางเนื้อหาและแหล่งอ้างอิง</h2><p>อ้างอิงเอกสาร “7 หัวข้อการประยุกต์ใช้ Microsoft Excel Solver สำหรับวิชาการออกแบบโรงงานอุตสาหกรรม” (17 พฤศจิกายน 2569) และแผนการสอนรายวิชา Industrial Plant Design 17 สัปดาห์ โดยศึกษาวิธีใช้ Solver เพิ่มเติมจาก <a href="https://support.microsoft.com/th-th/excel/define-and-solve-a-problem-by-using-solver" target="_blank" rel="noopener noreferrer">Microsoft Support <span aria-hidden="true">↗</span></a> การเปิดลิงก์ภายนอกต้องใช้อินเทอร์เน็ต</p></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><div class="footer-main"><strong>Excel Solver Learning Portal</strong>Industrial Plant Design · อาจารย์ชัยวัฒน์ วัฒนะกุล<br>มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน นครราชสีมา</div><div class="footer-nav"><a href="#home">กลับไปด้านบน ↑</a><a href="#modules">บทเรียนทั้ง 7</a><a href="#solver">วิธีใช้ Solver</a><a href="../index.html">เว็บไซต์หลักระดับบน</a></div></div></footer>
+
+  <script>
+  'use strict';
+  /* ================================================================
+   * GITHUB AUTO-DISCOVERY: เพิ่มคู่มือ .html ที่ GitHub แล้วหน้าเว็บจะ
+   * ตรวจรายชื่อและจับคู่ชื่อไฟล์กับบทเรียนทั้ง 7 เรื่องให้อัตโนมัติ
+   * filename / enabled ด้านล่างเป็นเพียงสถานะตั้งต้น ถูกเขียนทับจาก GitHub API
+   * ================================================================ */
+  const lessons = [
+    {
+      id:1, group:'flow', title:'การเลือกทำเลด้วยปัญหาการขนส่ง', english:'Transportation Problem',
+      icon:'i-truck', objective:'Minimize · ต้นทุนขนส่ง', method:'Simplex LP',
+      description:'จัดสรรปริมาณการส่งสินค้าจากแหล่งผลิตไปยังลูกค้า ภายใต้กำลังผลิต ความต้องการ และต้นทุนที่แตกต่างกัน',
+      outcome:'ตารางปริมาณขนส่งที่เหมาะสม และต้นทุนรวมต่ำสุด',
+      note:'LP พื้นฐานกำหนดปริมาณส่ง ไม่ได้ตัดสินใจเปิด–ปิดโรงงานโดยอัตโนมัติ',
+      keywords:'เลือกทำเล ขนส่ง โลจิสติกส์ supply demand capacity shipping factory location transportation',
+      filename:'', prepared:true, enabled:false
+    },
+    {
+      id:2, group:'flow', title:'การวางแผนการผลิต', english:'Production Planning',
+      icon:'i-chart', objective:'Maximize · กำไร', method:'Simplex LP',
+      description:'กำหนดจำนวนผลิตสินค้าให้ได้กำไรสูงสุด ภายใต้เวลาสุทธิของ CNC Lathe, CNC Milling และข้อจำกัดคำสั่งซื้อ',
+      outcome:'จำนวนผลิตที่เหมาะสม กำไรสูงสุด และทรัพยากรคงเหลือ',
+      keywords:'การผลิต กำไร product mix cnc lathe milling production planning capacity profit',
+      filename:'Excel_Solver_Production_Planning_Guide.html', prepared:true, enabled:false
+    },
+    {
+      id:3, group:'flow', title:'การจัดสรรระบบขนถ่ายวัสดุ', english:'Material Handling Optimization',
+      icon:'i-forklift', objective:'Minimize · ต้นทุนขนถ่าย', method:'Simplex LP',
+      description:'จัดแบ่งปริมาณงานระหว่าง Forklift และ Hand Pallet Truck โดยคำนึงถึงระยะทางและความสามารถในการขนย้าย',
+      outcome:'ตารางจัดสรรงานขนถ่าย และต้นทุนเปรียบเทียบก่อน–หลัง',
+      keywords:'วัสดุ ระบบขนถ่าย material handling forklift hand pallet distance',
+      filename:'Excel_Solver_Material_Handling_Guide.html', prepared:true, enabled:false
+    },
+    {
+      id:4, group:'resource', title:'การจัดสรรภาระงานให้เครื่องจักร', english:'Machine Loading Optimization',
+      icon:'i-gears', objective:'Minimize · ต้นทุน/เวลา', method:'LP / Integer',
+      description:'แบ่งภาระงานแต่ละชนิดให้เครื่องจักรที่เหมาะสม โดยพิจารณาความเร็วการผลิต ต้นทุน และเวลาที่เครื่องพร้อมใช้งาน',
+      outcome:'ตารางงานของเครื่องจักร เวลาคงเหลือ และต้นทุนรวม',
+      keywords:'เครื่องจักร cnc machine loading routing capacity allocation integer',
+      filename:'Excel_Solver_Machine_Loading.html', prepared:false, enabled:false
+    },
+    {
+      id:5, group:'resource', title:'การจัดสรรพื้นที่โรงงาน', english:'Space Allocation Optimization',
+      icon:'i-ruler', objective:'Maximize · ประโยชน์พื้นที่', method:'Simplex LP',
+      description:'จัดสรรพื้นที่อาคารที่จำกัดให้แก่แต่ละแผนกตามเกณฑ์พื้นที่ขั้นต่ำ พื้นที่สูงสุด และประโยชน์ที่ได้รับ',
+      outcome:'ตารางพื้นที่รายแผนก เพื่อนำไปพัฒนา Block Layout',
+      note:'พื้นที่เชิงตัวเลขที่คำนวณได้ ยังต้องตรวจความพอดีเชิงเรขาคณิตในอาคารจริง',
+      keywords:'พื้นที่ โรงงาน block layout area space allocation square meters',
+      filename:'Excel_Solver_Space_Allocation.html', prepared:false, enabled:false
+    },
+    {
+      id:6, group:'resource', title:'การจัดสรรแรงงาน', english:'Workforce Allocation',
+      icon:'i-users', objective:'Minimize · ต้นทุนแรงงาน', method:'Integer / MILP',
+      description:'จัดพนักงานให้ครอบคลุมภาระงานตามแผนกและกะการทำงาน โดยคำนึงถึงจำนวนคน ทักษะ และชั่วโมงทำงาน',
+      outcome:'ตารางจัดกำลังคนแต่ละกะและต้นทุนแรงงานรวม',
+      keywords:'แรงงาน คน พนักงาน กะ ทักษะ workforce skill matrix shift milp',
+      filename:'Excel_Solver_Workforce_Allocation.html', prepared:false, enabled:false
+    },
+    {
+      id:7, group:'layout', title:'การจัดตำแหน่งแผนกภายในโรงงาน', english:'Facility Layout Assignment',
+      icon:'i-layout', objective:'Minimize · Load-Distance', method:'QAP / MILP / Heuristic',
+      description:'จัดตำแหน่งแผนกจาก From-To Chart และ Distance Matrix เพื่อเปรียบเทียบผังเดิมกับผังใหม่',
+      outcome:'ผังเดิม–ผังใหม่ และระยะทางถ่วงน้ำหนักก่อน–หลัง',
+      note:'QAP ทั่วไปไม่ใช่ LP ธรรมดา ต้องใช้วิธีแก้ปัญหาที่รองรับ',
+      keywords:'ผังโรงงาน from-to chart distance matrix layout assignment qap binary',
+      filename:'Excel_Solver_Facility_Layout.html', prepared:false, enabled:false
+    }
+  ];
+
+  // ปรับค่า repository นี้ครั้งเดียวเมื่อต้องการย้ายไป GitHub Repository อื่น
+  const GITHUB = Object.freeze({
+    owner:'chaiwatwattanakul-netizen',
+    repo:'Industrial_Plant_Design_digital_media',
+    branch:'main',
+    folder:'Excel_Solver_HandsOn'
+  });
+  const apiUrl = `https://api.github.com/repos/${GITHUB.owner}/${GITHUB.repo}/contents/${GITHUB.folder}?ref=${GITHUB.branch}`;
+  const pagesBase = `https://${GITHUB.owner}.github.io/${GITHUB.repo}/${GITHUB.folder}/`;
+  const groups = {
+    flow:'การไหลและการผลิต', resource:'การจัดสรรทรัพยากร', layout:'การออกแบบผังโรงงาน'
+  };
+  // รองรับชื่อที่ปรากฏใน GitHub ตามภาพ: Factory_Location... และ Production_Planning...
+  // รวมทั้งชื่อทางเลือกสำหรับคู่มือใหม่; ไม่ต้องแก้โค้ดเมื่อเพิ่มไฟล์ที่ตรงกับคำสำคัญ
+  const topicNameRules = [
+    {id:1, pattern:/(?:factory[_\s-]*location|facility[_\s-]*location|transportation|เลือกทำเล|ปัญหาการขนส่ง)/i},
+    {id:2, pattern:/(?:production[_\s-]*planning|product[_\s-]*mix|วางแผนการผลิต)/i},
+    {id:3, pattern:/(?:material[_\s-]*handling|forklift|hand[_\s-]*pallet|ขนถ่ายวัสดุ)/i},
+    {id:4, pattern:/(?:machine[_\s-]*loading|machine[_\s-]*allocation|ภาระงานเครื่องจักร)/i},
+    {id:5, pattern:/(?:space[_\s-]*allocation|area[_\s-]*allocation|จัดสรรพื้นที่)/i},
+    {id:6, pattern:/(?:workforce[_\s-]*allocation|labou?r[_\s-]*allocation|manpower|จัดสรรแรงงาน)/i},
+    {id:7, pattern:/(?:facility[_\s-]*layout|layout[_\s-]*assignment|department[_\s-]*assignment|จัดตำแหน่งแผนก)/i}
+  ];
+  // กรณี GitHub API ใช้ไม่ได้ สามารถตรวจสอบชื่อที่คาดไว้ผ่าน HEAD เมื่ออยู่บนเว็บโฮสต์
+  const knownFileCandidates = {
+    1:['Factory_Location_Excel_Solver_Guide.html','คู่มือ_Excel_Solver_เลือกทำเลโรงงาน.html','Transportation_Excel_Solver_Guide.html'],
+    2:['Production_Planning_Excel_Solver_Guide.html','Excel_Solver_Production_Planning_Guide.html'],
+    3:['Material_Handling_Excel_Solver_Guide.html','Excel_Solver_Material_Handling_Guide.html'],
+    4:['Machine_Loading_Excel_Solver_Guide.html','Excel_Solver_Machine_Loading.html'],
+    5:['Space_Allocation_Excel_Solver_Guide.html','Excel_Solver_Space_Allocation.html'],
+    6:['Workforce_Allocation_Excel_Solver_Guide.html','Excel_Solver_Workforce_Allocation.html'],
+    7:['Facility_Layout_Assignment_Excel_Solver_Guide.html','Excel_Solver_Facility_Layout.html']
+  };
+  const topicGrid = document.getElementById('topicGrid');
+  const searchField = document.getElementById('topicSearch');
+  const countDisplay = document.getElementById('resultsCount');
+  const filterButtons = [...document.querySelectorAll('.filter-chip')];
+  const syncBox = document.getElementById('githubSync');
+  const syncStatus = document.getElementById('githubSyncStatus');
+  const refreshButton = document.getElementById('refreshGitHub');
+  let currentFilter = 'all';
+  let syncState = 'loading'; // loading | ready | error
+  let refreshSerial = 0;
+  const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#${name}"></use></svg>`;
+  const escaped = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const normalize = (value) => String(value).normalize('NFKC').toLocaleLowerCase('th-TH').trim();
+  const isHtmlGuide = file => file.type === 'file' && /\.html?$/i.test(file.name) && !/^index(?:\d+)?\.html?$/i.test(file.name);
+  const topicNumber = name => {
+    const numbered = name.match(/^(?:topic|lesson|module|เรื่องที่)?[_\s-]*(0?[1-7])(?:[_\s.-]|$)/i);
+    if (numbered) return Number(numbered[1]);
+    return topicNameRules.find(rule => rule.pattern.test(name))?.id ?? null;
+  };
+  function fileUrl(filename) {
+    const encoded = encodeURIComponent(filename);
+    // เมื่อเปิด index.html จากเครื่อง ให้ลิงก์ไป GitHub Pages; เมื่ออยู่บนเว็บใช้ relative link
+    return location.protocol === 'file:' ? pagesBase + encoded : './' + encoded;
+  }
+  function createLessonCard(lesson) {
+    const available = lesson.enabled && !!lesson.filename;
+    const statusText = available ? 'เปิดคู่มือได้ · GitHub' : syncState === 'loading' ? 'กำลังตรวจสอบไฟล์…'
+      : syncState === 'error' ? 'ยังตรวจสอบไฟล์ไม่ได้' : lesson.prepared ? 'ยังไม่พบไฟล์บน GitHub' : 'อยู่ระหว่างพัฒนา';
+    const statusClass = available ? 'status-ready' : syncState === 'loading' || syncState === 'error' || lesson.prepared ? 'status-unlinked' : 'status-planned';
+    const button = available
+      ? `<a class="card-action" href="${escaped(fileUrl(lesson.filename))}" aria-label="เปิดคู่มือเรื่องที่ ${lesson.id} ${escaped(lesson.title)}">${icon('i-book')} เปิดคู่มือบทเรียน ${icon('i-arrow')}</a>`
+      : `<button class="card-action ${lesson.prepared ? 'waiting' : ''}" type="button" disabled aria-label="ยังไม่มีลิงก์คู่มือที่ตรวจสอบแล้ว เรื่องที่ ${lesson.id}">${icon('i-book')} ${syncState === 'loading' ? 'กำลังตรวจสอบ…' : syncState === 'error' ? 'ตรวจสอบไฟล์ไม่ได้' : 'รอไฟล์คู่มือ'}</button>`;
+    const article = document.createElement('article');
+    article.className = 'topic-card';
+    article.dataset.id = String(lesson.id);
+    article.innerHTML = `
+      <div class="topic-top"><span class="topic-index">MODULE ${String(lesson.id).padStart(2,'0')} / 07</span><span class="status ${statusClass}"><span class="status-dot"></span>${statusText}</span></div>
+      <div class="topic-main"><span class="topic-icon">${icon(lesson.icon)}</span><div class="topic-heading"><h3>${escaped(lesson.title)}</h3><p class="topic-en" lang="en">${escaped(lesson.english)}</p></div></div>
+      <div class="topic-body"><p class="topic-desc">${escaped(lesson.description)}</p>
+        <div class="topic-meta"><span class="meta-tag objective">${escaped(lesson.objective)}</span><span class="meta-tag">${escaped(lesson.method)}</span><span class="meta-tag">${escaped(groups[lesson.group])}</span></div>
+        <div class="topic-outcome"><strong>ผลลัพธ์การเรียนรู้</strong>${escaped(lesson.outcome)}</div>
+        ${lesson.note ? `<p class="topic-caution">${escaped(lesson.note)}</p>` : ''}
+      </div><div class="card-footer">${button}</div>`;
+    return article;
+  }
+  function renderLessons() {
+    const search = normalize(searchField.value);
+    const found = lessons.filter(lesson => {
+      if (currentFilter === 'available' && !lesson.enabled) return false;
+      if (!['all','available'].includes(currentFilter) && lesson.group !== currentFilter) return false;
+      if (!search) return true;
+      return normalize([lesson.id,String(lesson.id).padStart(2,'0'),lesson.title,lesson.english,lesson.description,lesson.objective,lesson.method,lesson.outcome,lesson.keywords,groups[lesson.group]].join(' ')).includes(search);
+    });
+    const content = document.createDocumentFragment();
+    found.forEach(lesson => content.appendChild(createLessonCard(lesson)));
+    topicGrid.replaceChildren(content);
+    document.getElementById('emptyState').hidden = found.length !== 0;
+    countDisplay.textContent = `กำลังแสดง ${found.length} จาก ${lessons.length} เรื่อง`;
+  }
+  function setFilter(filter) {
+    currentFilter = filter;
+    filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
+    renderLessons();
+  }
+  function setSyncMessage(message, state) {
+    syncState = state;
+    syncBox.dataset.state = state;
+    syncStatus.textContent = message;
+    refreshButton.disabled = state === 'loading';
+  }
+  function applyFiles(files, via) {
+    lessons.forEach(lesson => { lesson.enabled = false; lesson.filename = ''; });
+    const candidates = files.filter(isHtmlGuide).sort((a,b) => a.name.localeCompare(b.name));
+    const matches = new Map();
+    for (const file of candidates) {
+      const id = topicNumber(file.name);
+      if (!id) continue;
+      const existing = matches.get(id);
+      // หากมีหลายไฟล์ ให้เลือกชื่อที่มี Guide เป็นลำดับแรก เพื่อความสม่ำเสมอ
+      const score = (name) => /guide|คู่มือ/i.test(name) ? 1 : 0;
+      if (!existing || score(file.name) > score(existing.name)) matches.set(id, file);
+    }
+    for (const lesson of lessons) {
+      const file = matches.get(lesson.id);
+      if (file) { lesson.filename = file.name; lesson.enabled = true; }
+    }
+    const ready = lessons.filter(lesson=>lesson.enabled).length;
+    document.getElementById('statPrepared').textContent = ready;
+    document.getElementById('statPlanned').textContent = lessons.length - ready;
+    setSyncMessage(`พบไฟล์คู่มือ ${ready} จาก ${lessons.length} เรื่อง · ${via} · เพิ่มไฟล์แล้วกดตรวจสอบใหม่หรือรีเฟรชหน้าเว็บ`, 'ready');
+    renderLessons();
+  }
+  async function fetchGithubFiles() {
+    const ctl = new AbortController();
+    const timeout = setTimeout(()=>ctl.abort(), 9000);
+    try {
+      const response = await fetch(apiUrl, {signal:ctl.signal, cache:'no-store', headers:{Accept:'application/vnd.github+json'}});
+      if (!response.ok) throw new Error(`GitHub API HTTP ${response.status}`);
+      const data = await response.json();
+      if (!Array.isArray(data)) throw new Error('GitHub API ไม่ได้ส่งรายการไฟล์');
+      return data.map(({name,type})=>({name,type}));
+    } finally { clearTimeout(timeout); }
+  }
+  async function probeKnownFiles() {
+    // การสำรองใช้ได้เฉพาะกรณี index.html อยู่บนเว็บไซต์จริง (ไม่ใช่ file://)
+    if (!['http:','https:'].includes(location.protocol)) throw new Error('offline');
+    const checks = Object.values(knownFileCandidates).flat();
+    const ctl = new AbortController();
+    const timeout = setTimeout(()=>ctl.abort(), 9000);
+    try {
+      const matches = await Promise.all(checks.map(async name => {
+        try {
+          const r = await fetch('./'+encodeURIComponent(name), {method:'HEAD',signal:ctl.signal,cache:'no-store'});
+          return r.ok ? {name,type:'file'} : null;
+        } catch { return null; }
+      }));
+      const valid = matches.filter(Boolean);
+      if (!valid.length) throw new Error('ไม่พบชื่อไฟล์ที่กำหนดไว้');
+      return valid;
+    } finally {clearTimeout(timeout);}
+  }
+  async function refreshGithub() {
+    const serial = ++refreshSerial;
+    setSyncMessage('กำลังตรวจสอบรายชื่อไฟล์ .html ใน GitHub…', 'loading');
+    renderLessons();
+    try {
+      const files = await fetchGithubFiles();
+      if (serial !== refreshSerial) return;
+      applyFiles(files,'ข้อมูล GitHub ล่าสุด');
+    } catch (e) {
+      try {
+        const files = await probeKnownFiles();
+        if (serial !== refreshSerial) return;
+        applyFiles(files,'ตรวจสอบลิงก์บนเว็บไซต์');
+      } catch {
+        if (serial !== refreshSerial) return;
+        document.getElementById('statPrepared').textContent = '?';
+        document.getElementById('statPlanned').textContent = '?';
+        lessons.forEach(lesson=>{lesson.enabled=false;lesson.filename='';});
+        setSyncMessage('ตรวจสอบ GitHub ไม่สำเร็จ โปรดตรวจอินเทอร์เน็ต/การตั้งค่า Repository สาธารณะ แล้วกด “ตรวจสอบไฟล์ใหม่” อีกครั้ง', 'error');
+        renderLessons();
+      }
+    }
+  }
+  filterButtons.forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
+  searchField.addEventListener('input', renderLessons);
+  document.getElementById('resetFilters').addEventListener('click', () => {searchField.value='';setFilter('all');searchField.focus();});
+  refreshButton.addEventListener('click', refreshGithub);
+  document.getElementById('statAll').textContent = lessons.length;
+  renderLessons();
+  refreshGithub();
+
+  const menuToggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('primaryNav');
+  function setMenu(open){menu.classList.toggle('open',open);menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'ปิดเมนู':'เปิดเมนู');menuToggle.innerHTML=icon(open?'i-x':'i-menu');}
+  menuToggle.addEventListener('click',()=>setMenu(menuToggle.getAttribute('aria-expanded')!=='true'));
+  menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+  document.addEventListener('keydown', e=>{if(e.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){setMenu(false);menuToggle.focus();}});
+  document.addEventListener('click', e=>{if(menuToggle.getAttribute('aria-expanded')==='true'&&!menu.contains(e.target)&&!menuToggle.contains(e.target))setMenu(false);});
+  window.addEventListener('resize',()=>{if(window.innerWidth>880&&menuToggle.getAttribute('aria-expanded')==='true')setMenu(false);});
+
+  if ('IntersectionObserver' in window) {
+    const sectionLinks = [...menu.querySelectorAll('a[href^="#"]')];
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(item=>item.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if (!visible) return;
+      sectionLinks.forEach(link=>link.removeAttribute('aria-current'));
+      const match = sectionLinks.find(link=>link.getAttribute('href')==='#'+visible.target.id);
+      if(match) match.setAttribute('aria-current','location');
+    },{rootMargin:'-15% 0px -65% 0px',threshold:0});
+    ['home','modules','roadmap','solver','about'].forEach(id=>observer.observe(document.getElementById(id)));
+  }
+  </script>
+</body>
+</html>
