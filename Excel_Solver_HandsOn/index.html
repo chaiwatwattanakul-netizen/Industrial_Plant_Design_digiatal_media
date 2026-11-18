@@ -604,7 +604,7 @@
   }
   function createLessonCard(lesson) {
     const available = lesson.enabled && !!lesson.filename;
-    const statusText = available ? 'เปิดคู่มือได้ · GitHub' : syncState === 'loading' ? 'กำลังตรวจสอบไฟล์…'
+    const statusText = available ? 'เปิดคู่มือได้' : syncState === 'loading' ? 'กำลังตรวจสอบไฟล์…'
       : syncState === 'error' ? 'ยังตรวจสอบไฟล์ไม่ได้' : lesson.prepared ? 'ยังไม่พบไฟล์บน GitHub' : 'อยู่ระหว่างพัฒนา';
     const statusClass = available ? 'status-ready' : syncState === 'loading' || syncState === 'error' || lesson.prepared ? 'status-unlinked' : 'status-planned';
     const button = available
